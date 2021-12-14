@@ -4,7 +4,7 @@ import SignIn from '../components/Modal/Signin/SignIn'
 const Home = () => {
     return (
         <div>
-            <SignIn />
+            {/* <SignIn /> */}
             <SignUp />
         </div>
     )

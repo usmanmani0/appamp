@@ -6,11 +6,6 @@ function App() {
   return (
     <>
       <Home />
-
-      <button>SignUp</button>
-      <button>SignIn</button>
-
-
     </>
   );
 }
