@@ -1,0 +1,33 @@
+.signin_footer_txt {
+  font-weight: 700;
+  color: #161618;
+}
+.signin_fpass_txt {
+  text-align: center !important;
+}
+.signin_btn_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+.signin_fpass_txt_cnter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signin_form2_wrapper {
+  margin-bottom: 47px;
+}
+.signin_btn {
+  margin-bottom: 37px;
+}
+
+@media screen and (min-width: 300px) and (max-width: 576px) {
+  .form_wrapper1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+  }
+}
