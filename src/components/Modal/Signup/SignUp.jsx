@@ -121,11 +121,6 @@ const SignUp = () => {
         </Container>
       )}
 
-      {showModal === false && (
-        <button onClick={handelModal} className="my-5 mx-5">
-          SignUp
-        </button>
-      )}
     </>
   );
 };
