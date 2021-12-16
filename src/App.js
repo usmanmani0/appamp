@@ -7,8 +7,7 @@ function App() {
     <>
       <Home />
 
-      <button>SignUp</button>
-      <button>SignIn</button>
+
 
 
     </>
