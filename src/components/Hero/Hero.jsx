@@ -25,7 +25,7 @@ const Hero = () => {
     <>
       <div className="hero-section">
         <Container className="hero_container">
-          <Row>
+          <Row className="mob_col">
             <Col lg={6} md={12} xs={12} className="hero_desc">
               <div>
                 <div>
