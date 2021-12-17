@@ -103,7 +103,7 @@ const SignIn = () => {
 
             <Row>
               <Col className="signin_fpass_txt_cnter">
-                <a className="signup_footer_txt1" href="">
+                <a className="signup_footer_txt1" href="#">
                   Forgot Password?
                 </a>
               </Col>
@@ -113,7 +113,7 @@ const SignIn = () => {
               <Col>
                 <p className="signup_footer_txt pt-4">
                   Don't have an account?{" "}
-                  <a className="signup_footer_txt1 signin_footer_txt" href="">
+                  <a className="signup_footer_txt1 signin_footer_txt" href="#">
                     Sign Up
                   </a>
                 </p>
@@ -123,11 +123,7 @@ const SignIn = () => {
         </Container>
       )}
 
-      {showModal === false && (
-        <button onClick={handelModal} className="my-5 mx-5">
-          SignUp
-        </button>
-      )}
+      
     </>
   );
 };
