@@ -8,9 +8,9 @@ import "./App.css";
 function App() {
   return (
     <>
-      <Home /> 
-      {/* comm */}
-      {/* <SoundCloudPage /> */}
+      {/* <Home />  */}
+    
+      <SoundCloudPage />
     </>
   );
 }
