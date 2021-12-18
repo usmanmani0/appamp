@@ -74,10 +74,10 @@ const Header = () => {
                 <Nav.Link href="#home">
                   {" "}
                   <div className="mob_buttons">
-                    <button className="button_1" type="button">
+                    <button onClick={handelSignInModal} className="button_1" type="button">
                       Sign In
                     </button>
-                    <button className="button_2">Sign Up</button>
+                    <button onClick={handelSignUpModal} className="button_2">Sign Up</button>
                   </div>
                 </Nav.Link>
               </Nav>

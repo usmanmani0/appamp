@@ -10,6 +10,7 @@
   width: 25%;
   height: 100%;
   background-color: #ffffff;
+  /* overflow-y: scroll; */
 }
 .videoplayer_wrapper {
   width: 100%;
@@ -20,9 +21,10 @@
   justify-content: center;
 }
 .rightaside_wrapper {
-  width: 30%;
+  width: 33%;
   height: 100%;
   background-color: #e5e5e5;
+  overflow-y: scroll;
 }
 .sc_videoplayer_btn_wrapper {
   display: flex;
@@ -69,13 +71,16 @@
 .sc_left_aside_time_desc {
   width: 90%;
   min-height: 32px;
-  background-color: #edf4fe;
+  /* background-color: #edf4fe; */
   border-radius: 8px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
-.sc_left_aside_time_desc_1 {
+.sc_la_td_bg {
+  background-color: #edf4fe;
+}
+/* .sc_left_aside_time_desc_1 {
   width: 90%;
   min-height: 32px;
   background-color: #ffffff;
@@ -83,17 +88,8 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-}
+} */
 .sc_la_time_txt {
-  font-family: Space Grotesk;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 16px;
-  color: #5097f3;
-  padding-left: 8px;
-}
-.sc_la_time_txt_1 {
   font-family: Space Grotesk;
   font-style: normal;
   font-weight: normal;
@@ -102,17 +98,30 @@
   color: #505052;
   padding-left: 8px;
 }
+.sc_la_time_txt_cl {
+  color: #5097f3;
+}
+/* .sc_la_time_txt_1 {
+  font-family: Space Grotesk;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  color: #505052;
+  padding-left: 8px;
+} */
+
 .sc_la_desc_txt {
   font-family: Space Grotesk;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 16px;
-  color: #5097f3;
+  /* color: #5097f3; */
   padding-left: 16px;
   flex-wrap: wrap;
 }
-
+/* 
 .sc_la_desc_txt_1 {
   font-family: Space Grotesk;
   font-style: normal;
@@ -122,12 +131,12 @@
   color: #505052;
   padding-left: 16px;
   flex-wrap: wrap;
-}
+} */
 .box_card {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px 0px;
+  padding: 10px 0px 10px 0px;
 }
 .right_aside_card_wrapper {
   width: 92%;
@@ -196,4 +205,55 @@
   letter-spacing: 0.01em;
   text-transform: capitalize;
   color: #ffffff;
+}
+
+.react_player_wrapper {
+  width: 100%;
+  height: calc(100% - 70px);
+  position: relative;
+}
+
+.react_player_controls_wrapper {
+  min-width: 100%;
+  height: 5%;
+  background-color: #f4f4f4;
+  /* background-color: red; */
+}
+.progress {
+  height: 0.5rem !important;
+}
+.pb_wrapper {
+  background-color: #fff !important;
+}
+
+.progress-bar {
+  background-color: #c5c5c5 !important;
+}
+.controls_bottom_items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+.right_controls_items {
+  padding: 0px 10px;
+  display: flex;
+}
+.pspeed_img {
+  margin-right: 18px;
+  width: 60%;
+}
+/* .pspeed_btn{
+  background-color: none !important;
+} */
+
+.fscreen_img {
+  padding: 0px 10px;
+}
+.controls_button_styling {
+  border: none;
+}
+.pad_lft{
+  padding-left: 6px;
 }
