@@ -1,0 +1,36 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+  }
+  .footer_div{
+    height: 48px;
+    width: 100%;
+    background-color: rgba(244, 244, 244, 1);
+  }
+  .footer_desc{
+   float: right;
+   width: 100%;
+  }
+  .footerheading_row{
+    display: flex;
+    justify-content:flex-end;
+    margin-top: 1rem;
+    
+  }
+  .footer_heading{
+    font-family: Space Grotesk;
+    font-family: Bold;
+    Font-size: 14px;
+    color: Solid #8A8A8B;
+    margin-left: 2rem;
+  }
+  @media only screen and (max-width: 600px){
+    .footer_heading{
+      font-family: Space Grotesk;
+      font-family: Bold;
+      Font-size: 14px;
+      color: Solid #8A8A8B;
+      margin-left: 1rem;
+    } 
+  }

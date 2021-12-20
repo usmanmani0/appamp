@@ -6,6 +6,8 @@ import AppleLogo from "../../assets/images/AppleLogo.png";
 import close from "../../assets/images/Close.png";
 
 import "./header.css";
+import "../Modal/Signup/signup.css"
+import "../Modal/Signin/signin.css"
 import {
   Navbar,
   Container,
