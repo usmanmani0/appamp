@@ -6,92 +6,157 @@ import tidal from "../../assets/soundcloudimages/Tidal.png";
 import tidalthumbnail from "../../assets/soundcloudimages/sidebarthumbnail.png";
 import PlayerControls from "../PlayerControls/PlayerControls";
 import ReactPlayer from "react-player";
+import expand from "../../assets/soundcloudimages/expand.png";
+import openmenu from "../../assets/soundcloudimages/Openmenu.png";
 
 const data = [
   {
     id: 1,
-    // image:img1,
-    title: "Card title 1",
-    description:
-      "This is a longer card with supporting text below as a natural lead -in to additional content. This content is a little bit longer.",
+    image: tidal,
+    title: "Sign Up",
+    thumbnailimg: tidalthumbnail,
+    thumbnailtitle: "Tidal",
+    videotime: "12:34",
   },
   {
     id: 2,
-    // image:img2,
-    title: "Card title 2",
-    description:
-      "This is a longer card with supporting text below as a natural lead -in to additional content. This content is a little bit longer.",
+    image: tidal,
+    title: "Sign Up",
+    thumbnailimg: tidalthumbnail,
+    thumbnailtitle: "Tidal",
+    videotime: "12:34",
   },
   {
     id: 3,
-    // image:img3,
-    title: "Card title 3",
-    description:
-      "This is a longer card with supporting text below as a natural lead -in to additional content. This content is a little bit longer.",
+    image: tidal,
+    title: "Sign Up",
+    thumbnailimg: tidalthumbnail,
+    thumbnailtitle: "Tidal",
+    videotime: "12:34",
   },
   {
     id: 4,
-    // image:img4,
-    title: "Card title 4",
-    description:
-      "This is a longer card with supporting text below as a natural lead -in to additional content. This content is a little bit longer.",
+    image: tidal,
+    title: "Sign Up",
+    thumbnailimg: tidalthumbnail,
+    thumbnailtitle: "Tidal",
+    videotime: "12:34",
   },
   {
     id: 5,
-    // image:img5,
-    title: "Card title 5",
-    description:
-      "This is a longer card with supporting text below as a natural lead -in to additional content. This content is a little bit longer.",
+    image: tidal,
+    title: "Sign Up",
+    thumbnailimg: tidalthumbnail,
+    thumbnailtitle: "Tidal",
+    videotime: "12:34",
   },
   {
     id: 6,
-    // image:img6,
-    title: "Card title 6",
-    description:
-      "This is a longer card with supporting text below as a natural lead -in to additional content. This content is a little bit longer.",
+    image: tidal,
+    title: "Sign Up",
+    thumbnailimg: tidalthumbnail,
+    thumbnailtitle: "Tidal",
+    videotime: "12:34",
   },
   {
     id: 7,
-    // image:img1,
-    title: "Card title 7",
-    description:
-      "This is a longer card with supporting text below as a natural lead -in to additional content. This content is a little bit longer.",
+    image: tidal,
+    title: "Sign Up",
+    thumbnailimg: tidalthumbnail,
+    thumbnailtitle: "Tidal",
+    videotime: "12:34",
   },
   {
     id: 8,
-    // image:img2,
-    title: "Card title 8",
-    description:
-      "This is a longer card with supporting text below as a natural lead -in to additional content. This content is a little bit longer.",
+    image: tidal,
+    title: "Sign Up",
+    thumbnailimg: tidalthumbnail,
+    thumbnailtitle: "Tidal",
+    videotime: "12:34",
   },
   {
     id: 9,
-    // image:img3,
-    title: "Card title 9",
-    description:
-      "This is a longer card with supporting text below as a natural lead -in to additional content. This content is a little bit longer.",
+    image: tidal,
+    title: "Sign Up",
+    thumbnailimg: tidalthumbnail,
+    thumbnailtitle: "Tidal",
+    videotime: "12:34",
   },
 ];
 
-
+const asidedata = [
+  {
+    id: 1,
+    videotimelft: "00:00",
+    videotitleontime: "App Landing Screen",
+    time: 0,
+  },
+  {
+    id: 2,
+    videotimelft: "00:32",
+    videotitleontime: "Create an Account",
+    time: 10,
+  },
+  {
+    id: 3,
+    videotimelft: "01:11",
+    videotitleontime: "Log In Screen",
+    time: 20,
+  },
+  {
+    id: 4,
+    videotimelft: "01:25",
+    videotitleontime: "Add a Picture",
+    time: 30,
+  },
+  {
+    id: 5,
+    videotimelft: "01:47",
+    videotitleontime: "Start a free Trial",
+    time: 40,
+  },
+  {
+    id: 6,
+    videotimelft: "02:01",
+    videotitleontime: "Select Plan",
+    time: 50,
+  },
+  {
+    id: 7,
+    videotimelft: "02:23",
+    videotitleontime: "Payment Details",
+    time: 60,
+  },
+  {
+    id: 8,
+    videotimelft: "02:35",
+    videotitleontime: "User Landing Screen",
+    time: 70,
+  },
+];
 
 const VideoPlayer = () => {
-
   const [playOn, setPlayOn] = useState({
     playing: true,
-    playbackRate:1.0,
-    played:0,
-    seeking:false,
+    playbackRate: 1.0,
+    played: 0,
+    seeking: false,
   });
-  
-  const { playing , playbackRate, played, seeking} = playOn;
+const [color, setColor] = useState(1);
+  const [leftAsideShow, setLeftAsideShow] = useState(true);
 
-  const playRef = useRef(null)
+  const { playing, playbackRate, played, seeking } = playOn;
+
+  const playRef = useRef(null);
   // const playContainerRef= useRef(null)
 
   const handelPlayPause = () => {
-    setPlayOn({...playOn, playing:!playOn.playing})
-  }
+    setPlayOn({ ...playOn, playing: !playOn.playing });
+  };
+
+  const handelTime = (time) => {
+    playRef.current.seekTo(time);
+  };
 
   // const handelRewind=()=>{
   //   playRef.current.seekTo(playRef.current.getCurrentTime() - 10)
@@ -99,83 +164,119 @@ const VideoPlayer = () => {
 
   // const handelFastForward=()=>{
   //   playRef.current.seekTo(playRef.current.getCurrentTime() + 10)
-  // } 
+  // }
 
-  const onPlayBackRateChange=(rate) =>{
-    setPlayOn({...playOn, playbackRate:rate })
-  }
+  const onPlayBackRateChange = (rate) => {
+    setPlayOn({ ...playOn, playbackRate: rate });
+  };
 
-  const handelProgress= (changeState) =>{
-    if(!playOn.seeking){
-      setPlayOn({...playOn, ...changeState });
+  const handelProgress = (changeState) => {
 
+    // console.log(changeState); 
+    if (!playOn.seeking) {
+      setPlayOn({ ...playOn, ...changeState });
     }
-  }
+  }; 
 
-  const handelSeekChange= (e, newValue) =>{
-    setPlayOn({...playOn, played:parseFloat(newValue/100)})
-  }
+  const handelSeekChange = (e, newValue) => {
+    setPlayOn({ ...playOn, played: parseFloat(newValue / 100) });
+  };
 
-  const handelSeekMouseDown = (e) =>{
-    setPlayOn({...playOn,seeking:true })
-  }
+  const handelSeekMouseUp = (e, newValue) => {
+    setPlayOn({ ...playOn, seeking: false });
+    playRef.current.seekTo(parseFloat(newValue / 100)); 
+  };
+
+  const handelSeekMouseDown = (e) => {
+    setPlayOn({ ...playOn, seeking: true });
+  };
 
 
-  const handelSeekMouseUp=(e, newValue) =>{
-    setPlayOn({...playOn,seeking:false })
-    playRef.current.seekTo(newValue/100)
-  }
+  const handelLeftSideBar = () => {
+    setLeftAsideShow(!leftAsideShow);
+  };
 
+  
 
   return (
     <Container className="videoplayer_container" fluid="true">
-      <div className="leftaside_wrapper">
-        <div className="sc_videoplayer_btn_wrapper">
-          <div className="sc_ux_videos">
-            <span className="sc_la_ux_txt">UX Videos</span>
-          </div>
-          <div className="sc_ui_videos">
-            <span className="sc_la_ui_txt">UI Screens</span>
-          </div>
-        </div>
-        {data.map((data, index) => {
-          return (
-            <div className="sc_video_time_duration_details" key={index}>
-              <div
-                className={
-                  index === 0
-                    ? "sc_left_aside_time_desc sc_la_td_bg"
-                    : "sc_left_aside_time_desc"
-                }
-              >
-                <span
-                  className={
-                    index === 0
-                      ? "sc_la_time_txt sc_la_time_txt_cl"
-                      : "sc_la_time_txt"
-                  }
-                >
-                  00:00
-                </span>
-                <span
-                  className={
-                    index === 0
-                      ? "sc_la_desc_txt sc_la_time_txt_cl"
-                      : "sc_la_desc_txt"
-                  }
-                >
-                  App Landing Screen
-                </span>
-              </div>
+      {leftAsideShow ? (
+        <div className="leftaside_wrapper">
+          <div className="sc_videoplayer_btn_wrapper">
+            <div className="sc_ux_videos">
+              <button className="video_btn">
+                <span className="sc_la_ux_txt">UX Videos</span>
+              </button>
             </div>
-          );
-        })}
-      </div>
+            <div className="sc_ui_videos">
+              <button className="video_btn">
+                <span className="sc_la_ui_txt">UI Screens</span>
+              </button>
+            </div>
+          </div>
+          {asidedata.map((asidedata, index) => {
+            return (
+              <div className="sc_video_time_duration_details" key={index}>
+                <div
+                  className={
+                    color == asidedata.id
+                      ? "sc_left_aside_time_desc sc_la_td_bg"
+                      : "sc_left_aside_time_desc"
+                  }
+                  onClick={() => {
+                    setColor(asidedata.id);
+                  }}
+                >
+                  <button
+                    className="lft_aside_links"
+                    onClick={() => {
+                      handelTime(asidedata.time);
+                    }}
+                  >
+                    {" "}
+                    <span
+                      className={
+                        color === asidedata.id
+                          ? "sc_la_time_txt sc_la_td_bg"
+                          : "sc_la_time_txt"
+                      }
+                      onClick={() => {
+                        setColor(asidedata.id);
+                      }}
+                    >
+                      {asidedata.videotimelft}
+                    </span>
+                    <span
+                      className={
+                        color === asidedata.id
+                          ? "sc_la_desc_txt sc_la_td_bg"
+                          : "sc_la_desc_txt"
+                      }
+                      onClick={() => {
+                        setColor(asidedata.id);
+                      }}
+                    >
+                      {asidedata.videotitleontime}
+                    </span>
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      ) : null}
 
       <div className="videoplayer_wrapper">
-        <div  className="react_player_wrapper">
+        <div className="react_player_wrapper">
+          <div onClick={handelLeftSideBar} className="expand_vp_wrapper">
+            {leftAsideShow ? (
+              <Image src={expand} rounded />
+            ) : (
+              <Image src={openmenu} rounded />
+            )}
+          </div>
           <ReactPlayer
-          playbackRate={playbackRate}
+            playbackRate={playbackRate}
             ref={playRef}
             onProgress={handelProgress}
             url={dil}
@@ -183,29 +284,35 @@ const VideoPlayer = () => {
             playing={playing}
             width={"100%"}
             height={"100%"}
+            // controls="true"
           />
-          <PlayerControls
-          onPlayPause={handelPlayPause}
-          playing={playing}
-          // onRewind={handelRewind}
-          // onFastForward={handelFastForward}
-          playbackRate={playbackRate}
-          onPlayBackRateChange={onPlayBackRateChange}
-          played={played}
-          onSeek={handelSeekChange}
-          onSeekMouseDown={handelSeekMouseDown}
-          onSeekMouseUp={handelSeekMouseUp}
 
-           />
+          <PlayerControls
+            onPlayPause={handelPlayPause}
+            playing={playing}
+            onTime={handelTime}
+            // onRewind={handelRewind}
+            // onFastForward={handelFastForward}
+            playbackRate={playbackRate}
+            onPlayBackRateChange={onPlayBackRateChange}
+            played={played}
+            onSeek={handelSeekChange}
+            onSeekMouseDown={handelSeekMouseDown}
+            onSeekMouseUp={handelSeekMouseUp} 
+          />
         </div>
       </div>
       <div className="rightaside_wrapper">
         <div className="sc_videoplayer_btn_wrapper">
           <div className=" sc_ui_videos">
-            <span className="sc_la_ux_txt">Similar Patterns</span>
+            <button className="video_btn">
+              <span className="sc_la_ux_txt">Similar Patterns</span>
+            </button>
           </div>
           <div className=" sc_ux_videos">
-            <span className="sc_la_ui_txt">Similar Patterns</span>
+            <button className="video_btn">
+              <span className="sc_la_ui_txt">Similar Patterns</span>
+            </button>
           </div>
         </div>
 
@@ -214,17 +321,19 @@ const VideoPlayer = () => {
             <div className="box_card" key={index}>
               <div className="right_aside_card_wrapper">
                 <div style={{ display: "flex" }}>
-                  <Image src={tidal} rounded />
+                  <Image src={data.image} rounded />
                   <div className="right_aside_card_video_details">
-                    <span className="ra_card_txt_signup">Sign Up</span>
+                    <span className="ra_card_txt_signup">{data.title}</span>
                     <div className="right_aside_card_thumbnail_items">
-                      <Image src={tidalthumbnail} rounded />
-                      <span className="tidal_txt">Tidal</span>
+                      <Image src={data.thumbnailimg} rounded />
+                      <span className="tidal_txt">{data.thumbnailtitle}</span>
                     </div>
                   </div>
                 </div>
                 <div className="right_aside_video_time_wrapper">
-                  <span className="ra_card_video_time_txt">12:34</span>
+                  <span className="ra_card_video_time_txt">
+                    {data.videotime}
+                  </span>
                 </div>
               </div>
             </div>
