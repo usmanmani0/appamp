@@ -1,12 +1,13 @@
-import React from "react";
+import React,{useState} from "react";
 import $ from "jquery";
 import { Container, Row, Col } from "react-bootstrap";
 import "./hero.css";
-import Screens from "../../assets/images/Screens.png";
 import Maskimg from "../../assets/images/Mask Group.png";
 import { BiPlayCircle } from "react-icons/bi";
+import { BiMobile } from "react-icons/bi";
 
 const Hero = () => {
+  const [color,setColor]=useState(1)
   $("#searchInput").focus(function () {
     $("#searchInput").css({
       display: "inline",
@@ -39,6 +40,7 @@ const Hero = () => {
                     your competitor’s features.
                   </p>
                 </div>
+
                 <div className="search_div">
                   <div class="container-fluid">
                     <input
@@ -46,26 +48,36 @@ const Hero = () => {
                       id="searchInput"
                       placeholder="Search Features or Components"
                     ></input>
-                    <div className="submitsearch">
-                      <button className="search_btn" type="button">
+
+
+
+                    <div className="search_buttonsdiv">
+                    
+                      <button className="search_btn" type="button" style={{backgroundColor:color==="1"?"rgba(22, 22, 24, 1)":"white",color:color==="1"?"white":"rgba(22, 22, 24, 1)"}} onClick={()=>{setColor("1")}}>
                         <i className="icon_play">
                           <BiPlayCircle
                             className="icon"
                             size="16px"
-                            color="white"
+                            style={{color:color==="1"?"white":"rgba(22, 22, 24, 1)"}}
                           />
                         </i>
                         <span>UX Vedios</span>
                       </button>
+                    
+                    
+                    
+                    <button className="search_btn" type="button" style={{backgroundColor:color==="2"?"rgba(22, 22, 24, 1)":"white", color:color==="2"?"white":"rgba(22, 22, 24, 1)"}} onClick={()=>{setColor("2")}}>
+                    <i className="icon_play">
+                      <BiMobile
+                        className="icon"
+                        size="16px"
+                        style={{color:color==="2"?"white":"rgba(22, 22, 24, 1)"}}                      />
+                    </i>
+                    <span>UI Screens</span>
+                  </button>
+                    
                     </div>
-                    <div>
-                      <img
-                        className="screens_img"
-                        src={Screens}
-                        alt="screens_img"
-                      ></img>
-                    </div>
-                    <div className="ui_div">UI Screens</div>
+
                   </div>
                 </div>
               </div>
