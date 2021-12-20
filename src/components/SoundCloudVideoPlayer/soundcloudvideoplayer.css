@@ -181,7 +181,7 @@
 
 .react_player_wrapper {
   width: 100%;
-  height: calc(100% - 70px);
+  height: calc(100% - 90px);
   position: relative;
 }
 .expand_vp_wrapper {
