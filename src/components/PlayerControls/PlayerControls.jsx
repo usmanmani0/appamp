@@ -1,4 +1,7 @@
 import React, { useRef, useState } from "react";
+// import { findDOMNode } from 'react-dom'
+// import screenfull from 'screenfull'
+// import { hot } from 'react-hot-loader'
 import {
   Container,
   Row,
@@ -16,9 +19,13 @@ import play from "../../assets/soundcloudimages/play.png";
 import fullscreenimg from "../../assets/soundcloudimages/fullscreen.png";
 import smallscreenimg from "../../assets/soundcloudimages/smallscreen.png";
 import playbackspeedimg from "../../assets/soundcloudimages/playbackspeed.png";
+// import { Slider } from "@mui/material"; 
+import Slider, { SliderThumb } from '@mui/material/Slider';
 
+import { styled } from '@mui/material/styles';
 
 const PlayerControls = ({
+  onTime,
   onPlayPause,
   playing,
   onRewind,
@@ -31,8 +38,50 @@ const PlayerControls = ({
   onSeekMouseUp
 }) => {
 
-const [fullScreen, setFullScreen] = useState(false)
+  const PrettoSlider = styled(Slider)({
+  color: '#52af77',
+  height: 8,
+  '& .MuiSlider-track': {
+    border: 'none',
+  },
+  '& .MuiSlider-thumb': {
+    height: 24,
+    width: 24,
+    backgroundColor: '#fff',
+    border: '2px solid currentColor',
+    '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
+      boxShadow: 'inherit',
+    },
+    '&:before': {
+      display: 'none',
+    },
+  },
+  '& .MuiSlider-valueLabel': {
+    lineHeight: 1.2,
+    fontSize: 12,
+    background: 'unset',
+    padding: 0,
+    width: 32,
+    height: 32,
+    borderRadius: '50% 50% 50% 0',
+    backgroundColor: '#52af77',
+    transformOrigin: 'bottom left',
+    transform: 'translate(50%, -100%) rotate(-45deg) scale(0)',
+    '&:before': { display: 'none' },
+    '&.MuiSlider-valueLabelOpen': {
+      transform: 'translate(50%, -100%) rotate(-45deg) scale(1)',
+    },
+    '& > *': {
+      transform: 'rotate(45deg)',
+    },
+  },
+}); 
 
+
+const [fullScreen, setFullScreen] = useState(false)
+// const onClickFullscreen = () => {
+//   screenfull.request(findDOMNode(ref.player))
+// }
 const handelFUllScreen=() =>{
     setFullScreen(!fullScreen)
 }
@@ -40,14 +89,24 @@ const handelFUllScreen=() =>{
   return (
     <div>
       <div className="react_player_controls_wrapper">
-        <ProgressBar
+        {/* <ProgressBar
           className="pb_wrapper"
           now={played * 100}
           onChange={onSeek}
           onMouseDown={onSeekMouseDown}
           onChangeCommitted={onSeekMouseUp}
         //   label={`${played}%`}
-        />
+        /> */}
+
+        <PrettoSlider
+        min={0}
+        max={100}
+        value={played * 100} 
+        onChange={onSeek}
+          onMouseDown={onSeekMouseDown}
+          onChangeCommitted={onSeekMouseUp}
+
+         />
         <div className="controls_bottom_items">
           <button className="controls_button_styling" onClick={onPlayPause}>
             {playing ? (
@@ -56,9 +115,9 @@ const handelFUllScreen=() =>{
               <Image className="pad_lft" src={play} rounded />
             )}
           </button>
-
-          {/* <button className="controls_button_styling"
-          onClick={onRewind}
+{/* 
+          <button className="controls_button_styling"
+          onClick={onTime}
           >
           <Image src={pause} rounded />
           </button>
@@ -90,7 +149,7 @@ const handelFUllScreen=() =>{
                               className="form-check-label"
                               htmlFor="flexRadioDefault1"
                             >
-                              {rate}X
+                              {rate}x
                             </label>
                           </div>
                         );
@@ -108,7 +167,7 @@ const handelFUllScreen=() =>{
                 </button>
               </OverlayTrigger>
             </div>
-            <button className=" controls_button_styling">
+            <button  className=" controls_button_styling">
               <Image className="fscreen_img" src={fullscreenimg} rounded />
             </button>
           </div>

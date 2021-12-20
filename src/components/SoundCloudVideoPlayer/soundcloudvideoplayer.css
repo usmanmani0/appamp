@@ -79,16 +79,9 @@
 }
 .sc_la_td_bg {
   background-color: #edf4fe;
+  color:#5097f3  !important;
 }
-/* .sc_left_aside_time_desc_1 {
-  width: 90%;
-  min-height: 32px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-} */
+
 .sc_la_time_txt {
   font-family: Space Grotesk;
   font-style: normal;
@@ -98,18 +91,7 @@
   color: #505052;
   padding-left: 8px;
 }
-.sc_la_time_txt_cl {
-  color: #5097f3;
-}
-/* .sc_la_time_txt_1 {
-  font-family: Space Grotesk;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 16px;
-  color: #505052;
-  padding-left: 8px;
-} */
+
 
 .sc_la_desc_txt {
   font-family: Space Grotesk;
@@ -121,17 +103,7 @@
   padding-left: 16px;
   flex-wrap: wrap;
 }
-/* 
-.sc_la_desc_txt_1 {
-  font-family: Space Grotesk;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 16px;
-  color: #505052;
-  padding-left: 16px;
-  flex-wrap: wrap;
-} */
+
 .box_card {
   display: flex;
   justify-content: center;
@@ -212,7 +184,18 @@
   height: calc(100% - 70px);
   position: relative;
 }
-
+.expand_vp_wrapper {
+  display: flex;
+  position: absolute;
+  top: 24px;
+  left:16px;
+  z-index: 10;
+  width: 32px;
+  height: 32px;
+  border-radius: 30px;
+  background: #ffffff;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.13);
+}
 .react_player_controls_wrapper {
   min-width: 100%;
   height: 5%;
@@ -254,6 +237,17 @@
 .controls_button_styling {
   border: none;
 }
-.pad_lft{
+.pad_lft {
   padding-left: 6px;
+}
+
+.video_btn{
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.lft_aside_links{
+  border: none;
+  background: none;
+  cursor: pointer;
 }
