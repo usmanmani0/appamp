@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import $ from "jquery";
 import { Container, Row, Col } from "react-bootstrap";
 import "./hero.css";
@@ -7,21 +7,21 @@ import { BiPlayCircle } from "react-icons/bi";
 import { BiMobile } from "react-icons/bi";
 
 const Hero = () => {
-  const [color,setColor]=useState(1)
-  $("#searchInput").focus(function () {
-    $("#searchInput").css({
-      display: "inline",
-      width: "40%",
-      border: "1px solid #40585d",
-      opacity: "1",
-      padding: "8px 20px 8px 20px",
-      "background-image": "none",
-      "box-shadow": "0 0 1px black",
-    });
-    $("#submitsearch").css("display", "inline");
+  const [color, setColor] = useState(1)
+  // $("#searchInput").on("focus", (function () {
+  //   $("#searchInput").css({
+  //     display: "inline",
+  //     width: "40%",
+  //     border: "1px solid #40585d",
+  //     opacity: "1",
+  //     padding: "8px 20px 8px 20px",
+  //     "background-image": "none",
+  //     "box-shadow": "0 0 1px black",
+  //   });
+  //   $("#submitsearch").css("display", "inline");
 
-    $("#searchInput").prop("placeholder", "");
-  });
+  //   $("#searchInput").prop("placeholder", "");
+  // }));
   return (
     <>
       <div className="hero-section">
@@ -52,30 +52,30 @@ const Hero = () => {
 
 
                     <div className="search_buttonsdiv">
-                    
-                      <button className="search_btn" type="button" style={{backgroundColor:color==="1"?"rgba(22, 22, 24, 1)":"white",color:color==="1"?"white":"rgba(22, 22, 24, 1)"}} onClick={()=>{setColor("1")}}>
+
+                      <button className="search_btn" type="button" style={{ backgroundColor: color === "1" ? "rgba(22, 22, 24, 1)" : "white", color: color === "1" ? "white" : "rgba(22, 22, 24, 1)" }} onClick={() => { setColor("1") }}>
                         <i className="icon_play">
                           <BiPlayCircle
                             className="icon"
                             size="16px"
-                            style={{color:color==="1"?"white":"rgba(22, 22, 24, 1)"}}
+                            style={{ color: color === "1" ? "white" : "rgba(22, 22, 24, 1)" }}
                           />
                         </i>
                         <span>UX Vedios</span>
                       </button>
-                    
-                    
-                    
-                    <button className="search_btn" type="button" style={{backgroundColor:color==="2"?"rgba(22, 22, 24, 1)":"white", color:color==="2"?"white":"rgba(22, 22, 24, 1)"}} onClick={()=>{setColor("2")}}>
-                    <i className="icon_play">
-                      <BiMobile
-                        className="icon"
-                        size="16px"
-                        style={{color:color==="2"?"white":"rgba(22, 22, 24, 1)"}}                      />
-                    </i>
-                    <span>UI Screens</span>
-                  </button>
-                    
+
+
+
+                      <button className="search_btn" type="button" style={{ backgroundColor: color === "2" ? "rgba(22, 22, 24, 1)" : "white", color: color === "2" ? "white" : "rgba(22, 22, 24, 1)" }} onClick={() => { setColor("2") }}>
+                        <i className="icon_play">
+                          <BiMobile
+                            className="icon"
+                            size="16px"
+                            style={{ color: color === "2" ? "white" : "rgba(22, 22, 24, 1)" }} />
+                        </i>
+                        <span>UI Screens</span>
+                      </button>
+
                     </div>
 
                   </div>
