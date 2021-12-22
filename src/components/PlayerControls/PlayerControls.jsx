@@ -39,7 +39,7 @@ const PlayerControls = ({
 }) => {
 
   const PrettoSlider = styled(Slider)({
-  color: '#52af77',
+  color: '#c5c5c5',
   height: 8,
   '& .MuiSlider-track': {
     border: 'none',
@@ -47,7 +47,7 @@ const PlayerControls = ({
   '& .MuiSlider-thumb': {
     height: 24,
     width: 24,
-    backgroundColor: '#fff',
+    backgroundColor: '#c5c5c5',
     border: '2px solid currentColor',
     '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
       boxShadow: 'inherit',
