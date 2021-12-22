@@ -4,10 +4,12 @@ import Unionlogo from "../../assets/images/Union.png";
 import GoogleLogo from "../../assets/images/GoogleLogo.png";
 import AppleLogo from "../../assets/images/AppleLogo.png";
 import close from "../../assets/images/Close.png";
+import Profile from "../../assets/images/profile.png";
+import { AiOutlineClose } from "react-icons/ai";
 
 import "./header.css";
-import "../Modal/Signup/signup.css"
-import "../Modal/Signin/signin.css"
+import "../Modal/Signup/signup.css";
+import "../Modal/Signin/signin.css";
 import {
   Navbar,
   Container,
@@ -76,10 +78,96 @@ const Header = () => {
                 <Nav.Link href="#home">
                   {" "}
                   <div className="mob_buttons">
-                    <button onClick={handelSignInModal} className="button_1" type="button">
+                    <button
+                      onClick={handelSignInModal}
+                      className="button_1"
+                      type="button"
+                    >
                       Sign In
                     </button>
-                    <button onClick={handelSignUpModal} className="button_2">Sign Up</button>
+                    <button onClick={handelSignUpModal} className="button_2">
+                      Sign Up
+                    </button>
+                  </div>
+                  <div className="profile_setting">
+                    <div className="profile_detail">
+                      <div>
+                        <img
+                          className="profile_img"
+                          src={Profile}
+                          alt="profile_img"
+                        ></img>
+                      </div>
+                      <div className="Profile_desc">
+                        <h4 className="profile_name">First Last</h4>
+                        <p>email.address@gmail.com</p>
+                      </div>
+                    </div>
+                    <hr className="profile_bottom_line1"></hr>
+                    <h4 className="test_color">Profile Setting</h4>
+                    <h4 className="test_color">Collections</h4>
+                    <hr className="profile_bottom_line2"></hr>
+                    <h6 className="test_color">provide Feedback</h6>
+                    <h6 className="test_color">privacy policy</h6>
+                    <h6 className="test_color">Term and Conditions</h6>
+                    <h6 className="test_color">Log Out</h6>
+                  </div>
+                  <div>
+                    <div className="profile_update">
+                      <div className="profile_control">
+                        <div>
+                          <h4>Profile Settings</h4>
+                        </div>
+                        <div>
+                          <i className="icon_play">
+                            <AiOutlineClose
+                              className="icon"
+                              size="16px"
+                              color="black"
+                            />
+                          </i>
+                        </div>
+                      </div>
+                      <p>Use these setting to manage your profile</p>
+                      <hr className="profileupdate_line1"></hr>
+                      <h6>Profile Photo</h6>
+                      <div className="update_row">
+                        <div>
+                          <img
+                            className="profile_img"
+                            src={Profile}
+                            alt="profile_img"
+                          ></img>
+                        </div>
+                        <button
+                         
+                          className="button_update"
+                          type="button"
+                        >
+                          Update
+                        </button>
+                      </div>
+                      <div className="form">
+                      <FloatingLabel
+                        controlId="floatingInput"
+                        label="Email address"
+                        className="mb-3"
+                      >
+                        <Form.Control
+                          type="email"
+                          placeholder="name@example.com"
+                        />
+                      </FloatingLabel>
+                      <FloatingLabel
+                        controlId="floatingPassword"
+                        label="Password"
+                      >
+                        <Form.Control type="password" placeholder="Password" />
+                      </FloatingLabel>
+                      </div>
+                      <hr className="profileupdate_line1"></hr>
+                      <h4>Save Changes</h4>
+                    </div>
                   </div>
                 </Nav.Link>
               </Nav>
@@ -289,4 +377,3 @@ const Header = () => {
 };
 
 export default Header;
- 

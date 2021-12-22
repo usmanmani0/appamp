@@ -107,9 +107,11 @@ color: #161618;
   height:28rem ;
   margin-top: 2rem;
 }
+.search_buttonsdiv{
+  margin-top: 5px;
+}
 
-
-@media only screen and (max-width: 600px){
+@media only screen and (min-width: 300px) and (max-width: 600px){
     
   .mob_col{
     display: flex;
@@ -146,7 +148,7 @@ color: #161618;
   color: #161618;
   }
   #searchInput {
-    width: 10rem;
+    width: 8rem;
     border: none;
     border-radius: 10px;
     font-size: 16px;
@@ -212,7 +214,7 @@ color: #161618;
     align-items: center;
   }
   #searchInput {
-    width: 16rem;
+    width: 15rem;
     border: none;
     border-radius: 10px;
     font-size: 16px;
@@ -263,7 +265,7 @@ padding: 1rem 0px;
     
   }
   #searchInput {
-    width: 14rem;
+    width: 13rem;
     border: none;
     border-radius: 10px;
     font-size: 16px;
@@ -285,7 +287,7 @@ padding: 1rem 0px;
 @media only screen and (min-width: 1200px) and (max-width: 1400px){
 
   #searchInput {
-    width: 20rem;
+    width: 19rem;
     border: none;
     border-radius: 10px;
     font-size: 16px;
