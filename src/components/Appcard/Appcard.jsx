@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./appcard.css";
 import GoogleFit from "../../assets/images/image 85.png";
 import Mint from "../../assets/images/image 79.png";
@@ -183,8 +183,10 @@ const Appcard = () => {
       title: "Communication",
       sub: "Facebook",
     },
-   
+
   ];
+  const [select, setSelect] = useState(false)
+
   return (
     <>
       <div className="appCard_wrap">
@@ -205,7 +207,14 @@ const Appcard = () => {
           );
         })}
       </div>
-      <div className="bottom_button"><button className="button_4" type="button">Load More</button></div>
+
+      <div className="bottom_button"><button className="button_4" type="button" onClick={() => { setSelect(!select) }}>Load More</button></div>
+      {select && <div className="d-flex justify-content-center py-1 loader" >
+        <div class="spinner-border text-secondary" role="status">
+
+        </div>
+        <span class="sr-only"> &nbsp;&nbsp; Loading...</span>
+      </div>}
     </>
   );
 };
