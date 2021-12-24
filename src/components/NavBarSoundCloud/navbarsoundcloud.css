@@ -1,13 +1,16 @@
 .navbar_soundcloud_player {
   width: 100%;
   height: 64px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 16px 28px;
 }
 .navlogo_wrapper {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+.backarrow {
+  cursor: pointer;
 }
 .soundcloudlogo {
   padding-left: 20px;
@@ -88,10 +91,10 @@
   text-transform: capitalize;
   color: #0b0b0c;
 }
-.nav_col_3_adjustment{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+.nav_col_3_adjustment {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 .navbar_action_icon_wrapper {
   width: 24px;
