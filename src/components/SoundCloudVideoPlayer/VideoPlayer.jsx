@@ -23,6 +23,10 @@ import checkalert from "../../assets/soundcloudimages/CheckAlert.png";
 import playiconsrightcard from "../../assets/soundcloudimages/Playiconcards.png";
 import navactionbar from "../../assets/soundcloudimages/navactionbar.png";
 
+import { hot } from "react-hot-loader";
+import { findDOMNode } from "react-dom";
+import screenfull from "screenfull";
+
 const data = [
   {
     id: 1,
@@ -188,7 +192,7 @@ const VideoPlayer = () => {
     playbackRate: 1.0,
     played: 0,
     seeking: false,
-    muted: true,
+    muted: false,
     volume: 0.5,
   });
 
@@ -249,6 +253,7 @@ const VideoPlayer = () => {
 
   const playRef = useRef(null);
   // const playContainerRef= useRef(null)
+  const videoPlayerContainerRef = useRef();
 
   const handelPlayPause = () => {
     setPlayOn({ ...playOn, playing: !playOn.playing });
@@ -335,6 +340,10 @@ const VideoPlayer = () => {
   };
   // console.log("TICK ======== ", tick);
 
+  const goFullScreen = () => {
+    screenfull.toggle(videoPlayerContainerRef.current);
+  };
+
   return (
     <>
       <Container className="videoplayer_container" fluid="true">
@@ -416,16 +425,17 @@ const VideoPlayer = () => {
                 <Image className="openmenue_icon" src={openmenu} rounded />
               )}
             </div>
-            <div onClick={handelPopover} className="plus_icons_wp">
-              <Image src={plusicon} rounded />
+            <div className="dis_none_mbl_view">
+              <div onClick={handelPopover} className="plus_icons_wp">
+                <Image src={plusicon} rounded />
+              </div>
+              <div className="download_icons_wp">
+                <Image src={downloadicon} rounded />
+              </div>
+              <div onClick={copyLink} className="copy_icons_wp">
+                <Image src={linkicon} rounded />
+              </div>
             </div>
-            <div className="download_icons_wp">
-              <Image src={downloadicon} rounded />
-            </div>
-            <div onClick={copyLink} className="copy_icons_wp">
-              <Image src={linkicon} rounded />
-            </div>
-
             {showPopover ? (
               <div className="popoover_wrapper">
                 <div class="form-group has-search ">
@@ -501,40 +511,44 @@ const VideoPlayer = () => {
                 <span className="alert_txt">Link copied</span>
               </div>
             ) : null}
+            <div
+              ref={videoPlayerContainerRef}
+              style={{ position: "relative", height: "100%" }}
+            >
+              <ReactPlayer
+                playbackRate={playbackRate}
+                ref={playRef}
+                onProgress={handelProgress}
+                url={dil}
+                muted={muted}
+                playing={playing}
+                width={"100%"}
+                height={"100%"}
+                volume={volume}
+                controls={""}
+              />
 
-            <ReactPlayer
-              playbackRate={playbackRate}
-              ref={playRef}
-              onProgress={handelProgress}
-              url={dil}
-              muted={muted}
-              playing={playing}
-              width={"100%"}
-              height={"100%"}
-              volume={volume}
-              // controls="true"
-            />
-
-            <PlayerControls
-              onPlayPause={handelPlayPause}
-              playing={playing}
-              onTime={handelTime}
-              // onRewind={handelRewind}
-              // onFastForward={handelFastForward}
-              playbackRate={playbackRate}
-              onPlayBackRateChange={onPlayBackRateChange}
-              played={played}
-              onSeek={handelSeekChange}
-              onSeekMouseDown={handelSeekMouseDown}
-              onSeekMouseUp={handelSeekMouseUp}
-              seeking={seeking}
-              muted={muted}
-              onMute={handelMute}
-              onVolumeSeekUp={handelVolumeSeekUp}
-              onVolumeChange={handelVolumeChange}
-              volume={volume}
-              onfull
-            />
+              <PlayerControls
+                onPlayPause={handelPlayPause}
+                playing={playing}
+                onTime={handelTime}
+                // onRewind={handelRewind}
+                // onFastForward={handelFastForward}
+                playbackRate={playbackRate}
+                onPlayBackRateChange={onPlayBackRateChange}
+                played={played}
+                onSeek={handelSeekChange}
+                onSeekMouseDown={handelSeekMouseDown}
+                onSeekMouseUp={handelSeekMouseUp}
+                seeking={seeking}
+                muted={muted}
+                onMute={handelMute}
+                onVolumeSeekUp={handelVolumeSeekUp}
+                onVolumeChange={handelVolumeChange}
+                volume={volume}
+                goFullScreen={goFullScreen}
+              />
+            </div>
           </div>
         </div>
         <div className="rightaside_wrapper">

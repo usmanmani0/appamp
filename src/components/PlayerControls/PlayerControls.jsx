@@ -54,19 +54,15 @@ const PlayerControls = ({
   onVolumeSeekUp,
   volume,
   seeking,
+  goFullScreen
 }) => {
   const theme = useTheme();
+  const[full, setFull]=useState(false)
 
-  const [fullScreen, setFullScreen] = useState(false);
-  // const onClickFullscreen = () => {
-  //   screenfull.request(findDOMNode(ref.player))
-  // }
-  const handelFUllScreen = () => {
-    setFullScreen(!fullScreen);
-  };
+
 
   return (
-    <div>
+    <div className={full? "fullSreen":""}>
       <div className="react_player_controls_wrapper">
         <Slider
           aria-label="time-indicator"
@@ -173,7 +169,7 @@ const PlayerControls = ({
                 </button>
               </OverlayTrigger>
             </div>
-            <button className=" controls_button_styling">
+            <button className=" controls_button_styling" onClick={()=>{goFullScreen();setFull(!full)}}>
               <Image className="fscreen_img" src={fullscreenimg} rounded />
             </button>
           </div>

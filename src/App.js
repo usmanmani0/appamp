@@ -9,13 +9,13 @@ import AppPage from "./components/AppPage";
 function App() {
   return (
     <>
-       {/* <Home />   */}
+      
     
      <SoundCloudPage /> 
-      <Home />
+      {/* <Home /> */}
       {/* <AppPage /> */}
 
-      { /*<SoundCloudPage /> */}
+     
     </>
   );
 }
