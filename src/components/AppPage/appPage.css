@@ -218,6 +218,7 @@
 .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
   border: none !important;
 }
+
 .option_data {
   font-size: 14px;
   font-weight: 400;
@@ -233,6 +234,19 @@
   padding-left: 10px;
   border-radius: 8px;
 }
+.option_data:hover {
+  background-color: #fafafa;
+}
+.option_right_arrow {
+  display: none;
+}
+.option_data:hover .option_right_arrow {
+  display: block;
+}
+.appPage_checkbox_div {
+  color: black;
+}
+
 .appPage_select {
   border: 2px solid #c5c5c5;
   width: 148px;

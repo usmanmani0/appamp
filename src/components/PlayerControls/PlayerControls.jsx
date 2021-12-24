@@ -1,7 +1,8 @@
+// import { hot } from "react-hot-loader";
+// import { findDOMNode } from "react-dom";
+// import screenfull from "screenfull";
+
 import React, { useRef, useState } from "react";
-// import { findDOMNode } from 'react-dom'
-// import screenfull from 'screenfull'
-// import { hot } from 'react-hot-loader'
 import {
   Container,
   Row,
@@ -19,10 +20,21 @@ import play from "../../assets/soundcloudimages/play.png";
 import fullscreenimg from "../../assets/soundcloudimages/fullscreen.png";
 import smallscreenimg from "../../assets/soundcloudimages/smallscreen.png";
 import playbackspeedimg from "../../assets/soundcloudimages/playbackspeed.png";
-// import { Slider } from "@mui/material"; 
-import Slider, { SliderThumb } from '@mui/material/Slider';
+import Slider, { SliderThumb } from "@mui/material/Slider";
+import { styled, useTheme } from "@mui/material/styles";
 
-import { styled } from '@mui/material/styles';
+const Widget = styled("div")(({ theme }) => ({
+  padding: 16,
+  borderRadius: 16,
+  width: 343,
+  maxWidth: "100%",
+  margin: "auto",
+  position: "relative",
+  zIndex: 1,
+  backgroundColor:
+    theme.palette.mode === "dark" ? "rgba(0,0,0,0.6)" : "rgba(255,255,255,0.4)",
+  backdropFilter: "blur(40px)",
+}));
 
 const PlayerControls = ({
   onTime,
@@ -32,81 +44,67 @@ const PlayerControls = ({
   onFastForward,
   onPlayBackRateChange,
   playbackRate,
-  played, 
+  played,
   onSeek,
   onSeekMouseDown,
-  onSeekMouseUp
+  onSeekMouseUp,
+  muted,
+  onMute,
+  onVolumeChange,
+  onVolumeSeekUp,
+  volume,
+  seeking,
 }) => {
+  const theme = useTheme();
 
-  const PrettoSlider = styled(Slider)({
-  color: '#c5c5c5',
-  height: 8,
-  '& .MuiSlider-track': {
-    border: 'none',
-  },
-  '& .MuiSlider-thumb': {
-    height: 24,
-    width: 24,
-    backgroundColor: '#c5c5c5',
-    border: '2px solid currentColor',
-    '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
-      boxShadow: 'inherit',
-    },
-    '&:before': {
-      display: 'none',
-    },
-  },
-  '& .MuiSlider-valueLabel': {
-    lineHeight: 1.2,
-    fontSize: 12,
-    background: 'unset',
-    padding: 0,
-    width: 32,
-    height: 32,
-    borderRadius: '50% 50% 50% 0',
-    backgroundColor: '#52af77',
-    transformOrigin: 'bottom left',
-    transform: 'translate(50%, -100%) rotate(-45deg) scale(0)',
-    '&:before': { display: 'none' },
-    '&.MuiSlider-valueLabelOpen': {
-      transform: 'translate(50%, -100%) rotate(-45deg) scale(1)',
-    },
-    '& > *': {
-      transform: 'rotate(45deg)',
-    },
-  },
-}); 
+  const [fullScreen, setFullScreen] = useState(false);
+  // const onClickFullscreen = () => {
+  //   screenfull.request(findDOMNode(ref.player))
+  // }
+  const handelFUllScreen = () => {
+    setFullScreen(!fullScreen);
+  };
 
-
-const [fullScreen, setFullScreen] = useState(false)
-// const onClickFullscreen = () => {
-//   screenfull.request(findDOMNode(ref.player))
-// }
-const handelFUllScreen=() =>{
-    setFullScreen(!fullScreen)
-}
-// const now = played;
   return (
     <div>
       <div className="react_player_controls_wrapper">
-        {/* <ProgressBar
-          className="pb_wrapper"
-          now={played * 100}
+        <Slider
+          aria-label="time-indicator"
+          size="small"
+          value={played * 100}
+          min={0}
+          step={1}
+          max={100}
           onChange={onSeek}
           onMouseDown={onSeekMouseDown}
           onChangeCommitted={onSeekMouseUp}
-        //   label={`${played}%`}
-        /> */}
-
-        <PrettoSlider
-        min={0}
-        max={100}
-        value={played * 100} 
-        onChange={onSeek}
-          onMouseDown={onSeekMouseDown}
-          onChangeCommitted={onSeekMouseUp}
-
-         />
+          sx={{
+            color: theme.palette.mode === "dark" ? "#fff" : "#C5C5C5",
+            height: 4,
+            "& .MuiSlider-thumb": {
+              width: 8,
+              height: 8,
+              transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
+              "&:before": {
+                boxShadow: "0 2px 12px 0 rgba(0,0,0,0.4)",
+              },
+              "&:hover, &.Mui-focusVisible": {
+                boxShadow: `0px 0px 0px 8px ${
+                  theme.palette.mode === "dark"
+                    ? "rgb(255 255 255 / 16%)"
+                    : "rgb(0 0 0 / 16%)"
+                }`,
+              },
+              "&.Mui-active": {
+                width: 20,
+                height: 20,
+              },
+            },
+            "& .MuiSlider-rail": {
+              opacity: 0.28,
+            },
+          }}
+        />
         <div className="controls_bottom_items">
           <button className="controls_button_styling" onClick={onPlayPause}>
             {playing ? (
@@ -115,10 +113,18 @@ const handelFUllScreen=() =>{
               <Image className="pad_lft" src={play} rounded />
             )}
           </button>
-{/* 
-          <button className="controls_button_styling"
-          onClick={onTime}
+
+          {/* <button className="controls_button_styling"
+          onClick={onMute}
           >
+          <Slider
+          min={0}
+          max={100}
+          value={volume * 100}
+          onChange={onVolumeChange}
+          onChangeCommitted={onVolumeSeekUp}
+
+           />
           <Image src={pause} rounded />
           </button>
 
@@ -167,7 +173,7 @@ const handelFUllScreen=() =>{
                 </button>
               </OverlayTrigger>
             </div>
-            <button  className=" controls_button_styling">
+            <button className=" controls_button_styling">
               <Image className="fscreen_img" src={fullscreenimg} rounded />
             </button>
           </div>

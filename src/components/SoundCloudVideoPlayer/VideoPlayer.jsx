@@ -1,16 +1,5 @@
 import React, { useRef, useState } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Image,
-  OverlayTrigger,
-  Button,
-  Tooltip,
-  CardGroup,
-  Card,
-  Offcanvas,
-} from "react-bootstrap";
+import { Container, Image, Offcanvas } from "react-bootstrap";
 import "./soundcloudvideoplayer.css";
 import dil from "../../assets/soundcloudimages/Dil ko karrar aya (cover) - Annural Khalid.mp4";
 import tidal from "../../assets/soundcloudimages/Tidal.png";
@@ -31,6 +20,8 @@ import eimg6 from "../../assets/soundcloudimages/Exploringimg6.png";
 import checkicon from "../../assets/soundcloudimages/Check.png";
 import plusiconsave from "../../assets/soundcloudimages/plusiconsave.png";
 import checkalert from "../../assets/soundcloudimages/CheckAlert.png";
+import playiconsrightcard from "../../assets/soundcloudimages/Playiconcards.png";
+import navactionbar from "../../assets/soundcloudimages/navactionbar.png";
 
 const data = [
   {
@@ -197,7 +188,11 @@ const VideoPlayer = () => {
     playbackRate: 1.0,
     played: 0,
     seeking: false,
+    muted: true,
+    volume: 0.5,
   });
+
+  const { playing, playbackRate, played, muted, volume, seeking } = playOn;
   const [tick, setTick] = useState([]);
 
   const checkTick = async (index) => {
@@ -219,14 +214,14 @@ const VideoPlayer = () => {
     }, 5000);
   };
 
-  const [setCopy, showSetCopy] = useState(false)
-  const copyLink = () =>{
+  const [setCopy, showSetCopy] = useState(false);
+  const copyLink = () => {
     showSetCopy(!setCopy);
 
     setTimeout(() => {
       showSetCopy(null);
     }, 5000);
-  }
+  };
 
   const [color, setColor] = useState(1);
   const [checkdata, setCheckdata] = useState([
@@ -251,7 +246,6 @@ const VideoPlayer = () => {
   ]);
 
   const [leftAsideShow, setLeftAsideShow] = useState(true);
-  const { playing, playbackRate, played, seeking } = playOn;
 
   const playRef = useRef(null);
   // const playContainerRef= useRef(null)
@@ -286,18 +280,36 @@ const VideoPlayer = () => {
   const handelSeekChange = (e, newValue) => {
     setPlayOn({ ...playOn, played: parseFloat(newValue / 100) });
   };
-
-  const handelSeekMouseUp = (e, newValue) => {
-    setPlayOn({ ...playOn, seeking: false });
-    playRef.current.seekTo(parseFloat(newValue / 100));
-  };
-
   const handelSeekMouseDown = (e) => {
     setPlayOn({ ...playOn, seeking: true });
+  };
+  const handelSeekMouseUp = (e, newValue) => {
+    setPlayOn({ ...playOn, seeking: false });
+    playRef.current.seekTo(newValue / 100);
   };
 
   const handelLeftSideBar = () => {
     setLeftAsideShow(!leftAsideShow);
+  };
+
+  const handelMute = () => {
+    setPlayOn({ ...playOn, muted: !playOn.muted });
+  };
+
+  const handelVolumeChange = (e, newValue) => {
+    setPlayOn({
+      ...playOn,
+      volume: parseFloat(newValue / 100),
+      muted: newValue === 0 ? true : false,
+    });
+  };
+
+  const handelVolumeSeekUp = (e, newValue) => {
+    setPlayOn({
+      ...playOn,
+      volume: parseFloat(newValue / 100),
+      muted: newValue === 0 ? true : false,
+    });
   };
 
   const [show, setShow] = useState(false);
@@ -407,7 +419,7 @@ const VideoPlayer = () => {
             <div onClick={handelPopover} className="plus_icons_wp">
               <Image src={plusicon} rounded />
             </div>
-            <div  className="download_icons_wp">
+            <div className="download_icons_wp">
               <Image src={downloadicon} rounded />
             </div>
             <div onClick={copyLink} className="copy_icons_wp">
@@ -483,21 +495,23 @@ const VideoPlayer = () => {
               </div>
             ) : null}
 
-          { setCopy ?  <div className="link_copy_wrapper">
-              <Image src={checkalert} />
-              <span className="alert_txt">Link copied</span>
-            </div> : null}
-
+            {setCopy ? (
+              <div className="link_copy_wrapper">
+                <Image src={checkalert} />
+                <span className="alert_txt">Link copied</span>
+              </div>
+            ) : null}
 
             <ReactPlayer
               playbackRate={playbackRate}
               ref={playRef}
               onProgress={handelProgress}
               url={dil}
-              muted={false}
+              muted={muted}
               playing={playing}
               width={"100%"}
               height={"100%"}
+              volume={volume}
               // controls="true"
             />
 
@@ -513,6 +527,13 @@ const VideoPlayer = () => {
               onSeek={handelSeekChange}
               onSeekMouseDown={handelSeekMouseDown}
               onSeekMouseUp={handelSeekMouseUp}
+              seeking={seeking}
+              muted={muted}
+              onMute={handelMute}
+              onVolumeSeekUp={handelVolumeSeekUp}
+              onVolumeChange={handelVolumeChange}
+              volume={volume}
+              onfull
             />
           </div>
         </div>
@@ -530,7 +551,29 @@ const VideoPlayer = () => {
             </div>
           </div>
 
-          {data.map((data, index) => {
+          <div className="mbl_cards_box">
+            {cardsdata.map((data) => {
+              return (
+                <>
+                  <div className="mbl_card">
+                    <div className="pl_icon_cards_right">
+                      <img src={playiconsrightcard} alt="" />
+                    </div>
+                    <div className="time_right_wrapper_cards">
+                      <span className="time_right_wrapper_cards_txt">
+                        12:34
+                      </span>
+                    </div>
+                    <img src={data.image} alt="ERROR" />
+
+                    <div className="card_title">{data.title}</div>
+                  </div>
+                </>
+              );
+            })}
+          </div>
+
+          {/* {data.map((data, index) => {
             return (
               <div className="box_card " key={index}>
                 <div className="right_aside_card_wrapper">
@@ -552,7 +595,7 @@ const VideoPlayer = () => {
                 </div>
               </div>
             );
-          })}
+          })} */}
         </div>
       </Container>
 
@@ -576,7 +619,19 @@ const VideoPlayer = () => {
               return (
                 <>
                   <div className="mbl_card">
+                    <div className="pl_icon_cards_right">
+                      <img src={playiconsrightcard} alt="" />
+                    </div>
+                    <div className="ac_icon_cards_right">
+                      <img src={navactionbar} alt="" />
+                    </div>
+                    <div className="time_right_wrapper_cards">
+                      <span className="time_right_wrapper_cards_txt">
+                        12:34
+                      </span>
+                    </div>
                     <img src={data.image} alt="ERROR" />
+
                     <div className="card_title">{data.title}</div>
                   </div>
                 </>

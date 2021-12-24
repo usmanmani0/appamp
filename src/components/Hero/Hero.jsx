@@ -19,7 +19,6 @@ const Hero = () => {
   //     "box-shadow": "0 0 1px black",
   //   });
   //   $("#submitsearch").css("display", "inline");
-
   //   $("#searchInput").prop("placeholder", "");
   // }));
   return (

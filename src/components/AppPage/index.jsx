@@ -64,6 +64,8 @@ import Card8 from "../../assets/images/card8.png"
 import Card9 from "../../assets/images/card9.png"
 import Cloud from "../../assets/images/cloud.png"
 import Plus from "../../assets/images/plus.png"
+
+
 import checkicon from "../../assets/soundcloudimages/Check.png";
 import plusiconsave from "../../assets/soundcloudimages/plusiconsave.png";
 import {
@@ -359,8 +361,6 @@ const AppPage = () => {
 
         });
     };
-
-
     return (
         <>
             <Header />
@@ -477,12 +477,12 @@ const AppPage = () => {
                                     </button>
                                 </div></div>
                                 <div>
-                                    <div className='option_data' style={{ backgroundColor: "#fafafa" }}><div>Bars</div><div><img src={RightArrow} /></div></div>
-                                    <div className='option_data'>Control</div>
-                                    <div className='option_data'>Display</div>
-                                    <div className='option_data'>Feedback</div>
-                                    <div className='option_data'>Icons & Images</div>
-                                    <div className='option_data'>Overlay</div> </div>
+                                    <div className='option_data '><div>Bars</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                    <div className='option_data '><div>Control</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                    <div className='option_data '><div>Display</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                    <div className='option_data '><div>Feedback</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                    <div className='option_data '><div>Icons & Images</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                    <div className='option_data '><div>Overlay</div><div><img src={RightArrow} className='option_right_arrow' /></div></div> </div>
                                 <div>
                                     <div className="appPage_checkbox_div">
                                         <input
