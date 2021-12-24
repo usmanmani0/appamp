@@ -83,6 +83,7 @@ import Footer from "../Footer/Footer"
 import $ from "jquery";
 
 const AppPage = () => {
+    const [opt, setOpt] = useState()
     const [color, setColor] = useState(1)
     const [select, setSelect] = useState({ open: false })
     const [arrow, setArrow] = useState(true)
@@ -140,9 +141,6 @@ const AppPage = () => {
         console.log("Click")
         setArrow(!arrow)
     }
-    console.log("arrow---->", arrow)
-
-
     const handelPopover = () => {
         setShowPopover(!showPopover);
     };
@@ -154,7 +152,7 @@ const AppPage = () => {
             image: checkicon,
             Name: "Collection #",
         };
-        // console.log("ssssssss");
+
         setCheckdata([...checkdata, obj]);
     };
     const vedioCard = [
@@ -332,7 +330,7 @@ const AppPage = () => {
     }, [list]);
 
     const handleSelectAll = e => {
-        // alert("ALL")
+
         setIsCheckAll(!isCheckAll);
         SetSelectedFilter(list.map(li => `${li.typeis}`));
         if (isCheckAll) {
@@ -361,6 +359,209 @@ const AppPage = () => {
 
         });
     };
+    const controlArray = [
+        {
+            id: 1,
+            typeis: "Accordian"
+        },
+        {
+            id: 2,
+            typeis: "Badge"
+        },
+        {
+            id: 3,
+            typeis: "Banner"
+        },
+        {
+            id: 4,
+            typeis: "Card"
+        },
+        {
+            id: 5,
+            typeis: "Collections / Gallery"
+        },
+        {
+            id: 6,
+            typeis: "Divider"
+        },
+        {
+            id: 7,
+            typeis: "List"
+        },
+        {
+            id: 8,
+            typeis: "Pin"
+        },
+        {
+            id: 9,
+            typeis: "Sheets"
+        },
+        {
+            id: 10,
+            typeis: "Skeleton"
+        },
+    ]
+    const displayArray = [
+        {
+            id: 1,
+            typeis: "Accordian"
+        },
+        {
+            id: 2,
+            typeis: "Badge"
+        },
+        {
+            id: 3,
+            typeis: "Banner"
+        },
+        {
+            id: 4,
+            typeis: "Card"
+        },
+        {
+            id: 5,
+            typeis: "Collections / Gallery"
+        },
+        {
+            id: 6,
+            typeis: "Divider"
+        },
+        {
+            id: 7,
+            typeis: "List"
+        },
+        {
+            id: 8,
+            typeis: "Pin"
+        },
+        {
+            id: 9,
+            typeis: "Sheets"
+        },
+        {
+            id: 10,
+            typeis: "Skeleton"
+        },
+    ]
+    const feedbackArray = [
+        {
+            id: 1,
+            typeis: "Accordian"
+        },
+        {
+            id: 2,
+            typeis: "Badge"
+        },
+        {
+            id: 3,
+            typeis: "Banner"
+        },
+        {
+            id: 4,
+            typeis: "Card"
+        },
+        {
+            id: 5,
+            typeis: "Collections / Gallery"
+        },
+        {
+            id: 6,
+            typeis: "Divider"
+        },
+        {
+            id: 7,
+            typeis: "List"
+        },
+        {
+            id: 8,
+            typeis: "Pin"
+        },
+        {
+            id: 9,
+            typeis: "Sheets"
+        },
+        {
+            id: 10,
+            typeis: "Skeleton"
+        },
+    ]
+    const overlayArray = [
+        {
+            id: 1,
+            typeis: "Accordian"
+        },
+        {
+            id: 2,
+            typeis: "Badge"
+        },
+        {
+            id: 3,
+            typeis: "Banner"
+        },
+        {
+            id: 4,
+            typeis: "Card"
+        },
+        {
+            id: 5,
+            typeis: "Collections / Gallery"
+        },
+        {
+            id: 6,
+            typeis: "Divider"
+        },
+        {
+            id: 7,
+            typeis: "List"
+        },
+        {
+            id: 8,
+            typeis: "Pin"
+        },
+        {
+            id: 9,
+            typeis: "Sheets"
+        },
+        {
+            id: 10,
+            typeis: "Skeleton"
+        },
+    ]
+    const iconsArray = [
+        {
+            id: 1,
+            typeis: "Action Menu"
+        },
+        {
+            id: 2,
+            typeis: "Bottom Sheet"
+        },
+        {
+            id: 3,
+            typeis: "Context Menu"
+        },
+        {
+            id: 4,
+            typeis: "Date & Time Picker"
+        },
+        {
+            id: 5,
+            typeis: "Dialog"
+        },
+        {
+            id: 6,
+            typeis: "Full-Screen Overlay"
+        },
+        {
+            id: 7,
+            typeis: "Side Sheet"
+        },
+        {
+            id: 8,
+            typeis: "Text Edit Menu"
+        },
+
+    ]
     return (
         <>
             <Header />
@@ -464,38 +665,33 @@ const AppPage = () => {
 
                             <hr className="bottom_line"></hr>
 
-                            <div className='d-flex justify-content-around'>
-                                <div>  <div>
-                                    <button className="app_categories_button" type="button">
-                                        <span>Elements</span>
-                                        <i className="icon_down">
-                                            <BiChevronRight
-                                                className="icon"
-                                                size="16px"
-                                                color="black" />
-                                        </i>
-                                    </button>
-                                </div></div>
-                                <div>
-                                    <div className='option_data '><div>Bars</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                    <div className='option_data '><div>Control</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                    <div className='option_data '><div>Display</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                    <div className='option_data '><div>Feedback</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                    <div className='option_data '><div>Icons & Images</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                    <div className='option_data '><div>Overlay</div><div><img src={RightArrow} className='option_right_arrow' /></div></div> </div>
-                                <div>
-                                    <div className="appPage_checkbox_div">
-                                        <input
-
-                                            type="checkbox"
-                                            onClick={handleSelectAll}
-                                            isChecked={isCheckAll} />
-                                        <label className="label">All</label>{" "}
+                            <div className='d-flex justify-content-around' onMouseLeave={() => { setOpt(null) }}>
+                                <div >
+                                    <div>
+                                        <button className="app_categories_button" type="button">
+                                            <span>Elements</span>
+                                            <i className="icon_down">
+                                                <BiChevronRight
+                                                    className="icon"
+                                                    size="16px"
+                                                    color="black" />
+                                            </i>
+                                        </button>
                                     </div>
+                                </div>
+                                <div >
+                                    <div className='option_data ' onMouseEnter={() => { setOpt(0) }}><div>Bars</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                    <div className='option_data ' onMouseEnter={() => { setOpt(1) }}><div>Control</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                    <div className='option_data ' onMouseEnter={() => { setOpt(2) }}><div>Display</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                    <div className='option_data ' onMouseEnter={() => { setOpt(3) }}><div>Feedback</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                    <div className='option_data ' onMouseEnter={() => { setOpt(4) }}><div>Icons & Images</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                    <div className='option_data ' onMouseEnter={() => { setOpt(5) }}><div>Overlay</div><div><img src={RightArrow} className='option_right_arrow' /></div></div> </div>
+                                <div style={{ paddingRight: "10px" }}>
+
                                     {list.map((data, index) => {
                                         return (
                                             <>
-                                                <div className="appPage_checkbox_div">
+                                                <div className="appPage_checkbox_div" style={{ display: opt == 0 ? "block" : "none" }}>
 
                                                     <input
 
@@ -511,6 +707,103 @@ const AppPage = () => {
                                             </>
                                         );
                                     })}
+                                    {controlArray.map((data, index) => {
+                                        return (
+                                            <>
+                                                <div className="appPage_checkbox_div" style={{ display: opt == 1 ? "block" : "none" }}>
+
+                                                    <input
+
+                                                        key={data.id}
+                                                        type="checkbox"
+                                                        id={data.id}
+                                                        onClick={(e) => handleClick(e, data.typeis)}
+                                                        checked={selectedFilter.includes(`${data.typeis}`)} />
+                                                    <label className="label">{data.typeis}</label>{" "}
+                                                </div>
+
+
+                                            </>
+                                        );
+                                    })}
+                                    {displayArray.map((data, index) => {
+                                        return (
+                                            <>
+                                                <div className="appPage_checkbox_div" style={{ display: opt == 2 ? "block" : "none" }}>
+
+                                                    <input
+
+                                                        key={data.id}
+                                                        type="checkbox"
+                                                        id={data.id}
+                                                        onClick={(e) => handleClick(e, data.typeis)}
+                                                        checked={selectedFilter.includes(`${data.typeis}`)} />
+                                                    <label className="label">{data.typeis}</label>{" "}
+                                                </div>
+
+
+                                            </>
+                                        );
+                                    })}
+                                    {feedbackArray.map((data, index) => {
+                                        return (
+                                            <>
+                                                <div className="appPage_checkbox_div" style={{ display: opt == 3 ? "block" : "none" }}>
+
+                                                    <input
+
+                                                        key={data.id}
+                                                        type="checkbox"
+                                                        id={data.id}
+                                                        onClick={(e) => handleClick(e, data.typeis)}
+                                                        checked={selectedFilter.includes(`${data.typeis}`)} />
+                                                    <label className="label">{data.typeis}</label>{" "}
+                                                </div>
+
+
+                                            </>
+                                        );
+                                    })}
+                                    {iconsArray.map((data, index) => {
+                                        return (
+                                            <>
+                                                <div className="appPage_checkbox_div" style={{ display: opt == 4 ? "block" : "none" }}>
+
+                                                    <input
+
+                                                        key={data.id}
+                                                        type="checkbox"
+                                                        id={data.id}
+                                                        onClick={(e) => handleClick(e, data.typeis)}
+                                                        checked={selectedFilter.includes(`${data.typeis}`)} />
+                                                    <label className="label">{data.typeis}</label>{" "}
+                                                </div>
+
+
+                                            </>
+                                        );
+                                    })}
+                                    {overlayArray.map((data, index) => {
+                                        return (
+                                            <>
+                                                <div className="appPage_checkbox_div" style={{ display: opt == 5 ? "block" : "none" }}>
+
+                                                    <input
+
+                                                        key={data.id}
+                                                        type="checkbox"
+                                                        id={data.id}
+                                                        onClick={(e) => handleClick(e, data.typeis)}
+                                                        checked={selectedFilter.includes(`${data.typeis}`)} />
+                                                    <label className="label">{data.typeis}</label>{" "}
+                                                </div>
+
+
+                                            </>
+                                        );
+                                    })}
+
+
                                 </div>
 
                             </div>
@@ -519,7 +812,7 @@ const AppPage = () => {
 
                         </div>
                     ) : null}
-                    {/* <div className='filter'><div><img src={Filter} /></div>&nbsp;&nbsp;&nbsp;Filter</div> */}
+
                     <div className='filter_content_wrapper'>
                         <div className={color == 1 ? 'filter_active ui_vedio' : 'ui_vedio'} onClick={() => {
                             setColor(1)

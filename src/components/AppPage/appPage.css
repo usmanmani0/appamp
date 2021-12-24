@@ -239,12 +239,17 @@
 }
 .option_right_arrow {
   display: none;
+  padding-right: 15px;
 }
 .option_data:hover .option_right_arrow {
   display: block;
 }
 .appPage_checkbox_div {
   color: black;
+  display: none;
+}
+.appPage_checkbox_div:hover {
+  display: block !important;
 }
 
 .appPage_select {
