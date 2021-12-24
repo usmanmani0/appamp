@@ -270,9 +270,11 @@
   margin-right: 18px;
   width: 60%;
 }
-/* .pspeed_btn{
-  background-color: none !important;
-} */
+.app_page_select_box {
+  height: 40px;
+  width: 100px;
+  border: 1px solid black;
+}
 
 .fscreen_img {
   padding: 0px 10px;
@@ -295,23 +297,6 @@
   cursor: pointer;
 }
 
-/* .tooltip {
-  position: relative;
-  display: flex;
-  border-bottom: 1px dotted black;
-}
-
-.tooltip .tooltiptext {
-  width: 120px;
-  top: 100%;
-  left: 50%;
-  margin-left: -60px; 
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-} */
-
 .openmenue_icon {
   width: 26px;
   height: 26px;
@@ -333,8 +318,22 @@
 
 .popoover_wrapper {
   position: absolute;
-  right: -14.5rem;
-  top: 4rem;
+  right: 0px;
+  top: 10px;
+  background-color: red;
+  width: 282px;
+  height: 338px;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  overflow-y: scroll;
+}
+.UI_Secreen_popoover_wrapper {
+  position: absolute;
+  left: -25%;
+  top: 10px;
+  background-color: red;
   width: 282px;
   height: 338px;
   border-radius: 8px;
@@ -366,6 +365,12 @@
 }
 
 .collection_checkbox_wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  z-index: -1;
+}
+.UI_Secreen_collection_checkbox_wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -421,6 +426,17 @@
   /* right: 10px; */
   cursor: pointer;
 }
+.UI_Secreen_save_collection_btn_wrapper {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 40px;
+  background-color: transparent;
+  position: sticky;
+  bottom: 0px;
+  /* right: 10px; */
+  cursor: pointer;
+}
 
 .nc_txt {
   font-weight: 700;
@@ -439,6 +455,21 @@
   position: absolute;
   bottom: -2rem;
   left: 16rem;
+  width: 320px;
+  height: 68px;
+  background-color: #287d3c;
+  border-radius: 8px;
+  padding: 6px 16px 6px 16px;
+  z-index: 30;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.UI_Secreen_confirmation_wrapper {
+  position: absolute;
+  bottom: -2rem;
+  left: 41%;
   width: 320px;
   height: 68px;
   background-color: #287d3c;

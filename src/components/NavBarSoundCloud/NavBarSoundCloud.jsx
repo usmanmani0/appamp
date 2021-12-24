@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./navbarsoundcloud.css";
 import { Container, Row, Col, Image, Modal } from "react-bootstrap";
 import backarrow from "../../assets/soundcloudimages/Back.png";
@@ -75,6 +76,7 @@ const [setSave, showSetSave] = useState(false);
     // console.log("ssssssss");
     setCheckdata([...checkdata, obj]);
   };
+  const history = useNavigate()
   return (
     <>
       <Container className="navbar_soundcloud_player dis_nav_bar" fluid="true">

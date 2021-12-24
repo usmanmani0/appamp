@@ -7,7 +7,7 @@ import "./filter.css";
 import { BsChevronDown } from "react-icons/bs";
 import { BsFilter } from "react-icons/bs";
 import { BiChevronRight } from "react-icons/bi";
-import { data } from "jquery";
+
 import img1 from "../../assets/images/s.png"
 
 

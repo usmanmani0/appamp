@@ -9,6 +9,9 @@
   justify-content: flex-start;
   align-items: center;
 }
+.backarrow {
+  cursor: pointer;
+}
 .soundcloudlogo {
   padding-left: 20px;
 }
