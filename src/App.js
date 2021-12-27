@@ -5,6 +5,7 @@ import Home from "./pages";
 import SoundCloudPage from "./pages/SoundCloudPage";
 import "./App.css";
 import AppPage from "./components/AppPage";
+import MobileAddCollection from "./components/MobileAddCollection";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
 
 
       </Routes>
+
     </>
   );
 }

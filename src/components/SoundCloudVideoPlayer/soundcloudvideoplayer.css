@@ -319,7 +319,7 @@
 .popoover_wrapper {
   position: absolute;
   right: 0px;
-  top: 10px;
+  top: 60px;
   background-color: red;
   width: 282px;
   height: 338px;
@@ -454,7 +454,7 @@
 .confirmation_wrapper {
   position: absolute;
   bottom: -2rem;
-  left: 16rem;
+  left: 40%;
   width: 320px;
   height: 68px;
   background-color: #287d3c;
@@ -468,7 +468,7 @@
 }
 .UI_Secreen_confirmation_wrapper {
   position: absolute;
-  bottom: -2rem;
+  bottom: 0;
   left: 41%;
   width: 320px;
   height: 68px;
@@ -480,6 +480,23 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+@media screen and (max-width: 550px) {
+  .UI_Secreen_confirmation_wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 12% !important;
+    width: 280px;
+    height: 68px;
+    background-color: #287d3c;
+    border-radius: 8px;
+    padding: 6px 16px 6px 16px;
+    z-index: 30;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
 }
 .undo_btn {
   display: flex;
@@ -514,7 +531,7 @@
 .link_copy_wrapper {
   position: absolute;
   bottom: -2rem;
-  left: 16rem;
+  left: 40%;
   width: 320px;
   height: 48px;
   background-color: #287d3c;
@@ -790,7 +807,7 @@
   .popoover_wrapper {
     position: absolute;
     right: 1rem;
-    top: 4rem;
+    top: 5rem !important;
     width: 282px;
     height: 438px;
     border-radius: 8px;
@@ -826,6 +843,9 @@
     display: block;
   }
   .dis_icon_mv {
+    display: none;
+  }
+  .dis_none_mbl_view {
     display: none;
   }
   .mv_navbar_row_wrapper {
@@ -967,4 +987,10 @@
     top: 24.5rem;
     margin-bottom: 20px;
   }
+}
+
+.fullSreen {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
 }

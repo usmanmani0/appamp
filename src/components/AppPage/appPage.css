@@ -2,6 +2,14 @@
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+  font-family: "Space Grotesk Medium";
+}
+@font-face {
+  font-family: "Space Grotesk Medium";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Space Grotesk Regular"),
+    url("../../assets/fonts/SpaceGrotesk-Medium.woff") format("woff");
 }
 
 .sound_cloud_wrapper {
@@ -403,6 +411,15 @@
   }
 }
 @media screen and (max-width: 550px) {
+  .share_copy {
+    width: 193px;
+    height: 120px;
+    background-color: white;
+    position: absolute;
+    top: 50% !important;
+    border-radius: 8px;
+    left: 1% !important;
+  }
   .sound_cloud_filter_wrapper {
     justify-content: center;
   }

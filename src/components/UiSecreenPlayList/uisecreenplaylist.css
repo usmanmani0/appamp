@@ -1,0 +1,10 @@
+.mobile_View_Filter_section {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 16px 0px 16px;
+}
+@media screen and (min-width: 550px) {
+  .mobile_View_Filter_section {
+    display: none;
+  }
+}

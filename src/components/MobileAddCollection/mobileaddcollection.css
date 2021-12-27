@@ -1,0 +1,13 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+.m_add_collection{
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+}
+.add_collection_header{
+    
+}
