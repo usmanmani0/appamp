@@ -15,6 +15,8 @@ function App() {
         <Route path="/apppage" element={<AppPage />} />
         <Route path="/soundcloudpage" element={<SoundCloudPage />} />
       </Routes>
+      {/* <MobileAddCollection /> */}
+
     </>
   );
 }

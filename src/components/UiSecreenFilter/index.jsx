@@ -9,13 +9,19 @@ import Chip from '@mui/material/Chip';
 import TextField from '@mui/material/TextField';
 import { BiChevronRight } from "react-icons/bi";
 import RightArrow from "../../assets/images/right-arrow.png"
+import { useSelector, useDispatch } from 'react-redux';
+import { handelShow } from '../../feature/addCollection/counterSlice';
+import counterSlice from '../../feature/addCollection/counterSlice';
 
 
 const UiSecreenFilter = () => {
-    const [show, setShow] = useState(false);
-    const handelShow = () => {
-        setShow(!show);
-    };
+    const show = useSelector((state) => state.hideShow.show)
+    console.log('show value=====>', show)
+    const dispatch = useDispatch()
+    // const [show, setShow] = useState(false);
+    // const handelShow = () => {
+    //     setShow(!show);
+    // };
     const [isCheckAll, setIsCheckAll] = useState(false);
     const [isCheck, setIsCheck] = useState([]);
     const [opt, setOpt] = useState()
@@ -268,7 +274,7 @@ const UiSecreenFilter = () => {
             <div className='UiSecreen_filter'>
                 <div className="filter_btn ">
                     <button
-                        onClick={handelShow}
+                        onClick={() => dispatch(handelShow())}
                         className="filter_button d-flex align-items-center"
                         type="button"
                     >
