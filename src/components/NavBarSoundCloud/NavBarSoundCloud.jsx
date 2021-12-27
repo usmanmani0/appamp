@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./navbarsoundcloud.css";
-import { Container, Row, Col, Image, Modal } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Image,
+  Modal,
+  OverlayTrigger,
+  Tooltip,
+} from "react-bootstrap";
 import backarrow from "../../assets/soundcloudimages/Back.png";
 import sclogo from "../../assets/soundcloudimages/soundcloudimg.png";
 import backwararrow from "../../assets/soundcloudimages/backwardarrow.png";
@@ -47,24 +55,8 @@ const NavBarSoundCloud = () => {
   };
 
   const [checkdata, setCheckdata] = useState([
-    {
-      id: 1,
-      checked: false,
-      image: checkicon,
-      Name: "Collection #",
-    },
-    {
-      id: 1,
-      checked: true,
-      image: checkicon,
-      Name: "Collection #",
-    },
-    {
-      id: 1,
-      checked: true,
-      image: checkicon,
-      Name: "Collection #",
-    },
+   
+    
   ]);
   const addCollection = () => {
     let obj = {
@@ -76,7 +68,7 @@ const NavBarSoundCloud = () => {
     // console.log("ssssssss");
     setCheckdata([...checkdata, obj]);
   };
-  const history = useNavigate()
+  const history = useNavigate();
   return (
     <>
       <Container className="navbar_soundcloud_player dis_nav_bar" fluid="true">
@@ -84,9 +76,13 @@ const NavBarSoundCloud = () => {
           <Col sm={5} lg={5} xl={4} xxl={4}>
             <div className="navlogo_wrapper">
               <div className="backarrow">
-                <Image src={backarrow} rounded onClick={() => {
-                  history(-1)
-                }} />
+                <Image
+                  src={backarrow}
+                  rounded
+                  onClick={() => {
+                    history(-1);
+                  }}
+                />
               </div>
               <div className="soundcloudlogo">
                 <Image src={sclogo} rounded />
@@ -100,13 +96,34 @@ const NavBarSoundCloud = () => {
           <Col className="nav_col_2_adjustment">
             <div className="nav_bf_icons_wrapper">
               <div className="nav_back_icon">
-                <Image src={backwararrow} rounded />
+                <div className="copy_wrap ">
+                  <OverlayTrigger
+                    delay={{ hide: 150, show: 300 }}
+                    overlay={(props) => (
+                      <Tooltip {...props}>Previous Chapter</Tooltip>
+                    )}
+                    placement="bottom"
+                  >
+                    <Image src={backwararrow} rounded />
+                  </OverlayTrigger>
+                </div>
               </div>
               <div className="nav_txt">
-                <span className="nav_inner_txt">User Onboarding</span>
+                <span className="nav_inner_txt_ch">Chapters</span>
+                <span className="nav_inner_txt">1 / 7</span>
               </div>
               <div className="nav_forward_icon">
-                <Image src={forwardarrow} rounded />
+                <div className="copy_wrap ">
+                  <OverlayTrigger
+                    delay={{ hide: 150, show: 300 }}
+                    overlay={(props) => (
+                      <Tooltip {...props}>Previous Chapter</Tooltip>
+                    )}
+                    placement="bottom"
+                  >
+                    <Image src={forwardarrow} rounded />
+                  </OverlayTrigger>
+                </div>
               </div>
             </div>
           </Col>
@@ -138,7 +155,8 @@ const NavBarSoundCloud = () => {
                 <Image src={backwararrow} rounded />
               </div>
               <div className="nav_txt">
-                <span className="nav_inner_txt">User Onboarding</span>
+                <span className="nav_inner_txt_ch">Chapters</span>
+                <span className="nav_inner_txt">1 / 7</span>
               </div>
               <div className="nav_forward_icon">
                 <Image src={forwardarrow} rounded />
@@ -152,7 +170,7 @@ const NavBarSoundCloud = () => {
             </div>
 
             {select ? (
-              <div className="share_copy">
+              <div className="share_copy_mv">
                 <div className="select_content_wrapper_1">
                   <div
                     onClick={handleShowModal}
@@ -191,7 +209,7 @@ const NavBarSoundCloud = () => {
                   </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  <div className="popoover_wrapper">
+                  <div className="popoover_wrapper_mv">
                     <div class="form-group has-search ">
                       <input
                         type="text"
@@ -229,7 +247,7 @@ const NavBarSoundCloud = () => {
                       );
                     })}
 
-                    <div className="save_collection_btn_wrapper">
+                    <div className="save_collection_btn_wrapper_mv">
                       <div
                         className="add_collection_btn"
                         onClick={() => addCollection()}
@@ -247,13 +265,13 @@ const NavBarSoundCloud = () => {
                         onClick={
                           tick.length >= 1 ? () => saveCollection() : null
                         }
-
                       >
                         {" "}
-                        <a href="/SoundCloudPage"> <span className="save_txt">Save</span></a>{" "}
+                        <a style={{textDecoration:'none'}} href="/SoundCloudPage">
+                          {" "}
+                          <span className="save_txt">Save</span>
+                        </a>{" "}
                       </div>
-
-
                     </div>
                   </div>
                 </Modal.Body>

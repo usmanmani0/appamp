@@ -10,6 +10,7 @@ import {
   Image,
   ProgressBar,
   OverlayTrigger,
+  Tooltip,
   Popover,
   Button,
 } from "react-bootstrap";
@@ -54,15 +55,13 @@ const PlayerControls = ({
   onVolumeSeekUp,
   volume,
   seeking,
-  goFullScreen
+  goFullScreen,
 }) => {
   const theme = useTheme();
-  const[full, setFull]=useState(false)
-
-
+  const [full, setFull] = useState(false);
 
   return (
-    <div className={full? "fullSreen":""}>
+    <div className={full ? "fullSreen" : ""}>
       <div className="react_player_controls_wrapper">
         <Slider
           aria-label="time-indicator"
@@ -104,9 +103,25 @@ const PlayerControls = ({
         <div className="controls_bottom_items">
           <button className="controls_button_styling" onClick={onPlayPause}>
             {playing ? (
-              <Image src={pause} rounded />
+              <div className="copy_wrap ">
+                <OverlayTrigger
+                  delay={{ hide: 150, show: 300 }}
+                  overlay={(props) => <Tooltip {...props}>Resume</Tooltip>}
+                  placement="right"
+                >
+                  <Image src={pause} rounded />
+                </OverlayTrigger>
+              </div>
             ) : (
-              <Image className="pad_lft" src={play} rounded />
+              <div className="copy_wrap ">
+                <OverlayTrigger
+                  delay={{ hide: 150, show: 300 }}
+                  overlay={(props) => <Tooltip {...props}>Play</Tooltip>}
+                  placement="right"
+                >
+                  <Image className="pad_lft" src={play} rounded />
+                </OverlayTrigger>
+              </div>
             )}
           </button>
 
@@ -161,16 +176,40 @@ const PlayerControls = ({
                 }
               >
                 <button className=" controls_button_styling">
-                  <Image
-                    className="pspeed_img"
-                    src={playbackspeedimg}
-                    rounded
-                  />
+                  <div className="copy_wrap ">
+                    <OverlayTrigger
+                      delay={{ hide: 150, show: 300 }}
+                      overlay={(props) => (
+                        <Tooltip {...props}>Playback Speed</Tooltip>
+                      )}
+                      placement="left"
+                    >
+                      <Image
+                        className="pspeed_img"
+                        src={playbackspeedimg}
+                        rounded
+                      />
+                    </OverlayTrigger>
+                  </div>
                 </button>
               </OverlayTrigger>
             </div>
-            <button className=" controls_button_styling" onClick={()=>{goFullScreen();setFull(!full)}}>
-              <Image className="fscreen_img" src={fullscreenimg} rounded />
+            <button
+              className=" controls_button_styling"
+              onClick={() => {
+                goFullScreen();
+                setFull(!full);
+              }}
+            >
+              <div className="copy_wrap ">
+                <OverlayTrigger
+                  delay={{ hide: 150, show: 300 }}
+                  overlay={(props) => <Tooltip {...props}>Full Screen</Tooltip>}
+                  placement="left"
+                >
+                  <Image className="fscreen_img" src={fullscreenimg} rounded />
+                </OverlayTrigger>
+              </div>
             </button>
           </div>
         </div>

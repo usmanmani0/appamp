@@ -194,7 +194,7 @@ const Appcard = () => {
           return (
             <>
               <div>
-                <div className="card_div">
+                <div className="card_div"  key={index}>
                   <div className="img_div">
                     <img className="card_img" src={data.img} alt="logo"></img>
                   </div>

@@ -1,5 +1,11 @@
 import React, { useRef, useState } from "react";
-import { Container, Image, Offcanvas } from "react-bootstrap";
+import {
+  Container,
+  Image,
+  Offcanvas,
+  OverlayTrigger,
+  Tooltip,
+} from "react-bootstrap";
 import "./soundcloudvideoplayer.css";
 import dil from "../../assets/soundcloudimages/Dil ko karrar aya (cover) - Annural Khalid.mp4";
 import tidal from "../../assets/soundcloudimages/Tidal.png";
@@ -171,7 +177,7 @@ const cardsdata = [
   },
   {
     id: 4,
-    image: eimg4,
+    image: eimg1,
     title: "title4",
   },
   {
@@ -344,6 +350,14 @@ const VideoPlayer = () => {
     screenfull.toggle(videoPlayerContainerRef.current);
   };
 
+  const [showUmodal, setShowUmodal] = useState();
+
+  const handelUmodel = (index) => {
+    setShowUmodal(index);
+  };
+
+  console.log(":showUmodal=======>",showUmodal)
+
   return (
     <>
       <Container className="videoplayer_container" fluid="true">
@@ -420,20 +434,66 @@ const VideoPlayer = () => {
               className="expand_vp_wrapper dis_icon_mv"
             >
               {leftAsideShow ? (
-                <Image src={expand} rounded />
+                <div className="copy_wrap ">
+                  <OverlayTrigger
+                    delay={{ hide: 150, show: 300 }}
+                    overlay={(props) => <Tooltip {...props}>Collapse</Tooltip>}
+                    placement="bottom"
+                  >
+                    <Image src={expand} rounded />
+                  </OverlayTrigger>
+                </div>
               ) : (
-                <Image className="openmenue_icon" src={openmenu} rounded />
+                <div className="copy_wrap ">
+                  <OverlayTrigger
+                    delay={{ hide: 150, show: 300 }}
+                    overlay={(props) => <Tooltip {...props}>Expand</Tooltip>}
+                    placement="bottom"
+                  >
+                    <Image className="openmenue_icon" src={openmenu} rounded />
+                  </OverlayTrigger>
+                </div>
               )}
             </div>
             <div className="dis_none_mbl_view">
               <div onClick={handelPopover} className="plus_icons_wp">
-                <Image src={plusicon} rounded />
+                <div className="copy_wrap ">
+                  <OverlayTrigger
+                    delay={{ hide: 150, show: 300 }}
+                    overlay={(props) => (
+                      <Tooltip {...props}>Add to Collection</Tooltip>
+                    )}
+                    placement="bottom"
+                  >
+                    <Image src={plusicon} rounded />
+                  </OverlayTrigger>
+                </div>
               </div>
               <div className="download_icons_wp">
-                <Image src={downloadicon} rounded />
+                <div className="copy_wrap ">
+                  <OverlayTrigger
+                    delay={{ hide: 150, show: 300 }}
+                    overlay={(props) => (
+                      <Tooltip {...props}>Download Video</Tooltip>
+                    )}
+                    placement="bottom"
+                  >
+                    <Image src={downloadicon} rounded />
+                  </OverlayTrigger>
+                </div>
               </div>
               <div onClick={copyLink} className="copy_icons_wp">
-                <Image src={linkicon} rounded />
+                <div className="copy_wrap ">
+                  <OverlayTrigger
+                    delay={{ hide: 150, show: 300 }}
+                    overlay={(props) => (
+                      <Tooltip {...props}>Copy Share Link</Tooltip>
+                    )}
+                    placement="bottom"
+                  >
+                    <Image src={linkicon} rounded />
+                  </OverlayTrigger>
+                </div>
               </div>
             </div>
             {showPopover ? (
@@ -489,7 +549,12 @@ const VideoPlayer = () => {
                     onClick={tick.length >= 1 ? () => saveCollection() : null}
                   >
                     {" "}
-                    <span className="save_txt">Save</span>{" "}
+                    <a
+                      style={{ textDecoration: "none" }}
+                      href="/SoundCloudPage"
+                    >
+                      <span className="save_txt">Save</span>
+                    </a>{" "}
                   </div>
                 </div>
               </div>
@@ -629,11 +694,11 @@ const VideoPlayer = () => {
           </div>
           <hr />
           <div className="mbl_cards_box">
-            {cardsdata.map((data) => {
+            {cardsdata.map((data,index) => {
               return (
                 <>
                   <div className="mbl_card">
-                    <div className="pl_icon_cards_right">
+                    {/* <div className="pl_icon_cards_right">
                       <img src={playiconsrightcard} alt="" />
                     </div>
                     <div className="ac_icon_cards_right">
@@ -643,8 +708,44 @@ const VideoPlayer = () => {
                       <span className="time_right_wrapper_cards_txt">
                         12:34
                       </span>
+                    </div> */}
+
+                    {/* <img src={data.image} alt="ERROR" /> */}
+
+                    <div style={{ position: "relative" }}>
+                      <img src={data.image} alt="ERROR" />
+
+                      <div className="pl_icon_cards_right">
+                        <img src={playiconsrightcard} alt="" />
+                      </div>
+
+                      <div className="time_right_wrapper_cards">
+                        <span className="time_right_wrapper_cards_txt">
+                          12:34
+                        </span>
+                      </div>
+
+                      <div
+                        onClick={()=>{handelUmodel(index)}}
+                        className="ac_icon_cards_right"
+                      >
+                        <img src={navactionbar}
+                       alt="" />
+                      </div>
+                      
+                       { index === showUmodal?  <div className="u_modal_cards_mv">
+                          <div className="u_plus_wrapper_mdl">
+                            <Image src={plusicon} rounded />
+                          </div>
+                          <div className="u_down_wrapper_mdl">
+                            <Image src={downloadicon} rounded />
+                          </div>
+                          <div className="u_cpy_wrapper_mdl">
+                            <Image src={linkicon} rounded />
+                          </div>
+                        </div> : null}
+                      
                     </div>
-                    <img src={data.image} alt="ERROR" />
 
                     <div className="card_title">{data.title}</div>
                   </div>
@@ -734,39 +835,6 @@ const VideoPlayer = () => {
           </div>
           <hr />
         </div>
-
-        {/* <div className="cards_imgs">
-          <CardGroup className="crd_grp_mv">
-            <Card className="cards_ipad">
-              <Card.Img className="img_size" variant="top" src={eimg1} />
-              <Card.Title className="cards_title_txt">Card title</Card.Title>
-            </Card>
-            <Card className="cards_ipad">
-              <Card.Img className="img_size" variant="top" src={eimg2} />
-              <Card.Title className="cards_title_txt">Card title</Card.Title>
-            </Card>
-          </CardGroup>
-          <CardGroup className="crd_grp_mv">
-            <Card className="cards_ipad">
-              <Card.Img className="img_size" variant="top" src={eimg4} />
-              <Card.Title className="cards_title_txt">Card title</Card.Title>
-            </Card>
-            <Card className="cards_ipad">
-              <Card.Img className="img_size" variant="top" src={eimg5} />
-              <Card.Title className="cards_title_txt">Card title</Card.Title>
-            </Card>
-          </CardGroup>
-          <CardGroup className="crd_grp_mv">
-            <Card className="cards_ipad">
-              <Card.Img className="img_size" variant="top" src={eimg4} />
-              <Card.Title className="cards_title_txt">Card title</Card.Title>
-            </Card>
-            <Card className="cards_ipad">
-              <Card.Img className="img_size" variant="top" src={eimg5} />
-              <Card.Title className="cards_title_txt">Card title</Card.Title>
-            </Card>
-          </CardGroup>
-        </div> */}
       </Container>
     </>
   );

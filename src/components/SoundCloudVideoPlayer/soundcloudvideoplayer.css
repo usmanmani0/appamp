@@ -267,7 +267,6 @@
   display: flex;
 }
 .pspeed_img {
-  margin-right: 18px;
   width: 60%;
 }
 .app_page_select_box {
@@ -281,6 +280,7 @@
 }
 .controls_button_styling {
   border: none;
+  margin: 0px 10px;
 }
 .pad_lft {
   padding-left: 6px;
@@ -309,9 +309,7 @@
 .cards_imgs {
   display: none;
 }
-.mv_cards_top_btn {
-  display: none;
-}
+
 .dis {
   display: none;
 }
@@ -423,8 +421,8 @@
   background-color: transparent;
   position: sticky;
   bottom: 0px;
-  /* right: 10px; */
   cursor: pointer;
+  margin-bottom: 10px;
 }
 .UI_Secreen_save_collection_btn_wrapper {
   display: flex;
@@ -549,6 +547,7 @@
   grid-template-columns: 150px;
   width: fit-content;
   margin: 2rem auto;
+  position: relative;
 }
 .mbl_cards_box img {
   width: 100%;
@@ -601,6 +600,7 @@
   border-radius: 5px;
   position: absolute;
   bottom: 44px;
+  bottom: 10px;
   right: 6px;
   background-color: #161618;
   display: flex;
@@ -697,13 +697,70 @@
   .card_title {
     font-size: large;
   }
-
+  .u_modal_cards_mv {
+    width: 100%;
+    height: -webkit-fill-available;
+    background-color: rgba(0, 0, 0, 0.603);
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    
+  }
+  .u_plus_wrapper_mdl {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 25%;
+    right: 40%;
+    z-index: 10;
+    width: 32px;
+    height: 32px;
+    border-radius: 30px;
+    background: #ffffff;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.13);
+    cursor: pointer;
+    margin-bottom: 50px;
+  }
+  .u_down_wrapper_mdl {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 40%;
+    right: 40%;
+    z-index: 10;
+    width: 32px;
+    height: 32px;
+    border-radius: 30px;
+    background: #ffffff;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.13);
+    cursor: pointer;
+    margin-bottom: 50px;
+  }
+  .u_cpy_wrapper_mdl {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 55%;
+    right: 40%;
+    z-index: 10;
+    width: 32px;
+    height: 32px;
+    border-radius: 30px;
+    background: #ffffff;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.13);
+    cursor: pointer;
+  }
   .popoover_wrapper {
     position: absolute;
     right: 1rem;
     top: 4rem;
     width: 282px;
-    height: 438px;
+    height: 400px;
     border-radius: 8px;
     background: #ffffff;
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.15);
@@ -718,11 +775,11 @@
     height: 40px;
     background-color: transparent;
     position: sticky;
-    /* bottom: -1rem; */
-    /* right: 10px; */
+    bottom: 0px;
+    /* top: 30rem; */
     cursor: pointer;
-    top: 24.5rem;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    margin-top: 7rem;
   }
 
   .confirmation_wrapper {
@@ -803,6 +860,64 @@
   .card_title {
     font-size: large;
   }
+  .u_modal_cards_mv {
+    width: 100%;
+    height: -webkit-fill-available;
+    background-color: rgba(0, 0, 0, 0.603);
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    
+  }
+  .u_plus_wrapper_mdl {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 25%;
+    right: 40%;
+    z-index: 10;
+    width: 32px;
+    height: 32px;
+    border-radius: 30px;
+    background: #ffffff;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.13);
+    cursor: pointer;
+    margin-bottom: 50px;
+  }
+  .u_down_wrapper_mdl {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 40%;
+    right: 40%;
+    z-index: 10;
+    width: 32px;
+    height: 32px;
+    border-radius: 30px;
+    background: #ffffff;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.13);
+    cursor: pointer;
+    margin-bottom: 50px;
+  }
+  .u_cpy_wrapper_mdl {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 55%;
+    right: 40%;
+    z-index: 10;
+    width: 32px;
+    height: 32px;
+    border-radius: 30px;
+    background: #ffffff;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.13);
+    cursor: pointer;
+  }
 
   .popoover_wrapper {
     position: absolute;
@@ -824,10 +939,8 @@
     height: 40px;
     background-color: transparent;
     position: sticky;
-    /* bottom: -1rem; */
-    /* right: 10px; */
+    bottom: 0px;
     cursor: pointer;
-    top: 24.5rem;
     margin-bottom: 20px;
   }
 }
@@ -942,6 +1055,7 @@
     width: fit-content;
     margin: 2rem auto;
   }
+
   .mbl_cards_box img {
     width: 100%;
     object-fit: contain;
@@ -955,37 +1069,89 @@
     /* align-items: center; */
     gap: 0.5rem;
   }
+  .u_modal_cards_mv {
+    width: 100%;
+    height: -webkit-fill-available;
+    background-color: rgba(0, 0, 0, 0.603);
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    
+  }
+  .u_plus_wrapper_mdl {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 25%;
+    right: 40%;
+    z-index: 10;
+    width: 32px;
+    height: 32px;
+    border-radius: 30px;
+    background: #ffffff;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.13);
+    cursor: pointer;
+    margin-bottom: 50px;
+  }
+  .u_down_wrapper_mdl {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 40%;
+    right: 40%;
+    z-index: 10;
+    width: 32px;
+    height: 32px;
+    border-radius: 30px;
+    background: #ffffff;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.13);
+    cursor: pointer;
+    margin-bottom: 50px;
+  }
+  .u_cpy_wrapper_mdl {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 55%;
+    right: 40%;
+    z-index: 10;
+    width: 32px;
+    height: 32px;
+    border-radius: 30px;
+    background: #ffffff;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.13);
+    cursor: pointer;
+  }
   .card_title {
     font-size: large;
   }
 
-  .popoover_wrapper {
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    left: 0px;
-    bottom: 0px;
+  .u_modal_cards_mv {
     width: 100%;
-    height: 100%;
-    border-radius: 8px;
-    background: #ffffff;
-    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.15);
-    z-index: 10;
-    overflow-y: scroll;
+    height: -webkit-fill-available;
+    background-color: rgba(0, 0, 0, 0.603);
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
   }
-
-  .save_collection_btn_wrapper {
+  .save_collection_btn_wrapper_mv {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
     height: 40px;
     background-color: transparent;
-    position: sticky;
-    /* bottom: -1rem; */
-    /* right: 10px; */
+    position: absolute;
+    bottom: 0px;
     cursor: pointer;
-    top: 24.5rem;
-    margin-bottom: 20px;
+    padding: 0px 20px;
+    margin-bottom: 10px;
   }
 }
 
@@ -993,4 +1159,15 @@
   position: absolute;
   bottom: 0px;
   width: 100%;
+}
+@media screen and (min-width: 600px) {
+  .modal-dialog modal-fullscreen {
+    display: none !important;
+  }
+}
+.btn-close {
+  background-image: url("../../assets/images/Close.png") !important;
+}
+.mv_cards_top_btn {
+  display: none;
 }
