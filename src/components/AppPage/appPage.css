@@ -32,6 +32,7 @@
 .sound_cloud_text {
   padding: 5px 0px 10px 24px;
 }
+
 .sound_cloud_heading {
   font-size: 34px;
   font-weight: 700;
@@ -486,4 +487,13 @@
     padding-left: 20px;
     margin-top: 10px;
   }
+}
+.mobile_add_collecton_show{
+  display: none;
+}
+@media screen and (max-width:550px){
+  .mobile_add_collecton_show{
+    display: block;
+  }
+
 }
