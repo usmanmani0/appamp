@@ -113,7 +113,7 @@ function Filter() {
 
   return (
     <>
-      <div class="header" id="myHeader">
+      <div className="header" id="myHeader">
         <div className="container">
           <div className="filter_btn">
             <button

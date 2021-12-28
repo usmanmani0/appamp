@@ -177,6 +177,39 @@
     margin: 1rem;
     background-color: #c5c5c5;
   }
+  .filter_button {
+    margin-left: 0rem;
+    width: 70px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid #c5c5c5;
+    border-color: rgba(197, 197, 197, 1);
+    background-color: rgba(255, 255, 255, 1);
+    font-family: Space Grotesk;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.02em;
+    text-transform: capitalize;
+    position: relative;
+  }
+  .recent_button {
+    margin-left: .5rem;
+    width: 180px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid #c5c5c5;
+    border-color: rgba(197, 197, 197, 1);
+    background-color: rgba(255, 255, 255, 1);
+    font-family: Space Grotesk;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.02em;
+    text-transform: capitalize;
+  }
 }
 @media only screen and (min-width: 600px) and (max-width: 992px) {
   .filter_expand {

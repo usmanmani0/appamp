@@ -143,7 +143,9 @@ const NavBarSoundCloud = () => {
         <Row className="mv_navbar_row_wrapper">
           <Col xs={2}>
             <div className="navlogo_wrapper">
-              <div className="backarrow">
+              <div className="backarrow"   onClick={() => {
+                    history(-1);
+                  }}>
                 <Image src={backarrow} rounded />
               </div>
             </div>
@@ -197,7 +199,7 @@ const NavBarSoundCloud = () => {
               </div>
             ) : null}
 
-            <div className="mdl_mv">
+            <div className="mdl_mv"> 
               <Modal
                 show={show}
                 fullscreen={fullscreen}
