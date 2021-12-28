@@ -11,16 +11,16 @@ const Hero = () => {
 
   return (
     <>
-      <div className="hero-section">
-        <Row className="mob_col">
-          <Col lg={6} md={12} xs={12} className="hero_desc">
+      <div className="hero-section container-fluid">
+        <Row className="mob_col" style={{ padding: "0px 10px" }}>
+          <Col xxl={6} xl={6} lg={6} md={12} xs={11} className="hero_desc">
             <div>
-              <div style={{ width: "100%" }}>
+              <div>
                 <h4 className="heading_1">
                   Browse 100+ Apps to find your inspiration!
                 </h4>
               </div>
-              <div style={{ width: "100%" }}>
+              <div>
                 <p className="heading_2">
                   Gain inspiration, research best practices or simply explore
                   your competitor’s features.
@@ -28,7 +28,7 @@ const Hero = () => {
               </div>
 
               <div className="search_div">
-                <div class="container-fluid d-flex justify-content-between align-item-center px-4">
+                <div class="container-fluid d-flex justify-content-between align-item-center">
                   <input
                     type="text"
                     id="searchInput"
@@ -90,7 +90,7 @@ const Hero = () => {
               </div>
             </div>
           </Col>
-          <Col lg={6} md={12} xs={12}>
+          <Col xxl={6} xl={6} lg={6} md={12} xs={12}>
             <div>
               <img className="mask_img" src={Maskimg} alt="mask_img"></img>
             </div>

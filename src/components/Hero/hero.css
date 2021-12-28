@@ -6,21 +6,26 @@
 .hero_container {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 .hero-section {
   height: auto;
   width: 100%;
   background: linear-gradient(97.3deg, #d3e5fc 28.65%, #d8f2e8 79.17%);
   opacity: 0.7;
-  padding: 20px 0px;
+  padding-left: 5%;
+  padding-right: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
-.container-fluid {
+/* .container-fluid {
   display: flex;
   padding-left: 0 !important;
   padding-right: 0 !important;
   width: 15rem;
   padding-top: 5px;
-}
+} */
 .search_btn {
   height: 40px;
   width: 116px;
@@ -102,6 +107,7 @@
   width: 100%;
   height: 28rem;
   margin-top: 2rem;
+  object-fit: contain;
 }
 .search_buttonsdiv {
   margin-top: 5px;
@@ -124,22 +130,30 @@
   }
   .hero_desc {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
   }
   .heading_1 {
     width: auto;
-    margin-top: 108px;
+    /* margin-top: 108px;
+    margin-right: 10px;
+    margin-left: 2px; */
+    margin: 108px 10px 10px 30px;
     font-family: Space Grotesk;
     font-style: normal;
     font-weight: bold;
     font-size: 30px;
     line-height: 50px;
     color: #161618;
+    text-align: left;
   }
   .heading_2 {
     width: auto;
-    margin-top: 30px;
+    /* margin-top: 30px;
+    margin-right: 20px;
+    margin-left: 20px; */
+
+    margin: 30px 20px 20px 40px;
     font-family: Open Sans;
     font-style: normal;
     font-weight: normal;
@@ -147,6 +161,7 @@
     line-height: 18px;
     letter-spacing: 0.02em;
     color: #161618;
+    text-align: left;
   }
   #searchInput {
     width: 130px;
@@ -156,7 +171,7 @@
     background-color: white;
     background-image: url("https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-24.png");
 
-    background-position: -2px 7px;
+    background-position: 0px 13px;
     background-repeat: no-repeat;
     padding: 8px 8px 8px 24px;
     -webkit-transition: width 0.8s ease-in-out;
@@ -210,9 +225,16 @@
     border-radius: 8px;
     border: none;
     background-color: white;
+    /* background-color: red; */
   }
   .ux_hero_txt_btn {
     font-size: 11px;
+  }
+  .search_buttonsdiv {
+    margin-top: 5px;
+    display: flex;
+    margin-right: 0px;
+    margin-left: 5px;
   }
 }
 
@@ -266,7 +288,7 @@
     width: 100%;
     background: linear-gradient(97.3deg, #d3e5fc 28.65%, #d8f2e8 79.17%);
     opacity: 0.7;
-    padding: 1rem 0px;
+    padding: 1rem 15%;
   }
   #searchInput {
     width: 13rem;
