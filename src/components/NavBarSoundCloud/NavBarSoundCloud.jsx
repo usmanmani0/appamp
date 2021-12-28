@@ -269,7 +269,7 @@ const NavBarSoundCloud = () => {
                         }
                       >
                         {" "}
-                        <a style={{textDecoration:'none'}}>
+                        <a style={{textDecoration:'none'}} href="/SoundCloudPage">
                           {" "}
                           <span className="save_txt">Save</span>
                         </a>{" "}
