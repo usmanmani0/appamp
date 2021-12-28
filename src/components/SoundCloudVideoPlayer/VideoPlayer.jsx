@@ -5,6 +5,7 @@ import {
   Offcanvas,
   OverlayTrigger,
   Tooltip,
+  Modal,
 } from "react-bootstrap";
 import "./soundcloudvideoplayer.css";
 import dil from "../../assets/soundcloudimages/Dil ko karrar aya (cover) - Annural Khalid.mp4";
@@ -356,7 +357,14 @@ const VideoPlayer = () => {
     setShowUmodal(index);
   };
 
-  console.log(":showUmodal=======>",showUmodal)
+  // console.log(":showUmodal=======>",showUmodal)
+
+  const [fullscreen, setFullscreen] = useState(true);
+
+  function handleShowModal(breakpoint) {
+    setFullscreen(breakpoint);
+    setShow(true);
+  }
 
   return (
     <>
@@ -694,7 +702,7 @@ const VideoPlayer = () => {
           </div>
           <hr />
           <div className="mbl_cards_box">
-            {cardsdata.map((data,index) => {
+            {cardsdata.map((data, index) => {
               return (
                 <>
                   <div className="mbl_card">
@@ -726,15 +734,20 @@ const VideoPlayer = () => {
                       </div>
 
                       <div
-                        onClick={()=>{handelUmodel(index)}}
+                        onClick={() => {
+                          handelUmodel(index);
+                        }}
                         className="ac_icon_cards_right"
                       >
-                        <img src={navactionbar}
-                       alt="" />
+                        <img src={navactionbar} alt="" />
                       </div>
-                      
-                       { index === showUmodal?  <div className="u_modal_cards_mv">
-                          <div className="u_plus_wrapper_mdl">
+
+                      {index === showUmodal ? (
+                        <div className="u_modal_cards_mv">
+                          <div
+                            onClick={handleShowModal}
+                            className="u_plus_wrapper_mdl"
+                          >
                             <Image src={plusicon} rounded />
                           </div>
                           <div className="u_down_wrapper_mdl">
@@ -743,8 +756,8 @@ const VideoPlayer = () => {
                           <div className="u_cpy_wrapper_mdl">
                             <Image src={linkicon} rounded />
                           </div>
-                        </div> : null}
-                      
+                        </div>
+                      ) : null}
                     </div>
 
                     <div className="card_title">{data.title}</div>
@@ -753,6 +766,85 @@ const VideoPlayer = () => {
               );
             })}
           </div>
+        </div>
+
+        <div className="mdl_mv">
+          <Modal
+            show={show}
+            fullscreen={fullscreen}
+            onHide={() => setShow(false)}
+          >
+            <Modal.Header className="mdl_header_navbar" closeButton>
+              <Modal.Title style={{ textAlign: "center" }}>
+                Add to Collection
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <div className="popoover_wrapper_mv">
+                <div class="form-group has-search ">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="form_control"
+                    placeholder="Search Collections"
+                  ></input>
+                </div>
+                {checkdata.map((data, index) => {
+                  return (
+                    <div className="collection_checkbox_wrapper" key={index}>
+                      <div
+                        className={
+                          tick.includes(`${index}`)
+                            ? "checkbox_wrapper_enable"
+                            : "checkbox_wrapper"
+                        }
+                        onClick={() => checkTick(`${index}`)}
+                      >
+                        {tick.includes(`${index}`) ? (
+                          <Image src={data.image} />
+                        ) : (
+                          ""
+                        )}
+                      </div>
+                      <div>
+                        <span className="collection_txt">
+                          {data.Name + " " + [index + 1]}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
+
+                <div className="save_collection_btn_wrapper_mv">
+                  <div
+                    className="add_collection_btn"
+                    onClick={() => addCollection()}
+                  >
+                    <Image src={plusiconsave} />
+                    <span className="nc_txt">New Collection</span>
+                  </div>
+
+                  <div
+                    className={
+                      tick.length >= 1
+                        ? "save_coll_enable_btn"
+                        : " save_collection_btn"
+                    }
+                    onClick={tick.length >= 1 ? () => saveCollection() : null}
+                  >
+                    {" "}
+                    <a
+                      style={{ textDecoration: "none" }}
+                      href="/SoundCloudPage"
+                    >
+                      {" "}
+                      <span className="save_txt">Save</span>
+                    </a>{" "}
+                  </div>
+                </div>
+              </div>
+            </Modal.Body>
+          </Modal>
         </div>
       </Container>
       <Container className="mv_sc_container">
