@@ -92,7 +92,7 @@
   z-index: 100000;
 }
 .has-search {
-  padding: 1rem;
+  padding: 8px 8px 8px 8px;
 }
 
 .has-search .form-control {
@@ -100,6 +100,7 @@
   background-image: url("https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-24.png");
   background-position: 10px 7px;
   background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 .has-search .form-control-feedback {

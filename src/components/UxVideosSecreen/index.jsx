@@ -19,6 +19,7 @@ import Search from "../../assets/images/s.png"
 import checkicon from "../../assets/soundcloudimages/Check.png";
 import { Image } from "react-bootstrap";
 import plusiconsave from "../../assets/soundcloudimages/plusiconsave.png";
+import PlayVedio from "../../assets/images/playVedio.png"
 
 import { Link } from "react-router-dom"
 import "../MobileAddCollection/mobileaddcollection.css"
@@ -151,24 +152,27 @@ const UxVideoSecreen = () => {
                                                         {checkdata.map((data, index) => {
                                                             return (
                                                                 <div className="UI_Secreen_collection_checkbox_wrapper" key={index} >
-                                                                    <div
-                                                                        className={
-                                                                            tick.includes(`${index}`)
-                                                                                ? "checkbox_wrapper_enable"
-                                                                                : "checkbox_wrapper"
-                                                                        }
-                                                                        onClick={() => checkTick(`${index}`)}
-                                                                    >
-                                                                        {tick.includes(`${index}`) ? (
-                                                                            <Image src={data.image} />
-                                                                        ) : (
-                                                                            ""
-                                                                        )}
-                                                                    </div>
-                                                                    <div>
-                                                                        <span className="collection_txt">
-                                                                            {data.Name + " " + [index + 1]}
-                                                                        </span>
+                                                                    <div className='Ui_Secreen_collection_inner_wrapper'>
+                                                                        <div
+                                                                            className={
+                                                                                tick.includes(`${index}`)
+                                                                                    ? "Ui_Secreen_checkbox_wrapper_enable"
+                                                                                    : "Ui_Secreen_checkbox_wrapper"
+                                                                            }
+                                                                            onClick={() => checkTick(`${index}`)}
+                                                                        >
+                                                                            {tick.includes(`${index}`) ? (
+                                                                                <Image src={data.image} />
+                                                                            ) : (
+                                                                                ""
+                                                                            )}
+                                                                        </div>
+                                                                        <div>
+                                                                            <span className="collection_txt">
+                                                                                {data.Name + " " + [index + 1]}
+                                                                            </span>
+                                                                        </div>
+                                                                        <div><img src={PlayVedio} className='play_vedio_add_collection' /></div>
                                                                     </div>
                                                                 </div>
                                                             );
