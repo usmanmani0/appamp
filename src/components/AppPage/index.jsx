@@ -13,8 +13,12 @@ import AppPageHeroSection from '../AppPageHeroSection';
 import UxVideoSecreen from "../UxVideosSecreen"
 import UiSecreenPlayList from "../UiSecreenPlayList"
 import UiSecreenStream from '../UiSecreenStream';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { changeColor } from "../../feature/hideShowModal/hideshowModal"
+
 const AppPage = () => {
-    const [color, setColor] = useState(1)
+    // const [color, setColor] = useState(1)
     const [checkdata, setCheckdata] = useState([
         {
             id: 1,
@@ -35,6 +39,8 @@ const AppPage = () => {
             Name: "Collection #",
         },
     ]);
+    const color = useSelector((state) => state.showModal.color)
+    const dispatch = useDispatch()
     window.onscroll = function () {
         myFunction();
     };
@@ -51,6 +57,11 @@ const AppPage = () => {
     const handelShow = () => {
         setShow(!show);
     };
+    const chnageTabData2 = (val) => {
+        dispatch(changeColor(val))
+    };
+
+
     return (
         <>
             <Header />
@@ -59,19 +70,18 @@ const AppPage = () => {
                 <div className='sound_cloud_filter_wrapper' id="myHeader">
                     <div className='hide_by_feature'> <UiSecreenFilter /></div>
                     <div className='filter_content_wrapper'>
-                        <div className={color == 1 ? 'filter_active ui_vedio' : 'ui_vedio'} onClick={() => {
-                            setColor(1)
-                        }}><div><img src={Videos} /></div>UX Videos</div>
-                        <div className={color == 2 ? 'filter_active ui_vedio' : 'ui_vedio'} onClick={() => {
-                            setColor(2)
-                        }}><div><img src={secreen} /></div>UI Screens</div>
+                        <div className={color === "1" ? 'filter_active ui_vedio' : 'ui_vedio'}
+                            onClick={() => chnageTabData2("1")}
+                        ><div><img src={Videos} /></div>UX Videos</div>
+                        <div className={color === "2" ? 'filter_active ui_vedio' : 'ui_vedio'}
+                            onClick={() => chnageTabData2("2")}><div><img src={secreen} /></div>UI Screens</div>
                     </div>
                     <div className='hide_by_feature'> <SelectByFeature /></div>
                 </div>
                 {
-                    color == 1 ?
+                    color === "1" ?
                         <UxVideoSecreen />
-                        : color == 2 ?
+                        : color === "2" ?
                             <>
                                 <UiSecreenPlayList />
                                 <UiSecreenStream />

@@ -7,6 +7,7 @@ import "./filter.css";
 import { BsChevronDown } from "react-icons/bs";
 import { BsFilter } from "react-icons/bs";
 import { BiChevronRight } from "react-icons/bi";
+import RightArrow from "../../assets/images/right-arrow.png"
 
 import img1 from "../../assets/images/s.png"
 
@@ -123,21 +124,14 @@ function Filter() {
             >
               <i className="icon_filter" style={{ marginLeft: "5px" }}>
                 {selectedFilter.length == 0 ? <BsFilter className="icon" size="16px" color="black" /> : <div className="filter_count">{selectedFilter.length}</div>}
-                {/* <BsFilter className="icon" size="16px" color="black" /> */}
+
               </i>
               <span>Filter</span>
             </button>
           </div>
           {show ? (
             <div className="filter_expand">
-              {/* <div class="form-group has-search">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="form_control"
-                        placeholder="Search"
-                      ></input>
-                    </div> */}
+
               <div className="filter_input">
                 <img src={img1} className="search" />
                 <Stack spacing={1} style={{ width: "95%" }} >
@@ -164,16 +158,16 @@ function Filter() {
 
 
               <hr className="bottom_line"></hr>
-              <div>
-                <button className="app_categories_button" type="button">
-                  <span>App Categories</span>
-                  <i className="icon_down">
-                    <BiChevronRight
-                      className="icon"
-                      size="16px"
-                      color="black" />
-                  </i>
-                </button>
+
+              <div className='UiSecreen_app_categories_button'>
+
+                <div className="d-flex"
+                  style={{ color: "black" }}>Elements</div>
+                <div>
+                  <img src={RightArrow} />
+                </div>
+
+
               </div>
 
 
