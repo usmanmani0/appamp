@@ -70,6 +70,11 @@
 .icon_filter {
   margin-right: 5px;
 }
+@media screen and (max-width:550px){
+  .icon_filter {
+    margin-right: 2px;
+  }
+}
 .filter_expand {
   position: absolute;
   width: 714px;
@@ -284,7 +289,7 @@
 }
 .css-16awh2u-MuiAutocomplete-root .MuiFilledInput-root {
   padding-top: 0px !important;
-  overflow: scroll;
+  overflow: hidden;
  
 }
 .css-1gctnaj-MuiInputBase-input-MuiFilledInput-input {

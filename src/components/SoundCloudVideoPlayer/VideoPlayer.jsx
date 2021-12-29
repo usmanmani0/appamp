@@ -33,6 +33,9 @@ import { Link } from "react-router-dom"
 import { hot } from "react-hot-loader";
 import { findDOMNode } from "react-dom";
 import screenfull from "screenfull";
+import { useSelector, useDispatch } from 'react-redux';
+import { handleShowModal } from '../../feature/hideShowModal/hideshowModal';
+import MobileAddCollectionModal from "../MobileAddCollection";
 
 
 const data = [
@@ -195,6 +198,9 @@ const cardsdata = [
 ];
 
 const VideoPlayer = () => {
+  const showAddModal = useSelector((state) => state.showModal.show)
+  const fullscreen = useSelector((state) => state.showModal.fullscreen)
+  const dispatch = useDispatch()
   const [playOn, setPlayOn] = useState({
     playing: true,
     playbackRate: 1.0,
@@ -355,21 +361,21 @@ const VideoPlayer = () => {
   const [showUmodal, setShowUmodal] = useState();
 
   const handelUmodel = (index) => {
-    if(index == showUmodal){
+    if (index == showUmodal) {
       setShowUmodal(-1);
     }
     else
-    setShowUmodal(index);
+      setShowUmodal(index);
   };
 
   // console.log(":showUmodal=======>",showUmodal)
 
-  const [fullscreen, setFullscreen] = useState(true);
+  // const [fullscreen, setFullscreen] = useState(true);
 
-  function handleShowModal(breakpoint) {
-    setFullscreen(breakpoint);
-    setShow(true);
-  }
+  // function handleShowModal(breakpoint) {
+  //   setFullscreen(breakpoint);
+  //   setShow(true);
+  // }
 
   return (
     <>
@@ -563,7 +569,7 @@ const VideoPlayer = () => {
                   >
                     {" "}
                     <Link
-                      
+
                       to="/SoundCloudPage"
                     >
                       <span className="save_txt">Save</span>
@@ -749,7 +755,7 @@ const VideoPlayer = () => {
 
                       {index === showUmodal ? (
                         <div className="u_modal_cards_mv">
-                          <div className="u_plus_wrapper_mdl">
+                          <div className="u_plus_wrapper_mdl" onClick={() => dispatch(handleShowModal(true))}>
                             <Image src={plusicon} rounded />
                           </div>
                           <div className="u_down_wrapper_mdl">
@@ -852,8 +858,8 @@ const VideoPlayer = () => {
           </div>
           <hr />
         </div>
+        <MobileAddCollectionModal />
 
-        
       </Container>
     </>
   );
@@ -862,93 +868,3 @@ const VideoPlayer = () => {
 export default VideoPlayer;
 
 
-{/* <div className="mdl_mv">
-<Modal
-  show={show}
-  fullscreen={fullscreen}
-  onHide={() => setShow(false)}
->
-  <Modal.Header
-    className="mdl_header_navbar"
-    closeButton
-  >
-    <Modal.Title style={{ textAlign: "center" }}>
-      Add to Collection
-    </Modal.Title>
-  </Modal.Header>
-  <Modal.Body>
-    <div className="popoover_wrapper_mv">
-      <div class="form-group has-search ">
-        <input
-          type="text"
-          class="form-control"
-          id="form_control"
-          placeholder="Search Collections"
-        ></input>
-      </div>
-      {checkdata.map((data, index) => {
-        return (
-          <div
-            className="collection_checkbox_wrapper"
-            key={index}
-          >
-            <div
-              className={
-                tick.includes(`${index}`)
-                  ? "checkbox_wrapper_enable"
-                  : "checkbox_wrapper"
-              }
-              onClick={() => checkTick(`${index}`)}
-            >
-              {tick.includes(`${index}`) ? (
-                <Image src={data.image} />
-              ) : (
-                ""
-              )}
-            </div>
-            <div>
-              <span className="collection_txt">
-                {data.Name + " " + [index + 1]}
-              </span>
-            </div>
-          </div>
-        );
-      })}
-
-      <div className="save_collection_btn_wrapper_mv">
-        <div
-          className="add_collection_btn"
-          onClick={() => addCollection()}
-        >
-          <Image src={plusiconsave} />
-          <span className="nc_txt">
-            New Collection
-          </span>
-        </div>
-
-        <div
-          className={
-            tick.length >= 1
-              ? "save_coll_enable_btn"
-              : " save_collection_btn"
-          }
-          onClick={
-            tick.length >= 1
-              ? () => saveCollection()
-              : null
-          }
-        >
-          {" "}
-          <a
-            style={{ textDecoration: "none" }}
-            href="/SoundCloudPage"
-          >
-            {" "}
-            <span className="save_txt">Save</span>
-          </a>{" "}
-        </div>
-      </div>
-    </div>
-  </Modal.Body>
-</Modal>
-</div> */}
