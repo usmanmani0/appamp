@@ -20,19 +20,22 @@ import Down from "../../assets/images/Download.png";
 import Plus from "../../assets/images/plus.png";
 import checkicon from "../../assets/soundcloudimages/Check.png";
 import plusiconsave from "../../assets/soundcloudimages/plusiconsave.png";
+import { useSelector, useDispatch } from 'react-redux';
+import { handleShowModal } from '../../feature/hideShowModal/hideshowModal';
 const NavBarSoundCloud = () => {
+  const show = useSelector((state) => state.showModal.show)
+  const fullscreen = useSelector((state) => state.showModal.fullscreen)
+  const dispatch = useDispatch()
   const [select, setSelect] = useState(false);
-  const [fullscreen, setFullscreen] = useState(true);
-  const [show, setShow] = useState(false);
+  // const [fullscreen, setFullscreen] = useState(true);
+  // const [show, setShow] = useState(false);
 
   const handleShow = () => {
     setSelect(!select);
   };
 
-  function handleShowModal(breakpoint) {
-    setFullscreen(breakpoint);
-    setShow(true);
-  }
+
+
 
   const [tick, setTick] = useState([]);
 
@@ -55,8 +58,24 @@ const NavBarSoundCloud = () => {
   };
 
   const [checkdata, setCheckdata] = useState([
-   
-    
+    {
+      id: 1,
+      checked: false,
+      image: checkicon,
+      Name: "Collection #",
+    },
+    {
+      id: 1,
+      checked: true,
+      image: checkicon,
+      Name: "Collection #",
+    },
+    {
+      id: 1,
+      checked: true,
+      image: checkicon,
+      Name: "Collection #",
+    },
   ]);
   const addCollection = () => {
     let obj = {
@@ -143,9 +162,9 @@ const NavBarSoundCloud = () => {
         <Row className="mv_navbar_row_wrapper">
           <Col xs={2}>
             <div className="navlogo_wrapper">
-              <div className="backarrow"   onClick={() => {
-                    history(-1);
-                  }}>
+              <div className="backarrow" onClick={() => {
+                history(-1);
+              }}>
                 <Image src={backarrow} rounded />
               </div>
             </div>
@@ -175,7 +194,7 @@ const NavBarSoundCloud = () => {
               <div className="share_copy_mv">
                 <div className="select_content_wrapper_1">
                   <div
-                    onClick={handleShowModal}
+                    onClick={() => dispatch(handleShowModal(true))}
                     className="d-flex align-items-center"
                   >
                     <div>
@@ -199,11 +218,11 @@ const NavBarSoundCloud = () => {
               </div>
             ) : null}
 
-            <div className="mdl_mv"> 
+            <div className="mdl_mv">
               <Modal
                 show={show}
                 fullscreen={fullscreen}
-                onHide={() => setShow(false)}
+                onHide={() => dispatch(handleShowModal(false))}
               >
                 <Modal.Header className="mdl_header_navbar" closeButton>
                   <Modal.Title style={{ textAlign: "center" }}>
@@ -269,7 +288,7 @@ const NavBarSoundCloud = () => {
                         }
                       >
                         {" "}
-                        <a style={{textDecoration:'none'}} href="/SoundCloudPage">
+                        <a style={{ textDecoration: 'none' }} href="/SoundCloudPage">
                           {" "}
                           <span className="save_txt">Save</span>
                         </a>{" "}

@@ -347,13 +347,21 @@
     display: none !important;
   }
 }
-
+.checkbox_wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: #f4f4f4;
+  margin: 16px 12px 12px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .Ui_Secreen_checkbox_wrapper {
   width: 40px;
   height: 40px;
   border-radius: 8px;
   background-color: #f4f4f4;
-  /* margin: 16px 12px 12px 24px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -388,10 +396,7 @@
 .UI_Secreen_collection_checkbox_wrapper {
   display: flex;
   align-items: center;
-  
-
-  
-  
+ 
 }
 .Ui_Secreen_collection_inner_wrapper{
   display: flex;
@@ -402,6 +407,9 @@
   
 
 }
+.Ui_Secreen_collection_inner_wrapper:hover .Ui_Secreen_checkbox_wrapper{
+  background-color: white;
+}
 .Ui_Secreen_collection_inner_wrapper:hover{
   background-color: #F4F4F4;
   border-radius: 8px;
@@ -410,9 +418,7 @@
 .play_vedio_add_collection{
   display: none;
 }
-.Ui_Secreen_collection_inner_wrapper:hover{
 
-}
 .Ui_Secreen_collection_inner_wrapper:hover >div > .play_vedio_add_collection  {
 display: block !important;
 z-index: 99;

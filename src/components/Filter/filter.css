@@ -82,7 +82,7 @@
 }
 .App_Page_filter_expand {
   position: absolute;
-  min-width: 35%;
+  width: 714px;
 
   height: 433px;
   border-radius: 8px;
@@ -91,11 +91,22 @@
   overflow-y: scroll;
   z-index: 100000;
 }
-.has-search {
+
+.has-search{
+  padding: 1rem;
+}
+.has-search .form-control {
+  padding-left: 2.375rem;
+  background-image: url("https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-24.png");
+  background-position: 10px 7px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.Ui_Secreen_has-search {
   padding: 8px 8px 8px 8px;
 }
 
-.has-search .form-control {
+.Ui_Secreen_has-search .form-control {
   padding-left: 2.375rem;
   background-image: url("https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-24.png");
   background-position: 10px 7px;
@@ -121,7 +132,7 @@
   background-color: #c5c5c5;
 }
 .app_categories_button {
-  margin-left: 24px;
+  display: flex;
   width: 190px;
   height: 40px;
   border-radius: 8px;
@@ -136,11 +147,33 @@
   letter-spacing: 0.02em;
   text-transform: capitalize;
 }
+.UiSecreen_app_categories_button {
+  display: flex;
+  width: 216px;
+  margin-left: 16px;
+  justify-content: space-between;
+  height: 36px;
+  border-radius: 8px;
+  font-family: Space Grotesk;
+  font-style: normal;
+  font-weight: 400;
+  cursor: pointer;
+  background-color: #FAFAFA;
+  align-items: center;
+  padding: 0px 12px 0px 16px;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
+}
 .checkbox_div {
   margin-left: 16rem;
   margin-top: -30px;
 
   color: black;
+}
+.Ui_Secreen_filter_checkbox{
+  width: 40%;
 }
 
 .label {
@@ -226,11 +259,13 @@
 .filter_count {
   width: 25px;
   height: 18px;
+  padding: 1px !important;
   color: white;
   background-color: #5097f3;
   border-radius: 8px;
   padding: 1px;
-  margin-left: 1px;
+  text-align: center;
+  margin-left: 16px;
 }
 .filter_input {
   width: 98%;
@@ -238,7 +273,7 @@
   border-radius: 8px;
   border: 1px solid #c5c5c5;
   background-color: white;
-  height: 56px;
+  min-height: 56px;
   display: flex;
   /* justify-content: center; */
   align-items: center;
@@ -249,6 +284,8 @@
 }
 .css-16awh2u-MuiAutocomplete-root .MuiFilledInput-root {
   padding-top: 0px !important;
+  overflow: scroll;
+ 
 }
 .css-1gctnaj-MuiInputBase-input-MuiFilledInput-input {
   border-radius: 8px;

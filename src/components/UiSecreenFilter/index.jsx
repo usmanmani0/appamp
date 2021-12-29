@@ -11,6 +11,7 @@ import { BiChevronRight } from "react-icons/bi";
 import RightArrow from "../../assets/images/right-arrow.png"
 import { useSelector, useDispatch } from 'react-redux';
 import { handelShow } from '../../feature/addCollection/counterSlice';
+// import RightArrow from "../../assets/images/right-arrow.png"
 import counterSlice from '../../feature/addCollection/counterSlice';
 
 
@@ -57,19 +58,19 @@ const UiSecreenFilter = () => {
     const controlArray = [
         {
             id: 1,
-            typeis: "Accordian"
+            typeis: "Button"
         },
         {
             id: 2,
-            typeis: "Badge"
+            typeis: "Carousal"
         },
         {
             id: 3,
-            typeis: "Banner"
+            typeis: "Color Picker"
         },
         {
             id: 4,
-            typeis: "Card"
+            typeis: "Floating Action Button"
         },
         {
             id: 5,
@@ -77,11 +78,11 @@ const UiSecreenFilter = () => {
         },
         {
             id: 6,
-            typeis: "Divider"
+            typeis: "Loading Indicator"
         },
         {
             id: 7,
-            typeis: "List"
+            typeis: "Multi & Single Select"
         },
         {
             id: 8,
@@ -89,11 +90,11 @@ const UiSecreenFilter = () => {
         },
         {
             id: 9,
-            typeis: "Sheets"
+            typeis: "Page Control"
         },
         {
             id: 10,
-            typeis: "Skeleton"
+            typeis: "Progress Indicator"
         },
     ]
     const displayArray = [
@@ -183,15 +184,15 @@ const UiSecreenFilter = () => {
     const overlayArray = [
         {
             id: 1,
-            typeis: "Accordian"
+            typeis: "Animation & Video"
         },
         {
             id: 2,
-            typeis: "Badge"
+            typeis: "App Icon"
         },
         {
             id: 3,
-            typeis: "Banner"
+            typeis: "Avatar"
         },
         {
             id: 4,
@@ -199,11 +200,11 @@ const UiSecreenFilter = () => {
         },
         {
             id: 5,
-            typeis: "Collections / Gallery"
+            typeis: "Hero Image"
         },
         {
             id: 6,
-            typeis: "Divider"
+            typeis: "Icons"
         },
         {
             id: 7,
@@ -211,49 +212,37 @@ const UiSecreenFilter = () => {
         },
         {
             id: 8,
-            typeis: "Pin"
+            typeis: "Illustrator"
         },
         {
             id: 9,
-            typeis: "Sheets"
+            typeis: "ShePhotoets"
         },
         {
             id: 10,
-            typeis: "Skeleton"
+            typeis: "System Icons"
         },
     ]
     const iconsArray = [
         {
             id: 1,
-            typeis: "Action Menu"
+            typeis: "Alerts"
         },
         {
             id: 2,
-            typeis: "Bottom Sheet"
-        },
-        {
-            id: 3,
-            typeis: "Context Menu"
-        },
-        {
-            id: 4,
-            typeis: "Date & Time Picker"
-        },
-        {
-            id: 5,
             typeis: "Dialog"
         },
         {
-            id: 6,
-            typeis: "Full-Screen Overlay"
+            id: 3,
+            typeis: "Progress"
         },
         {
-            id: 7,
-            typeis: "Side Sheet"
+            id: 4,
+            typeis: "Snackbar / Toast"
         },
         {
-            id: 8,
-            typeis: "Text Edit Menu"
+            id: 5,
+            typeis: "Tooltip"
         },
 
     ]
@@ -278,8 +267,9 @@ const UiSecreenFilter = () => {
                         className="filter_button d-flex align-items-center"
                         type="button"
                     >
-                        <i className="icon_filter" style={{ marginLeft: "5px" }}>
-                            {selectedFilter.length == 0 ? <BsFilter className="icon" size="16px" color="black" /> : <div className="filter_count">{selectedFilter.length}</div>}
+                        <i className="icon_filter">
+                            <BsFilter className="icon" size="16px" color="black" sty
+                            />
 
                         </i>
                         <span>Filter</span>
@@ -315,27 +305,26 @@ const UiSecreenFilter = () => {
                         <hr className="bottom_line"></hr>
 
                         <div className='d-flex justify-content-around' onMouseLeave={() => { setOpt(null) }}>
-                            <div >
+
+                            <div className='UiSecreen_app_categories_button'>
+
+                                <div className="d-flex"
+                                >Elements {selectedFilter.length == 0 ? "" : <div className="filter_count">{selectedFilter.length}</div>}</div>
                                 <div>
-                                    <button className="app_categories_button" type="button">
-                                        <span>Elements</span>
-                                        <i className="icon_down">
-                                            <BiChevronRight
-                                                className="icon"
-                                                size="16px"
-                                                color="black" />
-                                        </i>
-                                    </button>
+                                    <img src={RightArrow} />
                                 </div>
+
+
                             </div>
-                            <div >
+
+                            <div  >
                                 <div className='option_data ' onMouseEnter={() => { setOpt(0) }}><div>Bars</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
                                 <div className='option_data ' onMouseEnter={() => { setOpt(1) }}><div>Control</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
                                 <div className='option_data ' onMouseEnter={() => { setOpt(2) }}><div>Display</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
                                 <div className='option_data ' onMouseEnter={() => { setOpt(3) }}><div>Feedback</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
                                 <div className='option_data ' onMouseEnter={() => { setOpt(4) }}><div>Icons & Images</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
                                 <div className='option_data ' onMouseEnter={() => { setOpt(5) }}><div>Overlay</div><div><img src={RightArrow} className='option_right_arrow' /></div></div> </div>
-                            <div style={{ paddingRight: "10px" }}>
+                            <div className='Ui_Secreen_filter_checkbox'>
 
                                 {list.map((data, index) => {
                                     return (

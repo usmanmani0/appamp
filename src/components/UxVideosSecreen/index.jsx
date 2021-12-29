@@ -141,7 +141,7 @@ const UxVideoSecreen = () => {
 
                                                     <div className="UI_Secreen_popoover_wrapper" style={{ display: index === showPopover.open ? "block" : "none" }}>
 
-                                                        <div class="form-group has-search ">
+                                                        <div class="form-group Ui_Secreen_has-search ">
                                                             <input
                                                                 type="text"
                                                                 class="form-control"

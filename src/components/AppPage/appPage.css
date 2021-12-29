@@ -227,11 +227,18 @@
 .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
   border: none !important;
 }
+.con{
+  font-size: 14px !important;
+}
+.icon_filter{
+  padding-left: 10px;
+}
 
 .option_data {
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
+  margin-left: 16px;
   height: 36px;
   display: flex;
   justify-content: space-between;
