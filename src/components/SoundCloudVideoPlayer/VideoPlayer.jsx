@@ -29,11 +29,11 @@ import plusiconsave from "../../assets/soundcloudimages/plusiconsave.png";
 import checkalert from "../../assets/soundcloudimages/CheckAlert.png";
 import playiconsrightcard from "../../assets/soundcloudimages/Playiconcards.png";
 import navactionbar from "../../assets/soundcloudimages/navactionbar.png";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import { hot } from "react-hot-loader";
 import { findDOMNode } from "react-dom";
 import screenfull from "screenfull";
-
+// import { useNavigate } from "react-router-dom";
 
 const data = [
   {
@@ -203,7 +203,7 @@ const VideoPlayer = () => {
     muted: false,
     volume: 0.5,
   });
-
+  // const navigate = useNavigate();
   const { playing, playbackRate, played, muted, volume, seeking } = playOn;
   const [tick, setTick] = useState([]);
 
@@ -245,13 +245,13 @@ const VideoPlayer = () => {
     },
     {
       id: 1,
-      checked: true,
+      checked: false,
       image: checkicon,
       Name: "Collection #",
     },
     {
       id: 1,
-      checked: true,
+      checked: false,
       image: checkicon,
       Name: "Collection #",
     },
@@ -284,7 +284,7 @@ const VideoPlayer = () => {
   };
 
   const handelProgress = (changeState) => {
-    console.log("CHANGE STATE", changeState);
+    // console.log("CHANGE STATE", changeState);
     if (!playOn.seeking) {
       setPlayOn({ ...playOn, ...changeState });
     }
@@ -355,21 +355,19 @@ const VideoPlayer = () => {
   const [showUmodal, setShowUmodal] = useState();
 
   const handelUmodel = (index) => {
-    if(index == showUmodal){
+    if (index == showUmodal) {
       setShowUmodal(-1);
-    }
-    else
-    setShowUmodal(index);
+    } else setShowUmodal(index);
   };
 
   // console.log(":showUmodal=======>",showUmodal)
 
-  const [fullscreen, setFullscreen] = useState(true);
+  // const [fullscreen, setFullscreen] = useState(true);
 
-  function handleShowModal(breakpoint) {
-    setFullscreen(breakpoint);
-    setShow(true);
-  }
+  // function handleShowModal(breakpoint) {
+  //   setFullscreen(breakpoint);
+  //   setShow(true);
+  // }
 
   return (
     <>
@@ -562,10 +560,7 @@ const VideoPlayer = () => {
                     onClick={tick.length >= 1 ? () => saveCollection() : null}
                   >
                     {" "}
-                    <Link
-                      
-                      to="/SoundCloudPage"
-                    >
+                    <Link to="/SoundCloudPage">
                       <span className="save_txt">Save</span>
                     </Link>{" "}
                   </div>
@@ -577,7 +572,7 @@ const VideoPlayer = () => {
               <div className="confirmation_wrapper">
                 <Image src={checkalert} />
                 <span className="alert_txt">Video added to 2 Collections</span>
-                <div className="undo_btn">
+                <div onClick={() => setTick([])} className="undo_btn">
                   <span className="undo_txt">Undo</span>
                 </div>
               </div>
@@ -769,8 +764,6 @@ const VideoPlayer = () => {
             })}
           </div>
         </div>
-
-
       </Container>
       <Container className="mv_sc_container">
         <button
@@ -852,8 +845,6 @@ const VideoPlayer = () => {
           </div>
           <hr />
         </div>
-
-        
       </Container>
     </>
   );
@@ -861,8 +852,8 @@ const VideoPlayer = () => {
 
 export default VideoPlayer;
 
-
-{/* <div className="mdl_mv">
+{
+  /* <div className="mdl_mv">
 <Modal
   show={show}
   fullscreen={fullscreen}
@@ -951,4 +942,5 @@ export default VideoPlayer;
     </div>
   </Modal.Body>
 </Modal>
-</div> */}
+</div> */
+}

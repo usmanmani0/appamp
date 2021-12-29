@@ -40,9 +40,9 @@ const NavBarSoundCloud = () => {
   const [tick, setTick] = useState([]);
 
   const checkTick = async (index) => {
-    let findIndex = tick.find((data) => data == index);
+    let findIndex = tick.find((data) => data === index);
     if (findIndex) {
-      let removeIndex = await tick.filter((data) => data != index);
+      let removeIndex = await tick.filter((data) => data !== index);
       setTick(removeIndex);
     } else {
       setTick([...tick, index]);
@@ -136,7 +136,7 @@ const NavBarSoundCloud = () => {
                   <OverlayTrigger
                     delay={{ hide: 150, show: 300 }}
                     overlay={(props) => (
-                      <Tooltip {...props}>Previous Chapter</Tooltip>
+                      <Tooltip {...props}>Next Chapter</Tooltip>
                     )}
                     placement="bottom"
                   >
@@ -198,19 +198,19 @@ const NavBarSoundCloud = () => {
                     className="d-flex align-items-center"
                   >
                     <div>
-                      <img src={Plus} />
+                      <img src={Plus} alt="err" />
                     </div>
                     <div className="add_to_col">Add to Collection</div>
                   </div>
                   <div className="d-flex align-items-center mt-2">
                     <div>
-                      <img src={Down} style={{ marginLeft: "-7px" }} />
+                      <img src={Down} style={{ marginLeft: "-7px" }} alt="err" />
                     </div>
                     <div className="select_download">Download</div>
                   </div>
                   <div className="d-flex align-items-center mt-2">
                     <div>
-                      <img src={Copy} />
+                      <img src={Copy} alt="err" />
                     </div>
                     <div className="add_to_col">Copy Share Link</div>
                   </div>
