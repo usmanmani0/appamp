@@ -240,7 +240,7 @@ const UxVideoSecreen = () => {
                                             <Image src={checkalert} />
                                             <span className="alert_txt">Video added to 2 Collections</span>
                                             <div className="undo_btn">
-                                                <span className="undo_txt">Undo</span>
+                                                <span className="undo_txt" onClick={() => setTick([])}>Undo</span>
                                             </div>
                                         </div>
                                     ) : null}

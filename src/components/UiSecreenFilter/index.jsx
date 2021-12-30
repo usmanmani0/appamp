@@ -11,44 +11,39 @@ import { BiChevronRight } from "react-icons/bi";
 import RightArrow from "../../assets/images/right-arrow.png"
 import { useSelector, useDispatch } from 'react-redux';
 import { handelShow } from '../../feature/addCollection/counterSlice';
-// import RightArrow from "../../assets/images/right-arrow.png"
+
 import counterSlice from '../../feature/addCollection/counterSlice';
 
 
 const UiSecreenFilter = () => {
     const color = useSelector((state) => state.showModal.color)
     const show = useSelector((state) => state.hideShow.show)
-    console.log('show value=====>', show)
     const dispatch = useDispatch()
-    // const [show, setShow] = useState(false);
-    // const handelShow = () => {
-    //     setShow(!show);
-    // };
     const [isCheckAll, setIsCheckAll] = useState(false);
     const [isCheck, setIsCheck] = useState([]);
     const [opt, setOpt] = useState()
     const [selectedFilter, SetSelectedFilter] = useState([]);
     const [list, setList] = useState([
         {
-            id: 2,
+            id: 1,
             typeis: "Navigation Bar",
         },
         {
-            id: 3,
+            id: 2,
             typeis: "Search Bar",
         },
         {
-            id: 4,
+            id: 3,
             typeis: "Tool Bar",
         },
         {
-            id: 5,
+            id: 4,
             typeis: "Navigation Bar",
         },
 
     ]);
     const enteringAutoComplete = (value) => {
-        console.log("AUTOVALUE", value);
+
         SetSelectedFilter((preValue) => {
             return (
                 value
@@ -80,191 +75,191 @@ const UiSecreenFilter = () => {
     ]
     const controlArray = [
         {
-            id: 1,
+            id: 11,
             typeis: "Button"
         },
         {
-            id: 2,
+            id: 22,
             typeis: "Carousal"
         },
         {
-            id: 3,
+            id: 33,
             typeis: "Color Picker"
         },
         {
-            id: 4,
+            id: 44,
             typeis: "Floating Action Button"
         },
         {
-            id: 5,
+            id: 55,
             typeis: "Collections / Gallery"
         },
         {
-            id: 6,
+            id: 66,
             typeis: "Loading Indicator"
         },
         {
-            id: 7,
+            id: 77,
             typeis: "Multi & Single Select"
         },
         {
-            id: 8,
+            id: 88,
             typeis: "Pin"
         },
         {
-            id: 9,
+            id: 99,
             typeis: "Page Control"
         },
         {
-            id: 10,
+            id: 100,
             typeis: "Progress Indicator"
         },
     ]
     const displayArray = [
         {
-            id: 1,
+            id: 111,
             typeis: "Accordian"
         },
         {
-            id: 2,
+            id: 222,
             typeis: "Badge"
         },
         {
-            id: 3,
+            id: 333,
             typeis: "Banner"
         },
         {
-            id: 4,
+            id: 444,
             typeis: "Card"
         },
         {
-            id: 5,
+            id: 555,
             typeis: "Collections / Gallery"
         },
         {
-            id: 6,
+            id: 666,
             typeis: "Divider"
         },
         {
-            id: 7,
+            id: 777,
             typeis: "List"
         },
         {
-            id: 8,
+            id: 888,
             typeis: "Pin"
         },
         {
-            id: 9,
+            id: 999,
             typeis: "Sheets"
         },
         {
-            id: 10,
+            id: 1000,
             typeis: "Skeleton"
         },
     ]
     const feedbackArray = [
         {
-            id: 1,
+            id: 101,
             typeis: "Accordian"
         },
         {
-            id: 2,
+            id: 202,
             typeis: "Badge"
         },
         {
-            id: 3,
+            id: 303,
             typeis: "Banner"
         },
         {
-            id: 4,
+            id: 404,
             typeis: "Card"
         },
         {
-            id: 5,
+            id: 505,
             typeis: "Collections / Gallery"
         },
         {
-            id: 6,
+            id: 606,
             typeis: "Divider"
         },
         {
-            id: 7,
+            id: 707,
             typeis: "List"
         },
         {
-            id: 8,
+            id: 808,
             typeis: "Pin"
         },
         {
-            id: 9,
+            id: 909,
             typeis: "Sheets"
         },
         {
-            id: 10,
+            id: 110,
             typeis: "Skeleton"
         },
     ]
     const overlayArray = [
         {
-            id: 1,
+            id: 102,
             typeis: "Animation & Video"
         },
         {
-            id: 2,
+            id: 201,
             typeis: "App Icon"
         },
         {
-            id: 3,
+            id: 302,
             typeis: "Avatar"
         },
         {
-            id: 4,
+            id: 403,
             typeis: "Card"
         },
         {
-            id: 5,
+            id: 504,
             typeis: "Hero Image"
         },
         {
-            id: 6,
+            id: 605,
             typeis: "Icons"
         },
         {
-            id: 7,
+            id: 706,
             typeis: "List"
         },
         {
-            id: 8,
+            id: 807,
             typeis: "Illustrator"
         },
         {
-            id: 9,
+            id: 908,
             typeis: "ShePhotoets"
         },
         {
-            id: 10,
+            id: 104,
             typeis: "System Icons"
         },
     ]
     const iconsArray = [
         {
-            id: 1,
+            id: 303,
             typeis: "Alerts"
         },
         {
-            id: 2,
+            id: 123,
             typeis: "Dialog"
         },
         {
-            id: 3,
+            id: 124,
             typeis: "Progress"
         },
         {
-            id: 4,
+            id: 125,
             typeis: "Snackbar / Toast"
         },
         {
-            id: 5,
+            id: 126,
             typeis: "Tooltip"
         },
 
@@ -280,6 +275,20 @@ const UiSecreenFilter = () => {
             SetSelectedFilter([...selectedFilter, name]);
         }
     };
+
+
+    const countFilter = (arr) => {
+        let count = 0
+        if (arr.length >= 1) {
+            arr.map((data) => {
+                if (selectedFilter.includes(data)) {
+                    count++
+                }
+            })
+        }
+        return count
+    }
+
 
     return (
         <>
@@ -341,7 +350,7 @@ const UiSecreenFilter = () => {
                                 </div>
 
                                 <div  >
-                                    <div className='option_data ' onMouseEnter={() => { setOpt(0) }}><div>Pattern Category 1</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                    <div className='option_data ' onMouseEnter={() => { setOpt(0) }}><div>Pattern Category 1 { }</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
                                     <div className='option_data ' onMouseEnter={() => { setOpt(1) }}><div>Pattern Category 2</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
                                     <div className='option_data ' onMouseEnter={() => { setOpt(2) }}><div>Pattern Category 3</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
                                     <div className='option_data ' onMouseEnter={() => { setOpt(3) }}><div>Pattern Category 4</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
@@ -350,6 +359,7 @@ const UiSecreenFilter = () => {
                                 <div className='Ui_Secreen_filter_checkbox'>
 
                                     {Pattern.map((data, index) => {
+
                                         return (
                                             <>
                                                 <div className="appPage_checkbox_div" style={{ display: opt == 0 ? "block" : "none" }}>
@@ -361,6 +371,7 @@ const UiSecreenFilter = () => {
                                                         id={data.id}
                                                         onClick={(e) => handleClick(e, data.typeis)}
                                                         checked={selectedFilter.includes(`${data.typeis}`)} />
+
                                                     <label className="label">{data.typeis}</label>{" "}
                                                 </div>
 
@@ -447,7 +458,7 @@ const UiSecreenFilter = () => {
                                     {Pattern.map((data, index) => {
                                         return (
                                             <>
-                                                <div className="appPage_checkbox_div" style={{ display: opt == 5 ? "block" : "none" }}>
+                                                <div className="appPage_checkbox_div" style={{ display: opt == 6 ? "block" : "none" }}>
 
                                                     <input
 
@@ -484,12 +495,12 @@ const UiSecreenFilter = () => {
                                 </div>
 
                                 <div  >
-                                    <div className='option_data ' onMouseEnter={() => { setOpt(0) }}><div>Bars</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                    <div className='option_data ' onMouseEnter={() => { setOpt(1) }}><div>Control</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                    <div className='option_data ' onMouseEnter={() => { setOpt(2) }}><div>Display</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                    <div className='option_data ' onMouseEnter={() => { setOpt(3) }}><div>Feedback</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                    <div className='option_data ' onMouseEnter={() => { setOpt(4) }}><div>Icons & Images</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                    <div className='option_data ' onMouseEnter={() => { setOpt(5) }}><div>Overlay</div><div><img src={RightArrow} className='option_right_arrow' /></div></div> </div>
+                                    <div className='option_data ' onMouseEnter={() => { setOpt(0) }}><div>Bars {selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => list.some(li => li.typeis == data)).length}</span> : ""} </div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                    <div className='option_data ' onMouseEnter={() => { setOpt(1) }}><div>Control{selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => controlArray.some(li => li.typeis == data)).length}</span> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                    <div className='option_data ' onMouseEnter={() => { setOpt(2) }}><div>Display {selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => displayArray.some(li => li.typeis == data)).length}</span> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                    <div className='option_data ' onMouseEnter={() => { setOpt(3) }}><div>Feedback {selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => feedbackArray.some(li => li.typeis == data)).length}</span> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                    <div className='option_data ' onMouseEnter={() => { setOpt(4) }}><div>Icons & Images {selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => overlayArray.some(li => li.typeis == data)).length}</span> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                    <div className='option_data ' onMouseEnter={() => { setOpt(5) }}><div>Overlay {selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => iconsArray.some(li => li.typeis == data)).length}</span> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div> </div>
                                 <div className='Ui_Secreen_filter_checkbox'>
 
                                     {list.map((data, index) => {
@@ -587,7 +598,7 @@ const UiSecreenFilter = () => {
                                             </>
                                         );
                                     })}
-                                    {overlayArray.map((data, index) => {
+                                    {iconsArray.map((data, index) => {
                                         return (
                                             <>
                                                 <div className="appPage_checkbox_div" style={{ display: opt == 5 ? "block" : "none" }}>

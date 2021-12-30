@@ -574,6 +574,7 @@ z-index: 99;
   letter-spacing: 0.02em;
   text-transform: capitalize;
   color: #161618;
+  cursor: pointer;
 }
 
 .link_copy_wrapper {
