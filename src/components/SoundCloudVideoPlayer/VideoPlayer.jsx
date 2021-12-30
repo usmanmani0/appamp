@@ -130,6 +130,8 @@ const VideoPlayer = (props) => {
 
   const fullscreen = useSelector((state) => state.showModal.fullscreen);
   const dispatch = useDispatch();
+
+
   const [playOn, setPlayOn] = useState({
     playing: true,
     playbackRate: 1.0,
