@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState , useEffect } from "react";
 import {
   Container,
   Image,
@@ -29,140 +29,146 @@ import plusiconsave from "../../assets/soundcloudimages/plusiconsave.png";
 import checkalert from "../../assets/soundcloudimages/CheckAlert.png";
 import playiconsrightcard from "../../assets/soundcloudimages/Playiconcards.png";
 import navactionbar from "../../assets/soundcloudimages/navactionbar.png";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import { hot } from "react-hot-loader";
 import { findDOMNode } from "react-dom";
 import screenfull from "screenfull";
-import { useSelector, useDispatch } from 'react-redux';
-import { handleShowModal } from '../../feature/hideShowModal/hideshowModal';
+import { useSelector, useDispatch } from "react-redux";
+import { handleShowModal } from "../../feature/hideShowModal/hideshowModal";
 import MobileAddCollectionModal from "../MobileAddCollection";
 
+// const data = [
+//   {
+//     id: 1,
+//     image: tidal,
+//     title: "Sign Up",
+//     thumbnailimg: tidalthumbnail,
+//     thumbnailtitle: "Tidal",
+//     videotime: "12:34",
+//   },
+//   {
+//     id: 2,
+//     image: tidal,
+//     title: "Sign Up",
+//     thumbnailimg: tidalthumbnail,
+//     thumbnailtitle: "Tidal",
+//     videotime: "12:34",
+//   },
+//   {
+//     id: 3,
+//     image: tidal,
+//     title: "Sign Up",
+//     thumbnailimg: tidalthumbnail,
+//     thumbnailtitle: "Tidal",
+//     videotime: "12:34",
+//   },
+//   {
+//     id: 4,
+//     image: tidal,
+//     title: "Sign Up",
+//     thumbnailimg: tidalthumbnail,
+//     thumbnailtitle: "Tidal",
+//     videotime: "12:34",
+//   },
+//   {
+//     id: 5,
+//     image: tidal,
+//     title: "Sign Up",
+//     thumbnailimg: tidalthumbnail,
+//     thumbnailtitle: "Tidal",
+//     videotime: "12:34",
+//   },
+//   {
+//     id: 6,
+//     image: tidal,
+//     title: "Sign Up",
+//     thumbnailimg: tidalthumbnail,
+//     thumbnailtitle: "Tidal",
+//     videotime: "12:34",
+//   },
+//   {
+//     id: 7,
+//     image: tidal,
+//     title: "Sign Up",
+//     thumbnailimg: tidalthumbnail,
+//     thumbnailtitle: "Tidal",
+//     videotime: "12:34",
+//   },
+//   {
+//     id: 8,
+//     image: tidal,
+//     title: "Sign Up",
+//     thumbnailimg: tidalthumbnail,
+//     thumbnailtitle: "Tidal",
+//     videotime: "12:34",
+//   },
+//   {
+//     id: 9,
+//     image: tidal,
+//     title: "Sign Up",
+//     thumbnailimg: tidalthumbnail,
+//     thumbnailtitle: "Tidal",
+//     videotime: "12:34",
+//   },
+// ];
 
-const data = [
-  {
-    id: 1,
-    image: tidal,
-    title: "Sign Up",
-    thumbnailimg: tidalthumbnail,
-    thumbnailtitle: "Tidal",
-    videotime: "12:34",
-  },
-  {
-    id: 2,
-    image: tidal,
-    title: "Sign Up",
-    thumbnailimg: tidalthumbnail,
-    thumbnailtitle: "Tidal",
-    videotime: "12:34",
-  },
-  {
-    id: 3,
-    image: tidal,
-    title: "Sign Up",
-    thumbnailimg: tidalthumbnail,
-    thumbnailtitle: "Tidal",
-    videotime: "12:34",
-  },
-  {
-    id: 4,
-    image: tidal,
-    title: "Sign Up",
-    thumbnailimg: tidalthumbnail,
-    thumbnailtitle: "Tidal",
-    videotime: "12:34",
-  },
-  {
-    id: 5,
-    image: tidal,
-    title: "Sign Up",
-    thumbnailimg: tidalthumbnail,
-    thumbnailtitle: "Tidal",
-    videotime: "12:34",
-  },
-  {
-    id: 6,
-    image: tidal,
-    title: "Sign Up",
-    thumbnailimg: tidalthumbnail,
-    thumbnailtitle: "Tidal",
-    videotime: "12:34",
-  },
-  {
-    id: 7,
-    image: tidal,
-    title: "Sign Up",
-    thumbnailimg: tidalthumbnail,
-    thumbnailtitle: "Tidal",
-    videotime: "12:34",
-  },
-  {
-    id: 8,
-    image: tidal,
-    title: "Sign Up",
-    thumbnailimg: tidalthumbnail,
-    thumbnailtitle: "Tidal",
-    videotime: "12:34",
-  },
-  {
-    id: 9,
-    image: tidal,
-    title: "Sign Up",
-    thumbnailimg: tidalthumbnail,
-    thumbnailtitle: "Tidal",
-    videotime: "12:34",
-  },
-];
 
-const asidedata = [
-  {
-    id: 1,
-    videotimelft: "00:00",
-    videotitleontime: "App Landing Screen",
-    time: 0,
-  },
-  {
-    id: 2,
-    videotimelft: "00:32",
-    videotitleontime: "Create an Account",
-    time: 10,
-  },
-  {
-    id: 3,
-    videotimelft: "01:11",
-    videotitleontime: "Log In Screen",
-    time: 20,
-  },
-  {
-    id: 4,
-    videotimelft: "01:25",
-    videotitleontime: "Add a Picture",
-    time: 30,
-  },
-  {
-    id: 5,
-    videotimelft: "01:47",
-    videotitleontime: "Start a free Trial",
-    time: 40,
-  },
-  {
-    id: 6,
-    videotimelft: "02:01",
-    videotitleontime: "Select Plan",
-    time: 50,
-  },
-  {
-    id: 7,
-    videotimelft: "02:23",
-    videotitleontime: "Payment Details",
-    time: 60,
-  },
-  {
-    id: 8,
-    videotimelft: "02:35",
-    videotitleontime: "User Landing Screen",
-    time: 70,
-  },
-];
+
+
+// const asidedata = [
+//   {
+//     id: 1,
+//     videotimelft: "00:00",
+//     videotitleontime: "App Landing Screen",
+//     time: 0,
+//   },
+//   {
+//     id: 2,
+//     videotimelft: "00:32",
+//     videotitleontime: "Create an Account",
+//     time: 10,
+//   },
+//   {
+//     id: 3,
+//     videotimelft: "01:11",
+//     videotitleontime: "Log In Screen",
+//     time: 20,
+//   },
+//   {
+//     id: 4,
+//     videotimelft: "01:25",
+//     videotitleontime: "Add a Picture",
+//     time: 30,
+//   },
+//   {
+//     id: 5,
+//     videotimelft: "01:47",
+//     videotitleontime: "Start a free Trial",
+//     time: 40,
+//   },
+//   {
+//     id: 6,
+//     videotimelft: "02:01",
+//     videotitleontime: "Select Plan",
+//     time: 50,
+//   },
+//   {
+//     id: 7,
+//     videotimelft: "02:23",
+//     videotitleontime: "Payment Details",
+//     time: 60,
+//   },
+//   {
+//     id: 8,
+//     videotimelft: "02:35",
+//     videotitleontime: "User Landing Screen",
+//     time: 70,
+//   },
+// ];
+
+
+
+
 
 const cardsdata = [
   {
@@ -197,10 +203,10 @@ const cardsdata = [
   },
 ];
 
-const VideoPlayer = () => {
-  const showAddModal = useSelector((state) => state.showModal.show)
-  const fullscreen = useSelector((state) => state.showModal.fullscreen)
-  const dispatch = useDispatch()
+const VideoPlayer = ( { asidedata , color , setColor } ) => {
+  const showAddModal = useSelector((state) => state.showModal.show);
+  const fullscreen = useSelector((state) => state.showModal.fullscreen);
+  const dispatch = useDispatch();
   const [playOn, setPlayOn] = useState({
     playing: true,
     playbackRate: 1.0,
@@ -241,7 +247,7 @@ const VideoPlayer = () => {
     }, 5000);
   };
 
-  const [color, setColor] = useState(1);
+  // const [color, setColor] = useState(1);
   const [checkdata, setCheckdata] = useState([
     {
       id: 1,
@@ -251,13 +257,13 @@ const VideoPlayer = () => {
     },
     {
       id: 1,
-      checked: true,
+      checked: false,
       image: checkicon,
       Name: "Collection #",
     },
     {
       id: 1,
-      checked: true,
+      checked: false,
       image: checkicon,
       Name: "Collection #",
     },
@@ -266,17 +272,24 @@ const VideoPlayer = () => {
   const [leftAsideShow, setLeftAsideShow] = useState(true);
 
   const playRef = useRef(null);
-  // const playContainerRef= useRef(null)
   const videoPlayerContainerRef = useRef();
 
   const handelPlayPause = () => {
     setPlayOn({ ...playOn, playing: !playOn.playing });
   };
 
-  const handelTime = (time) => {
-    playRef.current.seekTo(time);
-  };
+  useEffect(() => {
+    asidedata.map((data)=>{
+      if(data.id == color){
+        playRef.current.seekTo(data.time);
+      }
+    })
+  }, [color])
 
+  const handelTime = (time)=>{
+    playRef.current.seekTo(time);
+
+  }
   // const handelRewind=()=>{
   //   playRef.current.seekTo(playRef.current.getCurrentTime() - 10)
   // }
@@ -290,7 +303,7 @@ const VideoPlayer = () => {
   };
 
   const handelProgress = (changeState) => {
-    console.log("CHANGE STATE", changeState);
+    // console.log("CHANGE STATE", changeState);
     if (!playOn.seeking) {
       setPlayOn({ ...playOn, ...changeState });
     }
@@ -363,32 +376,43 @@ const VideoPlayer = () => {
   const handelUmodel = (index) => {
     if (index == showUmodal) {
       setShowUmodal(-1);
-    }
-    else
-      setShowUmodal(index);
+    } else setShowUmodal(index);
   };
 
-  // console.log(":showUmodal=======>",showUmodal)
+  const [uiVideoShow, setuiVideoShow] = useState(false);
 
-  // const [fullscreen, setFullscreen] = useState(true);
+  const handeluiVideo = () => {
+    setuiVideoShow(!uiVideoShow);
+  };
+  const [similarPatternShow, setsimilarPatternShow] = useState(false);
 
-  // function handleShowModal(breakpoint) {
-  //   setFullscreen(breakpoint);
-  //   setShow(true);
-  // }
+  const handelSimilarPattern = () => {
+    setsimilarPatternShow(!similarPatternShow);
+  };
 
+  const [similarPatternIproShow, setsimilarPatternIproShow] = useState(false);
+
+  const handelSimilarPatternIpro = () => {
+    setsimilarPatternIproShow(!similarPatternIproShow);
+  };
   return (
     <>
       <Container className="videoplayer_container" fluid="true">
         {leftAsideShow ? (
           <div className="leftaside_wrapper">
             <div className="sc_videoplayer_btn_wrapper">
-              <div className="sc_ux_videos">
+              <div
+                onClick={handeluiVideo}
+                className={uiVideoShow ? "sc_ux_videos" : "sc_ux_videos_na"}
+              >
                 <button className="video_btn">
                   <span className="sc_la_ux_txt">UX Videos</span>
                 </button>
               </div>
-              <div className="sc_ui_videos">
+              <div
+                onClick={handeluiVideo}
+                className={uiVideoShow ? " sc_ui_videos_na" : "sc_ui_videos"}
+              >
                 <button className="video_btn">
                   <span className="sc_la_ui_txt">UI Screens</span>
                 </button>
@@ -410,7 +434,7 @@ const VideoPlayer = () => {
                     <button
                       className="lft_aside_links"
                       onClick={() => {
-                        handelTime(asidedata.time);
+                        // handelTime(asidedata.time);
                       }}
                     >
                       {" "}
@@ -421,7 +445,7 @@ const VideoPlayer = () => {
                             : "sc_la_time_txt"
                         }
                         onClick={() => {
-                          setColor(asidedata.id);
+                          // setColor(asidedata.id);
                         }}
                       >
                         {asidedata.videotimelft}
@@ -433,7 +457,7 @@ const VideoPlayer = () => {
                             : "sc_la_desc_txt"
                         }
                         onClick={() => {
-                          setColor(asidedata.id);
+                          // setColor(asidedata.id);
                         }}
                       >
                         {asidedata.videotitleontime}
@@ -568,10 +592,7 @@ const VideoPlayer = () => {
                     onClick={tick.length >= 1 ? () => saveCollection() : null}
                   >
                     {" "}
-                    <Link
-
-                      to="/SoundCloudPage"
-                    >
+                    <Link to="/SoundCloudPage" style={{textDecoration:'none'}}>
                       <span className="save_txt">Save</span>
                     </Link>{" "}
                   </div>
@@ -583,7 +604,7 @@ const VideoPlayer = () => {
               <div className="confirmation_wrapper">
                 <Image src={checkalert} />
                 <span className="alert_txt">Video added to 2 Collections</span>
-                <div className="undo_btn">
+                <div onClick={() => setTick([])} className="undo_btn">
                   <span className="undo_txt">Undo</span>
                 </div>
               </div>
@@ -637,12 +658,26 @@ const VideoPlayer = () => {
         </div>
         <div className="rightaside_wrapper">
           <div className="sc_videoplayer_btn_wrapper">
-            <div className=" sc_ui_videos">
+            <div
+              onClick={handelSimilarPattern}
+              className={
+                similarPatternShow
+                  ? "sc_ui_videos_right"
+                  : " sc_ui_videos_right_na"
+              }
+            >
               <button className="video_btn">
                 <span className="sc_la_ux_txt">Similar Patterns</span>
               </button>
             </div>
-            <div className=" sc_ux_videos">
+            <div
+              onClick={handelSimilarPattern}
+              className={
+                similarPatternShow
+                  ? "sc_ux_videos_right_na"
+                  : "sc_ux_videos_right"
+              }
+            >
               <button className="video_btn">
                 <span className="sc_la_ui_txt">Current App</span>
               </button>
@@ -670,42 +705,32 @@ const VideoPlayer = () => {
               );
             })}
           </div>
-
-          {/* {data.map((data, index) => {
-            return (
-              <div className="box_card " key={index}>
-                <div className="right_aside_card_wrapper">
-                  <div style={{ display: "flex" }}>
-                    <Image src={data.image} rounded />
-                    <div className="right_aside_card_video_details">
-                      <span className="ra_card_txt_signup">{data.title}</span>
-                      <div className="right_aside_card_thumbnail_items">
-                        <Image src={data.thumbnailimg} rounded />
-                        <span className="tidal_txt">{data.thumbnailtitle}</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="right_aside_video_time_wrapper">
-                    <span className="ra_card_video_time_txt">
-                      {data.videotime}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            );
-          })} */}
         </div>
       </Container>
 
       <Container className="ipad_view_container dis" fluid="true">
         <div className="rightaside_wrapper_ipad">
           <div className="sc_videoplayer_btn_wrapper">
-            <div className=" sc_ui_videos">
+            <div
+              onClick={handelSimilarPatternIpro}
+              className={
+                similarPatternIproShow
+                  ? "sc_ui_videos_ipro"
+                  : "sc_ui_videos_ipro_na"
+              }
+            >
               <button className="video_btn">
                 <span className="sc_la_ux_txt">Similar Patterns</span>
               </button>
             </div>
-            <div className=" sc_ux_videos">
+            <div
+              onClick={handelSimilarPatternIpro}
+              className={
+                similarPatternIproShow
+                  ? "sc_ux_videos_ipro_na"
+                  : "sc_ux_videos_ipro"
+              }
+            >
               <button className="video_btn">
                 <span className="sc_la_ui_txt">Current App</span>
               </button>
@@ -717,20 +742,6 @@ const VideoPlayer = () => {
               return (
                 <>
                   <div className="mbl_card">
-                    {/* <div className="pl_icon_cards_right">
-                      <img src={playiconsrightcard} alt="" />
-                    </div>
-                    <div className="ac_icon_cards_right">
-                      <img src={navactionbar} alt="" />
-                    </div>
-                    <div className="time_right_wrapper_cards">
-                      <span className="time_right_wrapper_cards_txt">
-                        12:34
-                      </span>
-                    </div> */}
-
-                    {/* <img src={data.image} alt="ERROR" /> */}
-
                     <div style={{ position: "relative" }}>
                       <img src={data.image} alt="ERROR" />
 
@@ -755,7 +766,10 @@ const VideoPlayer = () => {
 
                       {index === showUmodal ? (
                         <div className="u_modal_cards_mv">
-                          <div className="u_plus_wrapper_mdl" onClick={() => dispatch(handleShowModal(true))}>
+                          <div
+                            className="u_plus_wrapper_mdl"
+                            onClick={() => dispatch(handleShowModal(true))}
+                          >
                             <Image src={plusicon} rounded />
                           </div>
                           <div className="u_down_wrapper_mdl">
@@ -775,8 +789,6 @@ const VideoPlayer = () => {
             })}
           </div>
         </div>
-
-
       </Container>
       <Container className="mv_sc_container">
         <button
@@ -859,12 +871,9 @@ const VideoPlayer = () => {
           <hr />
         </div>
         <MobileAddCollectionModal />
-
       </Container>
     </>
   );
 };
 
 export default VideoPlayer;
-
-

@@ -20,13 +20,14 @@ import Down from "../../assets/images/Download.png";
 import Plus from "../../assets/images/plus.png";
 import checkicon from "../../assets/soundcloudimages/Check.png";
 import plusiconsave from "../../assets/soundcloudimages/plusiconsave.png";
-import { useSelector, useDispatch } from 'react-redux';
-import { handleShowModal } from '../../feature/hideShowModal/hideshowModal';
+import { useSelector, useDispatch } from "react-redux";
+import { handleShowModal } from "../../feature/hideShowModal/hideshowModal";
 import MobileAddCollectionModal from "../MobileAddCollection";
-const NavBarSoundCloud = () => {
-  const showAddModal = useSelector((state) => state.showModal.show)
-  const fullscreen = useSelector((state) => state.showModal.fullscreen)
-  const dispatch = useDispatch()
+
+const NavBarSoundCloud = ({ asidedata, color, setColor }) => {
+  const showAddModal = useSelector((state) => state.showModal.show);
+  const fullscreen = useSelector((state) => state.showModal.fullscreen);
+  const dispatch = useDispatch();
   const [select, setSelect] = useState(false);
   // const [fullscreen, setFullscreen] = useState(true);
   // const [show, setShow] = useState(false);
@@ -35,15 +36,12 @@ const NavBarSoundCloud = () => {
     setSelect(!select);
   };
 
-
-
-
   const [tick, setTick] = useState([]);
 
   const checkTick = async (index) => {
-    let findIndex = tick.find((data) => data == index);
+    let findIndex = tick.find((data) => data === index);
     if (findIndex) {
-      let removeIndex = await tick.filter((data) => data != index);
+      let removeIndex = await tick.filter((data) => data !== index);
       setTick(removeIndex);
     } else {
       setTick([...tick, index]);
@@ -89,6 +87,22 @@ const NavBarSoundCloud = () => {
     setCheckdata([...checkdata, obj]);
   };
   const history = useNavigate();
+
+  const pre = () => {
+    if (color <= 1) {
+      setColor(asidedata.length);
+    } else {
+      setColor(color--);
+    }
+  };
+  const next = () => {
+    if (color >= asidedata.length + 1) {
+      setColor(1);
+    } else {
+      setColor(color++);
+    }
+  };
+
   return (
     <>
       <Container className="navbar_soundcloud_player dis_nav_bar" fluid="true">
@@ -115,7 +129,7 @@ const NavBarSoundCloud = () => {
           </Col>
           <Col className="nav_col_2_adjustment">
             <div className="nav_bf_icons_wrapper">
-              <div className="nav_back_icon">
+              <div className="nav_back_icon" onClick={pre}>
                 <div className="copy_wrap ">
                   <OverlayTrigger
                     delay={{ hide: 150, show: 300 }}
@@ -130,14 +144,17 @@ const NavBarSoundCloud = () => {
               </div>
               <div className="nav_txt">
                 <span className="nav_inner_txt_ch">Chapters</span>
-                <span className="nav_inner_txt">1 / 7</span>
+                <span className="nav_inner_txt">
+                  {" "}
+                  {color} / {asidedata.length}{" "}
+                </span>
               </div>
-              <div className="nav_forward_icon">
+              <div className="nav_forward_icon" onClick={next}>
                 <div className="copy_wrap ">
                   <OverlayTrigger
                     delay={{ hide: 150, show: 300 }}
                     overlay={(props) => (
-                      <Tooltip {...props}>Previous Chapter</Tooltip>
+                      <Tooltip {...props}>Next Chapter</Tooltip>
                     )}
                     placement="bottom"
                   >
@@ -163,9 +180,12 @@ const NavBarSoundCloud = () => {
         <Row className="mv_navbar_row_wrapper">
           <Col xs={2}>
             <div className="navlogo_wrapper">
-              <div className="backarrow" onClick={() => {
-                history(-1);
-              }}>
+              <div
+                className="backarrow"
+                onClick={() => {
+                  history(-1);
+                }}
+              >
                 <Image src={backarrow} rounded />
               </div>
             </div>
@@ -199,19 +219,23 @@ const NavBarSoundCloud = () => {
                     className="d-flex align-items-center"
                   >
                     <div>
-                      <img src={Plus} />
+                      <img src={Plus} alt="err" />
                     </div>
                     <div className="add_to_col">Add to Collection</div>
                   </div>
                   <div className="d-flex align-items-center mt-2">
                     <div>
-                      <img src={Down} style={{ marginLeft: "-7px" }} />
+                      <img
+                        src={Down}
+                        style={{ marginLeft: "-7px" }}
+                        alt="err"
+                      />
                     </div>
                     <div className="select_download">Download</div>
                   </div>
                   <div className="d-flex align-items-center mt-2">
                     <div>
-                      <img src={Copy} />
+                      <img src={Copy} alt="err" />
                     </div>
                     <div className="add_to_col">Copy Share Link</div>
                   </div>
@@ -219,7 +243,6 @@ const NavBarSoundCloud = () => {
               </div>
             ) : null}
             <MobileAddCollectionModal />
-
           </Col>
         </Row>
       </Container>

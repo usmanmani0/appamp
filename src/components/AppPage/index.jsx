@@ -19,26 +19,26 @@ import { changeColor } from "../../feature/hideShowModal/hideshowModal"
 
 const AppPage = () => {
     // const [color, setColor] = useState(1)
-    const [checkdata, setCheckdata] = useState([
-        {
-            id: 1,
-            checked: false,
-            image: checkicon,
-            Name: "Collection #",
-        },
-        {
-            id: 1,
-            checked: true,
-            image: checkicon,
-            Name: "Collection #",
-        },
-        {
-            id: 1,
-            checked: true,
-            image: checkicon,
-            Name: "Collection #",
-        },
-    ]);
+    // const [checkdata, setCheckdata] = useState([
+    //     {
+    //         id: 1,
+    //         checked: false,
+    //         image: checkicon,
+    //         Name: "Collection #",
+    //     },
+    //     {
+    //         id: 1,
+    //         checked: true,
+    //         image: checkicon,
+    //         Name: "Collection #",
+    //     },
+    //     {
+    //         id: 1,
+    //         checked: true,
+    //         image: checkicon,
+    //         Name: "Collection #",
+    //     },
+    // ]);
     const color = useSelector((state) => state.showModal.color)
     const dispatch = useDispatch()
     window.onscroll = function () {
@@ -53,10 +53,10 @@ const AppPage = () => {
             header.classList.remove("sticky");
         }
     }
-    const [show, setShow] = useState(false);
-    const handelShow = () => {
-        setShow(!show);
-    };
+    // const [show, setShow] = useState(false);
+    // const handelShow = () => {
+    //     setShow(!show);
+    // };
     const chnageTabData2 = (val) => {
         dispatch(changeColor(val))
     };
