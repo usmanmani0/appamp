@@ -12,9 +12,6 @@ import RightArrow from "../../assets/images/right-arrow.png"
 import { useSelector, useDispatch } from 'react-redux';
 import { handelShow } from '../../feature/addCollection/counterSlice';
 
-import counterSlice from '../../feature/addCollection/counterSlice';
-
-
 const UiSecreenFilter = () => {
     const color = useSelector((state) => state.showModal.color)
     const show = useSelector((state) => state.hideShow.show)
@@ -279,10 +276,6 @@ const UiSecreenFilter = () => {
             SetSelectedFilter([...selectedFilter, name]);
         }
     };
-
-
-
-
     return (
         <>
             <div className='UiSecreen_filter'>
@@ -295,7 +288,6 @@ const UiSecreenFilter = () => {
                         <i className="icon_filter">
                             <BsFilter className="icon" size="16px" color="black" sty
                             />
-
                         </i>
                         <span>Filter</span>
                     </button>
@@ -328,8 +320,6 @@ const UiSecreenFilter = () => {
                                     )} />
                             </Stack>
                         </div>
-
-
                         <hr className="bottom_line"></hr>
                         {searchbox === "" ?
                             color == 1 ? <div className='d-flex justify-content-around' onMouseLeave={() => { setOpt(null) }}>
@@ -475,8 +465,6 @@ const UiSecreenFilter = () => {
                                 </div>
 
                             </div> :
-
-
                                 color == 2 ? <div className='d-flex justify-content-around' onMouseLeave={() => { setOpt(null) }}>
 
                                     <div className='UiSecreen_app_categories_button'>
@@ -618,7 +606,6 @@ const UiSecreenFilter = () => {
                                     </div>
 
                                 </div> : null
-
                             :
                             <div>
                                 <div className='search_result_wrapper'>
@@ -633,9 +620,6 @@ const UiSecreenFilter = () => {
                                     newArray.map((data) => {
                                         return (
                                             <>
-
-
-
                                                 <div className="app_page_checkbox_with_search">
                                                     <div>
                                                         <input
@@ -654,9 +638,6 @@ const UiSecreenFilter = () => {
                                 }
                             </div>
                         }
-
-
-
                     </div>
                 ) : null}
 

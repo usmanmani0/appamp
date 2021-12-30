@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     fullscreen: true,
     show: false,
-    color: "1"
+    color: 1
 }
 
 export const hideShowModalSlice = createSlice({
@@ -20,20 +20,7 @@ export const hideShowModalSlice = createSlice({
         changeSideBarContent(state, action) {
             state.color = action.payload
         },
-        // pre = () => {
-        //     if (color <= 1) {
-        //         setColor(asidedata.length);
-        //     } else {
-        //         setColor(color--);
-        //     }
-        // },
-        // next = () => {
-        //     if (color >= asidedata.length + 1) {
-        //         setColor(1);
-        //     } else {
-        //         setColor(color++);
-        //     }
-        // }
+
 
     },
 })

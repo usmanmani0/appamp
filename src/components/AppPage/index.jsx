@@ -70,18 +70,18 @@ const AppPage = () => {
                 <div className='sound_cloud_filter_wrapper' id="myHeader">
                     <div className='hide_by_feature'> <UiSecreenFilter /></div>
                     <div className='filter_content_wrapper'>
-                        <div className={color === "1" ? 'filter_active ui_vedio' : 'ui_vedio'}
-                            onClick={() => chnageTabData2("1")}
+                        <div className={color === 1 ? 'filter_active ui_vedio' : 'ui_vedio'}
+                            onClick={() => chnageTabData2(1)}
                         ><div><img src={Videos} /></div>UX Videos</div>
-                        <div className={color === "2" ? 'filter_active ui_vedio' : 'ui_vedio'}
-                            onClick={() => chnageTabData2("2")}><div><img src={secreen} /></div>UI Screens</div>
+                        <div className={color === 2 ? 'filter_active ui_vedio' : 'ui_vedio'}
+                            onClick={() => chnageTabData2(2)}><div><img src={secreen} /></div>UI Screens</div>
                     </div>
                     <div className='hide_by_feature'> <SelectByFeature /></div>
                 </div>
                 {
-                    color === "1" ?
+                    color === 1 ?
                         <UxVideoSecreen />
-                        : color === "2" ?
+                        : color === 2 ?
                             <>
                                 <UiSecreenPlayList />
                                 <UiSecreenStream />
