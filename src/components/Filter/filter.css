@@ -270,6 +270,46 @@
   text-align: center;
   margin-left: 16px;
 }
+.app_page_checkbox_with_search{
+  padding: 0px 16px 0px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+.search_result_wrapper{
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 16px 16px 16px;
+}
+.all_result{
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #505052;
+}
+.clear_result{
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 700;
+  color: #161618;
+  cursor: pointer;
+}
+.element_tag_show{
+  width: 54px;
+  height: 14px;
+  color: white;
+  font-size: 12px;
+  line-height: 14px;
+  padding: 2px 8px 2px 8px;
+  border-radius: 8px;
+  
+  background-color: #5097F3;
+}
+.filter_count_app_card{
+  background-color: #5097F3;
+  padding: 5px;
+  border-radius: 8px;
+}
 .each_filter_count{
   width: 25px;
   color: white;

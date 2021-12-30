@@ -123,7 +123,7 @@ function Filter() {
               type="button"
             >
               <i className="icon_filter" style={{ marginLeft: "5px" }}>
-                {selectedFilter.length == 0 ? <BsFilter className="icon" size="16px" color="black" /> : <div className="filter_count">{selectedFilter.length}</div>}
+                {selectedFilter.length == 0 ? <BsFilter className="icon" size="16px" color="black" /> : <div className="filter_count_app_card">{selectedFilter.length}</div>}
 
               </i>
               <span>Filter</span>

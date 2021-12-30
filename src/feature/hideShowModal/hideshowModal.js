@@ -15,14 +15,30 @@ export const hideShowModalSlice = createSlice({
             state.show = action.payload
         },
         changeColor(state, action) {
-            console.log("llllllllll", action.payload)
             state.color = action.payload
         },
+        changeSideBarContent(state, action) {
+            state.color = action.payload
+        },
+        // pre = () => {
+        //     if (color <= 1) {
+        //         setColor(asidedata.length);
+        //     } else {
+        //         setColor(color--);
+        //     }
+        // },
+        // next = () => {
+        //     if (color >= asidedata.length + 1) {
+        //         setColor(1);
+        //     } else {
+        //         setColor(color++);
+        //     }
+        // }
 
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { handleShowModal, changeColor } = hideShowModalSlice.actions
+export const { changeSideBarContent, handleShowModal, changeColor } = hideShowModalSlice.actions
 
 export default hideShowModalSlice.reducer
