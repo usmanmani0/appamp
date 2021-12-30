@@ -19,6 +19,7 @@ const UiSecreenFilter = () => {
     const color = useSelector((state) => state.showModal.color)
     const show = useSelector((state) => state.hideShow.show)
     const dispatch = useDispatch()
+
     const [isCheckAll, setIsCheckAll] = useState(false);
     const [isCheck, setIsCheck] = useState([]);
     const [opt, setOpt] = useState()
@@ -328,7 +329,8 @@ const UiSecreenFilter = () => {
                                             {...params}
                                             variant="filled"
                                             label=""
-                                            placeholder="Search Elements" />
+                                            placeholder="Search Elements"
+                                        />
                                     )} />
                             </Stack>
                         </div>
