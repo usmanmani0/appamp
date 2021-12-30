@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./navbarsoundcloud.css";
 import {
@@ -21,21 +21,21 @@ import Plus from "../../assets/images/plus.png";
 import checkicon from "../../assets/soundcloudimages/Check.png";
 import plusiconsave from "../../assets/soundcloudimages/plusiconsave.png";
 import { useSelector, useDispatch } from "react-redux";
-import { handleShowModal } from "../../feature/hideShowModal/hideshowModal";
+import { handleShowModal, changeSideBarContent } from "../../feature/hideShowModal/hideshowModal";
 import MobileAddCollectionModal from "../MobileAddCollection";
 
-const NavBarSoundCloud = ({ asidedata, color, setColor }) => {
+const NavBarSoundCloud = ({ asidedata }) => {
   const showAddModal = useSelector((state) => state.showModal.show);
   const fullscreen = useSelector((state) => state.showModal.fullscreen);
+  let color = useSelector((state) => state.showModal.color);
   const dispatch = useDispatch();
   const [select, setSelect] = useState(false);
-  // const [fullscreen, setFullscreen] = useState(true);
-  // const [show, setShow] = useState(false);
-
   const handleShow = () => {
     setSelect(!select);
   };
+  useEffect(() => {
 
+  }, [color])
   const [tick, setTick] = useState([]);
 
   const checkTick = async (index) => {
@@ -90,16 +90,18 @@ const NavBarSoundCloud = ({ asidedata, color, setColor }) => {
 
   const pre = () => {
     if (color <= 1) {
-      setColor(asidedata.length);
+      // setColor(asidedata.length);
+      dispatch(changeSideBarContent(asidedata.length))
     } else {
-      setColor(color--);
+      // setColor(color--);
+      dispatch(changeSideBarContent(color - 1))
     }
   };
   const next = () => {
-    if (color >= asidedata.length + 1) {
-      setColor(1);
+    if (color >= asidedata.length) {
+      dispatch(changeSideBarContent(1))
     } else {
-      setColor(color++);
+      dispatch(changeSideBarContent(color + 1))
     }
   };
 
@@ -160,6 +162,7 @@ const NavBarSoundCloud = ({ asidedata, color, setColor }) => {
                   >
                     <Image src={forwardarrow} rounded />
                   </OverlayTrigger>
+
                 </div>
               </div>
             </div>

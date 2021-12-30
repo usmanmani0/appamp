@@ -55,16 +55,18 @@ const asidedata = [
 ];
 
 export default function SoundCloudPage() {
-  const [color, setColor] = useState(1);
+  // const [color, setColor] = useState(1);
 
   return (
     <>
       <NavBarSoundCloud
         asidedata={asidedata}
-        color={color}
-        setColor={setColor}
+      // color={color}
+      // setColor={setColor}
       />
-      <VideoPlayer asidedata={asidedata} color={color} setColor={setColor} />
+      <VideoPlayer
+      //  asidedata={asidedata} color={color} setColor={setColor}
+      />
     </>
   );
 }

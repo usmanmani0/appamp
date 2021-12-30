@@ -1,4 +1,4 @@
-import React, { useRef, useState , useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
   Container,
   Image,
@@ -34,141 +34,60 @@ import { hot } from "react-hot-loader";
 import { findDOMNode } from "react-dom";
 import screenfull from "screenfull";
 import { useSelector, useDispatch } from "react-redux";
-import { handleShowModal } from "../../feature/hideShowModal/hideshowModal";
+import { handleShowModal, changeSideBarContent } from "../../feature/hideShowModal/hideshowModal";
 import MobileAddCollectionModal from "../MobileAddCollection";
 
-// const data = [
-//   {
-//     id: 1,
-//     image: tidal,
-//     title: "Sign Up",
-//     thumbnailimg: tidalthumbnail,
-//     thumbnailtitle: "Tidal",
-//     videotime: "12:34",
-//   },
-//   {
-//     id: 2,
-//     image: tidal,
-//     title: "Sign Up",
-//     thumbnailimg: tidalthumbnail,
-//     thumbnailtitle: "Tidal",
-//     videotime: "12:34",
-//   },
-//   {
-//     id: 3,
-//     image: tidal,
-//     title: "Sign Up",
-//     thumbnailimg: tidalthumbnail,
-//     thumbnailtitle: "Tidal",
-//     videotime: "12:34",
-//   },
-//   {
-//     id: 4,
-//     image: tidal,
-//     title: "Sign Up",
-//     thumbnailimg: tidalthumbnail,
-//     thumbnailtitle: "Tidal",
-//     videotime: "12:34",
-//   },
-//   {
-//     id: 5,
-//     image: tidal,
-//     title: "Sign Up",
-//     thumbnailimg: tidalthumbnail,
-//     thumbnailtitle: "Tidal",
-//     videotime: "12:34",
-//   },
-//   {
-//     id: 6,
-//     image: tidal,
-//     title: "Sign Up",
-//     thumbnailimg: tidalthumbnail,
-//     thumbnailtitle: "Tidal",
-//     videotime: "12:34",
-//   },
-//   {
-//     id: 7,
-//     image: tidal,
-//     title: "Sign Up",
-//     thumbnailimg: tidalthumbnail,
-//     thumbnailtitle: "Tidal",
-//     videotime: "12:34",
-//   },
-//   {
-//     id: 8,
-//     image: tidal,
-//     title: "Sign Up",
-//     thumbnailimg: tidalthumbnail,
-//     thumbnailtitle: "Tidal",
-//     videotime: "12:34",
-//   },
-//   {
-//     id: 9,
-//     image: tidal,
-//     title: "Sign Up",
-//     thumbnailimg: tidalthumbnail,
-//     thumbnailtitle: "Tidal",
-//     videotime: "12:34",
-//   },
-// ];
 
-
-
-
-// const asidedata = [
-//   {
-//     id: 1,
-//     videotimelft: "00:00",
-//     videotitleontime: "App Landing Screen",
-//     time: 0,
-//   },
-//   {
-//     id: 2,
-//     videotimelft: "00:32",
-//     videotitleontime: "Create an Account",
-//     time: 10,
-//   },
-//   {
-//     id: 3,
-//     videotimelft: "01:11",
-//     videotitleontime: "Log In Screen",
-//     time: 20,
-//   },
-//   {
-//     id: 4,
-//     videotimelft: "01:25",
-//     videotitleontime: "Add a Picture",
-//     time: 30,
-//   },
-//   {
-//     id: 5,
-//     videotimelft: "01:47",
-//     videotitleontime: "Start a free Trial",
-//     time: 40,
-//   },
-//   {
-//     id: 6,
-//     videotimelft: "02:01",
-//     videotitleontime: "Select Plan",
-//     time: 50,
-//   },
-//   {
-//     id: 7,
-//     videotimelft: "02:23",
-//     videotitleontime: "Payment Details",
-//     time: 60,
-//   },
-//   {
-//     id: 8,
-//     videotimelft: "02:35",
-//     videotitleontime: "User Landing Screen",
-//     time: 70,
-//   },
-// ];
-
-
-
-
+const asidedata = [
+  {
+    id: 1,
+    videotimelft: "00:00",
+    videotitleontime: "App Landing Screen",
+    time: 0,
+  },
+  {
+    id: 2,
+    videotimelft: "00:32",
+    videotitleontime: "Create an Account",
+    time: 10,
+  },
+  {
+    id: 3,
+    videotimelft: "01:11",
+    videotitleontime: "Log In Screen",
+    time: 20,
+  },
+  {
+    id: 4,
+    videotimelft: "01:25",
+    videotitleontime: "Add a Picture",
+    time: 30,
+  },
+  {
+    id: 5,
+    videotimelft: "01:47",
+    videotitleontime: "Start a free Trial",
+    time: 40,
+  },
+  {
+    id: 6,
+    videotimelft: "02:01",
+    videotitleontime: "Select Plan",
+    time: 50,
+  },
+  {
+    id: 7,
+    videotimelft: "02:23",
+    videotitleontime: "Payment Details",
+    time: 60,
+  },
+  {
+    id: 8,
+    videotimelft: "02:35",
+    videotitleontime: "User Landing Screen",
+    time: 70,
+  },
+];
 
 const cardsdata = [
   {
@@ -203,10 +122,12 @@ const cardsdata = [
   },
 ];
 
-const VideoPlayer = ( { asidedata , color , setColor } ) => {
+const VideoPlayer = (props) => {
+  // const { color, setColor } = props
 
-  
   const showAddModal = useSelector((state) => state.showModal.show);
+  let color = useSelector((state) => state.showModal.color);
+
   const fullscreen = useSelector((state) => state.showModal.fullscreen);
   const dispatch = useDispatch();
 
@@ -282,16 +203,17 @@ const VideoPlayer = ( { asidedata , color , setColor } ) => {
     setPlayOn({ ...playOn, playing: !playOn.playing });
   };
 
-  useEffect(() => {
-    asidedata.map((data)=>{
-      if(data.id == color){
-        playRef.current.seekTo(data.time);
+  useEffect(async () => {
+    await asidedata?.map((data) => {
+      if (data?.id == color) {
+        playRef?.current?.seekTo(data.time);
       }
     })
+
   }, [color])
 
-  const handelTime = (time)=>{
-    playRef.current.seekTo(time);
+  const handelTime = (time) => {
+    playRef?.current.seekTo(time);
 
   }
   // const handelRewind=()=>{
@@ -432,14 +354,12 @@ const VideoPlayer = ( { asidedata , color , setColor } ) => {
                         : "sc_left_aside_time_desc"
                     }
                     onClick={() => {
-                      setColor(asidedata.id);
+                      dispatch(changeSideBarContent(asidedata.id))
                     }}
                   >
                     <button
                       className="lft_aside_links"
-                      onClick={() => {
-                        // handelTime(asidedata.time);
-                      }}
+
                     >
                       {" "}
                       <span
@@ -448,9 +368,7 @@ const VideoPlayer = ( { asidedata , color , setColor } ) => {
                             ? "sc_la_time_txt sc_la_td_bg"
                             : "sc_la_time_txt"
                         }
-                        onClick={() => {
-                          // setColor(asidedata.id);
-                        }}
+
                       >
                         {asidedata.videotimelft}
                       </span>
@@ -460,9 +378,7 @@ const VideoPlayer = ( { asidedata , color , setColor } ) => {
                             ? "sc_la_desc_txt sc_la_td_bg"
                             : "sc_la_desc_txt"
                         }
-                        onClick={() => {
-                          // setColor(asidedata.id);
-                        }}
+
                       >
                         {asidedata.videotitleontime}
                       </span>
@@ -596,7 +512,7 @@ const VideoPlayer = ( { asidedata , color , setColor } ) => {
                     onClick={tick.length >= 1 ? () => saveCollection() : null}
                   >
                     {" "}
-                    <Link to="/SoundCloudPage" style={{textDecoration:'none'}}>
+                    <Link to="/SoundCloudPage" style={{ textDecoration: 'none' }}>
                       <span className="save_txt">Save</span>
                     </Link>{" "}
                   </div>
@@ -818,7 +734,7 @@ const VideoPlayer = ( { asidedata , color , setColor } ) => {
                         : "sc_left_aside_time_desc"
                     }
                     onClick={() => {
-                      setColor(asidedata.id);
+                      dispatch(changeSideBarContent(asidedata.id))
                     }}
                   >
                     <button
@@ -835,7 +751,7 @@ const VideoPlayer = ( { asidedata , color , setColor } ) => {
                             : "sc_la_time_txt"
                         }
                         onClick={() => {
-                          setColor(asidedata.id);
+                          dispatch(changeSideBarContent(asidedata.id))
                         }}
                       >
                         {asidedata.videotimelft}
@@ -847,7 +763,7 @@ const VideoPlayer = ( { asidedata , color , setColor } ) => {
                             : "sc_la_desc_txt"
                         }
                         onClick={() => {
-                          setColor(asidedata.id);
+                          dispatch(changeSideBarContent(asidedata.id))
                         }}
                       >
                         {asidedata.videotitleontime}
