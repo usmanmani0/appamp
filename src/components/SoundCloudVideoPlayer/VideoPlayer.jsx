@@ -204,9 +204,13 @@ const cardsdata = [
 ];
 
 const VideoPlayer = ( { asidedata , color , setColor } ) => {
+
+  
   const showAddModal = useSelector((state) => state.showModal.show);
   const fullscreen = useSelector((state) => state.showModal.fullscreen);
   const dispatch = useDispatch();
+
+
   const [playOn, setPlayOn] = useState({
     playing: true,
     playbackRate: 1.0,
