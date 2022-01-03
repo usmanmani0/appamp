@@ -25,8 +25,7 @@
   flex-direction: row;
 }
 .filter_button {
-  margin-left: 1rem;
-  width: 80px;
+  width: 100px;
   height: 40px;
   border-radius: 8px;
   border: 1px solid #c5c5c5;
@@ -59,18 +58,22 @@
   font-family: Space Grotesk;
   font-style: normal;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 18px;
   letter-spacing: 0.02em;
   text-transform: capitalize;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 .icon_down {
   margin-left: 5px;
+  font-weight: bold;
 }
 .icon_filter {
   margin-right: 5px;
 }
-@media screen and (max-width:550px){
+@media screen and (max-width: 550px) {
   .icon_filter {
     margin-right: 2px;
   }
@@ -97,7 +100,7 @@
   z-index: 100000;
 }
 
-.has-search{
+.has-search {
   padding: 1rem;
 }
 .has-search .form-control {
@@ -129,6 +132,7 @@
   text-align: center;
   pointer-events: none;
   color: #aaa;
+  background-color: green;
 }
 .bottom_line {
   width: 95%;
@@ -163,7 +167,7 @@
   font-style: normal;
   font-weight: 400;
   cursor: pointer;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   align-items: center;
   padding: 0px 12px 0px 16px;
   font-size: 16px;
@@ -177,7 +181,7 @@
 
   color: black;
 }
-.Ui_Secreen_filter_checkbox{
+.Ui_Secreen_filter_checkbox {
   width: 40%;
 }
 
@@ -233,7 +237,7 @@
     position: relative;
   }
   .recent_button {
-    margin-left: .5rem;
+    margin-left: 0.5rem;
     width: 180px;
     height: 40px;
     border-radius: 8px;
@@ -243,10 +247,13 @@
     font-family: Space Grotesk;
     font-style: normal;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 18px;
     letter-spacing: 0.02em;
     text-transform: capitalize;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
   }
 }
 @media only screen and (min-width: 600px) and (max-width: 992px) {
@@ -270,31 +277,31 @@
   text-align: center;
   margin-left: 16px;
 }
-.app_page_checkbox_with_search{
+.app_page_checkbox_with_search {
   padding: 0px 16px 0px 16px;
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
 }
-.search_result_wrapper{
+.search_result_wrapper {
   display: flex;
   justify-content: space-between;
   padding: 0px 16px 16px 16px;
 }
-.all_result{
+.all_result {
   font-size: 12px;
   line-height: 20px;
   font-weight: 400;
   color: #505052;
 }
-.clear_result{
+.clear_result {
   font-size: 14px;
   line-height: 18px;
   font-weight: 700;
   color: #161618;
   cursor: pointer;
 }
-.element_tag_show{
+.element_tag_show {
   width: 54px;
   height: 14px;
   color: white;
@@ -302,48 +309,49 @@
   line-height: 14px;
   padding: 2px 8px 2px 8px;
   border-radius: 8px;
-  
-  background-color: #5097F3;
+  background-color: #5097f3;
 }
-.filter_count_app_card{
-  background-color: #5097F3;
-  padding: 5px;
-  border-radius: 8px;
+.filter_count_app_card {
+  background-color: #5097f3;
+  width: 22px;
+  height: 18px;
+  border-radius: 10px;
+  color: white;
 }
-.each_filter_count{
-  width: 25px;
+.each_filter_count {
   color: white;
   background-color: #5097f3;
-  border-radius: 8px;
-  padding: 4px;
+  width: 22px;
+  height: 18px;
+  border-radius: 10px;
   text-align: center;
   margin-left: 16px;
 }
-.filter_input {
+.filter_input_element {
   width: 98%;
   margin: auto;
   border-radius: 8px;
   border: 1px solid #c5c5c5;
   background-color: white;
+  /* background-color: red; */
   min-height: 56px;
   display: flex;
   /* justify-content: center; */
   align-items: center;
 }
-.search {
+.search_element {
   height: 20px;
   padding-left: 5px;
 }
 .css-16awh2u-MuiAutocomplete-root .MuiFilledInput-root {
   padding-top: 0px !important;
   overflow: hidden;
- 
 }
 .css-1gctnaj-MuiInputBase-input-MuiFilledInput-input {
   border-radius: 8px;
 }
 .css-16awh2u-MuiAutocomplete-root .MuiAutocomplete-input {
-  background-color: white;
+  background-color: white !important;
   height: 40px !important;
 }
 .css-1w8yruj-MuiInputBase-root-MuiFilledInput-root:before {
@@ -359,13 +367,13 @@
   .MuiFilledInput-root,
 .MuiAutocomplete-hasClearIcon.css-16awh2u-MuiAutocomplete-root
   .MuiFilledInput-root {
-  background-color: white;
+  background-color: #ffffff !important;
 }
-@media screen and (max-width:800px){
+@media screen and (max-width: 800px) {
   .App_Page_filter_expand {
     position: absolute;
     width: 600px;
-  
+
     height: 433px;
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 1);
@@ -374,11 +382,11 @@
     z-index: 100000;
   }
 }
-@media screen and (max-width:625px){
+@media screen and (max-width: 625px) {
   .App_Page_filter_expand {
     position: absolute;
     width: 500px;
-  
+
     height: 433px;
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 1);
@@ -386,4 +394,7 @@
     overflow-y: scroll;
     z-index: 100000;
   }
+}
+.MuiFilledInput-root {
+  background-color: white !important;
 }
