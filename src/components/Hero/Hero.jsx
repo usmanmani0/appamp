@@ -25,7 +25,7 @@ const Hero = () => {
   return (
     <>
       <div className="hero-section">
-        <Container className="hero_container">
+        <Container className="hero_con">
           <Row className="mob_col">
             <Col lg={6} md={12} xs={12} className="hero_desc">
               <div>
@@ -48,8 +48,7 @@ const Hero = () => {
                       id="searchInput"
                       placeholder="Search Features or Components"
                     ></input>
-
-
+                    <div class="verticalbar"></div>
 
                     <div className="search_buttonsdiv">
                     
@@ -61,7 +60,7 @@ const Hero = () => {
                             style={{color:color==="1"?"white":"rgba(22, 22, 24, 1)"}}
                           />
                         </i>
-                        <span>UX Vedios</span>
+                        <span>UX Videos</span>
                       </button>
                     
                     
