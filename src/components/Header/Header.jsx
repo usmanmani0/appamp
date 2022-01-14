@@ -37,7 +37,7 @@ const Header = () => {
   };
   return (
     <>
-      <div className="header-section dis">
+      <div className="header-section dis2">
         <div className="logo_div">
           <div>
             <img className="logo" src={Logo} alt="logo"></img>
@@ -63,7 +63,7 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="mob_nav dis-mob">
+      <div className="mob_nav dis-mob2">
         <Navbar bg="light" expand="lg">
           <Container>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -140,7 +140,7 @@ const Header = () => {
                           ></img>
                         </div>
                         <button
-                         
+
                           className="button_update"
                           type="button"
                         >
@@ -148,22 +148,22 @@ const Header = () => {
                         </button>
                       </div>
                       <div className="form">
-                      <FloatingLabel
-                        controlId="floatingInput"
-                        label="Email address"
-                        className="mb-3"
-                      >
-                        <Form.Control
-                          type="email"
-                          placeholder="name@example.com"
-                        />
-                      </FloatingLabel>
-                      <FloatingLabel
-                        controlId="floatingPassword"
-                        label="Password"
-                      >
-                        <Form.Control type="password" placeholder="Password" />
-                      </FloatingLabel>
+                        <FloatingLabel
+                          controlId="floatingInput"
+                          label="Email address"
+                          className="mb-3"
+                        >
+                          <Form.Control
+                            type="email"
+                            placeholder="name@example.com"
+                          />
+                        </FloatingLabel>
+                        <FloatingLabel
+                          controlId="floatingPassword"
+                          label="Password"
+                        >
+                          <Form.Control type="password" placeholder="Password" />
+                        </FloatingLabel>
                       </div>
                       <hr className="profileupdate_line1"></hr>
                       <h4>Save Changes</h4>

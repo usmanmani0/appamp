@@ -1,38 +1,37 @@
-*{
-    padding: 0px;
-    margin: 0px;
-    box-sizing: border-box;
-  }
-  .header {
-    padding: 10px 16px;
-    background:rgba(255, 255, 255, 1);
-    color: #f1f1f1;
-    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.07);
-  }
-
-  .sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-  }
-  
-  .sticky + .content {
-    padding-top: 102px;
-  }
-.container{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
 }
-  .filter_button{
-    margin-left: 1rem;
-    width: 80px;
-    height: 40px;
-    border-radius: 8px;
-    border: 1px solid #C5C5C5;
-    border-color: rgba(197, 197, 197, 1);
-    background-color: rgba(255, 255, 255, 1);
-    font-family: Space Grotesk;
+.header {
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 1);
+  color: #f1f1f1;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.07);
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 102px;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.filter_button {
+  width: 100px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #c5c5c5;
+  border-color: rgba(197, 197, 197, 1);
+  background-color: rgba(255, 255, 255, 1);
+  font-family: Space Grotesk;
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
@@ -40,56 +39,87 @@
   letter-spacing: 0.02em;
   text-transform: capitalize;
   position: relative;
-  }
-  .filter_btn :hover{
-    background-color: whitesmoke;
-  }
-  .filter_btn :active{
-    background-color: rgba(197, 197, 197, 1);
-  }
-  
-  .recent_button{
-    margin-left: 1rem;
-    width: 190px;
-    height: 40px;
-    border-radius: 8px;
-    border: 1px solid #C5C5C5;
-    border-color: rgba(197, 197, 197, 1);
-    background-color: rgba(255, 255, 255, 1);
-    font-family: Space Grotesk;
+}
+.filter_btn :hover {
+  background-color: whitesmoke;
+}
+.filter_btn :active {
+  background-color: rgba(197, 197, 197, 1);
+}
+
+.recent_button {
+  margin-left: 1rem;
+  width: 190px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #c5c5c5;
+  border-color: rgba(197, 197, 197, 1);
+  background-color: rgba(255, 255, 255, 1);
+  font-family: Space Grotesk;
   font-style: normal;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 18px;
   letter-spacing: 0.02em;
   text-transform: capitalize;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.icon_down {
+  margin-left: 5px;
+  font-weight: bold;
+}
+.icon_filter {
+  margin-right: 5px;
+}
+@media screen and (max-width: 550px) {
+  .icon_filter {
+    margin-right: 2px;
   }
-  .icon_down{
-      margin-left: 5px;
-  }
-  .icon_filter{
-    margin-right: 5px;
-  }
-  .filter_expand{
-    position: absolute;
-    width: 714px;
-    height: 433px;
-    border-radius: 8px;
-    background-color: rgba(255, 255, 255, 1);
-    margin-top: 3rem;
-    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.07);
-    overflow-y: scroll;
-  }
-  .has-search{
-    padding: 1rem;
-  }
+}
+.filter_expand {
+  position: absolute;
+  width: 714px;
+  height: 433px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 1);
+  margin-top: 3rem;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.07);
+  overflow-y: scroll;
+}
+.App_Page_filter_expand {
+  position: absolute;
+  width: 714px;
 
-  
+  height: 433px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.07);
+  overflow-y: scroll;
+  z-index: 100000;
+}
+
+.has-search {
+  padding: 1rem;
+}
 .has-search .form-control {
   padding-left: 2.375rem;
-  background-image:url('https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-24.png');
+  background-image: url("https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-24.png");
   background-position: 10px 7px;
   background-repeat: no-repeat;
+  cursor: pointer;
+}
+.Ui_Secreen_has-search {
+  padding: 8px 8px 8px 8px;
+}
+
+.Ui_Secreen_has-search .form-control {
+  padding-left: 2.375rem;
+  background-image: url("https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-24.png");
+  background-position: 10px 7px;
+  background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 .has-search .form-control-feedback {
@@ -102,83 +132,269 @@
   text-align: center;
   pointer-events: none;
   color: #aaa;
+  background-color: green;
 }
-.bottom_line{
-width: 95%;
-height: 2px;
-margin: 1rem;
-background-color: #C5C5C5;
+.bottom_line {
+  width: 95%;
+  height: 2px;
+  margin: 1rem;
+  background-color: #c5c5c5;
 }
-.app_categories_button{
-  margin-left: 1rem;
+.app_categories_button {
+  display: flex;
   width: 190px;
   height: 40px;
   border-radius: 8px;
-  border: 1px solid #C5C5C5;
+  border: 1px solid #c5c5c5;
   border-color: rgba(197, 197, 197, 1);
   background-color: whitesmoke;
   font-family: Space Grotesk;
-font-style: normal;
-font-weight: bold;
-font-size: 14px;
-line-height: 18px;
-letter-spacing: 0.02em;
-text-transform: capitalize;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
 }
-.checkbox_div{
+.UiSecreen_app_categories_button {
+  display: flex;
+  width: 216px;
+  margin-left: 16px;
+  justify-content: space-between;
+  height: 36px;
+  border-radius: 8px;
+  font-family: Space Grotesk;
+  font-style: normal;
+  font-weight: 400;
+  cursor: pointer;
+  background-color: #fafafa;
+  align-items: center;
+  padding: 0px 12px 0px 16px;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
+}
+.checkbox_div {
   margin-left: 16rem;
-  
+  margin-top: -30px;
+
   color: black;
-
 }
-.label{
+.Ui_Secreen_filter_checkbox {
+  width: 40%;
+}
+
+.label {
   margin-left: 1rem;
-
 }
-.bottom_line2{
+.bottom_line2 {
   width: 95%;
   height: 2px;
   margin-right: 1rem;
   margin-top: 5px;
-  background-color: #C5C5C5;
-  }
+  background-color: #c5c5c5;
+}
 
-  @media only screen and (max-width: 600px){
-    
-    .filter_expand{
-      position: absolute;
-      width: 314px;
-      height: 433px;
-      border-radius: 8px;
-      background-color: rgba(255, 255, 255, 1);
-      margin-top: 3rem;
-      box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.07);
-      overflow-y: scroll;
-    }
-    .checkbox_div{
-      margin-left: 4rem;
-      margin-top: 2rem;
-      
-      color: black;
-    }
-    .bottom_line{
-      width: 90%;
-      height: 2px;
-      margin: 1rem;
-      background-color: #C5C5C5;
-      }
+@media only screen and (max-width: 600px) {
+  .filter_expand {
+    position: absolute;
+    width: 314px;
+    height: 433px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 1);
+    margin-top: 3rem;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.07);
+    overflow-y: scroll;
   }
-  @media only screen and (min-width: 600px) and (max-width: 992px){
-  
-    .filter_expand{
-      position: absolute;
-      width: 514px;
-      height: 433px;
-      border-radius: 8px;
-      background-color: rgba(255, 255, 255, 1);
-      margin-top: 3rem;
-      box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.07);
-      overflow-y: scroll;
-    }
-    
+  .checkbox_div {
+    margin-left: 4rem;
+    margin-top: 2rem;
+
+    color: black;
   }
+  .bottom_line {
+    width: 90%;
+    height: 2px;
+    margin: 1rem;
+    background-color: #c5c5c5;
+  }
+  .filter_button {
+    margin-left: 0rem;
+    width: 70px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid #c5c5c5;
+    border-color: rgba(197, 197, 197, 1);
+    background-color: rgba(255, 255, 255, 1);
+    font-family: Space Grotesk;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.02em;
+    text-transform: capitalize;
+    position: relative;
+  }
+  .recent_button {
+    margin-left: 0.5rem;
+    width: 180px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid #c5c5c5;
+    border-color: rgba(197, 197, 197, 1);
+    background-color: rgba(255, 255, 255, 1);
+    font-family: Space Grotesk;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.02em;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+  .filter_expand {
+    position: absolute;
+    width: 514px;
+    height: 433px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 1);
+    margin-top: 3rem;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.07);
+    overflow-y: scroll;
+  }
+}
+.filter_count {
+  width: 25px;
+  color: white;
+  background-color: #5097f3;
+  border-radius: 8px;
+  padding: 1px;
+  text-align: center;
+  margin-left: 16px;
+}
+.app_page_checkbox_with_search {
+  padding: 0px 16px 0px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+.search_result_wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 16px 16px 16px;
+}
+.all_result {
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #505052;
+}
+.clear_result {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 700;
+  color: #161618;
+  cursor: pointer;
+}
+.element_tag_show {
+  width: 54px;
+  height: 14px;
+  color: white;
+  font-size: 12px;
+  line-height: 14px;
+  padding: 2px 8px 2px 8px;
+  border-radius: 8px;
+  background-color: #5097f3;
+}
+.filter_count_app_card {
+  background-color: #5097f3;
+  width: 22px;
+  height: 18px;
+  border-radius: 10px;
+  color: white;
+}
+.each_filter_count {
+  color: white;
+  background-color: #5097f3;
+  width: 22px;
+  height: 18px;
+  border-radius: 10px;
+  text-align: center;
+  margin-left: 16px;
+}
+.filter_input_element {
+  width: 98%;
+  margin: auto;
+  border-radius: 8px;
+  border: 1px solid #c5c5c5;
+  background-color: white;
+  /* background-color: red; */
+  min-height: 56px;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+.search_element {
+  height: 20px;
+  padding-left: 5px;
+}
+.css-16awh2u-MuiAutocomplete-root .MuiFilledInput-root {
+  padding-top: 0px !important;
+  overflow: hidden;
+}
+.css-1gctnaj-MuiInputBase-input-MuiFilledInput-input {
+  border-radius: 8px;
+}
+.css-16awh2u-MuiAutocomplete-root .MuiAutocomplete-input {
+  background-color: white !important;
+  height: 40px !important;
+}
+.css-1w8yruj-MuiInputBase-root-MuiFilledInput-root:before {
+  border-bottom: none !important;
+}
+.css-1w8yruj-MuiInputBase-root-MuiFilledInput-root:after {
+  border-bottom: none !important;
+}
+.css-i4bv87-MuiSvgIcon-root {
+  display: none;
+}
+.MuiAutocomplete-hasPopupIcon.css-16awh2u-MuiAutocomplete-root
+  .MuiFilledInput-root,
+.MuiAutocomplete-hasClearIcon.css-16awh2u-MuiAutocomplete-root
+  .MuiFilledInput-root {
+  background-color: #ffffff !important;
+}
+@media screen and (max-width: 800px) {
+  .App_Page_filter_expand {
+    position: absolute;
+    width: 600px;
+
+    height: 433px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.07);
+    overflow-y: scroll;
+    z-index: 100000;
+  }
+}
+@media screen and (max-width: 625px) {
+  .App_Page_filter_expand {
+    position: absolute;
+    width: 500px;
+
+    height: 433px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.07);
+    overflow-y: scroll;
+    z-index: 100000;
+  }
+}
+.MuiFilledInput-root {
+  background-color: white !important;
+}

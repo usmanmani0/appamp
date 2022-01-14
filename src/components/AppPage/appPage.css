@@ -1,0 +1,505 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: "Space Grotesk Medium";
+}
+@font-face {
+  font-family: "Space Grotesk Medium";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Space Grotesk Regular"),
+    url("../../assets/fonts/SpaceGrotesk-Medium.woff") format("woff");
+}
+
+.sound_cloud_wrapper {
+  background-color: #f4f4f4;
+}
+.hero_section_wraper {
+  display: flex;
+  justify-content: space-between;
+}
+.sound_cloud_content {
+  padding: 56px 75px 56px 75px;
+}
+.music_audio {
+  width: 142px;
+  height: 28px;
+  background-color: #ffffff;
+  font-size: 14px;
+  color: #161618;
+}
+.sound_cloud_text {
+  padding: 5px 0px 10px 24px;
+}
+
+.sound_cloud_heading {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 40px;
+  color: #161618;
+  padding-top: 12px;
+}
+.ux10 {
+  color: #161618;
+  line-height: 14px;
+  font-size: 12px;
+  font-weight: 400;
+  padding-top: 12px;
+}
+.ui93 {
+  color: #161618;
+  line-height: 14px;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 12px 0px 0px 8px;
+}
+._copy {
+  color: #8a8a8b;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  padding-top: 12px;
+}
+.download_wrap {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.copy_wrap {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.sound_cloud_filter_wrapper {
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.15);
+  padding: 0px 75px 0px 75px;
+}
+.filter_content_wrapper {
+  width: 260px;
+  height: 48px;
+  background: #f4f4f4;
+  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.07);
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.ui_vedio {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 12px 8px 8px;
+  color: black;
+  width: 124px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.filter_active {
+  background-color: #ffffff;
+}
+.filter {
+  width: 93px;
+  height: 43px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #c5c5c5;
+  color: #161618;
+  font-size: 14px;
+  cursor: pointer;
+}
+.by_feature {
+  width: 148px;
+  height: 40px;
+  background: #ffffff;
+  padding: 0px 12px 0px 12px;
+  border: 2px solid #c5c5c5;
+  box-sizing: border-box;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.by_feature_dropdown {
+  width: 148px !important;
+}
+.select_feature {
+  outline: none !important;
+  border: none !important;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.07);
+}
+.dropdown-toggle::after {
+  content: none !important;
+}
+.soud_cloud_vedio_section {
+  padding: 8px 75px 0px 75px;
+}
+.vedio_card {
+  width: 195px;
+  height: 423px;
+  border-radius: 8px;
+  position: relative;
+  margin-top: 40px;
+  cursor: pointer;
+}
+.vedio_card:hover > .card_content {
+  display: block;
+}
+.vedio_card:hover {
+  background: linear-gradient(360deg, #161618 0%, rgba(22, 22, 24, 0) 47.71%);
+  opacity: 0.7;
+}
+.vedio_card:hover > .vedio_time {
+  bottom: 10%;
+}
+.card_content {
+  position: absolute;
+  bottom: 2%;
+  padding: 0px 10px 0px 10px;
+  width: 192px;
+  display: none;
+}
+.onHoverImage {
+  height: 24px;
+  width: 24px;
+}
+.onHoverText {
+  font-size: 12px;
+  line-height: 14px;
+  color: white;
+  padding: 5px 0px 0px 5px;
+  font-weight: 700;
+}
+.card_content_show {
+  display: flex;
+  justify-content: space-between;
+}
+.select_btn {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.vedio_time {
+  position: absolute;
+  bottom: 1%;
+  padding-right: 10px;
+  width: 192px;
+  display: flex;
+
+  justify-content: end;
+}
+
+.vedio_card_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 24px;
+}
+.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+  border: none !important;
+}
+.con{
+  font-size: 14px !important;
+}
+.icon_filter{
+  padding-left: 10px;
+}
+
+.option_data {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  margin-left: 16px;
+  height: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+
+  width: 200px;
+  margin-top: 5px;
+  padding-left: 10px;
+  border-radius: 8px;
+}
+.option_data:hover {
+  background-color: #fafafa;
+}
+.option_right_arrow {
+  display: none;
+  padding-right: 15px;
+}
+.option_data:hover .option_right_arrow {
+  display: block;
+}
+.appPage_checkbox_div {
+  color: black;
+  display: none;
+}
+.appPage_checkbox_div:hover {
+  display: block !important;
+}
+
+.appPage_select {
+  border: 2px solid #c5c5c5;
+  width: 148px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+}
+.UI_Secreen_vedio_card_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 24px;
+}
+.card_botom_text {
+  font-size: 14px;
+  color: #161618;
+  line-height: 18px;
+  padding: 8px 10px;
+}
+.vedio_time_wrapper {
+  height: 20px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: #161618;
+  border-radius: 4px;
+  padding: 4px;
+  font-size: 12px;
+}
+.share_copy {
+  width: 195px;
+  height: 120px;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  border-radius: 8px;
+  left: 0%;
+}
+.select_content_wrapper_1 {
+  padding: 14px 18px 14px 18px;
+}
+.add_to_col {
+  color: #161618;
+  font-size: 14px;
+  padding-left: 15px;
+  font-weight: 700;
+}
+.hero_section_content {
+  display: flex;
+}
+.select_download {
+  color: #c5c5c5;
+  font-size: 14px;
+  padding-left: 15px;
+  font-weight: 700;
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+}
+.sticky + .content {
+  padding-top: 102px;
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+/* ....................create play list css......... */
+.UI_Secreen {
+  padding: 40px 75px 0px 75px;
+}
+.UI_Secreen_Streem {
+  padding: 44px 75px 0px 75px;
+}
+.create_play_list {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+.line {
+  align-self: stretch;
+  border: 2px solid #f4f4f4;
+  height: 1px;
+  width: 80%;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+.Ui_heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.screens14 {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  padding-top: 4px;
+}
+@media screen and (max-width: 768px) {
+  .UI_Secreen {
+    padding: 40px 16px 0px 16px;
+  }
+  .UI_Secreen_Streem {
+    padding: 44px 16px 0px 16px;
+  }
+  .soud_cloud_vedio_section {
+    padding: 8px 16px 0px 16px;
+  }
+  .UI_Secreen_vedio_card_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24;
+  }
+  .vedio_card_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+  }
+  .sound_cloud_filter_wrapper {
+    padding: 0px 16px 0px 16px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .share_copy {
+    width: 193px;
+    height: 120px;
+    background-color: white;
+    position: absolute;
+    top: 50% !important;
+    border-radius: 8px;
+    left: 1% !important;
+  }
+  .sound_cloud_filter_wrapper {
+    justify-content: center;
+  }
+  .hide_by_feature {
+    display: none;
+  }
+  .filter {
+    display: none;
+  }
+  .hero_section_wraper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+  }
+  .hero_section_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .copy_download {
+    display: flex;
+    padding-top: 15px;
+  }
+  .download_wrap {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+  .line {
+    align-self: stretch;
+    border: 2px solid #f4f4f4;
+    height: 1px;
+    width: 30% !important;
+    padding-left: 20px;
+    margin-top: 15px !important;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .line {
+    align-self: stretch;
+    border: 2px solid #f4f4f4;
+    height: 1px;
+    width: 70%;
+    padding-left: 20px;
+    margin-top: 10px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .line {
+    align-self: stretch;
+    border: 2px solid #f4f4f4;
+    height: 1px;
+    width: 60%;
+    padding-left: 20px;
+    margin-top: 10px;
+  }
+}
+.mobile_add_collecton_show{
+  display: none;
+}
+@media screen and (max-width:550px){
+  .mobile_add_collecton_show{
+    display: block;
+  }
+
+}

@@ -13,7 +13,7 @@ const Home = () => {
       <Filter />
       <Appcard />
       <Footer />
-      {/*pull issue  */}
+
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./appcard.css";
 import GoogleFit from "../../assets/images/image 85.png";
 import Mint from "../../assets/images/image 79.png";
@@ -30,6 +30,7 @@ import Docusign from "../../assets/images/image 106.png";
 import Amazon from "../../assets/images/image 100.png";
 import CVS from "../../assets/images/image 97.png";
 import Weedmaps from "../../assets/images/image 94.png";
+import { Link } from 'react-router-dom'
 
 const Appcard = () => {
   const data = [
@@ -183,8 +184,10 @@ const Appcard = () => {
       title: "Communication",
       sub: "Facebook",
     },
-   
+
   ];
+  const [select, setSelect] = useState(false)
+
   return (
     <>
       <div className="appCard_wrap">
@@ -192,9 +195,9 @@ const Appcard = () => {
           return (
             <>
               <div>
-                <div className="card_div">
+                <div className="card_div" key={index}>
                   <div className="img_div">
-                    <img className="card_img" src={data.img} alt="logo"></img>
+                    <Link to="/apppage"><img className="card_img" src={data.img} alt="logo" /></Link>
                   </div>
                 </div>
 
@@ -205,7 +208,14 @@ const Appcard = () => {
           );
         })}
       </div>
-      <div className="bottom_button"><button className="button_4" type="button">Load More</button></div>
+
+      <div className="bottom_button"><button className="button_4" type="button" onClick={() => { setSelect(!select) }}>Load More</button></div>
+      {select && <div className="d-flex justify-content-center py-1 loader" >
+        <div class="spinner-border text-secondary" role="status">
+
+        </div>
+        <span class="sr-only"> &nbsp;&nbsp; Loading...</span>
+      </div>}
     </>
   );
 };
