@@ -25,7 +25,7 @@ const AppPageHeroSection = () => {
               <div>
                 <div className="sound_cloud_text">
                   <div className="d-flex align-items-center justify-content-center music_audio">
-                    music & audio
+                    Music & Audio
                   </div>
                   <div className="sound_cloud_heading">SoundCloud</div>
                   <div className="d-flex">

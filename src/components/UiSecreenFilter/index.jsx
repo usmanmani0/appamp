@@ -12,6 +12,7 @@ import RightArrow from "../../assets/images/right-arrow.png"
 import { useSelector, useDispatch } from 'react-redux';
 import { handelShow } from '../../feature/addCollection/counterSlice';
 import MobileFilter from './mobileFilter';
+import './uisecreenfilter.css'
 
 const UiSecreenFilter = () => {
     const color = useSelector((state) => state.showModal.color)
@@ -33,10 +34,14 @@ const UiSecreenFilter = () => {
         },
         {
             id: 3,
-            typeis: "Tool Bar",
+            typeis: "Tab Bar",
         },
         {
             id: 4,
+            typeis: "Tool Bar",
+        },
+        {
+            id: 5,
             typeis: "Navigation Bar",
         },
 
@@ -243,23 +248,35 @@ const UiSecreenFilter = () => {
     const iconsArray = [
         {
             id: 303,
-            typeis: "Alerts"
+            typeis: "Action Menu"
         },
         {
             id: 123,
-            typeis: "Dialog"
+            typeis: "Bottom Sheet"
         },
         {
             id: 124,
-            typeis: "Progress"
+            typeis: "Context Menu"
         },
         {
             id: 125,
-            typeis: "Snackbar / Toast"
+            typeis: "Date & Time Picker"
         },
         {
             id: 126,
-            typeis: "Tooltip"
+            typeis: "Dialog"
+        },
+        {
+            id: 126,
+            typeis: "Full-Screen Overlay"
+        },
+        {
+            id: 126,
+            typeis: "Side Sheet"
+        },
+        {
+            id: 126,
+            typeis: "Text Edit Menu"
         },
 
     ]
@@ -304,33 +321,36 @@ const UiSecreenFilter = () => {
 
                         <div className="App_Page_filter_expand">
 
+                            <div className='fillter_box'>
+                                <div className="filter_input_element">
+                                    <div className='search_icon_wrapper'>  <img src={img1} className="search" /></div>
+                                    <Stack spacing={1} style={{ width: "95%" }} >
+                                        <Autocomplete
+                                            multiple
+                                            popupIcon=""
+                                            id="tags-filled"
+                                            value={selectedFilter}
+                                            options={list.map((option) => option.typeis)}
 
-
-                            <div className="filter_input">
-                                <img src={img1} className="search" />
-                                <Stack spacing={1} style={{ width: "95%" }} >
-                                    <Autocomplete
-                                        multiple
-                                        id="tags-filled"
-                                        value={selectedFilter}
-                                        options={list.map((option) => option.typeis)}
-
-                                        onChange={(e, v) => enteringAutoComplete(v)}
-                                        renderTags={(value, getTagProps) => value.map((option, index) => (
-                                            <Chip variant="outlined" label={option} {...getTagProps({ index })} />
-                                        ))}
-                                        renderInput={(params) => (
-                                            <TextField
-                                                {...params}
-                                                variant="filled"
-                                                label=""
-                                                value={searchbox}
-                                                placeholder="Search Elements"
-                                                onChange={(e) => { setSearchbox(e.target.value) }}
-                                            />
-                                        )} />
-                                </Stack>
+                                            onChange={(e, v) => enteringAutoComplete(v)}
+                                            renderTags={(value, getTagProps) => value.map((option, index) => (
+                                                <Chip variant="outlined" label={option} {...getTagProps({ index })} />
+                                            ))}
+                                            renderInput={(params) => (
+                                                <TextField
+                                                    {...params}
+                                                    variant="filled"
+                                                    label=""
+                                                    value={searchbox}
+                                                    placeholder="Search Elements"
+                                                    onChange={(e) => { setSearchbox(e.target.value) }}
+                                                />
+                                            )} />
+                                    </Stack>
+                                </div>
                             </div>
+
+
                             <hr className="bottom_line"></hr>
                             {searchbox === "" ?
                                 color == 1 ? <div className='d-flex justify-content-around' onMouseLeave={() => { setOpt(null) }}>
@@ -490,12 +510,12 @@ const UiSecreenFilter = () => {
                                         </div>
 
                                         <div  >
-                                            <div className='option_data ' onMouseEnter={() => { setOpt(0) }}><div>Bars {selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => list.some(li => li.typeis == data)).length}</span> : ""} </div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                            <div className='option_data ' onMouseEnter={() => { setOpt(1) }}><div>Control{selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => controlArray.some(li => li.typeis == data)).length}</span> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                            <div className='option_data ' onMouseEnter={() => { setOpt(2) }}><div>Display {selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => displayArray.some(li => li.typeis == data)).length}</span> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                            <div className='option_data ' onMouseEnter={() => { setOpt(3) }}><div>Feedback {selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => feedbackArray.some(li => li.typeis == data)).length}</span> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                            <div className='option_data ' onMouseEnter={() => { setOpt(4) }}><div>Icons & Images {selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => overlayArray.some(li => li.typeis == data)).length}</span> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                            <div className='option_data ' onMouseEnter={() => { setOpt(5) }}><div>Overlay {selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => iconsArray.some(li => li.typeis == data)).length}</span> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div> </div>
+                                            <div className='option_data ' onMouseEnter={() => { setOpt(0) }}><div className='d-flex flter_data'>Bars {selectedFilter.length > 0 ? <div className='each_filter_count'>{selectedFilter.filter((data) => list.some(li => li.typeis == data)).length}</div> : ""} </div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                            <div className='option_data ' onMouseEnter={() => { setOpt(1) }}><div className='d-flex flter_data'>Control{selectedFilter.length > 0 ? <div className='each_filter_count'>{selectedFilter.filter((data) => controlArray.some(li => li.typeis == data)).length}</div> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                            <div className='option_data ' onMouseEnter={() => { setOpt(2) }}><div className='d-flex flter_data'>Display {selectedFilter.length > 0 ? <div className='each_filter_count'>{selectedFilter.filter((data) => displayArray.some(li => li.typeis == data)).length}</div> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                            <div className='option_data ' onMouseEnter={() => { setOpt(3) }}><div className='d-flex flter_data'>Feedback {selectedFilter.length > 0 ? <div className='each_filter_count'>{selectedFilter.filter((data) => feedbackArray.some(li => li.typeis == data)).length}</div> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                            <div className='option_data ' onMouseEnter={() => { setOpt(4) }}><div className='d-flex flter_data'>Icons & Images {selectedFilter.length > 0 ? <div className='each_filter_count'>{selectedFilter.filter((data) => overlayArray.some(li => li.typeis == data)).length}</div> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                            <div className='option_data ' onMouseEnter={() => { setOpt(5) }}><div className='d-flex flter_data'>Overlay {selectedFilter.length > 0 ? <div className='each_filter_count'>{selectedFilter.filter((data) => iconsArray.some(li => li.typeis == data)).length}</div> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div> </div>
                                         <div className='Ui_Secreen_filter_checkbox'>
 
                                             {list.map((data, index) => {

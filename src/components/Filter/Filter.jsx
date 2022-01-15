@@ -134,6 +134,7 @@ function Filter() {
                 <Stack spacing={1} style={{ width: "95%" }}>
                   <Autocomplete
                     multiple
+                    popupIcon=""
                     id="tags-filled"
                     value={selectedFilter}
                     options={list.map((option) => option.typeis)}

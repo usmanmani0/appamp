@@ -337,7 +337,6 @@
   border-radius: 8px;
 }
 .each_filter_count {
-  width: 25px;
   color: white;
   background-color: #5097f3;
   width: 22px;
@@ -346,11 +345,24 @@
   text-align: center;
   margin-left: 16px;
 }
+.fillter_box {
+  margin-top: 8px;
+}
+.search_icon_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 14px;
+}
+.appPage_checkbox_div {
+  margin-top: 10px;
+}
+
 .filter_input_element {
   width: 98%;
   margin: auto;
   border-radius: 8px;
-  border: 1px solid #c5c5c5;
+  border: 2px solid #c5c5c5;
   background-color: white;
   /* background-color: red; */
   min-height: 56px;

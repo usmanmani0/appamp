@@ -99,6 +99,7 @@
 .sound_cloud_filter_wrapper {
   height: 64px;
   display: flex;
+  z-index: 99;
   justify-content: space-between;
   align-items: center;
   background: #ffffff;
@@ -107,6 +108,7 @@
 }
 .filter_content_wrapper {
   width: 260px;
+  z-index: 99 !important;
   height: 48px;
   background: #f4f4f4;
   box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.07);
@@ -173,6 +175,7 @@
 }
 .vedio_card {
   width: 195px;
+  z-index: 9;
   height: 423px;
   border-radius: 8px;
   position: relative;
@@ -270,6 +273,14 @@
 }
 .option_data:hover {
   background-color: #fafafa;
+  font-weight: 500;
+}
+.flter_data {
+  font-size: 14px;
+  font-weight: 400;
+}
+.flter_data:hover {
+  font-weight: 500;
 }
 .option_right_arrow {
   display: none;
@@ -463,6 +474,16 @@
   }
 }
 @media screen and (max-width: 550px) {
+  .sound_cloud_text {
+    padding: 56px 0px 10px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .sound_cloud_content {
+    padding: 56px 0px 56px 0px;
+  }
   .share_copy {
     width: 193px;
     height: 120px;
@@ -514,7 +535,7 @@
     align-self: stretch;
     border: 2px solid #f4f4f4;
     height: 1px;
-    width: 30% !important;
+    width: 50% !important;
     padding-left: 20px;
     margin-top: 15px !important;
   }
@@ -582,7 +603,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 19;
+    gap: 19px !important;
   }
   .vedio_card {
     width: 161px;
@@ -635,5 +656,15 @@
     top: 35%;
     /* border-radius: 8px; */
     left: 0%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .line {
+    align-self: stretch;
+    border: 2px solid #f4f4f4;
+    height: 1px;
+    width: 40% !important;
+    padding-left: 20px;
+    margin-top: 15px !important;
   }
 }
