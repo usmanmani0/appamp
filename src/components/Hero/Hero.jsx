@@ -5,6 +5,7 @@ import "./hero.css";
 import Maskimg from "../../assets/images/Mask Group.png";
 import { BiPlayCircle } from "react-icons/bi";
 import { BiMobile } from "react-icons/bi";
+import { BsChevronDown } from "react-icons/bs";
 
 const Hero = () => {
   const [color, setColor] = useState(1);
@@ -12,7 +13,7 @@ const Hero = () => {
   return (
     <>
       <div className="hero-section container-fluid">
-        <Row className="mob_col" style={{ padding: "0px 10px" }}>
+        <Row className="mob_col" style={{ padding: "3s0px 10px" }}>
           <Col xxl={6} xl={6} lg={6} md={12} xs={11} className="hero_desc">
             <div>
               <div>
@@ -35,7 +36,40 @@ const Hero = () => {
                     placeholder="Search Features or Components"
                   ></input>
 
-                  <div className="search_buttonsdiv">
+                  <div class="dropdown disp_non" style={{marginTop:'7px',paddingLeft:'5px', width:'170px'}}>
+                    <button
+                      class="dropdown-toggle"
+                      type="button"
+                      id="dropdownMenuButton1"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                      className="recent_button"
+                      style={{border:'none'}}
+                    >
+                      <span>UX Videos</span>
+                      <i className="icon_down" style={{marginLeft:'20px'}}>
+                        <BsChevronDown
+                          className="icon"
+                          size="16px"
+                          color="black"
+                        />
+                      </i>
+                    </button>
+                    <ul
+                      class="dropdown-menu"
+                      aria-labelledby="dropdownMenuButton1"
+                      id="show_upper_on_body"
+                    >
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <span>UI Videos</span>
+                        </a>
+                      </li>
+                     
+                    </ul>
+                  </div>
+
+                  <div className="search_buttonsdiv" id="dis_non">
                     <button
                       className="search_btn"
                       type="button"

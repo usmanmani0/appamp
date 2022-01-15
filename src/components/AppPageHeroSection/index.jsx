@@ -40,7 +40,7 @@ const AppPageHeroSection = () => {
               <div className="copy_wrap " >
                 <OverlayTrigger
                   placement="bottom"
-                  overlay={<Tooltip id="button-tooltip-2">Check out this avatar</Tooltip>}
+                  overlay={<Tooltip id="button-tooltip-2">Copy Share Link</Tooltip>}
                 >
                   {({ ref, ...triggerHandler }) => (
                     <Button

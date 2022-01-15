@@ -182,10 +182,7 @@
 .vedio_card:hover > .card_content {
   display: block;
 }
-.vedio_card:hover {
-  /* background: linear-gradient(180deg, rgba(22, 22, 24, 0) 50%, #161618 100%);
-  opacity: 0.7; */
-}
+
 .vedio_card:hover > .vedio_time {
   bottom: 10%;
 }
@@ -339,6 +336,7 @@
   }
 }
 .mobie_share_copy {
+  z-index: 999;
   width: 195px;
   height: 120px;
   /* background-color: white; */
@@ -360,6 +358,9 @@
   font-size: 14px;
   padding-left: 15px;
   font-weight: 700;
+}
+.ui_secreen_tile {
+  width: 100% !important;
 }
 .hero_section_content {
   display: flex;
@@ -542,7 +543,97 @@
   display: none;
 }
 @media screen and (max-width: 550px) {
+  .filter_content_wrapper {
+    width: 343px;
+    height: 48px;
+    background: #f4f4f4;
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.07);
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
   .mobile_add_collecton_show {
     display: block;
+  }
+}
+@media screen and (max-width: 664px) {
+  .ui_vedio {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 12px 8px 8px;
+    color: black;
+    width: 164px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .vedio_card_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 19px;
+  }
+  .UI_Secreen_vedio_card_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 19;
+  }
+  .vedio_card {
+    width: 161px;
+    height: 350px;
+    border-radius: 8px;
+    position: relative;
+    margin-top: 40px;
+    cursor: pointer;
+  }
+  .vedio_time {
+    position: absolute;
+    bottom: 3px;
+
+    width: 161px;
+    display: flex;
+
+    justify-content: end;
+  }
+  .card_content {
+    width: 161px;
+    height: 350px;
+    position: absolute;
+    top: 0%;
+    opacity: 0.7;
+    color: linear-gradient(#161618 0%, #161618 100%);
+    background: linear-gradient(180deg, rgba(22, 22, 24, 0) 50%, #161618 100%);
+    padding: 0px 10px 0px 10px;
+    display: none;
+  }
+  .vedio_time_wrapper {
+    height: 18px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #161618;
+    border-radius: 4px;
+    padding: 4px;
+    font-size: 11px;
+  }
+  .vedio_card:hover > .vedio_time {
+    bottom: 13%;
+  }
+  .mobie_share_copy {
+    width: 161px;
+    height: 120px;
+    /* background-color: white; */
+    position: absolute;
+    top: 35%;
+    /* border-radius: 8px; */
+    left: 0%;
   }
 }

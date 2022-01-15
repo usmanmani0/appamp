@@ -146,7 +146,7 @@ const UxVideoSecreen = () => {
                   <div className="vedio_card">
                     <Link to="/soundcloudpage">
                       {" "}
-                      <img src={data.img} alt="err" />
+                      <img src={data.img} className="img-fluid" alt="err" />
                     </Link>
                     <div className="UI_Secreen_add_collection">
                       {showPopover ? (
@@ -305,7 +305,7 @@ const UxVideoSecreen = () => {
                       <div className="d-flex justify-content-center">
                         <img src={MDownload} />
                       </div>
-                      <div className="d-flex justify-content-center">
+                      <div className="d-flex justify-content-center" onClick={copyShare}>
                         <img src={MCopy} />
                       </div>
                     </div>
@@ -353,7 +353,7 @@ const UxVideoSecreen = () => {
                     <div>
                       <Image src={checkalert} />
                       <span className="alert_txt">
-                        collection has been copy
+                        Collection has been copy
                       </span>
                     </div>
                     <div className="undo_btn">

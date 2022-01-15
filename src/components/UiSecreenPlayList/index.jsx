@@ -3,6 +3,7 @@ import "./uisecreenplaylist.css"
 import Secreen1 from "../../assets/images/s1.png"
 import Secreen2 from "../../assets/images/s2.png"
 import Secreen3 from "../../assets/images/s3.png"
+import MPlus from "../../assets/images/mplus.png"
 import Secreen4 from "../../assets/images/s4.png"
 import Secreen5 from "../../assets/images/s5.png"
 import Secreen6 from "../../assets/images/s6.png"
@@ -14,6 +15,8 @@ import Secreen11 from "../../assets/images/s11.png"
 import Secreen12 from "../../assets/images/s12.png"
 import Copy from "../../assets/images/copy.png"
 import Down from "../../assets/images/Download.png"
+import MCopy from "../../assets/images/mcopy.png"
+import MDownload from "../../assets/images/mdownload.png"
 import Cloud from "../../assets/images/cloud.png"
 import Plus from "../../assets/images/plus.png"
 import option from "../../assets/images/select.png"
@@ -21,8 +24,11 @@ import UiSecreenFilter from "../UiSecreenFilter"
 import SelectByFeature from '../SelectByFeature'
 
 const UiSecreenPlayList = () => {
+    const [showPopover, setShowPopover] = useState({ open: true });
 
     const [select, setSelect] = useState({ open: false })
+    const [setSave, showSetSave] = useState(false);
+    const [copy, setCopy] = useState(false);
 
     const Playlist = [
         {
@@ -76,6 +82,23 @@ const UiSecreenPlayList = () => {
 
 
     ]
+    const handelPopover = () => {
+        setShowPopover(!showPopover);
+    };
+    const saveCollection = () => {
+        showSetSave(!setSave);
+
+        setTimeout(() => {
+            showSetSave(null);
+        }, 5000);
+    };
+    const copyShare = () => {
+        setCopy(!setSave);
+
+        setTimeout(() => {
+            setCopy(null);
+        }, 5000);
+    };
     return (
         <>
             <div className='mobile_View_Filter_section'>
@@ -118,13 +141,36 @@ const UiSecreenPlayList = () => {
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div className="mobie_share_copy"
+                                                onClick={() => {
+                                                    setSelect({
+                                                        open: select.open === index ? false : index,
+                                                    });
+                                                }}
+                                                style={{
+                                                    display: index === select.open ? "block" : "none",
+                                                }}>
+                                                <div className="d-flex justify-content-center">
+                                                    <img src={MPlus} onClick={() => {
+                                                        setShowPopover({
+                                                            open: showPopover.open === index ? false : index,
+                                                        });
+                                                    }} />
+                                                </div>
+                                                <div className="d-flex justify-content-center">
+                                                    <img src={MDownload} />
+                                                </div>
+                                                <div className="d-flex justify-content-center" onClick={copyShare}>
+                                                    <img src={MCopy} />
+                                                </div>
+                                            </div>
                                             <div className="card_content">
                                                 <div className='card_content_show'>
                                                     <div className='d-flex'><div> <img src={Cloud} className='onHoverImage' /></div><div className='onHoverText'>sound cloud</div></div>
                                                     <div className='select_btn' onClick={() => { setSelect({ open: select.open === index ? false : index }) }}><img src={option} /> </div>
                                                 </div>
                                             </div>
-                                            <img src={data.img} />
+                                            <img src={data.img} className='img-fluid' />
                                         </div>
                                     </div>
                                 </>

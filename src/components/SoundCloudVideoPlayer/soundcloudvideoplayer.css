@@ -1464,3 +1464,40 @@
 .mv_cards_top_btn {
   display: none;
 }
+@media screen and (max-width: 425px) {
+  .UI_Secreen_confirmation_wrapper {
+    position: absolute;
+    bottom: 24px;
+    left: 17% !important;
+    width: 250px !important;
+    height: 68px;
+    background-color: #287d3c;
+    border-radius: 8px;
+    padding: 6px 16px 6px 16px;
+    z-index: 30;
+    display: flex;
+    justify-content: space-between !important;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .alert_txt {
+    font-weight: 400;
+    font-size: 12px;
+    text-align: center !important;
+    line-height: 18px;
+    margin-left: 13px;
+    color: white;
+  }
+  .undo_btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 65px !important;
+    height: 25px !important;
+    border-radius: 24px;
+    background-color: #ffffff;
+    cursor: pointer;
+  }
+}
