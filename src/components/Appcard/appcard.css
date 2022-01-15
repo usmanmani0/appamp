@@ -7,20 +7,21 @@
   .appCard_wrap{
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     gap: 24px;
-    max-width: 1000px;
+    max-width: 1300px;
     margin: auto;
     margin-top: 2rem;
   }
   .card_div{
-      width: 140px;
-      height: 228;
+      width: 196px;
+      height: 200;
     
   }
   .img_div{
-    height: 130px;
-    width: 140px;
+    height: 200px;
+    width: 100%;
     border-radius: 8px;
     background-color:   #FAFAFA;
     display: flex;
@@ -30,6 +31,10 @@
   }
   .card_img{
     background-color:   #FAFAFA;
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 8px;
   }
   .bottom_button{
     display: flex;
@@ -37,7 +42,7 @@
     align-items: center;
   }
   .button_4{
-    margin-top: 2rem;
+    margin-top: 64px;
     margin-bottom: 2rem;
     width: 100px;
     height: 40px;
@@ -53,8 +58,26 @@
   letter-spacing: 0.02em;
   text-transform: capitalize;
 }
+.category_div{
+  font-size: 12px;
+  font-family: Space Grotesk;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 14px;
+  letter-spacing: 1% !important;
+  color: #8A8A8B;
+  margin-top: 7px;
+}
+.name_div{
+  font-size: 14px;
+  font-family: Space Grotesk;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 20px;
+  color: #161618;
+}
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 400px){
   .appCard_wrap{
     display: flex;
     justify-content: center;
@@ -64,4 +87,97 @@
     margin: auto;
     margin-top: 2rem;
   }
+  .card_img{
+    background-color:   #FAFAFA;
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    border-radius: 8px;
+  }
+  .img_div{
+    height: 150px;
+    width: 100%;
+    border-radius: 8px;
+    background-color:   #FAFAFA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .card_div{
+    width: 140px;
+    height: 200;
+  
+}
+  .button_4{
+    margin-top: 64px;
+    margin-bottom: 2rem;
+    width: 80px;
+    height: 40px;
+    border-radius: 24px;
+    border: 1px solid #C5C5C5;
+    border-color: rgba(197, 197, 197, 1);
+    background-color: rgba(255, 255, 255, 1);
+    font-family: Space Grotesk;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
+}
+
+
+}
+@media only screen and (min-width: 400px) and (max-width: 600px){
+  .appCard_wrap{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 2rem;
+  }
+  .card_img{
+    background-color:   #FAFAFA;
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    border-radius: 8px;
+  }
+  .img_div{
+    height: 180px;
+    width: 100%;
+    border-radius: 8px;
+    background-color:   #FAFAFA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .card_div{
+    width: 180px;
+    height: 200;
+  
+}
+  .button_4{
+    margin-top: 64px;
+    margin-bottom: 2rem;
+    width: 80px;
+    height: 40px;
+    border-radius: 24px;
+    border: 1px solid #C5C5C5;
+    border-color: rgba(197, 197, 197, 1);
+    background-color: rgba(255, 255, 255, 1);
+    font-family: Space Grotesk;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
+}
+
+
 }

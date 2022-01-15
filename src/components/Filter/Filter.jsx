@@ -4,7 +4,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import "./filter.css";
-import { BsChevronDown } from "react-icons/bs";
+import { IoIosArrowDown } from "react-icons/io";
 import { BsFilter } from "react-icons/bs";
 import { BiChevronRight } from "react-icons/bi";
 import RightArrow from "../../assets/images/right-arrow.png";
@@ -112,10 +112,10 @@ function Filter() {
           <div className="filter_btn">
             <button
               onClick={handelShow}
-              className="filter_button d-flex align-items-center"
+              className="filter_button"
               type="button"
             >
-              <i className="icon_filter" style={{ marginLeft: "5px" }}>
+              <i className="icon_filter" style={{ marginLeft: "0px" }}>
                 {selectedFilter.length == 0 ? (
                   <BsFilter className="icon" size="16px" color="black" />
                 ) : (
@@ -225,7 +225,7 @@ function Filter() {
               >
                 <span>Recently Updated (All)</span>
                 <i className="icon_down">
-                  <BsChevronDown className="icon" size="16px" color="black" />
+                  <IoIosArrowDown className="icon" size="18px" color="black"  />
                 </i>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">

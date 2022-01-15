@@ -5,17 +5,17 @@ import "./hero.css";
 import Maskimg from "../../assets/images/Mask Group.png";
 import { BiPlayCircle } from "react-icons/bi";
 import { BiMobile } from "react-icons/bi";
-import { BsChevronDown } from "react-icons/bs";
+import { IoIosArrowDown } from "react-icons/io";
 
 const Hero = () => {
   const [color, setColor] = useState(1);
 
   return (
     <>
-      <div className="hero-section container-fluid">
+      <div className="hero-section">
         <Row className="mob_col" style={{ padding: "3s0px 10px" }}>
           <Col xxl={6} xl={6} lg={6} md={12} xs={11} className="hero_desc">
-            <div>
+            <div className="headings_div">
               <div>
                 <h4 className="heading_1">
                   Browse 100+ Apps to find your inspiration!
@@ -27,16 +27,16 @@ const Hero = () => {
                   your competitor’s features.
                 </p>
               </div>
-
-              <div className="search_div">
-                <div class="container-fluid d-flex justify-content-between align-item-center">
+              <div className="search_box">
+              <div className="search_div ">
+                <div class="div_wrap">
                   <input
                     type="text"
                     id="searchInput"
                     placeholder="Search Features or Components"
                   ></input>
-
-                  <div class="dropdown disp_non" style={{marginTop:'7px',paddingLeft:'5px', width:'170px'}}>
+                  <div className="vertical_line"></div>
+                  <div class="dropdown disp_non" style={{marginTop:'7px',paddingLeft:'8px', paddingBottom:'8px' , width:'150px'}}>
                     <button
                       class="dropdown-toggle"
                       type="button"
@@ -44,16 +44,20 @@ const Hero = () => {
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                       className="recent_button"
-                      style={{border:'none'}}
+                      style={{border:'none',paddingLeft:'8px', width:'130px'}}
                     >
                       <span>UX Videos</span>
-                      <i className="icon_down" style={{marginLeft:'20px'}}>
-                        <BsChevronDown
+                  <b>
+                  <i className="icon_down" style={{marginLeft:'8px'}}>
+                        <IoIosArrowDown
                           className="icon"
-                          size="16px"
+                          size="18px"
                           color="black"
+                          fontWeight={900}
+                    
                         />
                       </i>
+                  </b>
                     </button>
                     <ul
                       class="dropdown-menu"
@@ -121,6 +125,7 @@ const Hero = () => {
                     </button>
                   </div>
                 </div>
+              </div>
               </div>
             </div>
           </Col>
