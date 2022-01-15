@@ -7,7 +7,6 @@
   padding: 10px 16px;
   background: rgba(255, 255, 255, 1);
   color: #f1f1f1;
-  
 }
 
 .sticky {
@@ -34,6 +33,9 @@
   background-color: rgba(255, 255, 255, 1);
   font-family: Space Grotesk;
   font-style: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-weight: bold;
   font-size: 14px;
   line-height: 18px;
@@ -173,14 +175,39 @@
   padding: 0px 12px 0px 16px;
   font-size: 16px;
   line-height: 20px;
+  border: 1px solid #f4f4f4;
   letter-spacing: 0.02em;
   text-transform: capitalize;
 }
+.filter_elements_data {
+  border-right: 1px solid #f4f4f4;
+  border-left: 1px solid #f4f4f4;
+  margin-left: 2px;
+  height: 33vh;
+}
+.landing_page_input_wrapper {
+  padding: 0px 27px !important;
+  border-left: 1px solid #f4f4f4;
+  height: 33vh;
+  margin-left: 5px;
+}
+.css-1l6di18 .MuiFilledInput-root {
+  padding-top: 0px !important;
+}
+.css-1f9fksr::after {
+  border-bottom: none !important;
+}
 .checkbox_div {
-  margin-left: 16rem;
-  margin-top: -30px;
+  /* margin-left: 16rem; */
 
   color: black;
+}
+.MuiAutocomplete-hasPopupIcon.css-1l6di18 .MuiFilledInput-root,
+.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiFilledInput-root {
+  background-color: white !important;
+}
+.css-1f9fksr::before {
+  border-bottom: none !important;
 }
 .Ui_Secreen_filter_checkbox {
   width: 40%;
@@ -334,7 +361,10 @@
 }
 .filter_count_app_card {
   background-color: #5097f3;
-  padding: 5px;
+  width: 24px;
+  height: 18px;
+  color: white;
+  margin-right: 8px;
   border-radius: 8px;
 }
 .each_filter_count {
@@ -356,6 +386,7 @@
   margin-left: 14px;
 }
 .appPage_checkbox_div {
+  padding-left: 10px;
   margin-top: 10px;
 }
 

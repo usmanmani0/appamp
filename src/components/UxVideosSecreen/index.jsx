@@ -39,19 +39,19 @@ const UxVideoSecreen = () => {
       id: 1,
       checked: false,
       image: checkicon,
-      Name: "Collection #",
+      Name: "Collection # 1",
     },
     {
       id: 2,
       checked: true,
       image: checkicon,
-      Name: "Collection #",
+      Name: "Collection # 2",
     },
     {
       id: 3,
       checked: true,
       image: checkicon,
-      Name: "Collection #",
+      Name: "Collection # 3",
     },
   ]);
   const checkTick = async (index) => {
@@ -121,19 +121,28 @@ const UxVideoSecreen = () => {
     },
   ];
   const addCollection = () => {
+    let index = checkdata.length
+    console.log("klkkl", index)
     let obj = {
       id: 1,
       checked: false,
       image: checkicon,
-      Name: "Collection #",
+      Name: `${"Collection # " + index}`,
     };
     checkdata.unshift(
       obj
     )
-    // console.log("ssssssss");
+
 
     setCheckdata([...checkdata]);
   };
+
+  const changeDynamicText = (e, index) => {
+    console.log("kkkk", e, index)
+    let data = [...checkdata];
+    data[index].Name = e
+    setCheckdata(data)
+  }
 
   return (
     <>
@@ -192,13 +201,13 @@ const UxVideoSecreen = () => {
                                     <div>
                                       <span className="collection_txt">
                                         <EditText
-                                          name="textbox1"
-
-
-                                          value={data.Name + " " + [index + 1]}
+                                          type={"text"}
+                                          name={"Name"}
+                                          value={data.Name}
+                                          onChange={(e) => changeDynamicText(e, index)}
                                         />
 
-                                        {/* {data.Name + " " + [index + 1]} */}
+
 
 
                                       </span>
