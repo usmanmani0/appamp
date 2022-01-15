@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from "../../assets/images/Union.png";
+import Logo from "../../assets/images/logo.svg";
 import Unionlogo from "../../assets/images/Union.png";
 import GoogleLogo from "../../assets/images/GoogleLogo.png";
 import AppleLogo from "../../assets/images/AppleLogo.png";
@@ -43,9 +43,9 @@ const Header = () => {
           <div>
             <img className="logo" src={Logo} alt="logo"></img>
           </div>
-          <div>
+          {/* <div>
             <h4>AppMap</h4>
-          </div>
+          </div> */}
         </div>
 
         <div className="buttons_div">
@@ -71,7 +71,7 @@ const Header = () => {
             <Navbar.Brand href="#home">
               <div className="mob_logo">
                 <img className="logo" src={Logo} alt="logo"></img>
-                <h4>AppMap</h4>
+                {/* <h4>AppMap</h4> */}
               </div>
             </Navbar.Brand>
             <Navbar.Collapse id="basic-navbar-nav">
