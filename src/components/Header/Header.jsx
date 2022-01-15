@@ -7,6 +7,7 @@ import close from "../../assets/images/Close.png";
 import Profile from "../../assets/images/profile.png";
 import { AiOutlineClose } from "react-icons/ai";
 
+
 import "./header.css";
 import "../Modal/Signup/signup.css";
 import "../Modal/Signin/signin.css";

@@ -5,8 +5,14 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Sound from "../../assets/images/sound.png";
 import Copy from "../../assets/images/copy.png";
 import Down from "../../assets/images/Download.png";
+import Image from "react-bootstrap/Image"
+import $ from 'jquery';
+
 
 const AppPageHeroSection = () => {
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
   return (
     <>
       <div className="sound_cloud_wrapper">
@@ -31,31 +37,43 @@ const AppPageHeroSection = () => {
               </div>
             </div>
             <div className="copy_download">
-              <div className="copy_wrap ">
+              <div className="copy_wrap " >
                 <OverlayTrigger
-                  delay={{ hide: 150, show: 300 }}
-                  overlay={(props) => (
-                    <Tooltip {...props}>Copy Share Link</Tooltip>
-                  )}
                   placement="bottom"
+                  overlay={<Tooltip id="button-tooltip-2">Check out this avatar</Tooltip>}
                 >
-                  <Button variant="">
-                    {" "}
-                    <img src={Copy} />
-                  </Button>
+                  {({ ref, ...triggerHandler }) => (
+                    <Button
+                      variant="light"
+                      {...triggerHandler}
+                      className="d-inline-flex align-items-center"
+                    >
+                      <Image
+                        ref={ref}
+                        roundedCircle
+                        src={Copy}
+                      />
+
+                    </Button>
+                  )}
                 </OverlayTrigger>
+
+                {/* <img src={Copy}  /> */}
+
+
               </div>
 
               <div className="download_wrap">
                 {" "}
                 <OverlayTrigger
+
                   delay={{ hide: 150, show: 300 }}
                   overlay={(props) => (
-                    <Tooltip {...props}>Download Video</Tooltip>
+                    <Tooltip {...props} >Download Video</Tooltip>
                   )}
                   placement="bottom"
                 >
-                  <Button variant="">
+                  <Button variant="" >
                     {" "}
                     <img src={Down} />
                   </Button>

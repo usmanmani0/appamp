@@ -24,11 +24,11 @@ const SelectByFeature = () => {
                         autoWidth
                         className='con'
                     >
-                        <MenuItem value="selectoption">
-                            <em>By Feature</em>
+                        <MenuItem value="selectoption" className='language_control'>
+                            By Feature
                         </MenuItem>
-                        <MenuItem value={10}>By Feature</MenuItem>
-                        <MenuItem value={21}>Random Order</MenuItem>
+                        <MenuItem value={10} className='language_control'>By Feature</MenuItem>
+                        <MenuItem value={21} className='language_control'>Random Order</MenuItem>
 
                     </Select>
                 </FormControl>

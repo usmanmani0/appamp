@@ -41,7 +41,7 @@
   justify-content: center;
   align-items: center;
 }
-.sc_ux_videos_na{
+.sc_ux_videos_na {
   background-color: #ffffff;
   width: 50%;
   height: 40px;
@@ -66,7 +66,7 @@
   justify-content: center;
   align-items: center;
 }
-.sc_ui_videos_right{
+.sc_ui_videos_right {
   width: 50%;
   height: 40px;
   background-color: #f4f4f4;
@@ -75,7 +75,7 @@
   justify-content: center;
   align-items: center;
 }
-.sc_ui_videos_right_na{
+.sc_ui_videos_right_na {
   width: 50%;
   height: 40px;
   background-color: #ffffff;
@@ -567,7 +567,7 @@
 }
 .UI_Secreen_confirmation_wrapper {
   position: absolute;
-  bottom: 0;
+  bottom: 24px;
   left: 41%;
   width: 320px;
   height: 68px;
@@ -576,6 +576,7 @@
   padding: 6px 16px 6px 16px;
   z-index: 30;
   display: flex;
+  justify-content: space-between !important;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -937,7 +938,7 @@
     justify-content: center;
     align-items: center;
   }
-  .sc_ui_videos_ipro_na{
+  .sc_ui_videos_ipro_na {
     width: 50%;
     height: 40px;
     background-color: #ffffff;
@@ -1146,7 +1147,7 @@
     justify-content: center;
     align-items: center;
   }
-  .sc_ui_videos_ipro_na{
+  .sc_ui_videos_ipro_na {
     width: 50%;
     height: 40px;
     background-color: #ffffff;
@@ -1419,7 +1420,7 @@
     justify-content: center;
     align-items: center;
   }
-  .sc_ui_videos_ipro_na{
+  .sc_ui_videos_ipro_na {
     width: 50%;
     height: 40px;
     background-color: #ffffff;

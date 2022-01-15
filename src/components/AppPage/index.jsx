@@ -68,7 +68,7 @@ const AppPage = () => {
             <div className='App_page_container'>
                 <AppPageHeroSection />
                 <div className='sound_cloud_filter_wrapper' id="myHeader">
-                    <div className='hide_by_feature'> <UiSecreenFilter /></div>
+                    <div className='hide_by_feature'>{color == 1 ? "" : <UiSecreenFilter />} </div>
                     <div className='filter_content_wrapper'>
                         <div className={color === 1 ? 'filter_active ui_vedio' : 'ui_vedio'}
                             onClick={() => chnageTabData2(1)}
@@ -76,7 +76,7 @@ const AppPage = () => {
                         <div className={color === 2 ? 'filter_active ui_vedio' : 'ui_vedio'}
                             onClick={() => chnageTabData2(2)}><div><img src={secreen} /></div>UI Screens</div>
                     </div>
-                    <div className='hide_by_feature'> <SelectByFeature /></div>
+                    <div className='hide_by_feature'>{color == 1 ? "" : <SelectByFeature />} </div>
                 </div>
                 {
                     color === 1 ?
