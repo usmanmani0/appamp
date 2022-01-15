@@ -6,6 +6,7 @@ import SoundCloudPage from "./pages/SoundCloudPage";
 import "./App.css";
 import AppPage from "./components/AppPage";
 import MobileAddCollection from "./components/MobileAddCollection";
+import MobileFilter from "./components/UiSecreenFilter/mobileFilter";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/soundcloudpage" element={<SoundCloudPage />} />
       </Routes>
       {/* <MobileAddCollection /> */}
+      {/* <MobileFilter /> */}
 
     </>
   );

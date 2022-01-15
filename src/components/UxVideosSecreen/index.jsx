@@ -13,9 +13,14 @@ import Copy from "../../assets/images/copy.png";
 import Down from "../../assets/images/Download.png";
 import Cloud from "../../assets/images/cloud.png";
 import option from "../../assets/images/select.png";
+import { EditText, EditTextarea } from 'react-edit-text';
+import 'react-edit-text/dist/index.css';
+import MPlus from "../../assets/images/mplus.png"
 import checkalert from "../../assets/soundcloudimages/CheckAlert.png";
 import Close from "../../assets/images/Close.png";
 import Search from "../../assets/images/s.png";
+import MCopy from "../../assets/images/mcopy.png"
+import MDownload from "../../assets/images/mdownload.png"
 import checkicon from "../../assets/soundcloudimages/Check.png";
 import { Image } from "react-bootstrap";
 import plusiconsave from "../../assets/soundcloudimages/plusiconsave.png";
@@ -27,6 +32,7 @@ const UxVideoSecreen = () => {
   const [showPopover, setShowPopover] = useState({ open: true });
   const [tick, setTick] = useState([]);
   const [setSave, showSetSave] = useState(false);
+  const [copy, setCopy] = useState(false);
   const [select, setSelect] = useState({ open: false });
   const [checkdata, setCheckdata] = useState([
     {
@@ -36,13 +42,13 @@ const UxVideoSecreen = () => {
       Name: "Collection #",
     },
     {
-      id: 1,
+      id: 2,
       checked: true,
       image: checkicon,
       Name: "Collection #",
     },
     {
-      id: 1,
+      id: 3,
       checked: true,
       image: checkicon,
       Name: "Collection #",
@@ -66,6 +72,13 @@ const UxVideoSecreen = () => {
 
     setTimeout(() => {
       showSetSave(null);
+    }, 5000);
+  };
+  const copyShare = () => {
+    setCopy(!setSave);
+
+    setTimeout(() => {
+      setCopy(null);
     }, 5000);
   };
 
@@ -114,8 +127,12 @@ const UxVideoSecreen = () => {
       image: checkicon,
       Name: "Collection #",
     };
+    checkdata.unshift(
+      obj
+    )
     // console.log("ssssssss");
-    setCheckdata([...checkdata, obj]);
+
+    setCheckdata([...checkdata]);
   };
 
   return (
@@ -129,7 +146,7 @@ const UxVideoSecreen = () => {
                   <div className="vedio_card">
                     <Link to="/soundcloudpage">
                       {" "}
-                      <img src={data.img} alt="err" />
+                      <img src={data.img} className="img-fluid" alt="err" />
                     </Link>
                     <div className="UI_Secreen_add_collection">
                       {showPopover ? (
@@ -148,43 +165,55 @@ const UxVideoSecreen = () => {
                               placeholder="Search Collections"
                             ></input>
                           </div>
-                          {checkdata.map((data, index) => {
-                            return (
-                              <div
-                                className="UI_Secreen_collection_checkbox_wrapper"
-                                key={index}
-                              >
-                                <div className="Ui_Secreen_collection_inner_wrapper">
-                                  <div
-                                    className={
-                                      tick.includes(`${index}`)
-                                        ? "Ui_Secreen_checkbox_wrapper_enable"
-                                        : "Ui_Secreen_checkbox_wrapper"
-                                    }
-                                    onClick={() => checkTick(`${index}`)}
-                                  >
-                                    {tick.includes(`${index}`) ? (
-                                      <Image src={data.image} />
-                                    ) : (
-                                      ""
-                                    )}
-                                  </div>
-                                  <div>
-                                    <span className="collection_txt">
-                                      {data.Name + " " + [index + 1]}
-                                    </span>
-                                  </div>
-                                  <div>
+
+                          {
+
+                            checkdata.map((data, index) => {
+                              return (
+                                <div
+                                  className="UI_Secreen_collection_checkbox_wrapper"
+                                  key={index}
+                                >
+                                  <div className="Ui_Secreen_collection_inner_wrapper">
+                                    <div
+                                      className={
+                                        tick.includes(`${index}`)
+                                          ? "Ui_Secreen_checkbox_wrapper_enable"
+                                          : "Ui_Secreen_checkbox_wrapper"
+                                      }
+                                      onClick={() => checkTick(`${index}`)}
+                                    >
+                                      {tick.includes(`${index}`) ? (
+                                        <Image src={data.image} />
+                                      ) : (
+                                        ""
+                                      )}
+                                    </div>
+                                    <div>
+                                      <span className="collection_txt">
+                                        <EditText
+                                          name="textbox1"
+
+
+                                          value={data.Name + " " + [index + 1]}
+                                        />
+
+                                        {/* {data.Name + " " + [index + 1]} */}
+
+
+                                      </span>
+                                    </div>
+                                    {/* <div>
                                     <img
                                       src={PlayVedio}
                                       className="play_vedio_add_collection"
                                       alt="err"
                                     />
+                                  </div> */}
                                   </div>
                                 </div>
-                              </div>
-                            );
-                          })}
+                              );
+                            })}
 
                           <div className="UI_Secreen_save_collection_btn_wrapper">
                             <div
@@ -251,8 +280,33 @@ const UxVideoSecreen = () => {
                           <div>
                             <img src={Copy} alt="err" />
                           </div>
-                          <div className="add_to_col">Copy Share Link</div>
+                          <div className="add_to_col" onClick={() => {
+                            copyShare()
+                          }}>Copy Share Link</div>
                         </div>
+                      </div>
+                    </div>
+                    <div className="mobie_share_copy"
+                      onClick={() => {
+                        setSelect({
+                          open: select.open === index ? false : index,
+                        });
+                      }}
+                      style={{
+                        display: index === select.open ? "block" : "none",
+                      }}>
+                      <div className="d-flex justify-content-center">
+                        <img src={MPlus} onClick={() => {
+                          setShowPopover({
+                            open: showPopover.open === index ? false : index,
+                          });
+                        }} />
+                      </div>
+                      <div className="d-flex justify-content-center">
+                        <img src={MDownload} />
+                      </div>
+                      <div className="d-flex justify-content-center" onClick={copyShare}>
+                        <img src={MCopy} />
                       </div>
                     </div>
 
@@ -267,7 +321,7 @@ const UxVideoSecreen = () => {
                             {" "}
                             <img src={Cloud} className="onHoverImage" alt="err" />
                           </div>
-                          <div className="onHoverText">sound cloud</div>
+                          <div className="onHoverText">{data.text}</div>
                         </div>
                         <div
                           className="select_btn"
@@ -294,7 +348,21 @@ const UxVideoSecreen = () => {
                       <span className="undo_txt">Undo</span>
                     </div>
                   </div>
-                ) : null}
+                ) :
+                  copy ? <div className="UI_Secreen_confirmation_wrapper">
+                    <div>
+                      <Image src={checkalert} />
+                      <span className="alert_txt">
+                        Collection has been copy
+                      </span>
+                    </div>
+                    <div className="undo_btn">
+                      <span className="undo_txt">Undo</span>
+                    </div>
+                  </div> :
+
+
+                    null}
               </>
             );
           })}

@@ -187,7 +187,13 @@
 }
 
 .label {
-  margin-left: 1rem;
+  margin-left: 11px;
+}
+.Mlabel {
+  margin-left: 11px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
 }
 .bottom_line2 {
   width: 95%;
@@ -310,16 +316,29 @@
   line-height: 14px;
   padding: 2px 8px 2px 8px;
   border-radius: 8px;
+
+  background-color: #5097f3;
+}
+.Melement_tag_show {
+  width: 54px;
+  height: 14px;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14px;
+  padding: 2px 8px 2px 8px;
+  border-radius: 8px;
+  margin-left: 20px;
+
   background-color: #5097f3;
 }
 .filter_count_app_card {
   background-color: #5097f3;
-  width: 22px;
-  height: 18px;
-  border-radius: 10px;
-  color: white;
+  padding: 5px;
+  border-radius: 8px;
 }
 .each_filter_count {
+  width: 25px;
   color: white;
   background-color: #5097f3;
   width: 22px;
@@ -395,7 +414,4 @@
     overflow-y: scroll;
     z-index: 100000;
   }
-}
-.MuiFilledInput-root {
-  background-color: white !important;
 }

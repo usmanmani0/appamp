@@ -11,6 +11,7 @@ import { BiChevronRight } from "react-icons/bi";
 import RightArrow from "../../assets/images/right-arrow.png"
 import { useSelector, useDispatch } from 'react-redux';
 import { handelShow } from '../../feature/addCollection/counterSlice';
+import MobileFilter from './mobileFilter';
 
 const UiSecreenFilter = () => {
     const color = useSelector((state) => state.showModal.color)
@@ -293,184 +294,51 @@ const UiSecreenFilter = () => {
                     </button>
                 </div>
                 {show ? (
-                    <div className="App_Page_filter_expand">
 
-                        <div className="filter_input">
-                            <img src={img1} className="search" />
-                            <Stack spacing={1} style={{ width: "95%" }} >
-                                <Autocomplete
-                                    multiple
-                                    id="tags-filled"
-                                    value={selectedFilter}
-                                    options={list.map((option) => option.typeis)}
-
-                                    onChange={(e, v) => enteringAutoComplete(v)}
-                                    renderTags={(value, getTagProps) => value.map((option, index) => (
-                                        <Chip variant="outlined" label={option} {...getTagProps({ index })} />
-                                    ))}
-                                    renderInput={(params) => (
-                                        <TextField
-                                            {...params}
-                                            variant="filled"
-                                            label=""
-                                            value={searchbox}
-                                            placeholder="Search Elements"
-                                            onChange={(e) => { setSearchbox(e.target.value) }}
-                                        />
-                                    )} />
-                            </Stack>
+                    <div>
+                        <div className='mobile_filter_view'>
+                            <MobileFilter />
                         </div>
-                        <hr className="bottom_line"></hr>
-                        {searchbox === "" ?
-                            color == 1 ? <div className='d-flex justify-content-around' onMouseLeave={() => { setOpt(null) }}>
-
-                                <div className='UiSecreen_app_categories_button'>
-
-                                    <div className="d-flex"
-                                    >Patterns {selectedFilter.length == 0 ? "" : <div className="filter_count">{selectedFilter.length}</div>}</div>
-                                    <div>
-                                        <img src={RightArrow} />
-                                    </div>
 
 
-                                </div>
 
-                                <div  >
-                                    <div className='option_data ' onMouseEnter={() => { setOpt(0) }}><div>Pattern Category 1 { }</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                    <div className='option_data ' onMouseEnter={() => { setOpt(1) }}><div>Pattern Category 2</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                    <div className='option_data ' onMouseEnter={() => { setOpt(2) }}><div>Pattern Category 3</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                    <div className='option_data ' onMouseEnter={() => { setOpt(3) }}><div>Pattern Category 4</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                    <div className='option_data ' onMouseEnter={() => { setOpt(4) }}><div>Pattern Category 5</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                    <div className='option_data ' onMouseEnter={() => { setOpt(5) }}><div>Pattern Category X</div><div><img src={RightArrow} className='option_right_arrow' /></div></div> </div>
-                                <div className='Ui_Secreen_filter_checkbox'>
-
-                                    {Pattern.map((data, index) => {
-
-                                        return (
-                                            <>
-                                                <div className="appPage_checkbox_div" style={{ display: opt == 0 ? "block" : "none" }}>
-
-                                                    <input
-
-                                                        key={data.id}
-                                                        type="checkbox"
-                                                        id={data.id}
-                                                        onClick={(e) => handleClick(e, data.typeis)}
-                                                        checked={selectedFilter.includes(`${data.typeis}`)} />
-
-                                                    <label className="label">{data.typeis}</label>{" "}
-                                                </div>
+                        <div className="App_Page_filter_expand">
 
 
-                                            </>
-                                        );
-                                    })}
-                                    {Pattern.map((data, index) => {
-                                        return (
-                                            <>
-                                                <div className="appPage_checkbox_div" style={{ display: opt == 1 ? "block" : "none" }}>
 
-                                                    <input
+                            <div className="filter_input">
+                                <img src={img1} className="search" />
+                                <Stack spacing={1} style={{ width: "95%" }} >
+                                    <Autocomplete
+                                        multiple
+                                        id="tags-filled"
+                                        value={selectedFilter}
+                                        options={list.map((option) => option.typeis)}
 
-                                                        key={data.id}
-                                                        type="checkbox"
-                                                        id={data.id}
-                                                        onClick={(e) => handleClick(e, data.typeis)}
-                                                        checked={selectedFilter.includes(`${data.typeis}`)} />
-                                                    <label className="label">{data.typeis}</label>{" "}
-                                                </div>
-
-
-                                            </>
-                                        );
-                                    })}
-                                    {Pattern.map((data, index) => {
-                                        return (
-                                            <>
-                                                <div className="appPage_checkbox_div" style={{ display: opt == 2 ? "block" : "none" }}>
-
-                                                    <input
-
-                                                        key={data.id}
-                                                        type="checkbox"
-                                                        id={data.id}
-                                                        onClick={(e) => handleClick(e, data.typeis)}
-                                                        checked={selectedFilter.includes(`${data.typeis}`)} />
-                                                    <label className="label">{data.typeis}</label>{" "}
-                                                </div>
-
-
-                                            </>
-                                        );
-                                    })}
-                                    {Pattern.map((data, index) => {
-                                        return (
-                                            <>
-                                                <div className="appPage_checkbox_div" style={{ display: opt == 3 ? "block" : "none" }}>
-
-                                                    <input
-
-                                                        key={data.id}
-                                                        type="checkbox"
-                                                        id={data.id}
-                                                        onClick={(e) => handleClick(e, data.typeis)}
-                                                        checked={selectedFilter.includes(`${data.typeis}`)} />
-                                                    <label className="label">{data.typeis}</label>{" "}
-                                                </div>
-
-
-                                            </>
-                                        );
-                                    })}
-                                    {Pattern.map((data, index) => {
-                                        return (
-                                            <>
-                                                <div className="appPage_checkbox_div" style={{ display: opt == 4 ? "block" : "none" }}>
-
-                                                    <input
-
-                                                        key={data.id}
-                                                        type="checkbox"
-                                                        id={data.id}
-                                                        onClick={(e) => handleClick(e, data.typeis)}
-                                                        checked={selectedFilter.includes(`${data.typeis}`)} />
-                                                    <label className="label">{data.typeis}</label>{" "}
-                                                </div>
-
-
-                                            </>
-                                        );
-                                    })}
-                                    {Pattern.map((data, index) => {
-                                        return (
-                                            <>
-                                                <div className="appPage_checkbox_div" style={{ display: opt == 6 ? "block" : "none" }}>
-
-                                                    <input
-
-                                                        key={data.id}
-                                                        type="checkbox"
-                                                        id={data.id}
-                                                        onClick={(e) => handleClick(e, data.typeis)}
-                                                        checked={selectedFilter.includes(`${data.typeis}`)} />
-                                                    <label className="label">{data.typeis}</label>{" "}
-                                                </div>
-
-
-                                            </>
-                                        );
-                                    })}
-
-
-                                </div>
-
-                            </div> :
-                                color == 2 ? <div className='d-flex justify-content-around' onMouseLeave={() => { setOpt(null) }}>
+                                        onChange={(e, v) => enteringAutoComplete(v)}
+                                        renderTags={(value, getTagProps) => value.map((option, index) => (
+                                            <Chip variant="outlined" label={option} {...getTagProps({ index })} />
+                                        ))}
+                                        renderInput={(params) => (
+                                            <TextField
+                                                {...params}
+                                                variant="filled"
+                                                label=""
+                                                value={searchbox}
+                                                placeholder="Search Elements"
+                                                onChange={(e) => { setSearchbox(e.target.value) }}
+                                            />
+                                        )} />
+                                </Stack>
+                            </div>
+                            <hr className="bottom_line"></hr>
+                            {searchbox === "" ?
+                                color == 1 ? <div className='d-flex justify-content-around' onMouseLeave={() => { setOpt(null) }}>
 
                                     <div className='UiSecreen_app_categories_button'>
 
                                         <div className="d-flex"
-                                        >Elements {selectedFilter.length == 0 ? "" : <div className="filter_count">{selectedFilter.length}</div>}</div>
+                                        >Patterns {selectedFilter.length == 0 ? "" : <div className="filter_count">{selectedFilter.length}</div>}</div>
                                         <div>
                                             <img src={RightArrow} />
                                         </div>
@@ -479,15 +347,16 @@ const UiSecreenFilter = () => {
                                     </div>
 
                                     <div  >
-                                        <div className='option_data ' onMouseEnter={() => { setOpt(0) }}><div>Bars {selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => list.some(li => li.typeis == data)).length}</span> : ""} </div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                        <div className='option_data ' onMouseEnter={() => { setOpt(1) }}><div>Control{selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => controlArray.some(li => li.typeis == data)).length}</span> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                        <div className='option_data ' onMouseEnter={() => { setOpt(2) }}><div>Display {selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => displayArray.some(li => li.typeis == data)).length}</span> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                        <div className='option_data ' onMouseEnter={() => { setOpt(3) }}><div>Feedback {selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => feedbackArray.some(li => li.typeis == data)).length}</span> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                        <div className='option_data ' onMouseEnter={() => { setOpt(4) }}><div>Icons & Images {selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => overlayArray.some(li => li.typeis == data)).length}</span> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                        <div className='option_data ' onMouseEnter={() => { setOpt(5) }}><div>Overlay {selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => iconsArray.some(li => li.typeis == data)).length}</span> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div> </div>
+                                        <div className='option_data ' onMouseEnter={() => { setOpt(0) }}><div>Pattern Category 1 { }</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                        <div className='option_data ' onMouseEnter={() => { setOpt(1) }}><div>Pattern Category 2</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                        <div className='option_data ' onMouseEnter={() => { setOpt(2) }}><div>Pattern Category 3</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                        <div className='option_data ' onMouseEnter={() => { setOpt(3) }}><div>Pattern Category 4</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                        <div className='option_data ' onMouseEnter={() => { setOpt(4) }}><div>Pattern Category 5</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                        <div className='option_data ' onMouseEnter={() => { setOpt(5) }}><div>Pattern Category X</div><div><img src={RightArrow} className='option_right_arrow' /></div></div> </div>
                                     <div className='Ui_Secreen_filter_checkbox'>
 
-                                        {list.map((data, index) => {
+                                        {Pattern.map((data, index) => {
+
                                             return (
                                                 <>
                                                     <div className="appPage_checkbox_div" style={{ display: opt == 0 ? "block" : "none" }}>
@@ -499,6 +368,7 @@ const UiSecreenFilter = () => {
                                                             id={data.id}
                                                             onClick={(e) => handleClick(e, data.typeis)}
                                                             checked={selectedFilter.includes(`${data.typeis}`)} />
+
                                                         <label className="label">{data.typeis}</label>{" "}
                                                     </div>
 
@@ -506,7 +376,7 @@ const UiSecreenFilter = () => {
                                                 </>
                                             );
                                         })}
-                                        {controlArray.map((data, index) => {
+                                        {Pattern.map((data, index) => {
                                             return (
                                                 <>
                                                     <div className="appPage_checkbox_div" style={{ display: opt == 1 ? "block" : "none" }}>
@@ -525,7 +395,7 @@ const UiSecreenFilter = () => {
                                                 </>
                                             );
                                         })}
-                                        {displayArray.map((data, index) => {
+                                        {Pattern.map((data, index) => {
                                             return (
                                                 <>
                                                     <div className="appPage_checkbox_div" style={{ display: opt == 2 ? "block" : "none" }}>
@@ -544,7 +414,7 @@ const UiSecreenFilter = () => {
                                                 </>
                                             );
                                         })}
-                                        {feedbackArray.map((data, index) => {
+                                        {Pattern.map((data, index) => {
                                             return (
                                                 <>
                                                     <div className="appPage_checkbox_div" style={{ display: opt == 3 ? "block" : "none" }}>
@@ -563,7 +433,7 @@ const UiSecreenFilter = () => {
                                                 </>
                                             );
                                         })}
-                                        {iconsArray.map((data, index) => {
+                                        {Pattern.map((data, index) => {
                                             return (
                                                 <>
                                                     <div className="appPage_checkbox_div" style={{ display: opt == 4 ? "block" : "none" }}>
@@ -582,10 +452,10 @@ const UiSecreenFilter = () => {
                                                 </>
                                             );
                                         })}
-                                        {iconsArray.map((data, index) => {
+                                        {Pattern.map((data, index) => {
                                             return (
                                                 <>
-                                                    <div className="appPage_checkbox_div" style={{ display: opt == 5 ? "block" : "none" }}>
+                                                    <div className="appPage_checkbox_div" style={{ display: opt == 6 ? "block" : "none" }}>
 
                                                         <input
 
@@ -605,43 +475,186 @@ const UiSecreenFilter = () => {
 
                                     </div>
 
-                                </div> : null
-                            :
-                            <div>
-                                <div className='search_result_wrapper'>
-                                    <div className='all_result'>All Results</div>
+                                </div> :
+                                    color == 2 ? <div className='d-flex justify-content-around' onMouseLeave={() => { setOpt(null) }}>
 
-                                    <div className='clear_result' onClick={() => {
-                                        setSearchbox("")
-                                    }}>Clear Search Results</div>
+                                        <div className='UiSecreen_app_categories_button'>
+
+                                            <div className="d-flex"
+                                            >Elements {selectedFilter.length == 0 ? "" : <div className="filter_count">{selectedFilter.length}</div>}</div>
+                                            <div>
+                                                <img src={RightArrow} />
+                                            </div>
+
+
+                                        </div>
+
+                                        <div  >
+                                            <div className='option_data ' onMouseEnter={() => { setOpt(0) }}><div>Bars {selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => list.some(li => li.typeis == data)).length}</span> : ""} </div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                            <div className='option_data ' onMouseEnter={() => { setOpt(1) }}><div>Control{selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => controlArray.some(li => li.typeis == data)).length}</span> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                            <div className='option_data ' onMouseEnter={() => { setOpt(2) }}><div>Display {selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => displayArray.some(li => li.typeis == data)).length}</span> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                            <div className='option_data ' onMouseEnter={() => { setOpt(3) }}><div>Feedback {selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => feedbackArray.some(li => li.typeis == data)).length}</span> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                            <div className='option_data ' onMouseEnter={() => { setOpt(4) }}><div>Icons & Images {selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => overlayArray.some(li => li.typeis == data)).length}</span> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                            <div className='option_data ' onMouseEnter={() => { setOpt(5) }}><div>Overlay {selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => iconsArray.some(li => li.typeis == data)).length}</span> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div> </div>
+                                        <div className='Ui_Secreen_filter_checkbox'>
+
+                                            {list.map((data, index) => {
+                                                return (
+                                                    <>
+                                                        <div className="appPage_checkbox_div" style={{ display: opt == 0 ? "block" : "none" }}>
+
+                                                            <input
+
+                                                                key={data.id}
+                                                                type="checkbox"
+                                                                id={data.id}
+                                                                onClick={(e) => handleClick(e, data.typeis)}
+                                                                checked={selectedFilter.includes(`${data.typeis}`)} />
+                                                            <label className="label">{data.typeis}</label>{" "}
+                                                        </div>
+
+
+                                                    </>
+                                                );
+                                            })}
+                                            {controlArray.map((data, index) => {
+                                                return (
+                                                    <>
+                                                        <div className="appPage_checkbox_div" style={{ display: opt == 1 ? "block" : "none" }}>
+
+                                                            <input
+
+                                                                key={data.id}
+                                                                type="checkbox"
+                                                                id={data.id}
+                                                                onClick={(e) => handleClick(e, data.typeis)}
+                                                                checked={selectedFilter.includes(`${data.typeis}`)} />
+                                                            <label className="label">{data.typeis}</label>{" "}
+                                                        </div>
+
+
+                                                    </>
+                                                );
+                                            })}
+                                            {displayArray.map((data, index) => {
+                                                return (
+                                                    <>
+                                                        <div className="appPage_checkbox_div" style={{ display: opt == 2 ? "block" : "none" }}>
+
+                                                            <input
+
+                                                                key={data.id}
+                                                                type="checkbox"
+                                                                id={data.id}
+                                                                onClick={(e) => handleClick(e, data.typeis)}
+                                                                checked={selectedFilter.includes(`${data.typeis}`)} />
+                                                            <label className="label">{data.typeis}</label>{" "}
+                                                        </div>
+
+
+                                                    </>
+                                                );
+                                            })}
+                                            {feedbackArray.map((data, index) => {
+                                                return (
+                                                    <>
+                                                        <div className="appPage_checkbox_div" style={{ display: opt == 3 ? "block" : "none" }}>
+
+                                                            <input
+
+                                                                key={data.id}
+                                                                type="checkbox"
+                                                                id={data.id}
+                                                                onClick={(e) => handleClick(e, data.typeis)}
+                                                                checked={selectedFilter.includes(`${data.typeis}`)} />
+                                                            <label className="label">{data.typeis}</label>{" "}
+                                                        </div>
+
+
+                                                    </>
+                                                );
+                                            })}
+                                            {iconsArray.map((data, index) => {
+                                                return (
+                                                    <>
+                                                        <div className="appPage_checkbox_div" style={{ display: opt == 4 ? "block" : "none" }}>
+
+                                                            <input
+
+                                                                key={data.id}
+                                                                type="checkbox"
+                                                                id={data.id}
+                                                                onClick={(e) => handleClick(e, data.typeis)}
+                                                                checked={selectedFilter.includes(`${data.typeis}`)} />
+                                                            <label className="label">{data.typeis}</label>{" "}
+                                                        </div>
+
+
+                                                    </>
+                                                );
+                                            })}
+                                            {iconsArray.map((data, index) => {
+                                                return (
+                                                    <>
+                                                        <div className="appPage_checkbox_div" style={{ display: opt == 5 ? "block" : "none" }}>
+
+                                                            <input
+
+                                                                key={data.id}
+                                                                type="checkbox"
+                                                                id={data.id}
+                                                                onClick={(e) => handleClick(e, data.typeis)}
+                                                                checked={selectedFilter.includes(`${data.typeis}`)} />
+                                                            <label className="label">{data.typeis}</label>{" "}
+                                                        </div>
+
+
+                                                    </>
+                                                );
+                                            })}
+
+
+                                        </div>
+
+                                    </div> : null
+                                :
+                                <div>
+                                    <div className='search_result_wrapper'>
+                                        <div className='all_result'>All Results</div>
+
+                                        <div className='clear_result' onClick={() => {
+                                            setSearchbox("")
+                                        }}>Clear Search Results</div>
+                                    </div>
+
+                                    {
+                                        newArray.map((data) => {
+                                            return (
+                                                <>
+                                                    <div className="app_page_checkbox_with_search">
+                                                        <div>
+                                                            <input
+
+                                                                key={data.id}
+                                                                type="checkbox"
+                                                                id={data.id}
+                                                                onClick={(e) => handleClick(e, data.typeis)}
+                                                                checked={selectedFilter.includes(`${data.typeis}`)} />
+                                                            <label className="label">{data.typeis}</label>{" "}
+                                                            <span className='element_tag_show'>Elements</span></div>
+                                                    </div>
+                                                </>
+                                            )
+                                        })
+                                    }
                                 </div>
-
-                                {
-                                    newArray.map((data) => {
-                                        return (
-                                            <>
-                                                <div className="app_page_checkbox_with_search">
-                                                    <div>
-                                                        <input
-
-                                                            key={data.id}
-                                                            type="checkbox"
-                                                            id={data.id}
-                                                            onClick={(e) => handleClick(e, data.typeis)}
-                                                            checked={selectedFilter.includes(`${data.typeis}`)} />
-                                                        <label className="label">{data.typeis}</label>{" "}
-                                                        <span className='element_tag_show'>Elements</span></div>
-                                                </div>
-                                            </>
-                                        )
-                                    })
-                                }
-                            </div>
-                        }
+                            }
+                        </div>
                     </div>
                 ) : null}
 
             </div>
+
         </>
     )
 }

@@ -11,6 +11,7 @@ import Stream9 from "../../assets/images/st9.png"
 import Copy from "../../assets/images/copy.png"
 import Down from "../../assets/images/Download.png"
 import option from "../../assets/images/select.png"
+import '../AppPage/appPage.css'
 
 import Cloud from "../../assets/images/cloud.png"
 import Plus from "../../assets/images/plus.png"
@@ -68,12 +69,13 @@ const UiSecreenStream = () => {
 
                 <div className='UI_Secreen_vedio_card_wrapper'>
                     {
-                        Stream.map((data, index) => {
+                        Stream.map((result, index) => {
                             return (
                                 <>
                                     <div key={index}>
                                         <div className='vedio_card'>
-                                            <div className='share_copy' onClick={() => { setSelect({ open: select.open === index ? false : index }) }} style={{ display: index === select.open ? "block" : "none" }}>
+                                            <img src={result.img} style={{ width: "161px" }} />
+                                            {/* <div className='share_copy' onClick={() => { setSelect({ open: select.open === index ? false : index }) }} style={{ display: index === select.open ? "block" : "none" }}>
                                                 <div className='select_content_wrapper_1'>
                                                     <div className='d-flex align-items-center'
                                                     >
@@ -91,16 +93,16 @@ const UiSecreenStream = () => {
                                                         <div className='add_to_col'>Copy Share Link</div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div className="card_content">
+                                            </div> */}
+                                            {/* <div className="card_content">
                                                 <div className='card_content_show'>
                                                     <div className='d-flex'><div> <img src={Cloud} className='onHoverImage' /></div><div className='onHoverText'>sound cloud</div></div>
                                                     <div className='select_btn' onClick={() => { setSelect({ open: select.open === index ? false : index }) }}><img src={option} /> </div>
                                                 </div>
 
-                                            </div>
+                                            </div> */}
 
-                                            <img src={data.img} />
+
                                         </div>
 
                                     </div>
