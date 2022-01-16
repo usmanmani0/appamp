@@ -6,11 +6,10 @@
 .ecl {
   width: 32px;
   color: #161618;
-  height: 32px;
   border-radius: 50px;
   box-shadow: 0px 0px 5px 2px rgb(0 0 0 / 13%);
   height: 32px;
-  font-size: 23px;
+  font-size: 21px;
   display: flex;
   justify-content: center;
   align-items: center;

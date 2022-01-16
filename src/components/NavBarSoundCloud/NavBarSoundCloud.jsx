@@ -26,7 +26,7 @@ import {
   changeSideBarContent,
 } from "../../feature/hideShowModal/hideshowModal";
 import MobileAddCollectionModal from "../MobileAddCollection";
-
+import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai";
 const NavBarSoundCloud = ({ asidedata }) => {
   const showAddModal = useSelector((state) => state.showModal.show);
   const fullscreen = useSelector((state) => state.showModal.fullscreen);
@@ -141,7 +141,8 @@ const NavBarSoundCloud = ({ asidedata }) => {
                     )}
                     placement="bottom"
                   >
-                    <Image src={backwararrow} rounded />
+                    {/* <Image src={backwararrow} rounded /> */}
+                    <AiOutlineLeft />
                   </OverlayTrigger>
                 </div>
               </div>
@@ -161,7 +162,8 @@ const NavBarSoundCloud = ({ asidedata }) => {
                     )}
                     placement="bottom"
                   >
-                    <Image src={forwardarrow} rounded />
+                    {/* <Image src={forwardarrow} rounded /> */}
+                    <AiOutlineRight />
                   </OverlayTrigger>
                 </div>
               </div>

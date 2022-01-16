@@ -317,7 +317,7 @@ const VideoPlayer = (props) => {
       setShowUmodal(-1);
     } else setShowUmodal(index);
   };
-
+  console.log("duration");
   const [uiVideoShow, setuiVideoShow] = useState(false);
 
   const handeluiVideo = () => {
@@ -405,15 +405,29 @@ const VideoPlayer = (props) => {
             <div
               onClick={handelLeftSideBar}
               className="expand_vp_wrapper dis_icon_mv"
+              style={{
+                background: "none",
+                height: "47px",
+                width: "47px",
+                boxShadow: "none",
+              }}
             >
               {leftAsideShow ? (
-                <div className="copy_wrap ">
+                <div className="copy_wra p ">
                   <OverlayTrigger
                     delay={{ hide: 150, show: 300 }}
-                    overlay={(props) => <Tooltip {...props}>Collapse</Tooltip>}
+                    overlay={(props) => <Tooltip {...props}>Collapsse</Tooltip>}
                     placement="bottom"
                   >
-                    <Image src={expand} rounded />
+                    <Image
+                      src={expand}
+                      rounded
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "contain",
+                      }}
+                    />
                   </OverlayTrigger>
                 </div>
               ) : (
@@ -423,14 +437,23 @@ const VideoPlayer = (props) => {
                     overlay={(props) => <Tooltip {...props}>Expand</Tooltip>}
                     placement="bottom"
                   >
-                    <Image className="openmenue_icon" src={openmenu} rounded />
+                    {/* <Image
+                      className="openmenue_icon"
+                      src={openmenu}
+                      rounded
+                      style={{ width: "27px", height: "32px" }}
+                    /> */}
+                    <div className="ecl" style={{ background: "white" }}>
+                      <IoIosArrowBack style={{ marginRight: "-15px" }} />
+                      <IoIosArrowBack />
+                    </div>
                   </OverlayTrigger>
                 </div>
               )}
             </div>
             <div className="dis_none_mbl_view">
               <div onClick={handelPopover} className="plus_icons_wp">
-                <div className="copy_wrap ">
+                <div className="copy_wra p ">
                   <OverlayTrigger
                     delay={{ hide: 150, show: 300 }}
                     overlay={(props) => (
@@ -438,7 +461,11 @@ const VideoPlayer = (props) => {
                     )}
                     placement="bottom"
                   >
-                    <Image src={plusicon} rounded />
+                    <Image
+                      src={plusicon}
+                      rounded
+                      style={{ width: "32px", height: "32px" }}
+                    />
                   </OverlayTrigger>
                 </div>
               </div>
@@ -451,7 +478,11 @@ const VideoPlayer = (props) => {
                     )}
                     placement="bottom"
                   >
-                    <Image src={downloadicon} rounded />
+                    <Image
+                      src={downloadicon}
+                      rounded
+                      style={{ width: "32px", height: "32px" }}
+                    />
                   </OverlayTrigger>
                 </div>
               </div>
@@ -464,14 +495,18 @@ const VideoPlayer = (props) => {
                     )}
                     placement="bottom"
                   >
-                    <Image src={linkicon} rounded />
+                    <Image
+                      src={linkicon}
+                      rounded
+                      style={{ width: "32px", height: "32px" }}
+                    />
                   </OverlayTrigger>
                 </div>
               </div>
             </div>
             {showPopover ? (
               <div className="popoover_wrapper j">
-                <div class="form-group has-search ">
+                <div class="form-group has-search search_modified ">
                   <input
                     type="text"
                     class="form-control"
@@ -580,6 +615,11 @@ const VideoPlayer = (props) => {
                 onSeekMouseUp={handelSeekMouseUp}
                 seeking={seeking}
                 muted={muted}
+                duration={new Date(
+                  playRef.current.getDuration("minutes") * 1000
+                )
+                  .toISOString()
+                  .substr(14, 5)}
                 onMute={handelMute}
                 onVolumeSeekUp={handelVolumeSeekUp}
                 onVolumeChange={handelVolumeChange}
@@ -651,7 +691,10 @@ const VideoPlayer = (props) => {
 
       <Container className="ipad_view_container dis" fluid="true">
         <div className="rightaside_wrapper_ipad">
-          <div className="d-flex justify-content-center">
+          <div
+            className="d-flex justify-content-center"
+            style={{ borderBottom: "1px solid #f4f4f4" }}
+          >
             <div className="sc_videoplayer_btn_wrapper" id="myHeader">
               <div
                 onClick={handelSimilarPatternIpro}
