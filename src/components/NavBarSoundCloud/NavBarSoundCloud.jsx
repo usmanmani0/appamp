@@ -21,7 +21,10 @@ import Plus from "../../assets/images/plus.png";
 import checkicon from "../../assets/soundcloudimages/Check.png";
 import plusiconsave from "../../assets/soundcloudimages/plusiconsave.png";
 import { useSelector, useDispatch } from "react-redux";
-import { handleShowModal, changeSideBarContent } from "../../feature/hideShowModal/hideshowModal";
+import {
+  handleShowModal,
+  changeSideBarContent,
+} from "../../feature/hideShowModal/hideshowModal";
 import MobileAddCollectionModal from "../MobileAddCollection";
 
 const NavBarSoundCloud = ({ asidedata }) => {
@@ -33,9 +36,7 @@ const NavBarSoundCloud = ({ asidedata }) => {
   const handleShow = () => {
     setSelect(!select);
   };
-  useEffect(() => {
-
-  }, [color])
+  useEffect(() => {}, [color]);
   const [tick, setTick] = useState([]);
 
   const checkTick = async (index) => {
@@ -91,17 +92,17 @@ const NavBarSoundCloud = ({ asidedata }) => {
   const pre = () => {
     if (color <= 1) {
       // setColor(asidedata.length);
-      dispatch(changeSideBarContent(asidedata.length))
+      dispatch(changeSideBarContent(asidedata.length));
     } else {
       // setColor(color--);
-      dispatch(changeSideBarContent(color - 1))
+      dispatch(changeSideBarContent(color - 1));
     }
   };
   const next = () => {
     if (color >= asidedata.length) {
-      dispatch(changeSideBarContent(1))
+      dispatch(changeSideBarContent(1));
     } else {
-      dispatch(changeSideBarContent(color + 1))
+      dispatch(changeSideBarContent(color + 1));
     }
   };
 
@@ -121,7 +122,7 @@ const NavBarSoundCloud = ({ asidedata }) => {
                 />
               </div>
               <div className="soundcloudlogo">
-                <Image src={sclogo} rounded />
+                <Image src={sclogo} rounded className="nav_log" />
               </div>
               <div className="app_description">
                 <span className="sc_app_logo_desc_txt">Music & Audio</span>
@@ -162,7 +163,6 @@ const NavBarSoundCloud = ({ asidedata }) => {
                   >
                     <Image src={forwardarrow} rounded />
                   </OverlayTrigger>
-
                 </div>
               </div>
             </div>

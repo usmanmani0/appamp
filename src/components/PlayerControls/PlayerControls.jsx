@@ -145,13 +145,13 @@ const PlayerControls = ({
           <Image src={play} rounded />
           </button> */}
 
-          <div className="right_controls_items">
+          <div className="right_controls_items ">
             <div>
               <OverlayTrigger
                 trigger="click"
                 overlay={
-                  <Popover>
-                    <Popover.Body>
+                  <Popover className="wh">
+                    <Popover.Body className="WHB">
                       {[1, 1.25, 1.5, 1.75, 2].map((rate) => {
                         return (
                           <div className="form-check">
