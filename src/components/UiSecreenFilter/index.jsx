@@ -27,22 +27,29 @@ const UiSecreenFilter = () => {
         {
             id: 1,
             typeis: "Navigation Bar",
+            flag: "bars"
         },
         {
             id: 2,
             typeis: "Search Bar",
+
+            flag: "bars"
         },
         {
             id: 3,
             typeis: "Tab Bar",
+
+            flag: "bars"
         },
         {
             id: 4,
             typeis: "Tool Bar",
+            flag: "bars"
         },
         {
             id: 5,
             typeis: "Navigation Bar",
+            flag: "bars"
         },
 
     ]);
@@ -528,7 +535,7 @@ const UiSecreenFilter = () => {
                                                                 key={data.id}
                                                                 type="checkbox"
                                                                 id={data.id}
-                                                                onClick={(e) => handleClick(e, data.typeis)}
+                                                                onClick={(e) => handleClick(e, data.typeis, data.flag)}
                                                                 checked={selectedFilter.includes(`${data.typeis}`)} />
                                                             <label className="label">{data.typeis}</label>{" "}
                                                         </div>

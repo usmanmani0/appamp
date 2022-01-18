@@ -28,104 +28,104 @@ const Hero = () => {
                 </p>
               </div>
               <div className="search_box">
-              <div className="search_div ">
-                <div class="div_wrap">
-                  <input
-                    type="text"
-                    id="searchInput"
-                    placeholder="Search Features or Components"
-                  ></input>
-                  <div className="vertical_line"></div>
-                  <div class="dropdown disp_non" style={{marginTop:'7px',paddingLeft:'8px', paddingBottom:'8px' , width:'150px'}}>
-                    <button
-                      class="dropdown-toggle"
-                      type="button"
-                      id="dropdownMenuButton1"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                      className="recent_button"
-                      style={{border:'none',paddingLeft:'8px', width:'130px'}}
-                    >
-                      <span>UX Videos</span>
-                  <b>
-                  <i className="icon_down" style={{marginLeft:'8px'}}>
-                        <IoIosArrowDown
-                          className="icon"
-                          size="18px"
-                          color="black"
-                          fontWeight={900}
-                    
-                        />
-                      </i>
-                  </b>
-                    </button>
-                    <ul
-                      class="dropdown-menu"
-                      aria-labelledby="dropdownMenuButton1"
-                      id="show_upper_on_body"
-                    >
-                      <li>
-                        <a class="dropdown-item" href="#">
-                          <span>UI Videos</span>
-                        </a>
-                      </li>
-                     
-                    </ul>
-                  </div>
+                <div className="search_div ">
+                  <div class="div_wrap">
+                    <input
+                      type="text"
+                      id="searchInput"
+                      placeholder="Search Features or Components"
+                    ></input>
+                    <div className="vertical_line"></div>
+                    <div class="dropdown disp_non" style={{ marginTop: '7px', paddingLeft: '8px', paddingBottom: '8px', width: '150px' }}>
+                      <button
+                        class="dropdown-toggle"
+                        type="button"
+                        id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                        className="recent_button"
+                        style={{ border: 'none', paddingLeft: '8px', width: '130px' }}
+                      >
+                        <span>UX Videos</span>
+                        <b>
+                          <i className="icon_down" style={{ marginLeft: '8px' }}>
+                            <IoIosArrowDown
+                              className="icon"
+                              size="18px"
+                              color="black"
+                              fontWeight={900}
 
-                  <div className="search_buttonsdiv" id="dis_non">
-                    <button
-                      className="search_btn"
-                      type="button"
-                      style={{
-                        backgroundColor:
-                          color === "1" ? "rgba(22, 22, 24, 1)" : "white",
-                        color: color === "1" ? "white" : "rgba(22, 22, 24, 1)",
-                      }}
-                      onClick={() => {
-                        setColor("1");
-                      }}
-                    >
-                      <i className="icon_play">
-                        <BiPlayCircle
-                          className="icon"
-                          size="16px"
-                          style={{
-                            color:
-                              color === "1" ? "white" : "rgba(22, 22, 24, 1)",
-                          }}
-                        />
-                      </i>
-                      <span className="ux_hero_txt_btn">UX Vedios</span>
-                    </button>
+                            />
+                          </i>
+                        </b>
+                      </button>
+                      <ul
+                        class="dropdown-menu"
+                        aria-labelledby="dropdownMenuButton1"
+                        id="show_upper_on_body"
+                      >
+                        <li>
+                          <a class="dropdown-item" href="#">
+                            <span>UI Videos</span>
+                          </a>
+                        </li>
 
-                    <button
-                      className="search_btn"
-                      type="button"
-                      style={{
-                        backgroundColor:
-                          color === "2" ? "rgba(22, 22, 24, 1)" : "white",
-                        color: color === "2" ? "white" : "rgba(22, 22, 24, 1)",
-                      }}
-                      onClick={() => {
-                        setColor("2");
-                      }}
-                    >
-                      <i className="icon_play">
-                        <BiMobile
-                          className="icon"
-                          size="16px"
-                          style={{
-                            color:
-                              color === "2" ? "white" : "rgba(22, 22, 24, 1)",
-                          }}
-                        />
-                      </i>
-                      <span className="ux_hero_txt_btn">UI Screens</span>
-                    </button>
+                      </ul>
+                    </div>
+
+                    <div className="search_buttonsdiv" id="dis_non">
+                      <button
+                        className="search_btn"
+                        type="button"
+                        style={{
+                          backgroundColor:
+                            color === "1" ? "rgba(22, 22, 24, 1)" : "white",
+                          color: color === "1" ? "white" : "rgba(22, 22, 24, 1)",
+                        }}
+                        onClick={() => {
+                          setColor("1");
+                        }}
+                      >
+                        <i className="icon_play">
+                          <BiPlayCircle
+                            className="icon"
+                            size="16px"
+                            style={{
+                              color:
+                                color === "1" ? "white" : "rgba(22, 22, 24, 1)",
+                            }}
+                          />
+                        </i>
+                        <span className="ux_hero_txt_btn">UX Videos</span>
+                      </button>
+
+                      <button
+                        className="search_btn"
+                        type="button"
+                        style={{
+                          backgroundColor:
+                            color === "2" ? "rgba(22, 22, 24, 1)" : "white",
+                          color: color === "2" ? "white" : "rgba(22, 22, 24, 1)",
+                        }}
+                        onClick={() => {
+                          setColor("2");
+                        }}
+                      >
+                        <i className="icon_play">
+                          <BiMobile
+                            className="icon"
+                            size="16px"
+                            style={{
+                              color:
+                                color === "2" ? "white" : "rgba(22, 22, 24, 1)",
+                            }}
+                          />
+                        </i>
+                        <span className="ux_hero_txt_btn">UI Screens</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
               </div>
             </div>
           </Col>

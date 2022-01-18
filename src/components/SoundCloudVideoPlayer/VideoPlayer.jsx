@@ -615,11 +615,7 @@ const VideoPlayer = (props) => {
                 onSeekMouseUp={handelSeekMouseUp}
                 seeking={seeking}
                 muted={muted}
-                duration={new Date(
-                  playRef.current.getDuration("minutes") * 1000
-                )
-                  .toISOString()
-                  .substr(14, 5)}
+
                 onMute={handelMute}
                 onVolumeSeekUp={handelVolumeSeekUp}
                 onVolumeChange={handelVolumeChange}
