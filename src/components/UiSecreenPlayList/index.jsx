@@ -32,6 +32,11 @@ import { EditText, EditTextarea } from 'react-edit-text';
 import { Image } from "react-bootstrap";
 
 const UiSecreenPlayList = () => {
+    const [selectBtn, setSelectBtn] = useState("select_btn");
+    const xyz = () => {
+        console.log("onMouse ebter fn")
+        setSelectBtn("cont2");
+    }
     const [showPopover, setShowPopover] = useState({ open: true });
     const [tick, setTick] = useState([]);
     const [checkdata, setCheckdata] = useState([
@@ -318,12 +323,36 @@ const UiSecreenPlayList = () => {
                                                     <img src={MCopy} />
                                                 </div>
                                             </div>
-                                            <div className="card_content">
-                                                <div className='card_content_show'>
-                                                    <div className='d-flex'><div> <img src={Cloud} className='onHoverImage' /></div><div className='onHoverText'>sound cloud</div></div>
-                                                    <div className='select_btn' onClick={() => { setSelect({ open: select.open === index ? false : index }) }}><img src={option} /> </div>
+
+                                            <div className="card_content_Secreen">
+                                                <div className="card_content_show">
+                                                    <Link to="" className="extra1">
+                                                        <div ></div>
+                                                    </Link>
+                                                    <div className="extra2">
+                                                        <div className="d-flex">
+                                                            <div>
+                                                                {" "}
+                                                                <img src={Cloud} className="onHoverImage" alt="err" />
+                                                            </div>
+                                                            <div className="onHoverText">{data.text}</div>
+                                                        </div>
+                                                        <div
+                                                            className={selectBtn}
+                                                            onMouseEnter={xyz}
+                                                            onClick={() => {
+                                                                setSelect({
+                                                                    open: select.open === index ? false : index,
+                                                                });
+                                                            }}
+                                                        >
+                                                            <img src={option} alt="err" />{" "}
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                             </div>
+
                                             <img src={data.img} className='img-fluid' />
                                         </div>
                                     </div>
