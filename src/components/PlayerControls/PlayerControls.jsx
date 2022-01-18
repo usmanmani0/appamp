@@ -56,6 +56,7 @@ const PlayerControls = ({
   volume,
   seeking,
   goFullScreen,
+  duration,
 }) => {
   const theme = useTheme();
   const [full, setFull] = useState(false);
@@ -101,30 +102,33 @@ const PlayerControls = ({
           }}
         />
         <div className="controls_bottom_items">
-          <button className="controls_button_styling" onClick={onPlayPause}>
-            {playing ? (
-              <div className="copy_wrap ">
-                <OverlayTrigger
-                  delay={{ hide: 150, show: 300 }}
-                  overlay={(props) => <Tooltip {...props}>Resume</Tooltip>}
-                  placement="right"
-                >
-                  <Image src={pause} rounded />
-                </OverlayTrigger>
-              </div>
-            ) : (
-              <div className="copy_wrap ">
-                <OverlayTrigger
-                  delay={{ hide: 150, show: 300 }}
-                  overlay={(props) => <Tooltip {...props}>Play</Tooltip>}
-                  placement="right"
-                >
-                  <Image className="pad_lft" src={play} rounded />
-                </OverlayTrigger>
-              </div>
-            )}
-          </button>
-
+          <div>
+            <button className="controls_button_styling" onClick={onPlayPause}>
+              {playing ? (
+                <div className="copy_wrap ">
+                  <OverlayTrigger
+                    delay={{ hide: 150, show: 300 }}
+                    overlay={(props) => <Tooltip {...props}>Resume</Tooltip>}
+                    placement="right"
+                  >
+                    <Image src={pause} rounded />
+                  </OverlayTrigger>
+                </div>
+              ) : (
+                <div className="copy_wrap ">
+                  <OverlayTrigger
+                    delay={{ hide: 150, show: 300 }}
+                    overlay={(props) => <Tooltip {...props}>Play</Tooltip>}
+                    placement="right"
+                  >
+                    <Image className="pad_lft" src={play} rounded />
+                  </OverlayTrigger>
+                </div>
+              )}
+            </button>
+            {parseFloat(played).toFixed(2)} <span>/</span>
+            {duration}
+          </div>
           {/* <button className="controls_button_styling"
           onClick={onMute}
           >
@@ -144,14 +148,13 @@ const PlayerControls = ({
           >
           <Image src={play} rounded />
           </button> */}
-
-          <div className="right_controls_items">
+          <div className="right_controls_items ">
             <div>
               <OverlayTrigger
                 trigger="click"
                 overlay={
-                  <Popover>
-                    <Popover.Body>
+                  <Popover className="wh">
+                    <Popover.Body className="WHB">
                       {[1, 1.25, 1.5, 1.75, 2].map((rate) => {
                         return (
                           <div className="form-check">

@@ -21,9 +21,12 @@ import Plus from "../../assets/images/plus.png";
 import checkicon from "../../assets/soundcloudimages/Check.png";
 import plusiconsave from "../../assets/soundcloudimages/plusiconsave.png";
 import { useSelector, useDispatch } from "react-redux";
-import { handleShowModal, changeSideBarContent } from "../../feature/hideShowModal/hideshowModal";
+import {
+  handleShowModal,
+  changeSideBarContent,
+} from "../../feature/hideShowModal/hideshowModal";
 import MobileAddCollectionModal from "../MobileAddCollection";
-
+import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai";
 const NavBarSoundCloud = ({ asidedata }) => {
   const showAddModal = useSelector((state) => state.showModal.show);
   const fullscreen = useSelector((state) => state.showModal.fullscreen);
@@ -33,9 +36,7 @@ const NavBarSoundCloud = ({ asidedata }) => {
   const handleShow = () => {
     setSelect(!select);
   };
-  useEffect(() => {
-
-  }, [color])
+  useEffect(() => {}, [color]);
   const [tick, setTick] = useState([]);
 
   const checkTick = async (index) => {
@@ -91,17 +92,17 @@ const NavBarSoundCloud = ({ asidedata }) => {
   const pre = () => {
     if (color <= 1) {
       // setColor(asidedata.length);
-      dispatch(changeSideBarContent(asidedata.length))
+      dispatch(changeSideBarContent(asidedata.length));
     } else {
       // setColor(color--);
-      dispatch(changeSideBarContent(color - 1))
+      dispatch(changeSideBarContent(color - 1));
     }
   };
   const next = () => {
     if (color >= asidedata.length) {
-      dispatch(changeSideBarContent(1))
+      dispatch(changeSideBarContent(1));
     } else {
-      dispatch(changeSideBarContent(color + 1))
+      dispatch(changeSideBarContent(color + 1));
     }
   };
 
@@ -121,7 +122,7 @@ const NavBarSoundCloud = ({ asidedata }) => {
                 />
               </div>
               <div className="soundcloudlogo">
-                <Image src={sclogo} rounded />
+                <Image src={sclogo} rounded className="nav_log" />
               </div>
               <div className="app_description">
                 <span className="sc_app_logo_desc_txt">Music & Audio</span>
@@ -140,7 +141,8 @@ const NavBarSoundCloud = ({ asidedata }) => {
                     )}
                     placement="bottom"
                   >
-                    <Image src={backwararrow} rounded />
+                    {/* <Image src={backwararrow} rounded /> */}
+                    <AiOutlineLeft />
                   </OverlayTrigger>
                 </div>
               </div>
@@ -160,9 +162,9 @@ const NavBarSoundCloud = ({ asidedata }) => {
                     )}
                     placement="bottom"
                   >
-                    <Image src={forwardarrow} rounded />
+                    {/* <Image src={forwardarrow} rounded /> */}
+                    <AiOutlineRight />
                   </OverlayTrigger>
-
                 </div>
               </div>
             </div>

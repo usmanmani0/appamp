@@ -29,14 +29,17 @@ import plusiconsave from "../../assets/soundcloudimages/plusiconsave.png";
 import checkalert from "../../assets/soundcloudimages/CheckAlert.png";
 import playiconsrightcard from "../../assets/soundcloudimages/Playiconcards.png";
 import navactionbar from "../../assets/soundcloudimages/navactionbar.png";
+import { IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { hot } from "react-hot-loader";
 import { findDOMNode } from "react-dom";
 import screenfull from "screenfull";
 import { useSelector, useDispatch } from "react-redux";
-import { handleShowModal, changeSideBarContent } from "../../feature/hideShowModal/hideshowModal";
+import {
+  handleShowModal,
+  changeSideBarContent,
+} from "../../feature/hideShowModal/hideshowModal";
 import MobileAddCollectionModal from "../MobileAddCollection";
-
 
 const asidedata = [
   {
@@ -130,8 +133,18 @@ const VideoPlayer = (props) => {
 
   const fullscreen = useSelector((state) => state.showModal.fullscreen);
   const dispatch = useDispatch();
-
-
+  window.onscroll = function () {
+    myFunction();
+  };
+  function myFunction() {
+    var header = document.getElementById("myHeader");
+    var sticky = header.offsetTop;
+    if (window.pageYOffset > sticky) {
+      header.classList.add("sticky");
+    } else {
+      header.classList.remove("sticky");
+    }
+  }
   const [playOn, setPlayOn] = useState({
     playing: true,
     playbackRate: 1.0,
@@ -198,7 +211,9 @@ const VideoPlayer = (props) => {
 
   const playRef = useRef(null);
   const videoPlayerContainerRef = useRef();
-
+  function truncate(source, size) {
+    return source.length > size ? source.slice(0, size - 1) + "…" : source;
+  }
   const handelPlayPause = () => {
     setPlayOn({ ...playOn, playing: !playOn.playing });
   };
@@ -208,14 +223,12 @@ const VideoPlayer = (props) => {
       if (data?.id == color) {
         playRef?.current?.seekTo(data.time);
       }
-    })
-
-  }, [color])
+    });
+  }, [color]);
 
   const handelTime = (time) => {
     playRef?.current.seekTo(time);
-
-  }
+  };
   // const handelRewind=()=>{
   //   playRef.current.seekTo(playRef.current.getCurrentTime() - 10)
   // }
@@ -304,7 +317,7 @@ const VideoPlayer = (props) => {
       setShowUmodal(-1);
     } else setShowUmodal(index);
   };
-
+  console.log("duration");
   const [uiVideoShow, setuiVideoShow] = useState(false);
 
   const handeluiVideo = () => {
@@ -326,22 +339,24 @@ const VideoPlayer = (props) => {
       <Container className="videoplayer_container" fluid="true">
         {leftAsideShow ? (
           <div className="leftaside_wrapper">
-            <div className="sc_videoplayer_btn_wrapper">
-              <div
-                onClick={handeluiVideo}
-                className={uiVideoShow ? "sc_ux_videos" : "sc_ux_videos_na"}
-              >
-                <button className="video_btn">
-                  <span className="sc_la_ux_txt">UX Videos</span>
-                </button>
-              </div>
-              <div
-                onClick={handeluiVideo}
-                className={uiVideoShow ? " sc_ui_videos_na" : "sc_ui_videos"}
-              >
-                <button className="video_btn">
-                  <span className="sc_la_ui_txt">UI Screens</span>
-                </button>
+            <div>
+              <div className="sc_videoplayer_btn_wrapper">
+                <div
+                  onClick={handeluiVideo}
+                  className={uiVideoShow ? "sc_ux_videos" : "sc_ux_videos_na"}
+                >
+                  <button className="video_btn">
+                    <span className="sc_la_ux_txt">UX Videos</span>
+                  </button>
+                </div>
+                <div
+                  onClick={handeluiVideo}
+                  className={uiVideoShow ? " sc_ui_videos_na" : "sc_ui_videos"}
+                >
+                  <button className="video_btn">
+                    <span className="sc_la_ui_txt">UI Screens</span>
+                  </button>
+                </div>
               </div>
             </div>
             {asidedata.map((asidedata, index) => {
@@ -354,13 +369,10 @@ const VideoPlayer = (props) => {
                         : "sc_left_aside_time_desc"
                     }
                     onClick={() => {
-                      dispatch(changeSideBarContent(asidedata.id))
+                      dispatch(changeSideBarContent(asidedata.id));
                     }}
                   >
-                    <button
-                      className="lft_aside_links"
-
-                    >
+                    <button className="lft_aside_links">
                       {" "}
                       <span
                         className={
@@ -368,7 +380,6 @@ const VideoPlayer = (props) => {
                             ? "sc_la_time_txt sc_la_td_bg"
                             : "sc_la_time_txt"
                         }
-
                       >
                         {asidedata.videotimelft}
                       </span>
@@ -378,9 +389,8 @@ const VideoPlayer = (props) => {
                             ? "sc_la_desc_txt sc_la_td_bg"
                             : "sc_la_desc_txt"
                         }
-
                       >
-                        {asidedata.videotitleontime}
+                        {truncate(`${asidedata.videotitleontime}`, 20)}
                       </span>
                     </button>
                   </div>
@@ -395,15 +405,29 @@ const VideoPlayer = (props) => {
             <div
               onClick={handelLeftSideBar}
               className="expand_vp_wrapper dis_icon_mv"
+              style={{
+                background: "none",
+                height: "47px",
+                width: "47px",
+                boxShadow: "none",
+              }}
             >
               {leftAsideShow ? (
-                <div className="copy_wrap ">
+                <div className="copy_wra p ">
                   <OverlayTrigger
                     delay={{ hide: 150, show: 300 }}
-                    overlay={(props) => <Tooltip {...props}>Collapse</Tooltip>}
+                    overlay={(props) => <Tooltip {...props}>Collapsse</Tooltip>}
                     placement="bottom"
                   >
-                    <Image src={expand} rounded />
+                    <Image
+                      src={expand}
+                      rounded
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "contain",
+                      }}
+                    />
                   </OverlayTrigger>
                 </div>
               ) : (
@@ -413,14 +437,23 @@ const VideoPlayer = (props) => {
                     overlay={(props) => <Tooltip {...props}>Expand</Tooltip>}
                     placement="bottom"
                   >
-                    <Image className="openmenue_icon" src={openmenu} rounded />
+                    {/* <Image
+                      className="openmenue_icon"
+                      src={openmenu}
+                      rounded
+                      style={{ width: "27px", height: "32px" }}
+                    /> */}
+                    <div className="ecl" style={{ background: "white" }}>
+                      <IoIosArrowBack style={{ marginRight: "-15px" }} />
+                      <IoIosArrowBack />
+                    </div>
                   </OverlayTrigger>
                 </div>
               )}
             </div>
             <div className="dis_none_mbl_view">
               <div onClick={handelPopover} className="plus_icons_wp">
-                <div className="copy_wrap ">
+                <div className="copy_wra p ">
                   <OverlayTrigger
                     delay={{ hide: 150, show: 300 }}
                     overlay={(props) => (
@@ -428,7 +461,11 @@ const VideoPlayer = (props) => {
                     )}
                     placement="bottom"
                   >
-                    <Image src={plusicon} rounded />
+                    <Image
+                      src={plusicon}
+                      rounded
+                      style={{ width: "32px", height: "32px" }}
+                    />
                   </OverlayTrigger>
                 </div>
               </div>
@@ -441,7 +478,11 @@ const VideoPlayer = (props) => {
                     )}
                     placement="bottom"
                   >
-                    <Image src={downloadicon} rounded />
+                    <Image
+                      src={downloadicon}
+                      rounded
+                      style={{ width: "32px", height: "32px" }}
+                    />
                   </OverlayTrigger>
                 </div>
               </div>
@@ -454,14 +495,18 @@ const VideoPlayer = (props) => {
                     )}
                     placement="bottom"
                   >
-                    <Image src={linkicon} rounded />
+                    <Image
+                      src={linkicon}
+                      rounded
+                      style={{ width: "32px", height: "32px" }}
+                    />
                   </OverlayTrigger>
                 </div>
               </div>
             </div>
             {showPopover ? (
-              <div className="popoover_wrapper">
-                <div class="form-group has-search ">
+              <div className="popoover_wrapper j">
+                <div class="form-group has-search search_modified ">
                   <input
                     type="text"
                     class="form-control"
@@ -471,7 +516,7 @@ const VideoPlayer = (props) => {
                 </div>
                 {checkdata.map((data, index) => {
                   return (
-                    <div className="collection_checkbox_wrapper" key={index}>
+                    <div className="collection_checkbox_wrapper " key={index}>
                       <div
                         className={
                           tick.includes(`${index}`)
@@ -512,7 +557,10 @@ const VideoPlayer = (props) => {
                     onClick={tick.length >= 1 ? () => saveCollection() : null}
                   >
                     {" "}
-                    <Link to="/SoundCloudPage" style={{ textDecoration: 'none' }}>
+                    <Link
+                      to="/SoundCloudPage"
+                      style={{ textDecoration: "none" }}
+                    >
                       <span className="save_txt">Save</span>
                     </Link>{" "}
                   </div>
@@ -567,6 +615,11 @@ const VideoPlayer = (props) => {
                 onSeekMouseUp={handelSeekMouseUp}
                 seeking={seeking}
                 muted={muted}
+                duration={new Date(
+                  playRef.current.getDuration("minutes") * 1000
+                )
+                  .toISOString()
+                  .substr(14, 5)}
                 onMute={handelMute}
                 onVolumeSeekUp={handelVolumeSeekUp}
                 onVolumeChange={handelVolumeChange}
@@ -577,33 +630,34 @@ const VideoPlayer = (props) => {
           </div>
         </div>
         <div className="rightaside_wrapper">
-          <div className="sc_videoplayer_btn_wrapper">
-            <div
-              onClick={handelSimilarPattern}
-              className={
-                similarPatternShow
-                  ? "sc_ui_videos_right"
-                  : " sc_ui_videos_right_na"
-              }
-            >
-              <button className="video_btn">
-                <span className="sc_la_ux_txt">Similar Patterns</span>
-              </button>
-            </div>
-            <div
-              onClick={handelSimilarPattern}
-              className={
-                similarPatternShow
-                  ? "sc_ux_videos_right_na"
-                  : "sc_ux_videos_right"
-              }
-            >
-              <button className="video_btn">
-                <span className="sc_la_ui_txt">Current App</span>
-              </button>
+          <div className="d-flex justify-content-center">
+            <div className="sc_videoplayer_btn_wrapper">
+              <div
+                onClick={handelSimilarPattern}
+                className={
+                  similarPatternShow
+                    ? "sc_ui_videos_right"
+                    : " sc_ui_videos_right_na"
+                }
+              >
+                <button className="video_btn">
+                  <span className="sc_la_ux_txt">Similar Patterns</span>
+                </button>
+              </div>
+              <div
+                onClick={handelSimilarPattern}
+                className={
+                  similarPatternShow
+                    ? "sc_ux_videos_right_na"
+                    : "sc_ux_videos_right"
+                }
+              >
+                <button className="video_btn">
+                  <span className="sc_la_ui_txt">Current App</span>
+                </button>
+              </div>
             </div>
           </div>
-
           <div className="mbl_cards_box">
             {cardsdata.map((data) => {
               return (
@@ -617,7 +671,14 @@ const VideoPlayer = (props) => {
                         12:34
                       </span>
                     </div>
-                    <img src={data.image} alt="ERROR" />
+                    <img
+                      src={data.image}
+                      alt="ERROR"
+                      style={{
+                        outline: "1px solid #e9ecef",
+                        borderRadius: "10px",
+                      }}
+                    />
 
                     <div className="card_title">{data.title}</div>
                   </div>
@@ -630,32 +691,38 @@ const VideoPlayer = (props) => {
 
       <Container className="ipad_view_container dis" fluid="true">
         <div className="rightaside_wrapper_ipad">
-          <div className="sc_videoplayer_btn_wrapper">
-            <div
-              onClick={handelSimilarPatternIpro}
-              className={
-                similarPatternIproShow
-                  ? "sc_ui_videos_ipro"
-                  : "sc_ui_videos_ipro_na"
-              }
-            >
-              <button className="video_btn">
-                <span className="sc_la_ux_txt">Similar Patterns</span>
-              </button>
-            </div>
-            <div
-              onClick={handelSimilarPatternIpro}
-              className={
-                similarPatternIproShow
-                  ? "sc_ux_videos_ipro_na"
-                  : "sc_ux_videos_ipro"
-              }
-            >
-              <button className="video_btn">
-                <span className="sc_la_ui_txt">Current App</span>
-              </button>
+          <div
+            className="d-flex justify-content-center"
+            style={{ borderBottom: "1px solid #f4f4f4" }}
+          >
+            <div className="sc_videoplayer_btn_wrapper" id="myHeader">
+              <div
+                onClick={handelSimilarPatternIpro}
+                className={
+                  similarPatternIproShow
+                    ? "sc_ui_videos_ipro"
+                    : "sc_ui_videos_ipro_na"
+                }
+              >
+                <button className="video_btn">
+                  <span className="sc_la_ux_txt">Similar Patterns</span>
+                </button>
+              </div>
+              <div
+                onClick={handelSimilarPatternIpro}
+                className={
+                  similarPatternIproShow
+                    ? "sc_ux_videos_ipro_na"
+                    : "sc_ux_videos_ipro"
+                }
+              >
+                <button className="video_btn">
+                  <span className="sc_la_ui_txt">Current App</span>
+                </button>
+              </div>
             </div>
           </div>
+
           <hr />
           <div className="mbl_cards_box">
             {cardsdata.map((data, index) => {
@@ -720,8 +787,14 @@ const VideoPlayer = (props) => {
         </button>
 
         <Offcanvas show={show} onHide={handleClose}>
-          <Offcanvas.Header closeButton>
+          <Offcanvas.Header>
             <Offcanvas.Title>Chapters</Offcanvas.Title>
+            <Offcanvas.Title>
+              <div onClick={() => setShow(false)} className="ecl">
+                <IoIosArrowBack style={{ marginRight: "-15px" }} />
+                <IoIosArrowBack />
+              </div>
+            </Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
             {asidedata.map((asidedata, index) => {
@@ -734,7 +807,7 @@ const VideoPlayer = (props) => {
                         : "sc_left_aside_time_desc"
                     }
                     onClick={() => {
-                      dispatch(changeSideBarContent(asidedata.id))
+                      dispatch(changeSideBarContent(asidedata.id));
                     }}
                   >
                     <button
@@ -751,7 +824,7 @@ const VideoPlayer = (props) => {
                             : "sc_la_time_txt"
                         }
                         onClick={() => {
-                          dispatch(changeSideBarContent(asidedata.id))
+                          dispatch(changeSideBarContent(asidedata.id));
                         }}
                       >
                         {asidedata.videotimelft}
@@ -759,14 +832,14 @@ const VideoPlayer = (props) => {
                       <span
                         className={
                           color === asidedata.id
-                            ? "sc_la_desc_txt sc_la_td_bg"
-                            : "sc_la_desc_txt"
+                            ? "sc_la_desc_txt sc_la_td_bg h"
+                            : "sc_la_desc_txt h"
                         }
                         onClick={() => {
-                          dispatch(changeSideBarContent(asidedata.id))
+                          dispatch(changeSideBarContent(asidedata.id));
                         }}
                       >
-                        {asidedata.videotitleontime}
+                        {truncate(`${asidedata.videotitleontime}`, 16)}
                       </span>
                     </button>
                   </div>
