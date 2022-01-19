@@ -25,9 +25,10 @@ import checkicon from "../../assets/soundcloudimages/Check.png";
 import { Image } from "react-bootstrap";
 import plusiconsave from "../../assets/soundcloudimages/plusiconsave.png";
 import PlayVedio from "../../assets/images/playVedio.png";
-
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "../MobileAddCollection/mobileaddcollection.css";
+import { createGlobalStyle } from "styled-components";
 const UxVideoSecreen = () => {
   const [showPopover, setShowPopover] = useState({ open: true });
   const [tick, setTick] = useState([]);
@@ -39,19 +40,19 @@ const UxVideoSecreen = () => {
       id: 1,
       checked: false,
       image: checkicon,
-      Name: "Collection #",
+      Name: "Collection # 1",
     },
     {
       id: 2,
       checked: true,
       image: checkicon,
-      Name: "Collection #",
+      Name: "Collection # 2",
     },
     {
       id: 3,
       checked: true,
       image: checkicon,
-      Name: "Collection #",
+      Name: "Collection # 3",
     },
   ]);
   const checkTick = async (index) => {
@@ -121,19 +122,40 @@ const UxVideoSecreen = () => {
     },
   ];
   const addCollection = () => {
+    let index = checkdata.length
+    console.log("klkkl", index)
     let obj = {
       id: 1,
       checked: false,
       image: checkicon,
-      Name: "Collection #",
+      // Name: `${"Collection # " + index}`,
+      Name: `Collection #  ${index + 1}`,
     };
     checkdata.unshift(
       obj
     )
-    // console.log("ssssssss");
+
 
     setCheckdata([...checkdata]);
   };
+  const his = useNavigate()
+  const changeDynamicText = (e, index) => {
+    console.log("kkkk", e, index)
+    let data = [...checkdata];
+    data[index].Name = e
+    setCheckdata(data)
+  }
+  const test = () => {
+
+    // his('/soundcloudpage')
+    console.log("skadjbvvvvvvvvvvvvvvvv")
+  }
+
+  const [selectBtn, setSelectBtn] = useState("select_btn");
+  const xyz = () => {
+    console.log("onMouse ebter fn")
+    setSelectBtn("cont2");
+  }
 
   return (
     <>
@@ -143,11 +165,12 @@ const UxVideoSecreen = () => {
             return (
               <>
                 <div key={index}>
-                  <div className="vedio_card">
-                    <Link to="/soundcloudpage">
-                      {" "}
-                      <img src={data.img} className="img-fluid" alt="err" />
-                    </Link>
+                  {/* <Link to="/soundcloudpage"> */}
+                  <div className="vedio_card" onClick={test}>
+
+                    {" "}
+                    <img src={data.img} className="img-fluid" alt="err" />
+
                     <div className="UI_Secreen_add_collection">
                       {showPopover ? (
                         <div
@@ -192,13 +215,13 @@ const UxVideoSecreen = () => {
                                     <div>
                                       <span className="collection_txt">
                                         <EditText
-                                          name="textbox1"
-
-
-                                          value={data.Name + " " + [index + 1]}
+                                          type={"text"}
+                                          name={"Name"}
+                                          value={data.Name}
+                                          onChange={(e) => changeDynamicText(e, index)}
                                         />
 
-                                        {/* {data.Name + " " + [index + 1]} */}
+
 
 
                                       </span>
@@ -316,137 +339,149 @@ const UxVideoSecreen = () => {
 
                     <div className="card_content">
                       <div className="card_content_show">
-                        <div className="d-flex">
-                          <div>
-                            {" "}
-                            <img src={Cloud} className="onHoverImage" alt="err" />
+                        <Link to="/soundcloudpage" className="extra1">
+                          <div ></div>
+                        </Link>
+                        <div className="extra2">
+                          <div className="d-flex">
+                            <div>
+                              {" "}
+                              <img src={Cloud} className="onHoverImage" alt="err" />
+                            </div>
+                            <div className="onHoverText">{data.text}</div>
                           </div>
-                          <div className="onHoverText">{data.text}</div>
+                          <div
+                            className={selectBtn}
+                            onMouseEnter={xyz}
+                            onClick={() => {
+                              setSelect({
+                                open: select.open === index ? false : index,
+                              });
+                            }}
+                          >
+                            <img src={option} alt="err" />{" "}
+                          </div>
                         </div>
-                        <div
-                          className="select_btn"
-                          onClick={() => {
-                            setSelect({
-                              open: select.open === index ? false : index,
-                            });
-                          }}
-                        >
-                          <img src={option} alt="err" />{" "}
-                        </div>
+
                       </div>
                     </div>
                   </div>
+                  {/* </Link> */}
                   <div className="card_botom_text">{data.text}</div>
                 </div>
-                {setSave ? (
-                  <div className="UI_Secreen_confirmation_wrapper">
-                    <Image src={checkalert} />
-                    <span className="alert_txt">
-                      Video added to 2 Collections
-                    </span>
-                    <div className="undo_btn">
-                      <span className="undo_txt">Undo</span>
-                    </div>
-                  </div>
-                ) :
-                  copy ? <div className="UI_Secreen_confirmation_wrapper">
-                    <div>
+                {
+                  setSave ? (
+                    <div className="UI_Secreen_confirmation_wrapper">
                       <Image src={checkalert} />
                       <span className="alert_txt">
-                        Collection has been copy
+                        Video added to 2 Collections
                       </span>
+                      <div className="undo_btn">
+                        <span className="undo_txt">Undo</span>
+                      </div>
                     </div>
-                    <div className="undo_btn">
-                      <span className="undo_txt">Undo</span>
-                    </div>
-                  </div> :
+                  ) :
+                    copy ? <div className="UI_Secreen_confirmation_wrapper">
+                      <div>
+                        <Image src={checkalert} />
+                        <span className="alert_txt">
+                          Copy Link
+                        </span>
+                      </div>
+                      <div className="undo_btn">
+                        <span className="undo_txt">Undo</span>
+                      </div>
+                    </div> :
 
 
-                    null}
+                      null
+                }
               </>
             );
           })}
         </div>
       </div>
-      {showPopover.open ? null : (
-        <div className="m_add_collection">
-          <div className="add_collection_header">
-            <div>
-              <img
-                src={Close}
-                onClick={() => {
-                  setShowPopover({ open: true });
-
-                }}
-                alt="err"
-              />
-            </div>
-            <div className="m-add_collection_heading">Add to Collection</div>
-            <div></div>
-          </div>
-          <div className="m_add_collection_seprator"></div>
-          <div className="m_search_container">
-            <div className="m_search_wrapper">
+      {
+        showPopover.open ? null : (
+          <div className="m_add_collection">
+            <div className="add_collection_header">
               <div>
-                <img src={Search} className="m_search_icon" alt="err" />
+                <img
+                  src={Close}
+                  onClick={() => {
+                    setShowPopover({ open: true });
+
+                  }}
+                  alt="err"
+                />
               </div>
-              <input
-                className="search_input"
-                placeholder="Search Collections"
-              />
+              <div className="m-add_collection_heading">Add to Collection</div>
+              <div></div>
             </div>
-          </div>
-          {checkdata.map((data, index) => {
-            return (
-              <>
-                <div className="m_checkbox_wrapper">
-                  <div
-                    className={
-                      tick.includes(`${index}`)
-                        ? "m_checkbox_enable"
-                        : "m_checkbox"
-                    }
-                    onClick={() => checkTick(`${index}`)}
-                  >
-                    {tick.includes(`${index}`) ? (
-                      <Image src={data.image} />
-                    ) : (
-                      ""
-                    )}
-                  </div>
-                  <div>
-                    <span className="collection_txt">
-                      {data.Name + " " + [index + 1]}
-                    </span>
-                  </div>
+            <div className="m_add_collection_seprator"></div>
+            <div className="m_search_container">
+              <div className="m_search_wrapper">
+                <div>
+                  <img src={Search} className="m_search_icon" alt="err" />
                 </div>
-              </>
-            );
-          })}
-
-          <div className="m_new_collectionAnd_save">
-            <div className="add_collection_btn" onClick={() => addCollection()}>
-              <Image src={plusiconsave} />
-              <span className="nc_txt">New Collection</span>
+                <input
+                  className="search_input"
+                  placeholder="Search Collections"
+                />
+              </div>
             </div>
+            {checkdata.map((data, index) => {
+              return (
+                <>
+                  <div className="m_checkbox_wrapper">
+                    <div
+                      className={
+                        tick.includes(`${index}`)
+                          ? "m_checkbox_enable"
+                          : "m_checkbox"
+                      }
+                      onClick={() => checkTick(`${index}`)}
+                    >
+                      {tick.includes(`${index}`) ? (
+                        <Image src={data.image} />
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                    <div>
+                      <span className="collection_txt">
+                        {data.Name + " " + [index + 1]}
+                      </span>
+                    </div>
+                  </div>
+                </>
+              );
+            })}
 
-            <div
-              className={
-                tick.length >= 1
-                  ? "save_coll_enable_btn"
-                  : " save_collection_btn"
-              }
-              onClick={tick.length >= 1 ? () => saveCollection() : null}
-            >
-              {" "}
-              <Link to="/SoundCloudPage">
+            <div className="m_new_collectionAnd_save">
+              <div className="add_collection_btn" onClick={() => addCollection()}>
+                <Image src={plusiconsave} />
+                <span className="nc_txt">New Collection</span>
+              </div>
+
+              <div
+                className={
+                  tick.length >= 1
+                    ? "save_coll_enable_btn"
+                    : " save_collection_btn"
+                }
+                onClick={tick.length >= 1 ? () => saveCollection() : null}
+              >
                 {" "}
-                <span className="save_txt">Save</span>
-              </Link>{" "}
+                <Link to="/SoundCloudPage">
+                  {" "}
+                  <span className="save_txt">Save</span>
+                </Link>{" "}
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )
+      }
     </>
   );
 };

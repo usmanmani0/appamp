@@ -10,8 +10,9 @@ import TextField from '@mui/material/TextField';
 import { BiChevronRight } from "react-icons/bi";
 import RightArrow from "../../assets/images/right-arrow.png"
 import { useSelector, useDispatch } from 'react-redux';
-import { handelShow } from '../../feature/addCollection/counterSlice';
+import counterSlice, { handelShow } from '../../feature/addCollection/counterSlice';
 import MobileFilter from './mobileFilter';
+import './uisecreenfilter.css'
 
 const UiSecreenFilter = () => {
     const color = useSelector((state) => state.showModal.color)
@@ -21,23 +22,35 @@ const UiSecreenFilter = () => {
     const [isCheckAll, setIsCheckAll] = useState(false);
     const [isCheck, setIsCheck] = useState([]);
     const [opt, setOpt] = useState()
+    const [count, setCount] = useState([])
     const [selectedFilter, SetSelectedFilter] = useState([]);
     const [list, setList] = useState([
         {
             id: 1,
             typeis: "Navigation Bar",
+            flag: "bars"
         },
         {
             id: 2,
             typeis: "Search Bar",
+
+            flag: "bars"
         },
         {
             id: 3,
-            typeis: "Tool Bar",
+            typeis: "Tab Bar",
+
+            flag: "bars"
         },
         {
             id: 4,
+            typeis: "Tool Bar",
+            flag: "bars"
+        },
+        {
+            id: 5,
             typeis: "Navigation Bar",
+            flag: "bars"
         },
 
     ]);
@@ -75,43 +88,53 @@ const UiSecreenFilter = () => {
     const controlArray = [
         {
             id: 11,
-            typeis: "Button"
+            typeis: "Button",
+            flag: "control"
         },
         {
             id: 22,
-            typeis: "Carousal"
+            typeis: "Carousal",
+            flag: "control"
         },
         {
             id: 33,
-            typeis: "Color Picker"
+            typeis: "Color Picker",
+            flag: "control"
         },
         {
             id: 44,
-            typeis: "Floating Action Button"
+            typeis: "Floating Action Button",
+            flag: "control"
         },
         {
             id: 55,
-            typeis: "Collections / Gallery"
+            typeis: "Collections / Gallery",
+            flag: "control"
         },
         {
             id: 66,
-            typeis: "Loading Indicator"
+            typeis: "Loading Indicator",
+            flag: "control"
         },
         {
             id: 77,
-            typeis: "Multi & Single Select"
+            typeis: "Multi & Single Select",
+            flag: "control"
         },
         {
             id: 88,
-            typeis: "Pin"
+            typeis: "Pin",
+            flag: "control"
         },
         {
             id: 99,
-            typeis: "Page Control"
+            typeis: "Page Control",
+            flag: "control"
         },
         {
             id: 100,
-            typeis: "Progress Indicator"
+            typeis: "Progress Indicator",
+            flag: "control"
         },
     ]
     const displayArray = [
@@ -159,107 +182,147 @@ const UiSecreenFilter = () => {
     const feedbackArray = [
         {
             id: 101,
-            typeis: "Accordian"
+            typeis: "Accordian",
+            flag: "feed",
         },
         {
             id: 202,
-            typeis: "Badge"
+            typeis: "Badge",
+            flag: "feed",
         },
         {
             id: 303,
-            typeis: "Banner"
+            typeis: "Banner",
+            flag: "feed",
         },
         {
             id: 404,
-            typeis: "Card"
+            typeis: "Card",
+            flag: "feed",
         },
         {
             id: 505,
-            typeis: "Collections / Gallery"
+            typeis: "Collections / Gallery",
+            flag: "feed",
         },
         {
             id: 606,
-            typeis: "Divider"
+            typeis: "Divider",
+            flag: "feed",
         },
         {
             id: 707,
-            typeis: "List"
+            typeis: "List",
+            flag: "feed",
         },
         {
             id: 808,
-            typeis: "Pin"
+            typeis: "Pin",
+            flag: "feed",
         },
         {
             id: 909,
-            typeis: "Sheets"
+            typeis: "Sheets",
+            flag: "feed",
         },
         {
             id: 110,
-            typeis: "Skeleton"
+            typeis: "Skeleton",
+            flag: "feed",
         },
     ]
     const overlayArray = [
         {
             id: 102,
-            typeis: "Animation & Video"
+            typeis: "Animation & Video",
+            flag: "over",
         },
         {
             id: 201,
-            typeis: "App Icon"
+            typeis: "App Icon",
+            flag: "over",
         },
         {
             id: 302,
-            typeis: "Avatar"
+            typeis: "Avatar",
+            flag: "over",
         },
         {
             id: 403,
-            typeis: "Card"
+            typeis: "Card",
+            flag: "over",
         },
         {
             id: 504,
-            typeis: "Hero Image"
+            typeis: "Hero Image",
+            flag: "over",
         },
         {
             id: 605,
-            typeis: "Icons"
+            typeis: "Icons",
+            flag: "over",
         },
         {
             id: 706,
-            typeis: "List"
+            typeis: "List",
+            flag: "over",
         },
         {
             id: 807,
-            typeis: "Illustrator"
+            typeis: "Illustrator",
+            flag: "over",
         },
         {
             id: 908,
-            typeis: "ShePhotoets"
+            typeis: "ShePhotoets",
+            flag: "over",
         },
         {
             id: 104,
-            typeis: "System Icons"
+            typeis: "System Icons",
+            flag: "over",
         },
     ]
     const iconsArray = [
         {
             id: 303,
-            typeis: "Alerts"
+            typeis: "Action Menu",
+            flag: "icon",
         },
         {
             id: 123,
-            typeis: "Dialog"
+            typeis: "Bottom Sheet",
+            flag: "icon",
         },
         {
             id: 124,
-            typeis: "Progress"
+            typeis: "Context Menu",
+            flag: "icon",
         },
         {
             id: 125,
-            typeis: "Snackbar / Toast"
+            typeis: "Date & Time Picker",
+            flag: "icon",
         },
         {
             id: 126,
-            typeis: "Tooltip"
+            typeis: "Dialog",
+            flag: "icon",
+        },
+        {
+            id: 126,
+            typeis: "Full-Screen Overlay",
+            flag: "icon",
+        },
+        {
+            id: 126,
+            typeis: "Side Sheet",
+            flag: "icon",
+        },
+        {
+            id: 126,
+            typeis: "Text Edit Menu",
+            flag: "icon",
         },
 
     ]
@@ -267,13 +330,14 @@ const UiSecreenFilter = () => {
 
     var newArray = a.filter((data) => data.typeis.toLowerCase().includes(searchbox.toLowerCase()));
 
-    const handleClick = (e, name) => {
+    const handleClick = (e, name, data) => {
         const { id, checked } = e.target;
         let present = selectedFilter.find((data) => data == name);
         console.log("PRESENT", present);
         if (present) {
             SetSelectedFilter(selectedFilter.filter(item => item !== name));
         } else {
+            setCount([...count, data])
             SetSelectedFilter([...selectedFilter, name]);
         }
     };
@@ -304,33 +368,36 @@ const UiSecreenFilter = () => {
 
                         <div className="App_Page_filter_expand">
 
+                            <div className='fillter_box'>
+                                <div className="filter_input_element">
+                                    <div className='search_icon_wrapper'>  <img src={img1} className="search" /></div>
+                                    <Stack spacing={1} style={{ width: "95%" }} >
+                                        <Autocomplete
+                                            multiple
+                                            popupIcon=""
+                                            id="tags-filled"
+                                            value={selectedFilter}
+                                            options={list.map((option) => option.typeis)}
 
-
-                            <div className="filter_input">
-                                <img src={img1} className="search" />
-                                <Stack spacing={1} style={{ width: "95%" }} >
-                                    <Autocomplete
-                                        multiple
-                                        id="tags-filled"
-                                        value={selectedFilter}
-                                        options={list.map((option) => option.typeis)}
-
-                                        onChange={(e, v) => enteringAutoComplete(v)}
-                                        renderTags={(value, getTagProps) => value.map((option, index) => (
-                                            <Chip variant="outlined" label={option} {...getTagProps({ index })} />
-                                        ))}
-                                        renderInput={(params) => (
-                                            <TextField
-                                                {...params}
-                                                variant="filled"
-                                                label=""
-                                                value={searchbox}
-                                                placeholder="Search Elements"
-                                                onChange={(e) => { setSearchbox(e.target.value) }}
-                                            />
-                                        )} />
-                                </Stack>
+                                            onChange={(e, v) => enteringAutoComplete(v)}
+                                            renderTags={(value, getTagProps) => value.map((option, index) => (
+                                                <Chip variant="outlined" label={option} {...getTagProps({ index })} />
+                                            ))}
+                                            renderInput={(params) => (
+                                                <TextField
+                                                    {...params}
+                                                    variant="filled"
+                                                    label=""
+                                                    value={searchbox}
+                                                    placeholder="Search Elements"
+                                                    onChange={(e) => { setSearchbox(e.target.value) }}
+                                                />
+                                            )} />
+                                    </Stack>
+                                </div>
                             </div>
+
+
                             <hr className="bottom_line"></hr>
                             {searchbox === "" ?
                                 color == 1 ? <div className='d-flex justify-content-around' onMouseLeave={() => { setOpt(null) }}>
@@ -489,13 +556,13 @@ const UiSecreenFilter = () => {
 
                                         </div>
 
-                                        <div  >
-                                            <div className='option_data ' onMouseEnter={() => { setOpt(0) }}><div>Bars {selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => list.some(li => li.typeis == data)).length}</span> : ""} </div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                            <div className='option_data ' onMouseEnter={() => { setOpt(1) }}><div>Control{selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => controlArray.some(li => li.typeis == data)).length}</span> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                            <div className='option_data ' onMouseEnter={() => { setOpt(2) }}><div>Display {selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => displayArray.some(li => li.typeis == data)).length}</span> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                            <div className='option_data ' onMouseEnter={() => { setOpt(3) }}><div>Feedback {selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => feedbackArray.some(li => li.typeis == data)).length}</span> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                            <div className='option_data ' onMouseEnter={() => { setOpt(4) }}><div>Icons & Images {selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => overlayArray.some(li => li.typeis == data)).length}</span> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                            <div className='option_data ' onMouseEnter={() => { setOpt(5) }}><div>Overlay {selectedFilter.length > 0 ? <span className='each_filter_count'>{selectedFilter.filter((data) => iconsArray.some(li => li.typeis == data)).length}</span> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div> </div>
+                                        <div className='filter_elements_data' >
+                                            <div className='option_data ' onMouseEnter={() => { setOpt(0) }}><div className='d-flex flter_data'>Bars {count.filter((item) => item.flag === "bars").length > 0 ? <div className='each_filter_count'>{selectedFilter.filter((data) => list.some(li => li.typeis == data)).length}</div> : ""} </div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                            <div className='option_data ' onMouseEnter={() => { setOpt(1) }}><div className='d-flex flter_data'>Control{count.filter((item) => item.flag === "control").length > 0 ? <div className='each_filter_count'>{selectedFilter.filter((data) => controlArray.some(li => li.typeis == data)).length}</div> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                            <div className='option_data ' onMouseEnter={() => { setOpt(2) }}><div className='d-flex flter_data'>Display {count.filter((item) => item.flag === "display").length > 0 ? <div className='each_filter_count'>{selectedFilter.filter((data) => displayArray.some(li => li.typeis == data)).length}</div> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                            <div className='option_data ' onMouseEnter={() => { setOpt(3) }}><div className='d-flex flter_data'>Feedback {count.filter((item) => item.flag === "feed").length > 0 ? <div className='each_filter_count'>{selectedFilter.filter((data) => feedbackArray.some(li => li.typeis == data)).length}</div> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                            <div className='option_data ' onMouseEnter={() => { setOpt(4) }}><div className='d-flex flter_data'>Icons & Images {count.filter((item) => item.flag === "icon").length > 0 ? <div className='each_filter_count'>{selectedFilter.filter((data) => overlayArray.some(li => li.typeis == data)).length}</div> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                            <div className='option_data ' onMouseEnter={() => { setOpt(5) }}><div className='d-flex flter_data'>Overlay {count.filter((item) => item.flag === "over").length > 0 ? <div className='each_filter_count'>{selectedFilter.filter((data) => iconsArray.some(li => li.typeis == data)).length}</div> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div> </div>
                                         <div className='Ui_Secreen_filter_checkbox'>
 
                                             {list.map((data, index) => {
@@ -508,7 +575,7 @@ const UiSecreenFilter = () => {
                                                                 key={data.id}
                                                                 type="checkbox"
                                                                 id={data.id}
-                                                                onClick={(e) => handleClick(e, data.typeis)}
+                                                                onClick={(e) => handleClick(e, data.typeis, data)}
                                                                 checked={selectedFilter.includes(`${data.typeis}`)} />
                                                             <label className="label">{data.typeis}</label>{" "}
                                                         </div>
@@ -527,7 +594,7 @@ const UiSecreenFilter = () => {
                                                                 key={data.id}
                                                                 type="checkbox"
                                                                 id={data.id}
-                                                                onClick={(e) => handleClick(e, data.typeis)}
+                                                                onClick={(e) => handleClick(e, data.typeis, data)}
                                                                 checked={selectedFilter.includes(`${data.typeis}`)} />
                                                             <label className="label">{data.typeis}</label>{" "}
                                                         </div>
@@ -546,7 +613,7 @@ const UiSecreenFilter = () => {
                                                                 key={data.id}
                                                                 type="checkbox"
                                                                 id={data.id}
-                                                                onClick={(e) => handleClick(e, data.typeis)}
+                                                                onClick={(e) => handleClick(e, data.typeis, data)}
                                                                 checked={selectedFilter.includes(`${data.typeis}`)} />
                                                             <label className="label">{data.typeis}</label>{" "}
                                                         </div>
@@ -565,7 +632,7 @@ const UiSecreenFilter = () => {
                                                                 key={data.id}
                                                                 type="checkbox"
                                                                 id={data.id}
-                                                                onClick={(e) => handleClick(e, data.typeis)}
+                                                                onClick={(e) => handleClick(e, data.typeis, data)}
                                                                 checked={selectedFilter.includes(`${data.typeis}`)} />
                                                             <label className="label">{data.typeis}</label>{" "}
                                                         </div>
@@ -584,7 +651,7 @@ const UiSecreenFilter = () => {
                                                                 key={data.id}
                                                                 type="checkbox"
                                                                 id={data.id}
-                                                                onClick={(e) => handleClick(e, data.typeis)}
+                                                                onClick={(e) => handleClick(e, data.typeis, data)}
                                                                 checked={selectedFilter.includes(`${data.typeis}`)} />
                                                             <label className="label">{data.typeis}</label>{" "}
                                                         </div>
@@ -603,7 +670,7 @@ const UiSecreenFilter = () => {
                                                                 key={data.id}
                                                                 type="checkbox"
                                                                 id={data.id}
-                                                                onClick={(e) => handleClick(e, data.typeis)}
+                                                                onClick={(e) => handleClick(e, data.typeis, data)}
                                                                 checked={selectedFilter.includes(`${data.typeis}`)} />
                                                             <label className="label">{data.typeis}</label>{" "}
                                                         </div>
