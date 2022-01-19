@@ -255,7 +255,7 @@
   .search_div {
     margin-top: 3rem;
     height: 56px;
-    width: 100%;
+    width: 558px;
     border-radius: 8px;
     border: none;
     background-color: white;
@@ -271,6 +271,15 @@
   }
   .icon{
     font-weight: bolder;
+  }
+  .search_div {
+    margin-top: 3rem;
+    height: 56px;
+    width: 100%;
+    border-radius: 8px;
+    border: none;
+    background-color: white;
+  
   }
 }
 
