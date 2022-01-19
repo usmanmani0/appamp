@@ -361,7 +361,7 @@ const UiSecreenFilter = () => {
                         className="filter_button d-flex align-items-center"
                         type="button"
                     >
-                        <i className="icon_filter">
+                        <i className="icon_filter" style={{ marginLeft: "-10px" }}>
                             <BsFilter className="icon" size="16px" color="black" sty
                             />
                         </i>
@@ -568,8 +568,12 @@ const UiSecreenFilter = () => {
 
                                         </div>
 
+
                                         <div className='filter_elements_data' >
-                                            <div className='option_data ' onMouseEnter={() => { setOpt(0) }}><div className='d-flex flter_data'>Bars {count.filter((item) => item.flag === "bars").length > 0 ? <div className='each_filter_count'>{selectedFilter.filter((data) => list.some(li => li.typeis == data)).length}</div> : ""} </div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                            <div className='option_data ' onMouseEnter={() => { setOpt(0) }}><div className='d-flex flter_data'>Bars {count.filter((item) => item.flag === "bars").length > 0 ? <div className='each_filter_count' style={{
+                                                display:
+                                                    count.filter((item) => item.flag === "bars").length === 0 ? "none" : "block",
+                                            }}  >{selectedFilter.filter((data) => list.some(li => li.typeis == data)).length}</div> : ""} </div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
                                             <div className='option_data ' onMouseEnter={() => { setOpt(1) }}><div className='d-flex flter_data'>Control{count.filter((item) => item.flag === "control").length > 0 ? <div className='each_filter_count'>{selectedFilter.filter((data) => controlArray.some(li => li.typeis == data)).length}</div> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
                                             <div className='option_data ' onMouseEnter={() => { setOpt(2) }}><div className='d-flex flter_data'>Display {count.filter((item) => item.flag === "display").length > 0 ? <div className='each_filter_count'>{selectedFilter.filter((data) => displayArray.some(li => li.typeis == data)).length}</div> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
                                             <div className='option_data ' onMouseEnter={() => { setOpt(3) }}><div className='d-flex flter_data'>Feedback {count.filter((item) => item.flag === "feed").length > 0 ? <div className='each_filter_count'>{selectedFilter.filter((data) => feedbackArray.some(li => li.typeis == data)).length}</div> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
