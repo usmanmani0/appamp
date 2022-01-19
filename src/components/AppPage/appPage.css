@@ -395,6 +395,14 @@
   /* border-radius: 8px; */
   left: 0%;
 }
+.css-m02auo::before {
+  border: none !important;
+  border-bottom: none !important ;
+}
+
+.MuiFilledInput-root::after {
+  border: none !important;
+}
 @media screen and (min-width: 665px) {
   .card_content_Secreen {
     display: none !important;
@@ -490,6 +498,18 @@
   padding-top: 4px;
 }
 @media screen and (max-width: 768px) {
+  .vedio_time {
+    position: absolute;
+    bottom: 40px;
+
+    width: 100%;
+    display: flex;
+    margin-right: -10px !important;
+    justify-content: end;
+  }
+  .card_content {
+    display: block;
+  }
   .UI_Secreen {
     padding: 40px 16px 0px 16px;
   }
@@ -635,6 +655,9 @@
   }
 }
 @media screen and (max-width: 425px) {
+  .card_content {
+    display: block !important;
+  }
   .vedio_card_wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -657,7 +680,7 @@
   }
   .vedio_time {
     position: absolute;
-    bottom: 3px;
+    bottom: 45px;
 
     width: 161px;
     display: flex;

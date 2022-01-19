@@ -9,7 +9,11 @@ export const counterSlice = createSlice({
     initialState: initialState,
     reducers: {
         handelShow: (state, action) => {
+            console.log("reduxF")
             state.show = !state.show
+        },
+        handelOffModal: (state, action) => {
+            state.show = false
         },
 
         incrementByAmount: (state, action) => {
@@ -19,6 +23,6 @@ export const counterSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { handelShow, incrementByAmount } = counterSlice.actions
+export const { handelShow, incrementByAmount, handelOffModal } = counterSlice.actions
 
 export default counterSlice.reducer
