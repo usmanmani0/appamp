@@ -324,7 +324,7 @@ const UiSecreenPlayList = () => {
                                                 </div>
                                             </div>
 
-                                            <div className="card_content_Secreen">
+                                            <div className="card_content">
                                                 <div className="card_content_show">
                                                     <Link to="" className="extra1">
                                                         <div ></div>

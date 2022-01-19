@@ -10,7 +10,7 @@ import TextField from '@mui/material/TextField';
 import { BiChevronRight } from "react-icons/bi";
 import RightArrow from "../../assets/images/right-arrow.png"
 import { useSelector, useDispatch } from 'react-redux';
-import counterSlice, { handelShow } from '../../feature/addCollection/counterSlice';
+import counterSlice, { handelShow, handelOffModal } from '../../feature/addCollection/counterSlice';
 import MobileFilter from './mobileFilter';
 import './uisecreenfilter.css'
 
@@ -341,10 +341,21 @@ const UiSecreenFilter = () => {
             SetSelectedFilter([...selectedFilter, name]);
         }
     };
+    // document.addEventListener('mouseup', function (e) {
+    //     let container = document.getElementById('filterOpen');
+    //     if (container.contains(e.target)) {
+    //         dispatch(handelOffModal(show = true))
+    //     }
+    //     else {
+    //         dispatch(handelOffModal())
+
+    //     }
+    // });
+
     return (
         <>
             <div className='UiSecreen_filter'>
-                <div className="filter_btn ">
+                <div className="filter_btn " >
                     <button
                         onClick={() => dispatch(handelShow())}
                         className="filter_button d-flex align-items-center"
@@ -366,7 +377,7 @@ const UiSecreenFilter = () => {
 
 
 
-                        <div className="App_Page_filter_expand">
+                        <div className="App_Page_filter_expand" id="filterOpen">
 
                             <div className='fillter_box'>
                                 <div className="filter_input_element">
@@ -429,6 +440,7 @@ const UiSecreenFilter = () => {
                                                     <div className="appPage_checkbox_div" style={{ display: opt == 0 ? "block" : "none" }}>
 
                                                         <input
+
 
                                                             key={data.id}
                                                             type="checkbox"

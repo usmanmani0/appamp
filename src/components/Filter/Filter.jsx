@@ -10,6 +10,9 @@ import { BiChevronRight } from "react-icons/bi";
 import RightArrow from "../../assets/images/right-arrow.png";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import img1 from "../../assets/images/s.png";
+import HomeMobileFilter from "../UiSecreenFilter/HomemobileFilter"
+import { handelShow } from '../../feature/addCollection/counterSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
 function Filter() {
   function myFunction() {
@@ -26,10 +29,12 @@ function Filter() {
     myFunction();
   };
 
-  const [show, setShow] = useState(false);
-  const handelShow = () => {
-    setShow(!show);
-  };
+  // const [show, setShow] = useState(false);
+  const show = useSelector((state) => state.hideShow.show)
+  const dispatch = useDispatch()
+  // const handelShow = () => {
+  //   setShow(!show);
+  // };
 
   // ..................for select checkbox....
   const [isCheckAll, setIsCheckAll] = useState(false);
@@ -111,7 +116,7 @@ function Filter() {
         <div className="container">
           <div className="filter_btn">
             <button
-              onClick={handelShow}
+              onClick={() => dispatch(handelShow())}
               className="filter_button"
               type="button"
             >
@@ -127,7 +132,57 @@ function Filter() {
               <span>Filter</span>
             </button>
           </div>
-          {show ? (
+
+          <div>
+            {/* <button className="recent_button" type="button">
+              <span>Recently Updated (All)</span>
+              <i className="icon_down">
+                <BsChevronDown className="icon" size="16px" color="black" />
+              </i>
+            </button> */}
+
+            {/* <DropdownButton id="dropdown-basic-button" title="Dropdown button">
+              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+              <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+            </DropdownButton> */}
+
+            <div class="dropdown">
+              <button
+                class="dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                className="recent_button"
+              >
+                <span>Recently Updated (All)</span>
+                <i className="icon_down">
+                  <IoIosArrowDown className="icon" size="18px" color="black" />
+                </i>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <span>Recently Updated (All)</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <span>Alphabetically (A-Z)</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="filter_outer_wrapper">
+        {show ? (
+          <div>
+            <div className='mobile_filter_view'>
+              <HomeMobileFilter />
+            </div>
             <div className="filter_expand">
               <div style={{ marginTop: "8px" }}>
                 <div className="filter_input_element">
@@ -210,50 +265,9 @@ function Filter() {
 
 
             </div>
-          ) : null}
-          <div>
-            {/* <button className="recent_button" type="button">
-              <span>Recently Updated (All)</span>
-              <i className="icon_down">
-                <BsChevronDown className="icon" size="16px" color="black" />
-              </i>
-            </button> */}
-
-            {/* <DropdownButton id="dropdown-basic-button" title="Dropdown button">
-              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-            </DropdownButton> */}
-
-            <div class="dropdown">
-              <button
-                class="dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton1"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                className="recent_button"
-              >
-                <span>Recently Updated (All)</span>
-                <i className="icon_down">
-                  <IoIosArrowDown className="icon" size="18px" color="black" />
-                </i>
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li>
-                  <a class="dropdown-item" href="#">
-                    <span>Recently Updated (All)</span>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">
-                    <span>Alphabetically (A-Z)</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
           </div>
-        </div>
+
+        ) : null}
       </div>
     </>
   );

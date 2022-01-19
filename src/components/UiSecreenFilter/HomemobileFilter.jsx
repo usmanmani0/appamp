@@ -17,13 +17,16 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from "react-router-dom"
 import { handelShow } from '../../feature/addCollection/counterSlice';
+import RightArrow from "../../assets/images/right-arrow.png";
+import { holdReady } from 'jquery';
 
-const MobileFilter = () => {
+const HomeMobileFilter = () => {
     const [selectedFilter, SetSelectedFilter] = useState([]);
     const [searchbox, setSearchbox] = useState("")
     const show = useSelector((state) => state.hideShow.show)
     const [element, setElement] = useState("element")
     const [elementType, setElementType] = useState(null)
+    const [isCheckAll, setIsCheckAll] = useState(false);
     const history = useNavigate()
     const dispatch = useDispatch()
 
@@ -46,6 +49,58 @@ const MobileFilter = () => {
         },
 
     ]);
+
+    const [HomeList, setHomeList] = useState(
+
+        [
+            {
+                id: 2,
+                typeis: "Art & Design",
+                checked: false
+            },
+            {
+                id: 3,
+                typeis: "Augmented Reality",
+                checked: false
+
+            },
+            {
+                id: 4,
+                typeis: "Auto $ Vehicles",
+                checked: false
+            },
+            {
+                id: 5,
+                typeis: "Beauty",
+                checked: false
+            },
+            {
+                id: 6,
+                typeis: "Books & Refrences",
+                checked: false
+            },
+            {
+                id: 7,
+                typeis: "Bisiness",
+                checked: false
+            },
+            {
+                id: 8,
+                typeis: "Comics",
+                checked: false
+            },
+            {
+                id: 9,
+                typeis: "Communication",
+                checked: false
+            },
+            {
+                id: 10,
+                typeis: "Dating",
+                checked: false
+            },
+        ]
+    )
     const enteringAutoComplete = (value) => {
 
         SetSelectedFilter((preValue) => {
@@ -56,6 +111,18 @@ const MobileFilter = () => {
         });
 
     };
+    const handleSelectAll = (e) => {
+        // alert("ALL")
+        setIsCheckAll(!isCheckAll);
+        let array = [...HomeList]
+        array.map((item) => item.checked = !isCheckAll)
+        setHomeList(array)
+        // SetSelectedFilter(list.map((li) => `${li.typeis}`));
+        // if (isCheckAll) {
+        //     SetSelectedFilter([]);
+        // }
+    };
+
     const Bars = [
         {
             id: 1,
@@ -270,18 +337,71 @@ const MobileFilter = () => {
         },
 
     ]
+    // const HomeList = [
+    //     {
+    //         id: 2,
+    //         typeis: "Art & Design",
+    //         checked: true
+    //     },
+    //     {
+    //         id: 3,
+    //         typeis: "Augmented Reality",
+    //         checked: true
 
+    //     },
+    //     {
+    //         id: 4,
+    //         typeis: "Auto $ Vehicles",
+    //         checked: true
+    //     },
+    //     {
+    //         id: 5,
+    //         typeis: "Beauty",
+    //         checked: true
+    //     },
+    //     {
+    //         id: 6,
+    //         typeis: "Books & Refrences",
+    //         checked: true
+    //     },
+    //     {
+    //         id: 7,
+    //         typeis: "Bisiness",
+    //         checked: true
+    //     },
+    //     {
+    //         id: 8,
+    //         typeis: "Comics",
+    //         checked: true
+    //     },
+    //     {
+    //         id: 9,
+    //         typeis: "Communication",
+    //         checked: true
+    //     },
+    //     {
+    //         id: 10,
+    //         typeis: "Dating",
+    //         checked: true
+    //     },
+    // ]
     let a = controlArray.concat(displayArray, displayArray, feedbackArray, overlayArray, iconsArray)
-    var newArray = a.filter((data) => data.typeis.toLowerCase().includes(searchbox.toLowerCase()));
-    const handleClick = (e, name) => {
-        const { id, checked } = e.target;
-        let present = selectedFilter.find((data) => data == name);
-        console.log("PRESENT", present);
-        if (present) {
-            SetSelectedFilter(selectedFilter.filter(item => item !== name));
-        } else {
-            SetSelectedFilter([...selectedFilter, name]);
-        }
+    var newArray = HomeList.filter((data) => data.typeis.toLowerCase().includes(searchbox.toLowerCase()));
+    const handleClick = (e, name, data, index) => {
+        let array = [...HomeList];
+        array[index] = { ...array[index], checked: !data };
+        setHomeList(array);
+        // setHomeList((prev) =>
+        //     prev[index]  !prev[index]
+        // )
+        // const { id, checked } = e.target;
+        // let present = selectedFilter.find((data) => data == name);
+        // console.log("PRESENT", present);
+        // if (present) {
+        //     SetSelectedFilter(selectedFilter.filter(item => item !== name));
+        // } else {
+        //     SetSelectedFilter([...selectedFilter, name]);
+        // }
     };
     const ElementSelector = (x) => {
         switch (x) {
@@ -289,7 +409,7 @@ const MobileFilter = () => {
                 return <Elements />
                 break;
             case "content":
-                return <ElementsContent />;
+                return <MHomeFilter />;
                 break;
             case "selected":
                 return <SelectedElement />;
@@ -338,6 +458,9 @@ const MobileFilter = () => {
             </>
         )
     }
+    const goBack = () => {
+        setElement("element")
+    }
     // <=====Element Component========>
     const Elements = () => {
 
@@ -350,7 +473,7 @@ const MobileFilter = () => {
                 <div className='mobile_fillter_element_tag'
                     onClick={goToNext}
                 >
-                    <div>Elements</div>
+                    <div>App Categories</div>
                     <div className='onHoverArrow' ><img src={ArrowRight} /></div>
                 </div>
             </>
@@ -421,6 +544,52 @@ const MobileFilter = () => {
                 }
 
 
+            </>
+        )
+    }
+    const MHomeFilter = () => {
+        return (
+            <>
+                <div>
+                    <div className="Home_app_categories_filter_btn" onClick={goBack}>
+                        <div className=''><img src={ArrowLeft} /></div>
+                        <div className="d-flex home_category_text" style={{ color: "black" }}>
+                            App Categories <div className='home_checkbox_counter'>{HomeList.filter((data) => data.checked == true).length}</div>
+                        </div>
+
+                    </div>
+                    <div className="landing_page_input_wrapper_mobile">
+                        <div className="checkbox_div">
+                            <input
+                                type="checkbox"
+                                onClick={handleSelectAll}
+                                checked={isCheckAll}
+                            />
+                            <label className="check_box_label">All</label>{" "}
+
+                        </div>
+
+                        {HomeList.map((data, index) => {
+                            return (
+                                <>
+                                    <div className="checkbox_div" key={index}>
+                                        <input
+                                            key={data.id}
+                                            type="checkbox"
+                                            id={data.id}
+                                            onClick={(e) => handleClick(e, data.typeis, data.checked, index)}
+                                            // checked={selectedFilter.includes(`${data.typeis}`)}
+                                            checked={data.checked}
+                                        />
+                                        <label className="check_box_label">{data.typeis}</label>{" "}
+                                    </div>
+                                    {/* <hr className="vertical_line"></hr> */}
+                                </>
+                            );
+                        })}
+                    </div>
+
+                </div>
             </>
         )
     }
@@ -526,11 +695,11 @@ const MobileFilter = () => {
                 </div>
                 <div className='cancel_apply_btn'>
                     <div className='mobile_f_cancel_btn'>Cancel</div>
-                    <div className={element == "selected" ? 'apply_color' : 'mobile_f_apply_btn'} onClick={() => dispatch(handelShow())} >  Apply</div>
+                    <div className={element == "content" ? 'apply_color' : 'mobile_f_apply_btn'} onClick={() => dispatch(handelShow())} >  Apply</div>
                 </div>
             </div>
         </>
     )
 }
 
-export default MobileFilter
+export default HomeMobileFilter
