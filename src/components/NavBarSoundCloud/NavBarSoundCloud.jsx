@@ -133,7 +133,7 @@ const NavBarSoundCloud = ({ asidedata }) => {
           <Col className="nav_col_2_adjustment">
             <div className="nav_bf_icons_wrapper">
               <div className="nav_back_icon" onClick={pre}>
-                <div className="copy_wrap ">
+                <div>
                   <OverlayTrigger
                     delay={{ hide: 150, show: 300 }}
                     overlay={(props) => (
@@ -142,7 +142,9 @@ const NavBarSoundCloud = ({ asidedata }) => {
                     placement="bottom"
                   >
                     {/* <Image src={backwararrow} rounded /> */}
+                    <div>
                     <AiOutlineLeft />
+                    </div>
                   </OverlayTrigger>
                 </div>
               </div>
@@ -154,7 +156,7 @@ const NavBarSoundCloud = ({ asidedata }) => {
                 </span>
               </div>
               <div className="nav_forward_icon" onClick={next}>
-                <div className="copy_wrap ">
+                <div>
                   <OverlayTrigger
                     delay={{ hide: 150, show: 300 }}
                     overlay={(props) => (
@@ -163,7 +165,9 @@ const NavBarSoundCloud = ({ asidedata }) => {
                     placement="bottom"
                   >
                     {/* <Image src={forwardarrow} rounded /> */}
+                    <div>
                     <AiOutlineRight />
+                    </div>
                   </OverlayTrigger>
                 </div>
               </div>
@@ -207,7 +211,7 @@ const NavBarSoundCloud = ({ asidedata }) => {
               </div>
               <div className="nav_forward_icon">
                 <Image src={forwardarrow} rounded />
-              </div>
+              </div> 
             </div>
           </Col>
 

@@ -41,56 +41,56 @@ import {
 } from "../../feature/hideShowModal/hideshowModal";
 import MobileAddCollectionModal from "../MobileAddCollection";
 
-const asidedata = [
-  {
-    id: 1,
-    videotimelft: "00:00",
-    videotitleontime: "App Landing Screen",
-    time: 0,
-  },
-  {
-    id: 2,
-    videotimelft: "00:32",
-    videotitleontime: "Create an Account",
-    time: 10,
-  },
-  {
-    id: 3,
-    videotimelft: "01:11",
-    videotitleontime: "Log In Screen",
-    time: 20,
-  },
-  {
-    id: 4,
-    videotimelft: "01:25",
-    videotitleontime: "Add a Picture",
-    time: 30,
-  },
-  {
-    id: 5,
-    videotimelft: "01:47",
-    videotitleontime: "Start a free Trial",
-    time: 40,
-  },
-  {
-    id: 6,
-    videotimelft: "02:01",
-    videotitleontime: "Select Plan",
-    time: 50,
-  },
-  {
-    id: 7,
-    videotimelft: "02:23",
-    videotitleontime: "Payment Details",
-    time: 60,
-  },
-  {
-    id: 8,
-    videotimelft: "02:35",
-    videotitleontime: "User Landing Screen",
-    time: 70,
-  },
-];
+// const asidedata = [
+//   {
+//     id: 1,
+//     videotimelft: "00:00",
+//     videotitleontime: "App Landing Screen",
+//     time: 0,
+//   },
+//   {
+//     id: 2,
+//     videotimelft: "00:32",
+//     videotitleontime: "Create an Account",
+//     time: 10,
+//   },
+//   {
+//     id: 3,
+//     videotimelft: "01:11",
+//     videotitleontime: "Log In Screen",
+//     time: 20,
+//   },
+//   {
+//     id: 4,
+//     videotimelft: "01:25",
+//     videotitleontime: "Add a Picture",
+//     time: 30,
+//   },
+//   {
+//     id: 5,
+//     videotimelft: "01:47",
+//     videotitleontime: "Start a free Trial",
+//     time: 40,
+//   },
+//   {
+//     id: 6,
+//     videotimelft: "02:01",
+//     videotitleontime: "Select Plan",
+//     time: 50,
+//   },
+//   {
+//     id: 7,
+//     videotimelft: "02:23",
+//     videotitleontime: "Payment Details",
+//     time: 60,
+//   },
+//   {
+//     id: 8,
+//     videotimelft: "02:35",
+//     videotitleontime: "User Landing Screen",
+//     time: 70,
+//   },
+// ];
 
 const cardsdata = [
   {
@@ -125,8 +125,76 @@ const cardsdata = [
   },
 ];
 
+const format = (seconds) => {
+  if (isNaN(seconds)) {
+    return "00:00";
+  }
+  console.log(",kkkkk", seconds * 1000);
+  const date = new Date(seconds * 1000);
+  const hh = date.getUTCHours();
+  const mm = date.getUTCMinutes();
+  const ss = date.getUTCSeconds().toString().padStart(2, "0");
+
+  if (hh) {
+    return `${hh}:${mm.toString().padStart(2, "0")}:${ss}`;
+  }
+
+  return `${mm}:${ss}`;
+};
+
 const VideoPlayer = (props) => {
   // const { color, setColor } = props
+
+  const [asidedata, setAsideData] = useState([
+    {
+      id: 1,
+      videotimelft: "0:00",
+      videotitleontime: "App Landing Screen",
+      time: 0,
+    },
+    {
+      id: 2,
+      videotimelft: "0:32",
+      videotitleontime: "Create an Account",
+      time: 32,
+    },
+    {
+      id: 3,
+      videotimelft: "1:11",
+      videotitleontime: "Log In Screen",
+      time: 71,
+    },
+    {
+      id: 4,
+      videotimelft: "1:25",
+      videotitleontime: "Add a Picture",
+      time: 75,
+    },
+    {
+      id: 5,
+      videotimelft: "1:47",
+      videotitleontime: "Start a free Trial",
+      time: 80,
+    },
+    {
+      id: 6,
+      videotimelft: "2:01",
+      videotitleontime: "Select Plan",
+      time: 90,
+    },
+    {
+      id: 7,
+      videotimelft: "2:23",
+      videotitleontime: "Payment Details",
+      time: 95,
+    },
+    {
+      id: 8,
+      videotimelft: "2:35",
+      videotitleontime: "User Landing Screen",
+      time: 99,
+    },
+  ]);
 
   const showAddModal = useSelector((state) => state.showModal.show);
   let color = useSelector((state) => state.showModal.color);
@@ -194,13 +262,19 @@ const VideoPlayer = (props) => {
       Name: "Collection #",
     },
     {
-      id: 1,
+      id: 2,
       checked: false,
       image: checkicon,
       Name: "Collection #",
     },
     {
-      id: 1,
+      id: 3,
+      checked: false,
+      image: checkicon,
+      Name: "Collection #",
+    },
+    {
+      id: 4,
       checked: false,
       image: checkicon,
       Name: "Collection #",
@@ -317,7 +391,7 @@ const VideoPlayer = (props) => {
       setShowUmodal(-1);
     } else setShowUmodal(index);
   };
-  console.log("duration");
+  // console.log("duration");
   const [uiVideoShow, setuiVideoShow] = useState(false);
 
   const handeluiVideo = () => {
@@ -334,6 +408,42 @@ const VideoPlayer = (props) => {
   const handelSimilarPatternIpro = () => {
     setsimilarPatternIproShow(!similarPatternIproShow);
   };
+
+  const currentTime = playRef.current
+    ? playRef.current.getCurrentTime()
+    : "00:00";
+  const duration = playRef.current ? playRef.current.getDuration() : "00:00";
+
+  const elapsedTime = format(currentTime);
+  const totalDuration = format(duration);
+  useEffect(() => {
+    const elapsedTime = format(currentTime);
+    var a = elapsedTime.split(":");
+    console.log("g", a);
+    var seconds = parseInt(a[0]) * 60 + parseInt(a[1]);
+    console.log(seconds);
+
+    let arrayseconds = asidedata[color - 1].videotimelft;
+    // console.log("static array data",arrayseconds)
+    var b = arrayseconds.split(":");
+    // console.log("g", b);
+    var aS = parseInt(b[0]) * 60 + parseInt(b[1]);
+    console.log(aS);
+
+    // console.log("coooo", elapsedTime, color);
+    let index = asidedata.findIndex(
+      (item) => item.videotimelft === elapsedTime
+    );
+    // console.log("please set the index", index);
+    if (index > 0) {
+      dispatch(changeSideBarContent(index + 1));
+    }
+    console.log("aaaaaa====", seconds <= aS, seconds >= aS);
+    // if (seconds<aS) {
+    //   dispatch(changeSideBarContent(color - 1));
+    // }
+  }, [elapsedTime]);
+
   return (
     <>
       <Container className="videoplayer_container" fluid="true">
@@ -364,7 +474,7 @@ const VideoPlayer = (props) => {
                 <div className="sc_video_time_duration_details" key={index}>
                   <div
                     className={
-                      color == asidedata.id
+                      color === asidedata.id
                         ? "sc_left_aside_time_desc sc_la_td_bg"
                         : "sc_left_aside_time_desc"
                     }
@@ -615,12 +725,13 @@ const VideoPlayer = (props) => {
                 onSeekMouseUp={handelSeekMouseUp}
                 seeking={seeking}
                 muted={muted}
-
                 onMute={handelMute}
                 onVolumeSeekUp={handelVolumeSeekUp}
                 onVolumeChange={handelVolumeChange}
                 volume={volume}
                 goFullScreen={goFullScreen}
+                elapsedTime={elapsedTime}
+                totalDuration={totalDuration}
               />
             </div>
           </div>
@@ -691,7 +802,7 @@ const VideoPlayer = (props) => {
             className="d-flex justify-content-center"
             style={{ borderBottom: "1px solid #f4f4f4" }}
           >
-            <div className="sc_videoplayer_btn_wrapper" id="myHeader">
+            <div className="sc_videoplayer_btn_wrapper_ipad" id="myHeader">
               <div
                 onClick={handelSimilarPatternIpro}
                 className={
@@ -845,7 +956,7 @@ const VideoPlayer = (props) => {
           </Offcanvas.Body>
         </Offcanvas>
         <div className="mv_cards_top_btn">
-          <div className="sc_videoplayer_btn_wrapper">
+          <div className="sc_videoplayer_btn_wrapper_ipad">
             <div className=" sc_ui_videos">
               <button className="video_btn">
                 <span className="sc_la_ux_txt">Similar Patterns</span>
