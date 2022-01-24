@@ -40,6 +40,7 @@ import {
   changeSideBarContent,
 } from "../../feature/hideShowModal/hideshowModal";
 import MobileAddCollectionModal from "../MobileAddCollection";
+import UxVideoSecreenPlaylist from "../UxVideosPlaylist";
 
 // const asidedata = [
 //   {
@@ -416,19 +417,20 @@ const VideoPlayer = (props) => {
 
   const elapsedTime = format(currentTime);
   const totalDuration = format(duration);
+
   useEffect(() => {
     const elapsedTime = format(currentTime);
     var a = elapsedTime.split(":");
-    console.log("g", a);
+    // console.log("g", a);
     var seconds = parseInt(a[0]) * 60 + parseInt(a[1]);
-    console.log(seconds);
+    // console.log(seconds);
 
     let arrayseconds = asidedata[color - 1].videotimelft;
     // console.log("static array data",arrayseconds)
     var b = arrayseconds.split(":");
     // console.log("g", b);
     var aS = parseInt(b[0]) * 60 + parseInt(b[1]);
-    console.log(aS);
+    // console.log(aS);
 
     // console.log("coooo", elapsedTime, color);
     let index = asidedata.findIndex(
@@ -438,7 +440,7 @@ const VideoPlayer = (props) => {
     if (index > 0) {
       dispatch(changeSideBarContent(index + 1));
     }
-    console.log("aaaaaa====", seconds <= aS, seconds >= aS);
+    // console.log("aaaaaa====", seconds <= aS, seconds >= aS);
     // if (seconds<aS) {
     //   dispatch(changeSideBarContent(color - 1));
     // }
@@ -469,44 +471,48 @@ const VideoPlayer = (props) => {
                 </div>
               </div>
             </div>
-            {asidedata.map((asidedata, index) => {
-              return (
-                <div className="sc_video_time_duration_details" key={index}>
-                  <div
-                    className={
-                      color === asidedata.id
-                        ? "sc_left_aside_time_desc sc_la_td_bg"
-                        : "sc_left_aside_time_desc"
-                    }
-                    onClick={() => {
-                      dispatch(changeSideBarContent(asidedata.id));
-                    }}
-                  >
-                    <button className="lft_aside_links">
-                      {" "}
-                      <span
-                        className={
-                          color === asidedata.id
-                            ? "sc_la_time_txt sc_la_td_bg"
-                            : "sc_la_time_txt"
-                        }
-                      >
-                        {asidedata.videotimelft}
-                      </span>
-                      <span
-                        className={
-                          color === asidedata.id
-                            ? "sc_la_desc_txt sc_la_td_bg"
-                            : "sc_la_desc_txt"
-                        }
-                      >
-                        {truncate(`${asidedata.videotitleontime}`, 20)}
-                      </span>
-                    </button>
+            {uiVideoShow ? (
+              asidedata.map((asidedata, index) => {
+                return (
+                  <div className="sc_video_time_duration_details" key={index}>
+                    <div
+                      className={
+                        color === asidedata.id
+                          ? "sc_left_aside_time_desc sc_la_td_bg"
+                          : "sc_left_aside_time_desc"
+                      }
+                      onClick={() => {
+                        dispatch(changeSideBarContent(asidedata.id));
+                      }}
+                    >
+                      <button className="lft_aside_links">
+                        {" "}
+                        <span
+                          className={
+                            color === asidedata.id
+                              ? "sc_la_time_txt sc_la_td_bg"
+                              : "sc_la_time_txt"
+                          }
+                        >
+                          {asidedata.videotimelft}
+                        </span>
+                        <span
+                          className={
+                            color === asidedata.id
+                              ? "sc_la_desc_txt sc_la_td_bg"
+                              : "sc_la_desc_txt"
+                          }
+                        >
+                          {truncate(`${asidedata.videotitleontime}`, 20)}
+                        </span>
+                      </button>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })
+            ) : (
+              <UxVideoSecreenPlaylist />
+            )}
           </div>
         ) : null}
 

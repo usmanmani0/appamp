@@ -417,6 +417,23 @@
   padding-left: 12px;
 }
 
+.UX_videos_screen_wrapper{
+  padding:0% 15%;
+}
+.vedio_card_ux_wrapper {
+  width: 195px;
+  /* z-index: 20 !important; */
+  height: 423px;
+  border-radius: 8px;
+  position: relative;
+  margin-top: 40px;
+  cursor: pointer;
+  /* background-color:red; */
+}
+
+
+/* media controls */
+
 
 @media screen and (max-width: 550px) {
   .UI_Secreen_popoover_wrapper {
