@@ -10,10 +10,10 @@ import {
   OverlayTrigger,
   Tooltip,
 } from "react-bootstrap";
-import backarrow from "../../assets/soundcloudimages/Back.png";
+import backarrow from "../../assets/soundcloudimages/Back2x.png";
 import sclogo from "../../assets/soundcloudimages/soundcloudimg.png";
-import backwararrow from "../../assets/soundcloudimages/backwardarrow.png";
-import forwardarrow from "../../assets/soundcloudimages/forwardarrow.png";
+import backwararrow from "../../assets/soundcloudimages/backwardarrow2x.png";
+import forwardarrow from "../../assets/soundcloudimages/forwardarrow2x.png";
 import navactionbar from "../../assets/soundcloudimages/navactionbar.png";
 import Copy from "../../assets/images/copy.png";
 import Down from "../../assets/images/Download.png";
@@ -115,6 +115,7 @@ const NavBarSoundCloud = ({ asidedata }) => {
               <div className="backarrow">
                 <Image
                   src={backarrow}
+                  className="bk_arrow_img"
                   rounded
                   onClick={() => {
                     history(-1);

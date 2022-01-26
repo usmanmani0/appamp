@@ -14,6 +14,7 @@ import tidalthumbnail from "../../assets/soundcloudimages/sidebarthumbnail.png";
 import PlayerControls from "../PlayerControls/PlayerControls";
 import ReactPlayer from "react-player";
 import expand from "../../assets/soundcloudimages/expand.png";
+import eclipse from '../../assets/soundcloudimages/eclipse.png';
 import openmenu from "../../assets/soundcloudimages/Openmenu.png";
 import plusicon from "../../assets/soundcloudimages/Add.png";
 import downloadicon from "../../assets/soundcloudimages/Download.png";
@@ -41,6 +42,8 @@ import {
 } from "../../feature/hideShowModal/hideshowModal";
 import MobileAddCollectionModal from "../MobileAddCollection";
 import UxVideoSecreenPlaylist from "../UxVideosPlaylist";
+import UxVideoSecreen from "../UxVideosSecreen";
+
 
 // const asidedata = [
 //   {
@@ -487,6 +490,7 @@ const VideoPlayer = (props) => {
                     >
                       <button className="lft_aside_links">
                         {" "}
+                        <div className="time_wrapper_lf_aside"> 
                         <span
                           className={
                             color === asidedata.id
@@ -496,6 +500,7 @@ const VideoPlayer = (props) => {
                         >
                           {asidedata.videotimelft}
                         </span>
+                        </div>
                         <span
                           className={
                             color === asidedata.id
@@ -521,15 +526,10 @@ const VideoPlayer = (props) => {
             <div
               onClick={handelLeftSideBar}
               className="expand_vp_wrapper dis_icon_mv"
-              style={{
-                background: "none",
-                height: "47px",
-                width: "47px",
-                boxShadow: "none",
-              }}
+             
             >
               {leftAsideShow ? (
-                <div className="copy_wra p ">
+                <div>
                   <OverlayTrigger
                     delay={{ hide: 150, show: 300 }}
                     overlay={(props) => <Tooltip {...props}>Collapsse</Tooltip>}
@@ -539,37 +539,35 @@ const VideoPlayer = (props) => {
                       src={expand}
                       rounded
                       style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "contain",
+                       backgroundColor:'transparent'
                       }}
                     />
                   </OverlayTrigger>
                 </div>
               ) : (
-                <div className="copy_wrap ">
+                <div className="copy_wrap">
                   <OverlayTrigger
                     delay={{ hide: 150, show: 300 }}
                     overlay={(props) => <Tooltip {...props}>Expand</Tooltip>}
                     placement="bottom"
                   >
-                    {/* <Image
+                    <Image
                       className="openmenue_icon"
                       src={openmenu}
                       rounded
-                      style={{ width: "27px", height: "32px" }}
-                    /> */}
-                    <div className="ecl" style={{ background: "white" }}>
+                      style={{ width: "24px", height: "24px" }}
+                    />
+                    {/* <div className="ecl" style={{ background: "white" }}>
                       <IoIosArrowBack style={{ marginRight: "-15px" }} />
                       <IoIosArrowBack />
-                    </div>
+                    </div> */}
                   </OverlayTrigger>
                 </div>
               )}
             </div>
             <div className="dis_none_mbl_view">
               <div onClick={handelPopover} className="plus_icons_wp">
-                <div className="copy_wra p ">
+                <div className="copy_wrap ">
                   <OverlayTrigger
                     delay={{ hide: 150, show: 300 }}
                     overlay={(props) => (
@@ -580,7 +578,7 @@ const VideoPlayer = (props) => {
                     <Image
                       src={plusicon}
                       rounded
-                      style={{ width: "32px", height: "32px" }}
+                      style={{ width: "24px", height: "24px" }}
                     />
                   </OverlayTrigger>
                 </div>
@@ -597,7 +595,7 @@ const VideoPlayer = (props) => {
                     <Image
                       src={downloadicon}
                       rounded
-                      style={{ width: "32px", height: "32px" }}
+                      style={{ width: "24px", height: "24px" }}
                     />
                   </OverlayTrigger>
                 </div>
@@ -614,7 +612,7 @@ const VideoPlayer = (props) => {
                     <Image
                       src={linkicon}
                       rounded
-                      style={{ width: "32px", height: "32px" }}
+                      style={{ width: "24px", height: "24px" }}
                     />
                   </OverlayTrigger>
                 </div>
@@ -771,6 +769,7 @@ const VideoPlayer = (props) => {
               </div>
             </div>
           </div>
+          {/* <UxVideoSecreen /> */}
           <div className="mbl_cards_box">
             {cardsdata.map((data) => {
               return (
@@ -795,20 +794,20 @@ const VideoPlayer = (props) => {
 
                     <div className="card_title">{data.title}</div>
                   </div>
-                </>
+                </> 
               );
             })}
           </div>
         </div>
       </Container>
-
+{/* id="myHeader" */}
       <Container className="ipad_view_container dis" fluid="true">
         <div className="rightaside_wrapper_ipad">
           <div
             className="d-flex justify-content-center"
             style={{ borderBottom: "1px solid #f4f4f4" }}
           >
-            <div className="sc_videoplayer_btn_wrapper_ipad" id="myHeader">
+            <div className="sc_videoplayer_btn_wrapper_ipad">
               <div
                 onClick={handelSimilarPatternIpro}
                 className={
