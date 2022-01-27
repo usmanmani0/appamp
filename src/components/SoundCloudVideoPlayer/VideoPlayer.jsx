@@ -14,7 +14,7 @@ import tidalthumbnail from "../../assets/soundcloudimages/sidebarthumbnail.png";
 import PlayerControls from "../PlayerControls/PlayerControls";
 import ReactPlayer from "react-player";
 import expand from "../../assets/soundcloudimages/expand.png";
-import eclipse from '../../assets/soundcloudimages/eclipse.png';
+import eclipse from "../../assets/soundcloudimages/eclipse.png";
 import openmenu from "../../assets/soundcloudimages/Openmenu.png";
 import plusicon from "../../assets/soundcloudimages/Add.png";
 import downloadicon from "../../assets/soundcloudimages/Download.png";
@@ -43,7 +43,7 @@ import {
 import MobileAddCollectionModal from "../MobileAddCollection";
 import UxVideoSecreenPlaylist from "../UxVideosPlaylist";
 import UxVideoSecreen from "../UxVideosSecreen";
-
+import SimilarPatterns from "../SimilarPatterns";
 
 // const asidedata = [
 //   {
@@ -449,6 +449,32 @@ const VideoPlayer = (props) => {
     // }
   }, [elapsedTime]);
 
+  // keyboard keys functions
+
+  document.body.onkeyup = function (e) {
+    if (e.code === "Space") {
+      //  console.log('space presed', e) //your code
+      setPlayOn({ ...playOn, playing: !playOn.playing });
+    } else if (e.code === "ArrowRight") {
+      //  console.log('arrow right presed', e) //your code
+      if (color >= asidedata.length) {
+        dispatch(changeSideBarContent(1));
+      } else {
+        dispatch(changeSideBarContent(color + 1));
+      }
+    } else if (e.code === "ArrowLeft")
+      if (color <= 1) {
+        // setColor(asidedata.length);
+        dispatch(changeSideBarContent(asidedata.length));
+      } else {
+        // setColor(color--);
+        dispatch(changeSideBarContent(color - 1));
+      }
+    else {
+      console.log("err");
+    }
+  };
+
   return (
     <>
       <Container className="videoplayer_container" fluid="true">
@@ -490,16 +516,16 @@ const VideoPlayer = (props) => {
                     >
                       <button className="lft_aside_links">
                         {" "}
-                        <div className="time_wrapper_lf_aside"> 
-                        <span
-                          className={
-                            color === asidedata.id
-                              ? "sc_la_time_txt sc_la_td_bg"
-                              : "sc_la_time_txt"
-                          }
-                        >
-                          {asidedata.videotimelft}
-                        </span>
+                        <div className="time_wrapper_lf_aside">
+                          <span
+                            className={
+                              color === asidedata.id
+                                ? "sc_la_time_txt sc_la_td_bg"
+                                : "sc_la_time_txt"
+                            }
+                          >
+                            {asidedata.videotimelft}
+                          </span>
                         </div>
                         <span
                           className={
@@ -521,12 +547,11 @@ const VideoPlayer = (props) => {
           </div>
         ) : null}
 
-        <div className="videoplayer_wrapper">
+        <div className="videoplayer_wrapper" onClick={handelPlayPause}>
           <div className="react_player_wrapper">
             <div
               onClick={handelLeftSideBar}
               className="expand_vp_wrapper dis_icon_mv"
-             
             >
               {leftAsideShow ? (
                 <div>
@@ -539,7 +564,7 @@ const VideoPlayer = (props) => {
                       src={expand}
                       rounded
                       style={{
-                       backgroundColor:'transparent'
+                        backgroundColor: "transparent",
                       }}
                     />
                   </OverlayTrigger>
@@ -769,8 +794,8 @@ const VideoPlayer = (props) => {
               </div>
             </div>
           </div>
-          {/* <UxVideoSecreen /> */}
-          <div className="mbl_cards_box">
+          <SimilarPatterns />
+          {/* <div className="mbl_cards_box">
             {cardsdata.map((data) => {
               return (
                 <>
@@ -794,13 +819,13 @@ const VideoPlayer = (props) => {
 
                     <div className="card_title">{data.title}</div>
                   </div>
-                </> 
+                </>
               );
             })}
-          </div>
+          </div> */}
         </div>
       </Container>
-{/* id="myHeader" */}
+      {/* id="myHeader" */}
       <Container className="ipad_view_container dis" fluid="true">
         <div className="rightaside_wrapper_ipad">
           <div
@@ -840,7 +865,12 @@ const VideoPlayer = (props) => {
             {cardsdata.map((data, index) => {
               return (
                 <>
-                  <div className="mbl_card">
+                  <div
+                    className="mbl_card"
+                    onClick={() => {
+                      handelUmodel(index);
+                    }}
+                  >
                     <div style={{ position: "relative" }}>
                       <img src={data.image} alt="ERROR" />
 
