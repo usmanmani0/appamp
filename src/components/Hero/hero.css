@@ -220,8 +220,8 @@
   -webkit-box-orient: vertical;
 }
   .mask_img {
-    width: 102%;
-    margin-left: -12px;
+    width: 100%;
+    margin-left: 0px;
     height: 27rem;
     margin-top: 2rem;
     display: flex;
@@ -281,6 +281,11 @@
     background-color: white;
   
   }
+}
+@media only screen and (min-width: 350px) and (max-width: 400px) {
+  .heading_width{
+    width: 346px !important;
+  } 
 }
 
 @media only screen and (min-width: 600px) and (max-width: 992px) {

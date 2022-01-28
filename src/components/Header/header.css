@@ -15,6 +15,26 @@
   justify-content: center;
   align-items: center;
 }
+.navbar-toggler{
+  border: none !important;
+  background-color: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  padding: 8px 8px !important;
+}
+.collapsed{
+  border: none !important;
+  background-color: none !important;
+  outline: none !important;
+}
+
+
+.navbar-light .navbar-toggler-icon {
+  width: 24px !important;
+  height: 24px !important;  
+  background-image: url("../../assets/images/humberg.png") !important;
+  
+}
 .button_1 {
   margin-left: 1rem;
   width: 80px;
@@ -141,5 +161,10 @@
   }
   .form {
     margin-top: 1rem;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .icon_control{
+    padding: 0px 16px !important;
   }
 }

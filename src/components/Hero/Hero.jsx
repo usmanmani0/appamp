@@ -6,17 +6,18 @@ import Maskimg from "../../assets/images/Mask Group.png";
 import { BiPlayCircle } from "react-icons/bi";
 import { BiMobile } from "react-icons/bi";
 import { IoIosArrowDown } from "react-icons/io";
+import dropDown from "../../assets/images/Vector.png"
 
 const Hero = () => {
   const [color, setColor] = useState(1);
 
   return (
     <>
-      <div className="hero-section">
-        <Row className="mob_col" style={{ padding: "3s0px 10px" }}>
-          <Col xxl={6} xl={6} lg={6} md={12} xs={11} className="hero_desc">
+      <div className="hero-section" style={{padding:'0px', margin:"0px"}}>
+        <Row className="mob_col" style={{ paddingLeft:"0px", paddingRight:"0px", margin:"0px" }} >
+          <Col xxl={6} xl={6} lg={6} md={12} xs={11} className="hero_desc" style={{padding:'0px'}}>
             <div className="headings_div">
-              <div>
+              <div className="heading_width">
                 <h4 className="heading_1">
                   Browse 100+ Apps to find your inspiration!
                 </h4>
@@ -36,7 +37,7 @@ const Hero = () => {
                       placeholder="Search Features or Components"
                     ></input>
                     <div className="vertical_line"></div>
-                    <div class="dropdown disp_non" style={{ marginTop: '7px', paddingLeft: '8px', paddingBottom: '8px', width: '150px' }}>
+                    <div class="dropdown disp_non" style={{ paddingTop: '8px', paddingLeft: '8px', paddingBottom: '8px', width: '150px' }}>
                       <button
                         class="dropdown-toggle"
                         type="button"
@@ -49,13 +50,14 @@ const Hero = () => {
                         <span>UX Videos</span>
                         <b>
                           <i className="icon_down" style={{ marginLeft: '8px' }}>
-                            <IoIosArrowDown
+                            <img className="arrow_down" src={dropDown} alt="arrow_down"></img>
+                            {/* <IoIosArrowDown
                               className="icon"
                               size="18px"
                               color="black"
                               fontWeight={900}
 
-                            />
+                            /> */}
                           </i>
                         </b>
                       </button>
@@ -129,7 +131,7 @@ const Hero = () => {
               </div>
             </div>
           </Col>
-          <Col xxl={6} xl={6} lg={6} md={12} xs={12}>
+          <Col xxl={6} xl={6} lg={6} md={12} xs={12} style={{padding:'0px'}}>
             <div>
               <img className="mask_img" src={Maskimg} alt="mask_img"></img>
             </div>
