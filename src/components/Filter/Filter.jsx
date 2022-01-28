@@ -122,7 +122,7 @@ function Filter() {
           >
             <i className="icon_filter" style={{ marginLeft: "-10px" }}>
               {selectedFilter.length == 0 ? (
-                <BsFilter className="icon" size="16px" color="black" />
+                <BsFilter className="iconH" size="16px" color="black" />
               ) : (
                 <div className="filter_count_app_card">
                   {selectedFilter.length}

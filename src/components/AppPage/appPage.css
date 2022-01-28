@@ -288,14 +288,15 @@
   font-size: 14px !important;
 }
 .icon_filter {
-  padding-left: 10px;
+  /* padding-left: 10px; */
 }
 
 .option_data {
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
-  margin-left: 16px;
+  margin-left: 8px;
+  margin-right: 8px;
   height: 36px;
   display: flex;
   justify-content: space-between;
@@ -303,13 +304,14 @@
   cursor: pointer;
 
   width: 200px;
-  margin-top: 5px;
+  /* margin-top: 5px; */
   padding-left: 10px;
   border-radius: 8px;
 }
 .option_data:hover {
   background-color: #fafafa;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 16px !important;
 }
 .css-igs3ac {
   border-style: none !important;
@@ -474,6 +476,15 @@
   font-size: 24px;
   font-weight: 700;
   line-height: 28px;
+}
+.result_not_found {
+  padding: 200px 0px;
+}
+.more_result_screen_search {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #161618;
 }
 .tooltip:hover .tooltiptext {
   visibility: visible;
@@ -677,6 +688,15 @@
     position: relative;
     margin-top: 40px;
     cursor: pointer;
+  }
+  .vedio_time {
+    position: absolute;
+    bottom: 45px;
+
+    width: 161px;
+    display: flex;
+
+    justify-content: end;
   }
   .vedio_time {
     position: absolute;

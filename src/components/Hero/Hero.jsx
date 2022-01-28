@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import $ from "jquery";
 import { Container, Row, Col } from "react-bootstrap";
 import "./hero.css";
@@ -6,9 +6,26 @@ import Maskimg from "../../assets/images/Mask Group.png";
 import { BiPlayCircle } from "react-icons/bi";
 import { BiMobile } from "react-icons/bi";
 import { IoIosArrowDown } from "react-icons/io";
+import { useSelector, useDispatch } from 'react-redux';
+import { handelValue, handelempty } from "../../feature/addCollection/counterSlice"
+import { useNavigate } from "react-router-dom";
+
 
 const Hero = () => {
   const [color, setColor] = useState(1);
+  const searchView = useSelector((state) => state.hideShow.searchView)
+  const dispatch = useDispatch()
+
+  const sendValue = (e) => {
+    console.log("key value", e.target.value)
+    dispatch(handelValue(e.target.value))
+  }
+  const history = useNavigate()
+  const reDirectFunction = (event) => {
+    if (event.key === 'Enter') {
+      history("/searchpage")
+    }
+  }
 
   return (
     <>
@@ -31,10 +48,14 @@ const Hero = () => {
                 <div className="search_div ">
                   <div class="div_wrap">
                     <input
+                      onKeyPress={(e) => reDirectFunction(e)}
+                      onChange={sendValue}
                       type="text"
                       id="searchInput"
+                      value={searchView}
                       placeholder="Search Features or Components"
                     ></input>
+
                     <div className="vertical_line"></div>
                     <div class="dropdown disp_non" style={{ marginTop: '7px', paddingLeft: '8px', paddingBottom: '8px', width: '150px' }}>
                       <button
