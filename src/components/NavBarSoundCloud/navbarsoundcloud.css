@@ -11,9 +11,15 @@
 }
 .backarrow {
   cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+.bk_arrow_img{
+  width: 24px;
+  height: 24px;
 }
 .soundcloudlogo {
-  padding-left: 20px;
+  padding-left: 16px;
 }
 .app_description {
   display: flex;
@@ -48,7 +54,7 @@
   justify-content: space-between;
   align-items: center;
   width: 228px;
-  height: 38px;
+  height: 40px;
   background-color: #f4f4f4;
   border-radius: 4px;
   padding: 4px;
@@ -64,9 +70,10 @@
   /* hover state - shadow */
 
   box-shadow: -2px 2px 20px rgba(0, 0, 0, 0.05),
-    2px -2px 20px rgba(0, 0, 0, 0.05);
+    2px -2px 20px rgba(173, 91, 91, 0.05);
   border-radius: 4px;
 }
+
 .nav_forward_icon {
   display: flex;
   justify-content: center;

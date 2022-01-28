@@ -1,0 +1,95 @@
+.ux_video_playelist_container {
+  display: flex;
+  flex-direction: row;
+}
+.soud_cloud_vedio_section_playlist {
+  padding: 8px 20px;
+  height: 82vh;
+  overflow-y: scroll;
+}
+
+.ux_video_playelist_idex_no_wrapper {
+  width: 21px;
+  height: 16px;
+  background-color: #284c7a;
+  margin: 10px 8px 0px 0px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ux_video_playelist_idex_no_txt {
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.ux_total_screen_txt {
+  font-family: Space Grotesk;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  color: #0b0b0c;
+  padding-top: 9px;
+}
+.vedio_card_wrapper_ux_playlist {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 0px;
+}
+
+.vedio_card_ux_playlist {
+  width: 195px;
+  /* z-index: 20 !important; */
+  height: 423px;
+  border-radius: 8px;
+  position: relative;
+  margin-top: 10px;
+  cursor: pointer;
+  display: flex;
+}
+.vedio_card_ux_playlist:hover > .card_content {
+  display: block;
+}
+.vedio_card_ux_playlist:hover > .card_content_Secreen {
+  display: block;
+}
+
+.vedio_card_ux_playlist:hover > .vedio_time {
+  bottom: 10%;
+}
+
+.ux_playlist_idex_no_wrapper {
+  width: 21px;
+  height: 16px;
+  border-radius: 4px;
+  background-color: #284c7a;
+}
+
+.ux_playlist_idex_no_txt {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.ux_video_playelist_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 425px) {
+  .vedio_card_ux_playlist {
+    width: 161px;
+    height: 350px;
+    border-radius: 8px;
+    position: relative;
+    margin-top: 40px;
+    cursor: pointer;
+  }
+  .vedio_card_ux_playlist:hover > .vedio_time {
+    bottom: 13%;
+  }
+}

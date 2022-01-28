@@ -29,7 +29,10 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "../MobileAddCollection/mobileaddcollection.css";
 import { createGlobalStyle } from "styled-components";
-const UxVideoSecreen = () => {
+import './similarspatterns.css';
+
+const SimilarPatterns = () => {
+
   const [showPopover, setShowPopover] = useState({ open: true });
   const [tick, setTick] = useState([]);
   const [setSave, showSetSave] = useState(false);
@@ -155,14 +158,14 @@ const UxVideoSecreen = () => {
 
   return (
     <>
-      <div className="soud_cloud_vedio_section">
-        <div className="vedio_card_wrapper">
+      <div className="soud_cloud_vedio_section_similar_patterns">
+        <div className="vedio_card_wrapper_similar_patterns">
           {vedioCard.map((data, index) => {
             return (
               <>
                 <div key={index}>
                   {/* <Link to="/soundcloudpage"> */}
-                  <div className="vedio_card" onClick={test}>
+                  <div className="vedio_card_similar_patterns" onClick={test}>
                     {" "}
                     <img src={data.img} className="img-fluid" alt="err" />
                     <div className="UI_Secreen_add_collection">
@@ -339,10 +342,10 @@ const UxVideoSecreen = () => {
                         <img src={MCopy} />
                       </div>
                     </div>
-                    <div className="vedio_time">
+                    <div className="vedio_time_similar_patterns">
                       <div className="vedio_time_wrapper">12:40</div>
                     </div>
-                    <div className="card_content">
+                    <div className="card_content_similar_patterns">
                       <div className="card_content_show">
                         <Link to="/soundcloudpage" className="extra1">
                           <div></div>
@@ -485,4 +488,4 @@ const UxVideoSecreen = () => {
   );
 };
 
-export default UxVideoSecreen;
+export default SimilarPatterns;

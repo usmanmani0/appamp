@@ -26,6 +26,8 @@ function App() {
       {/* <CollectionHeroSection /> */}
       {/* <CollectionPage /> */}
 
+      {/* <MobileAddCollection /> */}
+      {/* <MobileFilter /> */}
     </>
   );
 }
