@@ -6,14 +6,11 @@ import Maskimg from "../../assets/images/Mask Group.png";
 import { BiPlayCircle } from "react-icons/bi";
 import { BiMobile } from "react-icons/bi";
 import { IoIosArrowDown } from "react-icons/io";
-<<<<<<< HEAD
 import dropDown from "../../assets/images/Vector.png"
-=======
 import { useSelector, useDispatch } from 'react-redux';
 import { handelValue, handelempty } from "../../feature/addCollection/counterSlice"
 import { useNavigate } from "react-router-dom";
 
->>>>>>> aa4662d89a74d95b32b2510f607f40bf293f2d87
 
 const Hero = () => {
   const [color, setColor] = useState(1);
@@ -33,9 +30,9 @@ const Hero = () => {
 
   return (
     <>
-      <div className="hero-section" style={{padding:'0px', margin:"0px"}}>
-        <Row className="mob_col" style={{ paddingLeft:"0px", paddingRight:"0px", margin:"0px" }} >
-          <Col xxl={6} xl={6} lg={6} md={12} xs={11} className="hero_desc" style={{padding:'0px'}}>
+      <div className="hero-section" style={{ padding: '0px', margin: "0px" }}>
+        <Row className="mob_col" style={{ paddingLeft: "0px", paddingRight: "0px", margin: "0px" }} >
+          <Col xxl={6} xl={6} lg={6} md={12} xs={11} className="hero_desc" style={{ padding: '0px' }}>
             <div className="headings_div">
               <div className="heading_width">
                 <h4 className="heading_1">
@@ -75,13 +72,6 @@ const Hero = () => {
                         <b>
                           <i className="icon_down" style={{ marginLeft: '8px' }}>
                             <img className="arrow_down" src={dropDown} alt="arrow_down"></img>
-                            {/* <IoIosArrowDown
-                              className="icon"
-                              size="18px"
-                              color="black"
-                              fontWeight={900}
-
-                            /> */}
                           </i>
                         </b>
                       </button>
@@ -155,7 +145,7 @@ const Hero = () => {
               </div>
             </div>
           </Col>
-          <Col xxl={6} xl={6} lg={6} md={12} xs={12} style={{padding:'0px'}}>
+          <Col xxl={6} xl={6} lg={6} md={12} xs={12} style={{ padding: '0px' }}>
             <div>
               <img className="mask_img" src={Maskimg} alt="mask_img"></img>
             </div>
