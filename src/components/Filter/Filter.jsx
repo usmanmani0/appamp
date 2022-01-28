@@ -114,24 +114,24 @@ function Filter() {
     <>
       <div className="header" id="myHeader">
         <div className="container">
-          <div className="filter_btn">
-            <button
-              onClick={() => dispatch(handelShow())}
-              className="filter_button"
-              type="button"
-            >
-              <i className="icon_filter" style={{ marginLeft: "0px" }}>
-                {selectedFilter.length == 0 ? (
-                  <BsFilter className="icon" size="16px" color="black" />
-                ) : (
-                  <div className="filter_count_app_card">
-                    {selectedFilter.length}
-                  </div>
-                )}
-              </i>
-              <span>Filter</span>
-            </button>
+
+          <div
+            onClick={() => dispatch(handelShow())}
+            className="filter_button"
+            type="button"
+          >
+            <i className="icon_filter" style={{ marginLeft: "-10px" }}>
+              {selectedFilter.length == 0 ? (
+                <BsFilter className="iconH" size="16px" color="black" />
+              ) : (
+                <div className="filter_count_app_card">
+                  {selectedFilter.length}
+                </div>
+              )}
+            </i>
+            <div>Filter</div>
           </div>
+
 
           <div>
             {/* <button className="recent_button" type="button">

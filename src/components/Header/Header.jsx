@@ -6,6 +6,7 @@ import AppleLogo from "../../assets/images/AppleLogo.png";
 import close from "../../assets/images/Close.png";
 import Profile from "../../assets/images/profile.png";
 import { AiOutlineClose } from "react-icons/ai";
+// import useNavigate from "react-router-dom";
 
 
 import "./header.css";
@@ -23,8 +24,9 @@ import {
   Button,
   Modal,
 } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ showF }) => {
   const [showModal, SetShowModal] = useState(false);
 
   const handelSignInModal = () => {
@@ -36,6 +38,8 @@ const Header = () => {
   const handelSignUpModal = () => {
     SetShowSignUpModal(!showSignUpModal);
   };
+  const [FCard, setFCard] = useState(false)
+  const gotoCreateCollection = useNavigate()
   return (
     <>
       <div className="header-section dis2">
@@ -48,19 +52,39 @@ const Header = () => {
           </div> */}
         </div>
 
-        <div className="buttons_div">
-          <div>
-            <button
-              onClick={handelSignInModal}
-              className="button_1"
-              type="button"
-            >
-              Sign In
-            </button>
-            <button onClick={handelSignUpModal} className="button_2">
-              Sign Up
-            </button>
+        <div className="buttons_div d-flex">
+          {showF ?
+            <div className="search_page_f" onClick={() => setFCard(!FCard)}>F</div>
+            :
+            <div>
+              <button
+                onClick={handelSignInModal}
+                className="button_1"
+                type="button"
+              >
+                Sign In
+              </button>
+              <button onClick={handelSignUpModal} className="button_2">
+                Sign Up
+              </button>
+            </div>}
+        </div>
+        <div className="f_click" style={{ display: FCard == false ? "none" : "block" }}>
+          <div className="f_card_content">
+            <div className="search_page_f">F</div>
+            <div>   <div className="f_email">email.address</div>
+              <div className="f_email2">email.address@gmail.com</div></div>
+
           </div>
+          <div className="f_card_sep"></div>
+          <div className="f_card_headingP">Profile Settings</div>
+          <div className="f_card_headingC" onClick={() => gotoCreateCollection("/createcollection")}>Collections</div>
+          <div className="f_card_sep"></div>
+          <div className="f_card_text1">Provide Feedback</div>
+          <div className="f_card_text">Privacy Policy</div>
+          <div className="f_card_text">Terms and Conditions</div>
+          <div className="f_card_text">Log Out</div>
+
         </div>
       </div>
 
@@ -79,6 +103,7 @@ const Header = () => {
                 <Nav.Link href="#home">
                   {" "}
                   <div className="mob_buttons">
+
                     <button
                       onClick={handelSignInModal}
                       className="button_1"

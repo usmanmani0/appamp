@@ -1,0 +1,165 @@
+.create_collection_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1440px;
+  margin: auto;
+  flex: flex-start;
+
+  padding: 0px 88px 98px 88px;
+  gap: 48px;
+  margin-top: 56px;
+}
+.collecton_card_bg {
+  width: 280px;
+  height: 222px;
+  display: flex;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+.collection_images_wrapper {
+  position: relative;
+  display: flex;
+
+  cursor: pointer;
+  padding: 16px 59px;
+  justify-content: center;
+  align-items: center;
+}
+.collection_card1 {
+  position: absolute;
+  top: 15px;
+  left: -30px;
+  z-index: 3;
+}
+.collection_card2 {
+  position: absolute;
+  z-index: 2;
+  top: 15px;
+}
+.collection_card3 {
+  position: absolute;
+  z-index: 1;
+  top: 15px;
+  right: -30px;
+}
+.create_playlist_heading {
+  font-weight: 500;
+  font-size: 20px;
+  padding-top: 16px;
+  line-height: 24px;
+}
+.ux_ui {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #8a8a8b;
+  padding-top: 4px;
+}
+.create_collection_card_hover {
+  width: 280px;
+  height: 222px;
+  border-radius: 8px;
+  opacity: 0.65;
+  cursor: pointer;
+  position: absolute;
+  z-index: 5;
+  background-color: #161618;
+}
+.hover_card_content_box {
+  padding: 20px 0px 0px 28px;
+}
+.collection_card_hover_text {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+  color: white;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+}
+.hover-card_text_wrapper {
+  padding: 16px 0px 0px 0px;
+}
+.hover_more_opt {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+  color: white;
+
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.empty_collection_card1 {
+  height: 190px;
+  width: 87px;
+  display: flex;
+  z-index: 3;
+  position: absolute;
+  left: -25px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  background-color: #f4f4f4;
+}
+.empty_collection_card2 {
+  height: 190px;
+  width: 87px;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  border-radius: 3px;
+  background-color: #f4f4f4;
+}
+.empty_collection_card3 {
+  height: 190px;
+  width: 87px;
+  position: absolute;
+  right: -25px;
+  display: flex;
+  z-index: 1;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  background-color: #f4f4f4;
+}
+.upload_img_wrapper {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: white;
+}
+.upload_img {
+  cursor: pointer;
+}
+input[type="file"] {
+  display: none;
+  height: 100%;
+  width: 100%;
+}
+.create_collection_card_hover {
+  display: none;
+}
+.collecton_card_bg:hover .create_collection_card_hover {
+  display: block;
+}
+@media screen and (max-width: 768px) {
+  .create_collection_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: center;
+
+    padding: 0px 20px 98px 20px;
+    gap: 48px;
+    margin-top: 56px;
+  }
+}

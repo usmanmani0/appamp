@@ -37,7 +37,6 @@ const Widget = styled("div")(({ theme }) => ({
   backdropFilter: "blur(40px)",
 }));
 
-
 const PlayerControls = ({
   onTime,
   onPlayPause,
@@ -64,6 +63,18 @@ const PlayerControls = ({
   const theme = useTheme();
   const [full, setFull] = useState(false);
 
+  // document.addEventListener('keyup', event => {
+  //   if (event.code === 'Space') {
+  //     console.log('Space pressed'); //whatever you want to do when space is pressed
+  //   }
+  // })
+
+  //   document.body.onkeyup = function(e){
+  //     if(e.keyCode === 32){
+  //        console.log('space presed', e) //your code
+  //     }
+  // }
+
   return (
     <div className={full ? "fullSreen" : ""}>
       <div className="react_player_controls_wrapper">
@@ -78,8 +89,7 @@ const PlayerControls = ({
           onMouseDown={onSeekMouseDown}
           onChangeCommitted={onSeekMouseUp}
           valueLabelDisplay="auto"
-          valueLabelFormat={value => <div>{elapsedTime}</div>}
-        
+          valueLabelFormat={(value) => <div>{elapsedTime}</div>}
           sx={{
             color: theme.palette.mode === "dark" ? "#fff" : "#C5C5C5",
             height: 4,
@@ -111,7 +121,7 @@ const PlayerControls = ({
           <div>
             <button className="controls_button_styling" onClick={onPlayPause}>
               {playing ? (
-                <div className="copy_wrap ">
+                <div className="copy_wrap">
                   <OverlayTrigger
                     delay={{ hide: 150, show: 300 }}
                     overlay={(props) => <Tooltip {...props}>Resume</Tooltip>}
@@ -133,7 +143,9 @@ const PlayerControls = ({
               )}
             </button>
 
-            <span className="time_of_video_controls">{elapsedTime} / {totalDuration}</span>
+            <span className="time_of_video_controls">
+              {elapsedTime} / {totalDuration}
+            </span>
           </div>
           {/* <button className="controls_button_styling"
           onClick={onMute}

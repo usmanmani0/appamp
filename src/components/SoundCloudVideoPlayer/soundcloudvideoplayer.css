@@ -25,7 +25,7 @@
   width: 33%;
   height: 100%;
   background-color: #ffffff;
-  /* overflow-y: scroll; */
+  overflow-y: scroll;
 }
 .sc_videoplayer_btn_wrapper {
   display: flex;
@@ -130,6 +130,7 @@
   align-items: center;
   padding: 0px 0px;
   height: 36px;
+  margin-top: 8px;
 }
 .sc_left_aside_time_desc {
   width: 90%;
@@ -141,11 +142,14 @@
   align-items: center;
 }
 .sc_la_td_bg {
-  margin-left: -8px;
-  padding-left: 8px;
-  padding-right: 8px;
+  margin-left: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
   background-color: #edf4fe;
   color: #5097f3ff !important;
+}
+.time_wrapper_lf_aside{
+  width:72px;
 }
 
 .sc_la_time_txt {
@@ -155,16 +159,17 @@
   font-size: 14px;
   line-height: 16px;
   color: #505052;
+  font-weight: 400;
 }
 
 .sc_la_desc_txt {
   font-family: "Space Grotesk Medium";
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 14px;
   line-height: 16px;
   /* color: #5097f3; */
-  padding-left: 16px;
+  padding-left: 0px;
   flex-wrap: wrap;
 }
 
@@ -245,7 +250,7 @@
 
 .react_player_wrapper {
   width: 100%;
-  height: calc(100% - 86px);
+  height: calc(100% - 62px);
   position: relative;
 }
 .expand_vp_wrapper {
@@ -260,6 +265,8 @@
   background: #ffffff;
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.13);
   cursor: pointer;
+  justify-content: center;
+  align-items: center;
 }
 
 .plus_icons_wp {
@@ -274,12 +281,14 @@
   background: #ffffff;
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.13);
   cursor: pointer;
+  justify-content: center;
+  align-items: center;
 }
 
 .download_icons_wp {
   display: flex;
   position: absolute;
-  top: 66px;
+  top: 62px;
   right: 16px;
   z-index: 10;
   width: 32px;
@@ -288,12 +297,14 @@
   background: #ffffff;
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.13);
   cursor: pointer;
+  justify-content: center;
+  align-items: center;
 }
 
 .copy_icons_wp {
   display: flex;
   position: absolute;
-  top: 110px;
+  top: 100px;
   right: 16px;
   z-index: 10;
   width: 32px;
@@ -302,6 +313,8 @@
   background: #ffffff;
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.13);
   cursor: pointer;
+  justify-content: center;
+  align-items: center;
 }
 .react_player_controls_wrapper {
   min-width: calc(100% - 10px);
@@ -360,6 +373,8 @@
   border: none;
   background: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .openmenue_icon {
@@ -429,6 +444,12 @@
   margin-top: 40px;
   cursor: pointer;
   /* background-color:red; */
+}
+
+.css-1wpvzt2-MuiSlider-root {
+ 
+  padding: 4px 0 !important;
+
 }
 
 
@@ -705,7 +726,9 @@
   justify-content: center;
   /* align-items: center; */
   gap: 24px;
-  margin: 1rem auto;
+  /* margin: 1rem auto; */
+  margin-top: 20px;
+  margin-bottom: 0px;
 }
 .card_title {
   font-size: 12px;
@@ -736,6 +759,7 @@
   position: absolute;
   top: 0.7rem;
   right: 0.5rem;
+  
 }
 
 .time_right_wrapper_cards {
@@ -774,7 +798,8 @@
   .rightaside_wrapper {
     width: 50%;
     height: 100%;
-    background-color: #e5e5e5;
+    /* background-color: #e5e5e5; */
+    background-color: #ffffff;
     overflow-y: scroll;
   }
 
@@ -1581,6 +1606,9 @@
 }
 @media screen and (min-width: 1400px) {
   .leftaside_wrapper {
+    width: 280px !important;
+  }
+  .rightaside_wrapper {
     width: 280px !important;
   }
 }

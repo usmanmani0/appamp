@@ -431,7 +431,7 @@ const MobileFilter = () => {
                 <div className='mobile_filter_wrapper'>
                     <div className='filter_select_box mt-2'>
                         <div className='m_filter_btn'>
-                            <i className="icon_filter">
+                            <i className="icon_filter" >
                                 <BsFilter className="icon" size="16px" color="black" sty
                                 />
                             </i>
