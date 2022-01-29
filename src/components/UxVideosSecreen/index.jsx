@@ -85,38 +85,47 @@ const UxVideoSecreen = () => {
 
   const vedioCard = [
     {
+      id: 1,
       img: Card1,
       text: "Log Out",
     },
     {
+      id: 2,
       img: Card2,
       text: "Onboarding",
     },
     {
+      id: 3,
       img: Card3,
       text: "Playing a song",
     },
     {
+      id: 4,
       img: Card4,
       text: "Searching for a song",
     },
     {
+      id: 5,
       img: Card5,
       text: "Sign Up",
     },
     {
+      id: 6,
       img: Card6,
       text: "Exploring Settings",
     },
     {
+      id: 7,
       img: Card7,
       text: "Exploring Library (W...",
     },
     {
+      id: 8,
       img: Card8,
       text: "Exploring Library",
     },
     {
+      id: 9,
       img: Card9,
       text: "Exploring an Artist ",
     },
@@ -268,7 +277,7 @@ const UxVideoSecreen = () => {
                       style={{
                         display: index === select.open ? "block" : "none",
                       }}
-                     >
+                    >
                       <div className="select_content_wrapper_1">
                         <div
                           className="d-flex align-items-center"
@@ -344,7 +353,7 @@ const UxVideoSecreen = () => {
                     </div>
                     <div className="card_content">
                       <div className="card_content_show">
-                        <Link to="/soundcloudpage" className="extra1">
+                        <Link to={`/soundcloudpage/${data.id}`} className="extra1">
                           <div></div>
                         </Link>
                         <div className="extra2">
