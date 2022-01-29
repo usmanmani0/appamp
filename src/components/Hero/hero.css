@@ -27,7 +27,7 @@
 } */
 .search_btn {
   height: 40px;
-  width: 110px;
+  width: 116px;
   background-color: rgba(22, 22, 24, 1);
   color: rgba(255, 255, 255, 1);
   border-radius: 8px;
@@ -40,24 +40,23 @@
 }
 
 #searchInput {
-  width: 25rem;
+  width: 393px;
   height: 55px;
   border: none;
   border-radius: 10px;
   font-size: 16px;
   background-color: white;
-  background-image: url("https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-24.png");
+  background-image: url(../../assets/images/search.png);
 
-  background-position: 7px 15px;
+  background-position: 10px 16px;
+  background-size: 24px 24px;
   background-repeat: no-repeat;
-  padding: 8px 8px 8px 40px;
+  padding: 8px 8px 8px 42px;
   -webkit-transition: width 0.8s ease-in-out;
   transition: width 0.8s ease-in-out;
   outline: none;
   opacity: 0.9;
 }
-
-
 
 .search_div {
   margin-top: 3rem;
@@ -78,15 +77,31 @@
 .icon_play {
   color: white;
   margin-right: 5px;
-  margin-top: -2px;
+}
+.search_btn .icon_play .icon_play {
+  width: 24px;
+  height: 24px;
+}
+.search_dropdown_content2 {
+  width: 148px;
+  height: 40px;
+  right: 0;
+  transition: ease-in;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 47px;
+  border-radius: 8px;
+  background-color: white;
+  position: absolute;
 }
 .heading_1 {
   width: 448px;
-  margin-top: 56px;
+  margin-top: 108px;
   font-family: Space Grotesk;
   font-style: normal;
   font-weight: bold;
-  font-size: 34px;
+  font-size: 48px;
   line-height: 40px;
   display: flex;
   align-items: center;
@@ -108,44 +123,49 @@
 .mask_img {
   width: 100%;
   height: 28rem;
-  margin-top: 2rem;
   object-fit: contain;
 }
 .search_buttonsdiv {
   margin-top: 3px;
   display: flex;
-  /* margin-right: 5px; */
 }
-.vertical_line{
-  border-left:1px solid #F4F4F4;
-  height:46px;
+.vertical_line {
+  border-left: 1px solid #f4f4f4;
+  height: 46px;
   padding: 3px;
   margin-top: 5px;
+  margin-right: 8px;
 }
-.div_wrap{
+.div_wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-right: 5px;
 }
-#dis_non{
+#dis_non {
   display: flex;
 }
 
-.disp_non{
+.disp_non {
+  display: none;
+}
+.mask_mbl {
   display: none;
 }
 
-
 @media only screen and (min-width: 300px) and (max-width: 600px) {
-  
-  .disp_non{
-    display: block;
-  }
-  #dis_non{
+  .mask_img {
     display: none;
   }
-  #show_upper_on_body{
+  .mask_mbl {
+    display: block;
+  }
+  .disp_non {
+    display: block;
+  }
+  #dis_non {
+    display: none;
+  }
+  #show_upper_on_body {
     z-index: 10000ss;
   }
   .mob_col {
@@ -155,12 +175,16 @@
     justify-content: center;
     align-items: center;
   }
-  .search_box{
+  .search_box {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-bottom: 2rem;
+    margin-bottom: 2.7rem;
+  }
+  .div_wrap {
+    display: flex;
+    align-items: center;
   }
   .hero-section {
     height: auto;
@@ -173,7 +197,7 @@
     justify-content: center;
     align-items: center;
   }
-  .headings_div{
+  .headings_div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -201,29 +225,29 @@
     text-align: center;
   }
 
-#searchInput {
-  width: 10rem;
-  height: 55px;
-  border: none;
-  border-radius: 10px;
-  background-color: white;
-  background-image: url("https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-24.png");
-  background-position: 10px 15px;
-  background-repeat: no-repeat;
-  padding: 8px 8px 8px 40px;
-  transition: width 0.8s ease-in-out;
-  outline: none;
-  opacity: 0.9;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-}
-  .mask_img {
-    width: 102%;
-    margin-left: -12px;
+  #searchInput {
+    width: 170px;
+    height: 55px;
+    border: none;
+    border-radius: 10px;
+    background-color: white;
+    background-image: url(../../assets/images/search.png);
+    background-position: 10px 16px;
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    padding: 8px 8px 8px 42px;
+    transition: width 0.8s ease-in-out;
+    outline: none;
+    opacity: 0.9;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+  .mask_mbl {
+    width: 100%;
+    margin-left: 0px;
     height: 27rem;
-    margin-top: 2rem;
     display: flex;
     overflow: hidden;
     object-fit: none;
@@ -269,7 +293,7 @@
     margin-right: 0px;
     margin-left: 5px;
   }
-  .icon{
+  .icon {
     font-weight: bolder;
   }
   .search_div {
@@ -279,7 +303,21 @@
     border-radius: 8px;
     border: none;
     background-color: white;
-  
+  }
+}
+@media only screen and (min-width: 350px) and (max-width: 588px) {
+  .hero_desc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 16px !important;
+    margin-right: 16px !important;
+  }
+}
+
+@media only screen and (min-width: 350px) and (max-width: 400px) {
+  .heading_width {
+    width: 346px !important;
   }
 }
 
@@ -303,10 +341,11 @@
     border-radius: 10px;
     font-size: 14px;
     background-color: white;
-    background-image: url("https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-24.png");
-    background-position: 10px 15px;
+    background-image: url(../../assets/images/search.png);
+    background-position: 10px 16px;
+    background-size: 24px 24px;
     background-repeat: no-repeat;
-    padding: 8px 8px 8px 40px;
+    padding: 8px 8px 8px 42px;
     transition: width 0.8s ease-in-out;
     outline: none;
     opacity: 0.9;
@@ -314,7 +353,7 @@
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
-}
+  }
   .search_div {
     margin-top: 3rem;
     height: 56px;
@@ -322,7 +361,6 @@
     border-radius: 8px;
     border: none;
     background-color: white;
-  
   }
   .hero-section {
     height: auto;
@@ -330,7 +368,7 @@
     background: linear-gradient(97.3deg, #d3e5fc 28.65%, #d8f2e8 79.17%);
     padding: 0px 0px;
   }
- .search_box{
+  .search_box {
     margin-bottom: 2rem;
   }
 }
@@ -339,7 +377,6 @@
   .mask_img {
     width: 100%;
     height: 23rem;
-    margin-top: 5rem;
   }
   .hero-section {
     height: auto;
@@ -355,10 +392,11 @@
     border-radius: 10px;
 
     background-color: white;
-    background-image: url("https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-24.png");
-    background-position: 10px 15px;
+    background-image: url(../../assets/images/search.png);
+    background-position: 10px 16px;
+    background-size: 24px 24px;
     background-repeat: no-repeat;
-    padding: 8px 8px 8px 40px;
+    padding: 8px 8px 8px 42px;
     transition: width 0.8s ease-in-out;
     outline: none;
     opacity: 0.9;
@@ -366,7 +404,7 @@
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
-}
+  }
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1400px) {
@@ -376,10 +414,11 @@
     border: none;
     border-radius: 10px;
     background-color: white;
-    background-image: url("https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-24.png");
-    background-position: 0px 15px;
+    background-image: url(../../assets/images/search.png);
+    background-position: 10px 16px;
+    background-size: 24px 24px;
     background-repeat: no-repeat;
-    padding: 8px 8px 8px 25px;
+    padding: 8px 8px 8px 42px;
     transition: width 0.8s ease-in-out;
     outline: none;
     opacity: 0.9;

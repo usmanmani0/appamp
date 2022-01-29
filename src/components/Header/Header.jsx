@@ -90,8 +90,8 @@ const Header = ({ showF }) => {
 
       <div className="mob_nav dis-mob2">
         <Navbar bg="light" expand="lg">
-          <Container>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Container className="icon_control">
+            <Navbar.Toggle aria-controls="basic-navbar-nav" className="navbar-toggler collapsed" />
             <Navbar.Brand href="#home">
               <div className="mob_logo">
                 <img className="logo" src={Logo} alt="logo"></img>
