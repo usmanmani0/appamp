@@ -8,20 +8,20 @@ import { BsChevronDown } from "react-icons/bs";
 import { BsChevronUp } from "react-icons/bs";
 
 
-const SelectByFeature = (props) => {
+const RecentlyUpdate = (props) => {
 
 
     const [isActve, setIsActive] = useState(false)
-    const option = ["By Feature", "Random Order"]
+    const option = ["Recently Updated (All)", "Alphabetically"]
 
-    const [select, setSelect] = useState("Random Order")
+    const [select, setSelect] = useState("Recently Updated (All)")
     return (
         <>
-            <div className='appPage_select' onClick={() => setIsActive(!isActve)}>
+            <div className='appcard_select' onClick={() => setIsActive(!isActve)}>
                 <div>{select}</div>
 
                 <div>{isActve == false ? <BsChevronDown style={{ fontSize: "20px", color: "#161618" }} /> : <BsChevronUp style={{ fontSize: "20px", color: "#161618" }} />}  </div>
-                {isActve && <div className='select_by_feature_content shadow'>
+                {isActve && <div className='appcard_select_by_feature_content shadow'>
                     {
 
                         <div className='select_opton'>
@@ -51,4 +51,4 @@ const SelectByFeature = (props) => {
     )
 }
 
-export default SelectByFeature
+export default RecentlyUpdate

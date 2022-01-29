@@ -487,6 +487,9 @@ const VideoPlayer = (props) => {
 
   return (
     <>
+      {
+        console.log("aaaaaaaaaaaaaaaaa", location.state.vedioScreen)
+      }
       <Container className="videoplayer_container" fluid="true">
         {leftAsideShow ? (
           <div className="leftaside_wrapper">
@@ -557,7 +560,7 @@ const VideoPlayer = (props) => {
 
                 <div className="Ui_sccreen_main_scrool_wrapper">
                   <div className="mbl_cards_box">
-                    <span>1244 UI Screens</span>
+                    {/* <span>1244 UI Screens</span> */}
                     {cardsdata.map((data) => {
                       return (
                         <>
@@ -588,7 +591,50 @@ const VideoPlayer = (props) => {
                 </div>
               : (
                 <div>
-                  <UxVideoSecreenPlaylist />
+                  {
+                    location.state.vedioScreen ? asidedata.map((asidedata, index) => {
+
+                      return (
+                        <div className="sc_video_time_duration_details" key={index}>
+                          <div
+                            className={
+                              color === asidedata.id
+                                ? "sc_left_aside_time_desc sc_la_td_bg"
+                                : "sc_left_aside_time_desc"
+                            }
+                            onClick={() => {
+                              dispatch(changeSideBarContent(asidedata.id));
+                            }}
+                          >
+                            <button className="lft_aside_links">
+                              {" "}
+                              <div className="time_wrapper_lf_aside">
+                                <span
+                                  className={
+                                    color === asidedata.id
+                                      ? "sc_la_time_txt sc_la_td_bg"
+                                      : "sc_la_time_txt"
+                                  }
+                                >
+                                  {asidedata.videotimelft}
+                                </span>
+                              </div>
+                              <span
+                                className={
+                                  color === asidedata.id
+                                    ? "sc_la_desc_txt sc_la_td_bg"
+                                    : "sc_la_desc_txt"
+                                }
+                              >
+                                {truncate(`${asidedata.videotitleontime}`, 20)}
+                              </span>
+                            </button>
+                          </div>
+                        </div>
+                      );
+                    }) : <UxVideoSecreenPlaylist />
+                  }
+
                 </div>
               )}
             {/* {uiVideoShow ? (
@@ -823,6 +869,7 @@ const VideoPlayer = (props) => {
 
             {
               location.state.moreResult ?
+
                 <div
                   ref={videoPlayerContainerRef}
                   style={{ position: "relative", height: "100%" }}
@@ -863,24 +910,72 @@ const VideoPlayer = (props) => {
                     totalDuration={totalDuration}
                   />
                 </div> :
+                <div >
 
-                <div style={{ height: "-webkit-fill-available" }}>
-                  <div
-                    className="screen_player"
-                  >
-                    <img src={eimg11} className="screen_player_img" alt="" />
+                  {
+                    location.state.vedioScreen ? <div
+                      ref={videoPlayerContainerRef}
+                      style={{ position: "relative", height: "100%" }}
+                    >
+                      <ReactPlayer
+                        playbackRate={playbackRate}
+                        ref={playRef}
+                        onProgress={handelProgress}
+                        url={dil}
+                        muted={muted}
+                        playing={playing}
+                        width={"100%"}
+                        height={"100%"}
+                        volume={volume}
+                        controls={""}
+                      />
 
-                  </div>
-                  <div
-                    className="screen_player_full_screen"
-                    onClick={() => {
-                      goFullScreen();
-                      setFull(!full);
-                    }}
-                  >
-                    <img src={fullscreenimg} alt="" />
-                  </div>
-                </div>}
+                      <PlayerControls
+                        onPlayPause={handelPlayPause}
+                        playing={playing}
+                        onTime={handelTime}
+                        // onRewind={handelRewind}
+                        // onFastForward={handelFastForward}
+                        playbackRate={playbackRate}
+                        onPlayBackRateChange={onPlayBackRateChange}
+                        played={played}
+                        onSeek={handelSeekChange}
+                        onSeekMouseDown={handelSeekMouseDown}
+                        onSeekMouseUp={handelSeekMouseUp}
+                        seeking={seeking}
+                        muted={muted}
+                        onMute={handelMute}
+                        onVolumeSeekUp={handelVolumeSeekUp}
+                        onVolumeChange={handelVolumeChange}
+                        volume={volume}
+                        goFullScreen={goFullScreen}
+                        elapsedTime={elapsedTime}
+                        totalDuration={totalDuration}
+                      />
+                    </div> : <div className="jjj" >
+                      <div
+                        className="screen_player"
+
+                      >
+                        <img src={eimg11} className="screen_player_img" alt="" />
+
+                      </div>
+                      <div
+                        className="screen_player_full_screen"
+                        onClick={() => {
+                          goFullScreen();
+                          setFull(!full);
+                        }}
+                      >
+                        <img src={fullscreenimg} alt="" />
+                      </div>
+                    </div>
+                  }
+                </div>
+
+
+
+            }
           </div>
         </div>
         <div className="rightaside_wrapper">

@@ -13,6 +13,7 @@ import img1 from "../../assets/images/s.png";
 import HomeMobileFilter from "../UiSecreenFilter/HomemobileFilter"
 import { handelShow } from '../../feature/addCollection/counterSlice';
 import { useSelector, useDispatch } from 'react-redux';
+import RecentlyUpdate from "../../components/SelectByFeature/recentlyUpdate"
 
 function Filter() {
   function myFunction() {
@@ -147,33 +148,7 @@ function Filter() {
               <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
             </DropdownButton> */}
 
-            <div class="dropdown">
-              <button
-                class="dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton1"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                className="recent_button"
-              >
-                <span>Recently Updated (All)</span>
-                <i className="icon_down">
-                  <IoIosArrowDown className="icon" size="18px" color="black" />
-                </i>
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li>
-                  <a class="dropdown-item" href="#">
-                    <span>Recently Updated (All)</span>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">
-                    <span>Alphabetically (A-Z)</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
+            <RecentlyUpdate />
           </div>
         </div>
       </div>

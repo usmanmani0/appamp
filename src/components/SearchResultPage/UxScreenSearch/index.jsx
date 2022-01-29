@@ -83,145 +83,180 @@ const UiScreenSearch = (props) => {
 
     const Playlist = [
         {
+            id: 1,
             img: Secreen1,
 
         },
 
         {
+            id: 2,
             img: Secreen2,
 
         },
         {
+            id: 3,
             img: Secreen3,
             text: "Playing a song"
         },
         {
+            id: 4,
             img: Secreen4,
             text: "Searching for a song"
         },
         {
+            id: 5,
             img: Secreen5,
             text: "Sign Up"
         },
         {
+            id: 6,
             img: Secreen111,
 
         },
         {
+            id: 7,
             img: Secreen222,
 
         },
         {
+            id: 8,
             img: Secreen333,
 
         },
         {
+            id: 9,
             img: Secreen7,
             text: "Exploring Library (W..."
         },
         {
+            id: 10,
             img: Secreen8,
             text: "Exploring Library"
         },
         {
+            id: 11,
             img: Secreen9,
             text: "Exploring an Artist "
         },
         {
+            id: 12,
             img: Secreen10,
             text: "Exploring an Artist "
         },
         {
+            id: 13,
             img: Secreen111,
 
         },
         {
+            id: 14,
             img: Secreen222,
 
         },
         {
+            id: 15,
             img: Secreen333,
 
         },
         {
+            id: 16,
             img: Secreen11,
             text: "Exploring an Artist "
         },
         {
+            id: 17,
             img: Secreen12,
             text: "Exploring an Artist "
         },
         {
+            id: 18,
             img: Secreen111,
 
         },
         {
+            id: 19,
             img: Secreen222,
 
         },
         {
+            id: 20,
             img: Secreen333,
 
         },
         ,
         {
+            id: 21,
             img: Secreen7,
             text: "Exploring Library (W..."
         },
         {
+            id: 22,
             img: Secreen8,
             text: "Exploring Library"
         },
         {
+            id: 23,
             img: Secreen9,
             text: "Exploring an Artist "
         },
         {
+            id: 24,
             img: Secreen10,
             text: "Exploring an Artist "
         },
         ,
         {
+            id: 25,
             img: Secreen111,
 
         },
         {
+            id: 26,
             img: Secreen222,
 
         },
         {
+            id: 27,
             img: Secreen333,
 
         },
         {
+            id: 28,
             img: Secreen7,
             text: "Exploring Library (W..."
         },
         {
+            id: 29,
             img: Secreen8,
             text: "Exploring Library"
         },
         {
+            id: 30,
             img: Secreen9,
             text: "Exploring an Artist "
         },
         {
+            id: 31,
             img: Secreen10,
             text: "Exploring an Artist "
         },
         {
+            id: 32,
             img: Secreen111,
 
         },
         {
+            id: 33,
             img: Secreen222,
 
         },
         {
+            id: 34,
             img: Secreen333,
 
         },
         {
+            id: 35,
             img: Secreen11,
             text: "Exploring an Artist "
         },
@@ -274,10 +309,7 @@ const UiScreenSearch = (props) => {
     }
     return (
         <>
-            {/* <div className='mobile_View_Filter_section'>
-                <div><UiSecreenFilter /></div>
-                <div><SelectByFeature /></div>
-            </div> */}
+
             <div className='UI_Secreen_Streem'>
                 <div className='Ui_heading'>
                     <div>
@@ -372,8 +404,9 @@ const UiScreenSearch = (props) => {
 
                                                 </div>
                                             </div> */}
+                                            <Link to={`/soundcloudpage/${data.id}`} state={{ moreResult: false, vedioScreen: false }}>
 
-                                            <img src={data.img} className='img-fluid' />
+                                                <img src={data.img} className='img-fluid' /></Link>
                                         </div>
                                     </div>
                                 </>

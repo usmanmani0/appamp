@@ -362,10 +362,10 @@
 .screen_player_full_screen {
   display: flex;
   justify-content: end;
+  align-items: flex-end;
   position: absolute;
   width: 100%;
   right: 15px;
-  /* bottom: -15px; */
 }
 .screen_player_img {
   width: 20%;
