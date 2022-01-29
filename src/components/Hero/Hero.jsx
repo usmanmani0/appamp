@@ -3,18 +3,32 @@ import $ from "jquery";
 import { Container, Row, Col } from "react-bootstrap";
 import "./hero.css";
 import Maskimg from "../../assets/images/Mask Group.png";
+import Maskimgmbl from "../../assets/images/Mask Group_mbl.png";
 import { BiPlayCircle } from "react-icons/bi";
 import { BiMobile } from "react-icons/bi";
-import { IoIosArrowDown } from "react-icons/io";
+import { IoIosCloseCircle } from "react-icons/io";
 import dropDown from "../../assets/images/Vector.png"
 import { useSelector, useDispatch } from 'react-redux';
 import { handelValue, handelempty } from "../../feature/addCollection/counterSlice"
 import { useNavigate } from "react-router-dom";
+import Down from "../../assets/images/downicon.png"
 
 
 const Hero = () => {
-  const [color, setColor] = useState(1);
+  // const [searchBtn, setSearchBtn] = useState(0)
+  // const dispatch = useDispatch()
+  // const searchView = useSelector((state) => state.hideShow.searchView)
+  // const sendValue = (e) => {
+  //   dispatch(handelValue(e.target.value))
+  // }
+  // const [DownArrow, SetDownArrow] = useState(false)
+  // const [UXSelect, setUXSelect] = useState("UX Videos")
+
+  const [color, setColor] = useState("1");
   const searchView = useSelector((state) => state.hideShow.searchView)
+
+  const [DownArrow, SetDownArrow] = useState(false)
+  const [UXSelect, setUXSelect] = useState("UX Videos")
   const dispatch = useDispatch()
 
   const sendValue = (e) => {
@@ -26,6 +40,10 @@ const Hero = () => {
     if (event.key === 'Enter') {
       history("/searchpage")
     }
+  }
+
+  const clearState = () => {
+    dispatch(handelempty())
   }
 
   return (
@@ -57,9 +75,12 @@ const Hero = () => {
                       placeholder="Search Features or Components"
                     ></input>
 
+                    {searchView !== "" && <div ><IoIosCloseCircle onClick={clearState} /></div>}
+
                     <div className="vertical_line"></div>
-                    <div class="dropdown disp_non" style={{ paddingTop: '8px', paddingLeft: '8px', paddingBottom: '8px', width: '150px' }}>
-                      <button
+                    <div class="dropdown disp_non" style={{ paddingTop: '8px', paddingLeft: '8px', paddingBottom: '8px', width: '148px' }}>
+
+                      {/* <button
                         class="dropdown-toggle"
                         type="button"
                         id="dropdownMenuButton1"
@@ -71,10 +92,14 @@ const Hero = () => {
                         <span>UX Videos</span>
                         <b>
                           <i className="icon_down" style={{ marginLeft: '8px' }}>
-                            <img className="arrow_down" src={dropDown} alt="arrow_down"></img>
+                            <img className="arrow_down" src={dropDown} alt="arrow_down" style={{ width: "12px", height: "7.41px" }}></img>
                           </i>
                         </b>
-                      </button>
+                      </button> */}
+                      <div className='search_hero_mDropdown' onClick={() => SetDownArrow(!DownArrow)}>{UXSelect}<div><img src={Down} /></div></div>
+                      <div className='search_dropdown_content2' style={{ display: DownArrow == true ? "flex" : "none" }}>
+                        <div className='search_dropdown_value' onClick={() => { setUXSelect(UXSelect === "UX Videos" ? "UI Screens" : "UX Videos", SetDownArrow(false)) }}>{UXSelect === "UX Videos" ? "UI Screens" : "UX Videos"}</div>
+                      </div>
                       <ul
                         class="dropdown-menu"
                         aria-labelledby="dropdownMenuButton1"
@@ -105,7 +130,7 @@ const Hero = () => {
                         <i className="icon_play">
                           <BiPlayCircle
                             className="icon"
-                            size="16px"
+                            size="24px"
                             style={{
                               color:
                                 color === "1" ? "white" : "rgba(22, 22, 24, 1)",
@@ -147,7 +172,10 @@ const Hero = () => {
           </Col>
           <Col xxl={6} xl={6} lg={6} md={12} xs={12} style={{ padding: '0px' }}>
             <div>
-              <img className="mask_img" src={Maskimg} alt="mask_img"></img>
+              <img className="mask_img dis01" src={Maskimg} alt="mask_img"></img>
+            </div>
+            <div>
+              <img className="mask_mbl dis-mbl01" src={Maskimgmbl} alt="mask_img"></img>
             </div>
           </Col>
         </Row>
