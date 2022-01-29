@@ -8,6 +8,7 @@ import {
   Modal,
 } from "react-bootstrap";
 import "./soundcloudvideoplayer.css";
+import fullscreenimg from "../../assets/soundcloudimages/fullscreen.png";
 import dil from "../../assets/soundcloudimages/Dil ko karrar aya (cover) - Annural Khalid.mp4";
 import tidal from "../../assets/soundcloudimages/Tidal.png";
 import tidalthumbnail from "../../assets/soundcloudimages/sidebarthumbnail.png";
@@ -222,7 +223,7 @@ const VideoPlayer = (props) => {
     playbackRate: 1.0,
     played: 0,
     seeking: false,
-    muted: false,
+    muted: true,
     volume: 0.5,
   });
 
@@ -383,7 +384,7 @@ const VideoPlayer = (props) => {
     setCheckdata([...checkdata, obj]);
   };
   // console.log("TICK ======== ", tick);
-
+  const [full, setFull] = useState(false);
   const goFullScreen = () => {
     screenfull.toggle(videoPlayerContainerRef.current);
   };
@@ -501,6 +502,43 @@ const VideoPlayer = (props) => {
               </div>
             </div>
             {uiVideoShow ? (
+              <div className="Ui_sccreen_main_scrool_wrapper">
+                <div className="mbl_cards_box">
+                  <span>1244 UI Screens</span>
+                  {cardsdata.map((data) => {
+                    return (
+                      <>
+                        <div className="mbl_card">
+                          <div className="pl_icon_cards_right">
+                            <img src={playiconsrightcard} alt="" />
+                          </div>
+                          <div className="time_right_wrapper_cards">
+                            <span className="time_right_wrapper_cards_txt">
+                              12:34
+                            </span>
+                          </div>
+                          <img
+                            src={data.image}
+                            alt="ERROR"
+                            style={{
+                              outline: "1px solid #e9ecef",
+                              borderRadius: "10px",
+                            }}
+                          />
+
+                          {/* <div className="card_title">{data.title}</div> */}
+                        </div>
+                      </>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : (
+              <div>
+                <UxVideoSecreenPlaylist />
+              </div>
+            )}
+            {/* {uiVideoShow ? (
               asidedata.map((asidedata, index) => {
                 return (
                   <div className="sc_video_time_duration_details" key={index}>
@@ -542,8 +580,13 @@ const VideoPlayer = (props) => {
                 );
               })
             ) : (
+          
+
+              <div>
               <UxVideoSecreenPlaylist />
-            )}
+              
+              </div>
+            )} */}
           </div>
         ) : null}
 
@@ -723,6 +766,27 @@ const VideoPlayer = (props) => {
                 <span className="alert_txt">Link copied</span>
               </div>
             ) : null}
+
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "-webkit-fill-available",
+              }}
+            >
+              <img src={eimg1} alt="" />
+             
+            </div>
+            <div style={{width:'100%', display:'flex', justifyContent:'flex-end'}}
+             onClick={() => {
+                goFullScreen();
+                setFull(!full);
+              }}
+            >
+                <img src={fullscreenimg} alt="" />
+              </div>
+            {/* 
             <div
               ref={videoPlayerContainerRef}
               style={{ position: "relative", height: "100%" }}
@@ -762,11 +826,11 @@ const VideoPlayer = (props) => {
                 elapsedTime={elapsedTime}
                 totalDuration={totalDuration}
               />
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="rightaside_wrapper">
-          <div className="d-flex justify-content-center">
+          {/* <div className="d-flex justify-content-center">
             <div className="sc_videoplayer_btn_wrapper">
               <div
                 onClick={handelSimilarPattern}
@@ -794,35 +858,50 @@ const VideoPlayer = (props) => {
               </div>
             </div>
           </div>
-          <SimilarPatterns />
-          {/* <div className="mbl_cards_box">
-            {cardsdata.map((data) => {
-              return (
-                <>
-                  <div className="mbl_card">
-                    <div className="pl_icon_cards_right">
-                      <img src={playiconsrightcard} alt="" />
-                    </div>
-                    <div className="time_right_wrapper_cards">
-                      <span className="time_right_wrapper_cards_txt">
-                        12:34
-                      </span>
-                    </div>
-                    <img
-                      src={data.image}
-                      alt="ERROR"
-                      style={{
-                        outline: "1px solid #e9ecef",
-                        borderRadius: "10px",
-                      }}
-                    />
+          <SimilarPatterns /> */}
 
-                    <div className="card_title">{data.title}</div>
-                  </div>
-                </>
-              );
-            })}
-          </div> */}
+          {/* More Resluts */}
+
+          <div className="d-flex justify-content-center">
+            <div className="sc_videoplayer_btn_wrapper">
+              <div className="sc_ui_videos_right_more">
+                <button className="video_btn">
+                  <span className="sc_la_ux_txt">More Results</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="Ui_sccreen_main_scrool_wrapper">
+            <div className="mbl_cards_box">
+              <span>1244 UI Screens</span>
+              {cardsdata.map((data) => {
+                return (
+                  <>
+                    <div className="mbl_card">
+                      <div className="pl_icon_cards_right">
+                        <img src={playiconsrightcard} alt="" />
+                      </div>
+                      <div className="time_right_wrapper_cards">
+                        <span className="time_right_wrapper_cards_txt">
+                          12:34
+                        </span>
+                      </div>
+                      <img
+                        src={data.image}
+                        alt="ERROR"
+                        style={{
+                          outline: "1px solid #e9ecef",
+                          borderRadius: "10px",
+                        }}
+                      />
+
+                      {/* <div className="card_title">{data.title}</div> */}
+                    </div>
+                  </>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </Container>
       {/* id="myHeader" */}
