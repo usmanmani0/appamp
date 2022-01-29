@@ -9,16 +9,44 @@ import { BsChevronUp } from "react-icons/bs";
 
 
 const SelectByFeature = (props) => {
-    const [age, setAge] = useState('selectoption');
 
-    const handleChange = (event) => {
-        setAge(event.target.value);
-    };
-    const [Arrow, setArrow] = useState(false)
-    console.log("Arow==========>", Arrow)
+
+    const [isActve, setIsActive] = useState(false)
+    const option = ["By Feature", "Random Order"]
+    const option1 = ["Most Recent", "Most Relevant"]
+    const [select, setSelect] = useState("Random Order")
     return (
         <>
-            <div className='appPage_select' >
+            <div className='appPage_select' onClick={() => setIsActive(!isActve)}>
+                <div>{select}</div>
+
+                <div>{isActve == false ? <BsChevronDown style={{ fontSize: "20px", color: "#161618" }} /> : <BsChevronUp style={{ fontSize: "20px", color: "#161618" }} />}  </div>
+                {isActve && <div className='select_by_feature_content shadow'>
+                    {
+
+                        <div className='select_opton'>
+                            {
+                                option.map((option) => {
+
+
+                                    return (
+                                        <>
+                                            <div onClick={(e) => setSelect(option)}>{option}</div>
+                                        </>
+                                    )
+                                })
+
+                            }
+                        </div>
+
+
+
+                    }
+
+                    {/* <div>Random Order</div> */}
+                </div>}
+            </div>
+            {/* <div className='appPage_select' >
                 {
                     props.feature == true ? <FormControl onClick={() => setArrow(!Arrow)}>
 
@@ -36,8 +64,7 @@ const SelectByFeature = (props) => {
                                 Most Recent
                             </MenuItem>
                             <MenuItem value={10} className='language_control' onClick={() => setArrow(false)}>Most Relevant</MenuItem >
-                            {/* <MenuItem value={21} className='language_control'>Random Order</MenuItem> */}
-
+ 
                         </Select>
                     </FormControl> : <FormControl >
 
@@ -59,7 +86,7 @@ const SelectByFeature = (props) => {
                     </FormControl>
                 }
 
-            </div>
+            </div> */}
         </>
     )
 }

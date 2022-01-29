@@ -24,7 +24,8 @@ import 'react-edit-text/dist/index.css'
 import "../../MobileAddCollection/mobileaddcollection.css";
 import { createGlobalStyle } from "styled-components";
 import { useSelector, useDispatch } from 'react-redux';
-const UxVideoSearch = () => {
+const UxVideoSearch = (props) => {
+    console.log("jhcjhjd", props)
     const [showPopover, setShowPopover] = useState({ open: true });
     const [tick, setTick] = useState([]);
     const searchView = useSelector((state) => state.hideShow.searchView)
@@ -350,7 +351,10 @@ const UxVideoSearch = () => {
 
                                         <div className="card_content">
                                             <div className="card_content_show">
-                                                <Link to="/soundcloudpage" className="extra1">
+                                                <Link to={{
+                                                    pathname: `/soundcloudpage/${data.id}`,
+                                                    state: true
+                                                }} className="extra1">
                                                     <div ></div>
                                                 </Link>
                                                 <div className="extra2">

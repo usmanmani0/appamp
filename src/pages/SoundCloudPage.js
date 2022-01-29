@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NavBarSoundCloud from "../components/NavBarSoundCloud/NavBarSoundCloud";
 import VideoPlayer from "../components/SoundCloudVideoPlayer/VideoPlayer";
 import UiSecreenFilter from "../components/UiSecreenFilter";
+import { useLocation } from 'react-router-dom'
 
 const asidedata = [
   {
@@ -54,7 +55,10 @@ const asidedata = [
   },
 ];
 
-export default function SoundCloudPage() {
+export default function SoundCloudPage(props) {
+
+  const location = useLocation()
+  console.log("ali raza", location)
   // const [color, setColor] = useState(1);
 
   return (

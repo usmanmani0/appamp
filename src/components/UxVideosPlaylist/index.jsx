@@ -30,6 +30,11 @@ import { Link } from "react-router-dom";
 import "../MobileAddCollection/mobileaddcollection.css";
 import "./uxvideosplaylist.css";
 import { createGlobalStyle } from "styled-components";
+import {
+  useParams,
+} from "react-router-dom";
+import { useSelector } from "react-redux";
+
 
 const UxVideoSecreenPlaylist = () => {
   const [showPopover, setShowPopover] = useState({ open: true });
@@ -37,6 +42,8 @@ const UxVideoSecreenPlaylist = () => {
   const [setSave, showSetSave] = useState(false);
   const [copy, setCopy] = useState(false);
   const [select, setSelect] = useState({ open: false });
+  const vedioCard = useSelector((state) => state.hideShow.vedioCard)
+  const { id } = useParams()
   const [checkdata, setCheckdata] = useState([
     {
       id: 1,
@@ -85,53 +92,7 @@ const UxVideoSecreenPlaylist = () => {
     }, 5000);
   };
 
-  const vedioCard = [
-    {
-      id: 1,
-      img: Card1,
-      text: "Log Out",
-    },
-    {
-      id: 2,
-      img: Card2,
-      text: "Onboarding",
-    },
-    {
-      id: 3,
-      img: Card3,
-      text: "Playing a song",
-    },
-    {
-      id: 4,
-      img: Card4,
-      text: "Searching for a song",
-    },
-    {
-      id: 5,
-      img: Card5,
-      text: "Sign Up",
-    },
-    {
-      id: 6,
-      img: Card6,
-      text: "Exploring Settings",
-    },
-    {
-      id: 7,
-      img: Card7,
-      text: "Exploring Library (W...",
-    },
-    {
-      id: 8,
-      img: Card8,
-      text: "Exploring Library",
-    },
-    {
-      id: 9,
-      img: Card9,
-      text: "Exploring an Artist ",
-    },
-  ];
+  const result = vedioCard.filter(value => value.id == id)
   const addCollection = () => {
     let index = checkdata.length;
     console.log("klkkl", index);
@@ -169,7 +130,7 @@ const UxVideoSecreenPlaylist = () => {
       <div className="soud_cloud_vedio_section_playlist">
         <div className="vedio_card_wrapper_ux_playlist">
           <span className="ux_total_screen_txt">11 Screens</span>
-          {vedioCard.map((data, index) => {
+          {result.map((data, index) => {
             return (
               <>
                 <div className="ux_video_playelist_container" key={index}>
@@ -366,9 +327,9 @@ const UxVideoSecreenPlaylist = () => {
                       </div>
                       <div className="card_content">
                         <div className="card_content_show">
-                          <Link to="/soundcloudpage" className="extra1">
+                          <div className="extra1">
                             <div></div>
-                          </Link>
+                          </div>
                           <div className="extra2">
                             <div className="d-flex">
                               <div>

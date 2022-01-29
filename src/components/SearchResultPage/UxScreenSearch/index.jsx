@@ -37,7 +37,7 @@ import { Image } from "react-bootstrap";
 import Footer from '../../Footer/Footer'
 
 
-const UiScreenSearch = () => {
+const UiScreenSearch = (props) => {
     const [selectBtn, setSelectBtn] = useState("select_btn");
     const [more, setMore] = useState(5)
     const [loader, setLoader] = useState(false)

@@ -16,7 +16,7 @@ import Footer from "../../Footer/Footer"
 import Down from "../../../assets/images/downicon.png"
 
 
-const SearchResultHeroSection = () => {
+const SearchResultHeroSection = (props) => {
     const [searchBtn, setSearchBtn] = useState(0)
     // const [searchView, setSearchView] = useState()
     const dispatch = useDispatch()
@@ -93,13 +93,13 @@ const SearchResultHeroSection = () => {
             <div className='search_page_body_wrapper'>
                 {
                     searchBtn == 1 ?
-                        <UxVideoSearch /> : ""}
+                        <UxVideoSearch moreResult={true} /> : ""}
                 {
                     searchBtn == 2 ?
-                        <UiScreenSearch /> : ""}
+                        <UiScreenSearch moreResult={true} /> : ""}
                 {
-                    searchBtn === 0 ? <div>    <UxVideoSearch />
-                        <UiScreenSearch /></div> : ""
+                    searchBtn === 0 ? <div>    <UxVideoSearch moreResult={true} />
+                        <UiScreenSearch moreResult={true} /></div> : ""
 
                 }
 

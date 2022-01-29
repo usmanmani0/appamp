@@ -7,6 +7,7 @@ import {
   Tooltip,
   Modal,
 } from "react-bootstrap";
+import { useLocation } from 'react-router-dom'
 import "./soundcloudvideoplayer.css";
 import dil from "../../assets/soundcloudimages/Dil ko karrar aya (cover) - Annural Khalid.mp4";
 import tidal from "../../assets/soundcloudimages/Tidal.png";
@@ -31,6 +32,7 @@ import checkalert from "../../assets/soundcloudimages/CheckAlert.png";
 import playiconsrightcard from "../../assets/soundcloudimages/Playiconcards.png";
 import navactionbar from "../../assets/soundcloudimages/navactionbar.png";
 import { IoIosArrowBack } from "react-icons/io";
+
 import { Link } from "react-router-dom";
 import { hot } from "react-hot-loader";
 import { findDOMNode } from "react-dom";
@@ -44,6 +46,7 @@ import MobileAddCollectionModal from "../MobileAddCollection";
 import UxVideoSecreenPlaylist from "../UxVideosPlaylist";
 import UxVideoSecreen from "../UxVideosSecreen";
 import SimilarPatterns from "../SimilarPatterns";
+import Similar from "../SimilarPatterns/similar"
 
 // const asidedata = [
 //   {
@@ -96,6 +99,7 @@ import SimilarPatterns from "../SimilarPatterns";
 //   },
 // ];
 
+
 const cardsdata = [
   {
     id: 1,
@@ -133,6 +137,7 @@ const format = (seconds) => {
   if (isNaN(seconds)) {
     return "00:00";
   }
+
   console.log(",kkkkk", seconds * 1000);
   const date = new Date(seconds * 1000);
   const hh = date.getUTCHours();
@@ -148,6 +153,8 @@ const format = (seconds) => {
 
 const VideoPlayer = (props) => {
   // const { color, setColor } = props
+  const location = useLocation()
+  console.log("kkkklll", location)
 
   const [asidedata, setAsideData] = useState([
     {
@@ -217,6 +224,7 @@ const VideoPlayer = (props) => {
       header.classList.remove("sticky");
     }
   }
+
   const [playOn, setPlayOn] = useState({
     playing: true,
     playbackRate: 1.0,
@@ -542,11 +550,14 @@ const VideoPlayer = (props) => {
                 );
               })
             ) : (
+
+              // Change Data Here .............
               <UxVideoSecreenPlaylist />
+              // Change Data Here .............
             )}
           </div>
         ) : null}
-
+        {console.log("more result", props)}
         <div className="videoplayer_wrapper" onClick={handelPlayPause}>
           <div className="react_player_wrapper">
             <div
@@ -723,6 +734,7 @@ const VideoPlayer = (props) => {
                 <span className="alert_txt">Link copied</span>
               </div>
             ) : null}
+            {/* Change Dynamicly................. */}
             <div
               ref={videoPlayerContainerRef}
               style={{ position: "relative", height: "100%" }}
@@ -763,38 +775,18 @@ const VideoPlayer = (props) => {
                 totalDuration={totalDuration}
               />
             </div>
+            {/* Change Dynamicly................. */}
           </div>
         </div>
         <div className="rightaside_wrapper">
-          <div className="d-flex justify-content-center">
-            <div className="sc_videoplayer_btn_wrapper">
-              <div
-                onClick={handelSimilarPattern}
-                className={
-                  similarPatternShow
-                    ? "sc_ui_videos_right"
-                    : " sc_ui_videos_right_na"
-                }
-              >
-                <button className="video_btn">
-                  <span className="sc_la_ux_txt">Similar Patterns</span>
-                </button>
-              </div>
-              <div
-                onClick={handelSimilarPattern}
-                className={
-                  similarPatternShow
-                    ? "sc_ux_videos_right_na"
-                    : "sc_ux_videos_right"
-                }
-              >
-                <button className="video_btn">
-                  <span className="sc_la_ui_txt">Current App</span>
-                </button>
-              </div>
-            </div>
-          </div>
-          <SimilarPatterns />
+          {
+            location.state.moreResult ? <Similar moreResult={true} /> : <div>dsG</div>
+          }
+
+
+
+
+
           {/* <div className="mbl_cards_box">
             {cardsdata.map((data) => {
               return (

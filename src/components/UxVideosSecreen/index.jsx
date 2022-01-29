@@ -29,6 +29,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "../MobileAddCollection/mobileaddcollection.css";
 import { createGlobalStyle } from "styled-components";
+import { useSelector } from "react-redux";
 const UxVideoSecreen = () => {
   const [showPopover, setShowPopover] = useState({ open: true });
   const [tick, setTick] = useState([]);
@@ -55,6 +56,7 @@ const UxVideoSecreen = () => {
       Name: "Collection # 3",
     },
   ]);
+  const vedioCard = useSelector((state) => state.hideShow.vedioCard)
   const checkTick = async (index) => {
     let findIndex = tick.find((data) => data === index);
     if (findIndex) {
@@ -83,53 +85,53 @@ const UxVideoSecreen = () => {
     }, 5000);
   };
 
-  const vedioCard = [
-    {
-      id: 1,
-      img: Card1,
-      text: "Log Out",
-    },
-    {
-      id: 2,
-      img: Card2,
-      text: "Onboarding",
-    },
-    {
-      id: 3,
-      img: Card3,
-      text: "Playing a song",
-    },
-    {
-      id: 4,
-      img: Card4,
-      text: "Searching for a song",
-    },
-    {
-      id: 5,
-      img: Card5,
-      text: "Sign Up",
-    },
-    {
-      id: 6,
-      img: Card6,
-      text: "Exploring Settings",
-    },
-    {
-      id: 7,
-      img: Card7,
-      text: "Exploring Library (W...",
-    },
-    {
-      id: 8,
-      img: Card8,
-      text: "Exploring Library",
-    },
-    {
-      id: 9,
-      img: Card9,
-      text: "Exploring an Artist ",
-    },
-  ];
+  // const vedioCard = [
+  //   {
+  //     id: 1,
+  //     img: Card1,
+  //     text: "Log Out",
+  //   },
+  //   {
+  //     id: 2,
+  //     img: Card2,
+  //     text: "Onboarding",
+  //   },
+  //   {
+  //     id: 3,
+  //     img: Card3,
+  //     text: "Playing a song",
+  //   },
+  //   {
+  //     id: 4,
+  //     img: Card4,
+  //     text: "Searching for a song",
+  //   },
+  //   {
+  //     id: 5,
+  //     img: Card5,
+  //     text: "Sign Up",
+  //   },
+  //   {
+  //     id: 6,
+  //     img: Card6,
+  //     text: "Exploring Settings",
+  //   },
+  //   {
+  //     id: 7,
+  //     img: Card7,
+  //     text: "Exploring Library (W...",
+  //   },
+  //   {
+  //     id: 8,
+  //     img: Card8,
+  //     text: "Exploring Library",
+  //   },
+  //   {
+  //     id: 9,
+  //     img: Card9,
+  //     text: "Exploring an Artist ",
+  //   },
+  // ];
   const addCollection = () => {
     let index = checkdata.length;
     console.log("klkkl", index);
@@ -353,7 +355,10 @@ const UxVideoSecreen = () => {
                     </div>
                     <div className="card_content">
                       <div className="card_content_show">
-                        <Link to={`/soundcloudpage/${data.id}`} className="extra1">
+
+                        <Link to={
+                          `/soundcloudpage/${data.id}`
+                        } className="extra1" state={{ moreResult: true }}>
                           <div></div>
                         </Link>
                         <div className="extra2">
