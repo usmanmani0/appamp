@@ -337,12 +337,84 @@
 .appPage_checkbox_div:hover {
   display: block !important;
 }
+.select_by_feature_content {
+  position: absolute;
+  background-color: white;
+  /* display: flex; */
+  width: 148px;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  line-height: 14px;
+  color: #161618;
+  left: 0;
+  padding: 16px 12px;
+  height: 84px;
+  border-radius: 8px;
+  top: 50px;
+  z-index: 100;
+}
+.jjj {
+  position: absolute;
+  width: 100%;
+  top: 10%;
+}
+.screen_player {
+}
+.appcard_select_by_feature_content {
+  position: absolute;
+  background-color: white;
+  /* display: flex; */
+  width: 190px;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  line-height: 14px;
+  color: #161618;
+  left: 0;
+  padding: 16px 12px;
+  height: 84px;
+  border-radius: 8px;
+  top: 50px;
+  z-index: 100;
+}
+.select_opton {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
 
 .appPage_select {
   border: 2px solid #c5c5c5;
   width: 148px;
   height: 40px;
+  padding: 0px 12px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
   border-radius: 8px;
+  font-size: 12px;
+  line-height: 14px;
+  color: #161618;
+  display: flex;
+  align-items: center;
+}
+.appcard_select {
+  border: 2px solid #c5c5c5;
+  width: 190px;
+  height: 40px;
+  padding: 0px 12px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 14px;
+  color: #161618;
   display: flex;
   align-items: center;
 }

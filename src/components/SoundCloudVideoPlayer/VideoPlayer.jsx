@@ -7,6 +7,7 @@ import {
   Tooltip,
   Modal,
 } from "react-bootstrap";
+import { useLocation } from 'react-router-dom'
 import "./soundcloudvideoplayer.css";
 import fullscreenimg from "../../assets/soundcloudimages/fullscreen.png";
 import dil from "../../assets/soundcloudimages/Dil ko karrar aya (cover) - Annural Khalid.mp4";
@@ -20,7 +21,8 @@ import openmenu from "../../assets/soundcloudimages/Openmenu.png";
 import plusicon from "../../assets/soundcloudimages/Add.png";
 import downloadicon from "../../assets/soundcloudimages/Download.png";
 import linkicon from "../../assets/soundcloudimages/Link.png";
-import eimg1 from "../../assets/soundcloudimages/Exploringimg1.png";
+import eimg1 from "../../assets/images/card1.png";
+import eimg11 from "../../assets/images/screenP.png";
 import eimg2 from "../../assets/soundcloudimages/Exploringimg2.png";
 import eimg3 from "../../assets/soundcloudimages/Exploringimg3.png";
 import eimg4 from "../../assets/soundcloudimages/Exploringimg4.png";
@@ -37,6 +39,7 @@ import { hot } from "react-hot-loader";
 import { findDOMNode } from "react-dom";
 import screenfull from "screenfull";
 import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom"
 import {
   handleShowModal,
   changeSideBarContent,
@@ -45,6 +48,7 @@ import MobileAddCollectionModal from "../MobileAddCollection";
 import UxVideoSecreenPlaylist from "../UxVideosPlaylist";
 import UxVideoSecreen from "../UxVideosSecreen";
 import SimilarPatterns from "../SimilarPatterns";
+import Similar from "../SimilarPatterns/similar"
 
 // const asidedata = [
 //   {
@@ -97,6 +101,7 @@ import SimilarPatterns from "../SimilarPatterns";
 //   },
 // ];
 
+
 const cardsdata = [
   {
     id: 1,
@@ -134,6 +139,7 @@ const format = (seconds) => {
   if (isNaN(seconds)) {
     return "00:00";
   }
+
   console.log(",kkkkk", seconds * 1000);
   const date = new Date(seconds * 1000);
   const hh = date.getUTCHours();
@@ -148,7 +154,14 @@ const format = (seconds) => {
 };
 
 const VideoPlayer = (props) => {
+  const { id } = useParams()
+  const Playlist = useSelector((state) => state.hideShow.Playlist)
+  const newPlaylist = Playlist.filter((value) => value.id == id)
+
+  console.log("playlistValue", newPlaylist)
   // const { color, setColor } = props
+  const location = useLocation()
+  console.log("kkkklll", location)
 
   const [asidedata, setAsideData] = useState([
     {
@@ -218,6 +231,7 @@ const VideoPlayer = (props) => {
       header.classList.remove("sticky");
     }
   }
+
   const [playOn, setPlayOn] = useState({
     playing: true,
     playbackRate: 1.0,
@@ -478,6 +492,7 @@ const VideoPlayer = (props) => {
 
   return (
     <>
+
       <Container className="videoplayer_container" fluid="true">
         {leftAsideShow ? (
           <div className="leftaside_wrapper">
@@ -501,43 +516,130 @@ const VideoPlayer = (props) => {
                 </div>
               </div>
             </div>
-            {uiVideoShow ? (
-              <div className="Ui_sccreen_main_scrool_wrapper">
-                <div className="mbl_cards_box">
-                  <span>1244 UI Screens</span>
-                  {cardsdata.map((data) => {
-                    return (
-                      <>
-                        <div className="mbl_card">
-                          <div className="pl_icon_cards_right">
-                            <img src={playiconsrightcard} alt="" />
-                          </div>
-                          <div className="time_right_wrapper_cards">
-                            <span className="time_right_wrapper_cards_txt">
-                              12:34
+            {uiVideoShow ?
+
+
+              location.state.moreResult ?
+                asidedata.map((asidedata, index) => {
+                  return (
+                    <div className="sc_video_time_duration_details" key={index}>
+                      <div
+                        className={
+                          color === asidedata.id
+                            ? "sc_left_aside_time_desc sc_la_td_bg"
+                            : "sc_left_aside_time_desc"
+                        }
+                        onClick={() => {
+                          dispatch(changeSideBarContent(asidedata.id));
+                        }}
+                      >
+                        <button className="lft_aside_links">
+                          {" "}
+                          <div className="time_wrapper_lf_aside">
+                            <span
+                              className={
+                                color === asidedata.id
+                                  ? "sc_la_time_txt sc_la_td_bg"
+                                  : "sc_la_time_txt"
+                              }
+                            >
+                              {asidedata.videotimelft}
                             </span>
                           </div>
-                          <img
-                            src={data.image}
-                            alt="ERROR"
-                            style={{
-                              outline: "1px solid #e9ecef",
-                              borderRadius: "10px",
-                            }}
-                          />
+                          <span
+                            className={
+                              color === asidedata.id
+                                ? "sc_la_desc_txt sc_la_td_bg"
+                                : "sc_la_desc_txt"
+                            }
+                          >
+                            {truncate(`${asidedata.videotitleontime}`, 20)}
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  );
+                }) :
 
-                          {/* <div className="card_title">{data.title}</div> */}
-                        </div>
-                      </>
-                    );
-                  })}
+                <div className="Ui_sccreen_main_scrool_wrapper">
+                  <div className="mbl_cards_box">
+                    {/* <span>1244 UI Screens</span> */}
+                    {cardsdata.map((data) => {
+                      return (
+                        <>
+                          <div className="mbl_card">
+                            <div className="pl_icon_cards_right">
+                              <img src={playiconsrightcard} alt="" />
+                            </div>
+                            <div className="time_right_wrapper_cards">
+                              <span className="time_right_wrapper_cards_txt">
+                                12:34
+                              </span>
+                            </div>
+                            <img
+                              src={data.image}
+                              alt="ERROR"
+                              style={{
+                                outline: "1px solid #e9ecef",
+                                borderRadius: "10px",
+                              }}
+                            />
+
+                            {/* <div className="card_title">{data.title}</div> */}
+                          </div>
+                        </>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-            ) : (
-              <div>
-                <UxVideoSecreenPlaylist />
-              </div>
-            )}
+              : (
+                <div>
+                  {
+                    location.state.vedioScreen ? asidedata.map((asidedata, index) => {
+
+                      return (
+                        <div className="sc_video_time_duration_details" key={index}>
+                          <div
+                            className={
+                              color === asidedata.id
+                                ? "sc_left_aside_time_desc sc_la_td_bg"
+                                : "sc_left_aside_time_desc"
+                            }
+                            onClick={() => {
+                              dispatch(changeSideBarContent(asidedata.id));
+                            }}
+                          >
+                            <button className="lft_aside_links">
+                              {" "}
+                              <div className="time_wrapper_lf_aside">
+                                <span
+                                  className={
+                                    color === asidedata.id
+                                      ? "sc_la_time_txt sc_la_td_bg"
+                                      : "sc_la_time_txt"
+                                  }
+                                >
+                                  {asidedata.videotimelft}
+                                </span>
+                              </div>
+                              <span
+                                className={
+                                  color === asidedata.id
+                                    ? "sc_la_desc_txt sc_la_td_bg"
+                                    : "sc_la_desc_txt"
+                                }
+                              >
+                                {truncate(`${asidedata.videotitleontime}`, 20)}
+                              </span>
+                            </button>
+                          </div>
+                        </div>
+                      );
+                    }) : <UxVideoSecreenPlaylist />
+                  }
+
+                </div>
+              )}
             {/* {uiVideoShow ? (
               asidedata.map((asidedata, index) => {
                 return (
@@ -589,7 +691,7 @@ const VideoPlayer = (props) => {
             )} */}
           </div>
         ) : null}
-
+        {console.log("more result", props)}
         <div className="videoplayer_wrapper" onClick={handelPlayPause}>
           <div className="react_player_wrapper">
             <div
@@ -767,141 +869,176 @@ const VideoPlayer = (props) => {
               </div>
             ) : null}
 
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                height: "-webkit-fill-available",
-              }}
-            >
-              <img src={eimg1} alt="" />
-             
-            </div>
-            <div style={{width:'100%', display:'flex', justifyContent:'flex-end'}}
-             onClick={() => {
-                goFullScreen();
-                setFull(!full);
-              }}
-            >
-                <img src={fullscreenimg} alt="" />
-              </div>
-            {/* 
-            <div
-              ref={videoPlayerContainerRef}
-              style={{ position: "relative", height: "100%" }}
-            >
-              <ReactPlayer
-                playbackRate={playbackRate}
-                ref={playRef}
-                onProgress={handelProgress}
-                url={dil}
-                muted={muted}
-                playing={playing}
-                width={"100%"}
-                height={"100%"}
-                volume={volume}
-                controls={""}
-              />
 
-              <PlayerControls
-                onPlayPause={handelPlayPause}
-                playing={playing}
-                onTime={handelTime}
-                // onRewind={handelRewind}
-                // onFastForward={handelFastForward}
-                playbackRate={playbackRate}
-                onPlayBackRateChange={onPlayBackRateChange}
-                played={played}
-                onSeek={handelSeekChange}
-                onSeekMouseDown={handelSeekMouseDown}
-                onSeekMouseUp={handelSeekMouseUp}
-                seeking={seeking}
-                muted={muted}
-                onMute={handelMute}
-                onVolumeSeekUp={handelVolumeSeekUp}
-                onVolumeChange={handelVolumeChange}
-                volume={volume}
-                goFullScreen={goFullScreen}
-                elapsedTime={elapsedTime}
-                totalDuration={totalDuration}
-              />
-            </div> */}
+            {
+              location.state.moreResult ?
+
+                <div
+                  ref={videoPlayerContainerRef}
+                  style={{ position: "relative", height: "100%" }}
+                >
+                  <ReactPlayer
+                    playbackRate={playbackRate}
+                    ref={playRef}
+                    onProgress={handelProgress}
+                    url={dil}
+                    muted={muted}
+                    playing={playing}
+                    width={"100%"}
+                    height={"100%"}
+                    volume={volume}
+                    controls={""}
+                  />
+
+                  <PlayerControls
+                    onPlayPause={handelPlayPause}
+                    playing={playing}
+                    onTime={handelTime}
+                    // onRewind={handelRewind}
+                    // onFastForward={handelFastForward}
+                    playbackRate={playbackRate}
+                    onPlayBackRateChange={onPlayBackRateChange}
+                    played={played}
+                    onSeek={handelSeekChange}
+                    onSeekMouseDown={handelSeekMouseDown}
+                    onSeekMouseUp={handelSeekMouseUp}
+                    seeking={seeking}
+                    muted={muted}
+                    onMute={handelMute}
+                    onVolumeSeekUp={handelVolumeSeekUp}
+                    onVolumeChange={handelVolumeChange}
+                    volume={volume}
+                    goFullScreen={goFullScreen}
+                    elapsedTime={elapsedTime}
+                    totalDuration={totalDuration}
+                  />
+                </div> :
+                <div >
+
+                  {
+                    location.state.vedioScreen ? <div
+                      ref={videoPlayerContainerRef}
+                      style={{ position: "relative", height: "100%" }}
+                    >
+                      <ReactPlayer
+                        playbackRate={playbackRate}
+                        ref={playRef}
+                        onProgress={handelProgress}
+                        url={dil}
+                        muted={muted}
+                        playing={playing}
+                        width={"100%"}
+                        height={"100%"}
+                        volume={volume}
+                        controls={""}
+                      />
+
+                      <PlayerControls
+                        onPlayPause={handelPlayPause}
+                        playing={playing}
+                        onTime={handelTime}
+                        // onRewind={handelRewind}
+                        // onFastForward={handelFastForward}
+                        playbackRate={playbackRate}
+                        onPlayBackRateChange={onPlayBackRateChange}
+                        played={played}
+                        onSeek={handelSeekChange}
+                        onSeekMouseDown={handelSeekMouseDown}
+                        onSeekMouseUp={handelSeekMouseUp}
+                        seeking={seeking}
+                        muted={muted}
+                        onMute={handelMute}
+                        onVolumeSeekUp={handelVolumeSeekUp}
+                        onVolumeChange={handelVolumeChange}
+                        volume={volume}
+                        goFullScreen={goFullScreen}
+                        elapsedTime={elapsedTime}
+                        totalDuration={totalDuration}
+                      />
+                    </div> :
+
+
+                      <div className="jjj" >
+                        {
+                          newPlaylist.map((data) => {
+                            return (
+                              <>
+                                <div className="screen_player">
+                                  <img src={data.img} className="screen_player_img" alt="" />
+                                </div>
+                              </>
+                            )
+                          })
+                        }
+
+                        <div
+                          className="screen_player_full_screen"
+                          onClick={() => {
+                            goFullScreen();
+                            setFull(!full);
+                          }}
+                        >
+                          <img src={fullscreenimg} alt="" />
+                        </div>
+                      </div>
+                  }
+                </div>
+
+
+
+            }
           </div>
         </div>
         <div className="rightaside_wrapper">
-          {/* <div className="d-flex justify-content-center">
-            <div className="sc_videoplayer_btn_wrapper">
-              <div
-                onClick={handelSimilarPattern}
-                className={
-                  similarPatternShow
-                    ? "sc_ui_videos_right"
-                    : " sc_ui_videos_right_na"
-                }
-              >
-                <button className="video_btn">
-                  <span className="sc_la_ux_txt">Similar Patterns</span>
-                </button>
+          {
+            location.state.moreResult ? <SimilarPatterns /> : <div>
+              <div className="d-flex justify-content-center">
+                <div className="sc_videoplayer_btn_wrapper">
+                  <div className="sc_ui_videos_right_more">
+                    <button className="video_btn">
+                      <span className="sc_la_ux_txt">More Results</span>
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div
-                onClick={handelSimilarPattern}
-                className={
-                  similarPatternShow
-                    ? "sc_ux_videos_right_na"
-                    : "sc_ux_videos_right"
-                }
-              >
-                <button className="video_btn">
-                  <span className="sc_la_ui_txt">Current App</span>
-                </button>
+              <div className="Ui_sccreen_main_scrool_wrapper">
+                <div className="mbl_cards_box">
+                  <span>1244 UI Screens</span>
+                  {cardsdata.map((data) => {
+                    return (
+                      <>
+                        <div className="mbl_card">
+                          <div className="pl_icon_cards_right">
+                            <img src={playiconsrightcard} alt="" />
+                          </div>
+                          <div className="time_right_wrapper_cards">
+                            <span className="time_right_wrapper_cards_txt">
+                              12:34
+                            </span>
+                          </div>
+                          <img
+                            src={data.image}
+                            alt="ERROR"
+                            style={{
+                              outline: "1px solid #e9ecef",
+                              borderRadius: "10px",
+                            }}
+                          />
+
+                          {/* <div className="card_title">{data.title}</div> */}
+                        </div>
+                      </>
+                    );
+                  })}
+                </div>
               </div>
             </div>
-          </div>
-          <SimilarPatterns /> */}
+          }
+
 
           {/* More Resluts */}
 
-          <div className="d-flex justify-content-center">
-            <div className="sc_videoplayer_btn_wrapper">
-              <div className="sc_ui_videos_right_more">
-                <button className="video_btn">
-                  <span className="sc_la_ux_txt">More Results</span>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className="Ui_sccreen_main_scrool_wrapper">
-            <div className="mbl_cards_box">
-              <span>1244 UI Screens</span>
-              {cardsdata.map((data) => {
-                return (
-                  <>
-                    <div className="mbl_card">
-                      <div className="pl_icon_cards_right">
-                        <img src={playiconsrightcard} alt="" />
-                      </div>
-                      <div className="time_right_wrapper_cards">
-                        <span className="time_right_wrapper_cards_txt">
-                          12:34
-                        </span>
-                      </div>
-                      <img
-                        src={data.image}
-                        alt="ERROR"
-                        style={{
-                          outline: "1px solid #e9ecef",
-                          borderRadius: "10px",
-                        }}
-                      />
 
-                      {/* <div className="card_title">{data.title}</div> */}
-                    </div>
-                  </>
-                );
-              })}
-            </div>
-          </div>
         </div>
       </Container>
       {/* id="myHeader" */}

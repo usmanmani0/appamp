@@ -25,6 +25,7 @@ import "../../MobileAddCollection/mobileaddcollection.css";
 import { createGlobalStyle } from "styled-components";
 import { useSelector, useDispatch } from 'react-redux';
 const UxVideoSearch = () => {
+
     const [showPopover, setShowPopover] = useState({ open: true });
     const [tick, setTick] = useState([]);
     const searchView = useSelector((state) => state.hideShow.searchView)
@@ -82,50 +83,62 @@ const UxVideoSearch = () => {
     const vedioCard = [
 
         {
+            id: 1,
             img: Card1,
             text: "Tab",
         },
         {
+            id: 2,
             img: Card1,
             text: "Button",
         },
         {
+            id: 3,
             img: Card1,
             text: "Button",
         },
         {
+            id: 4,
             img: Card1,
             text: "Button",
         },
         {
+            id: 5,
             img: Card1,
             text: "Button33333",
         },
         {
+            id: 6,
             img: Card1,
             text: "Button",
         },
         {
+            id: 7,
             img: Card1,
             text: "Button",
         },
         {
+            id: 8,
             img: Card1,
             text: "Button",
         },
         {
+            id: 9,
             img: Card1,
             text: "Button",
         },
         {
+            id: 10,
             img: Card1,
             text: "Tab",
         },
         {
+            id: 11,
             img: Card1,
             text: "Button",
         },
         {
+            id: 12,
             img: Card1,
             text: "Tab",
         },
@@ -350,7 +363,11 @@ const UxVideoSearch = () => {
 
                                         <div className="card_content">
                                             <div className="card_content_show">
-                                                <Link to="/soundcloudpage" className="extra1">
+                                                <Link to={`/soundcloudpage/${data.id}`
+
+                                                }
+                                                    state={{ moreResult: false, vedioScreen: true }}
+                                                    className="extra1">
                                                     <div ></div>
                                                 </Link>
                                                 <div className="extra2">

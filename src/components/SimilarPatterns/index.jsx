@@ -155,9 +155,40 @@ const SimilarPatterns = () => {
     console.log("onMouse ebter fn");
     setSelectBtn("cont2");
   };
-
+  const handelSimilarPattern = () => {
+    setsimilarPatternShow(!similarPatternShow);
+  };
+  const [similarPatternShow, setsimilarPatternShow] = useState(false);
   return (
     <>
+      <div className="d-flex justify-content-center">
+        <div className="sc_videoplayer_btn_wrapper">
+          <div
+            onClick={handelSimilarPattern}
+            className={
+              similarPatternShow
+                ? "sc_ui_videos_right"
+                : " sc_ui_videos_right_na"
+            }
+          >
+            <button className="video_btn">
+              <span className="sc_la_ux_txt">Similar Patterns</span>
+            </button>
+          </div>
+          <div
+            onClick={handelSimilarPattern}
+            className={
+              similarPatternShow
+                ? "sc_ux_videos_right_na"
+                : "sc_ux_videos_right"
+            }
+          >
+            <button className="video_btn">
+              <span className="sc_la_ui_txt">Current App</span>
+            </button>
+          </div>
+        </div>
+      </div>
       <div className="soud_cloud_vedio_section_similar_patterns">
         <div className="vedio_card_wrapper_similar_patterns">
           {vedioCard.map((data, index) => {
@@ -271,7 +302,7 @@ const SimilarPatterns = () => {
                       style={{
                         display: index === select.open ? "block" : "none",
                       }}
-                     >
+                    >
                       <div className="select_content_wrapper_1">
                         <div
                           className="d-flex align-items-center"

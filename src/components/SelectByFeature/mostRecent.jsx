@@ -8,13 +8,13 @@ import { BsChevronDown } from "react-icons/bs";
 import { BsChevronUp } from "react-icons/bs";
 
 
-const SelectByFeature = (props) => {
+const MostRecent = (props) => {
 
 
     const [isActve, setIsActive] = useState(false)
-    const option = ["By Feature", "Random Order"]
+    const option = ["Most Recent", "Most Relevant"]
 
-    const [select, setSelect] = useState("Random Order")
+    const [select, setSelect] = useState("Most Recent")
     return (
         <>
             <div className='appPage_select' onClick={() => setIsActive(!isActve)}>
@@ -51,4 +51,4 @@ const SelectByFeature = (props) => {
     )
 }
 
-export default SelectByFeature
+export default MostRecent

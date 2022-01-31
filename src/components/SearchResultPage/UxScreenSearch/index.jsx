@@ -35,11 +35,13 @@ import { Link } from "react-router-dom"
 import { EditText, EditTextarea } from 'react-edit-text';
 import { Image } from "react-bootstrap";
 import Footer from '../../Footer/Footer'
+import { useSelector, } from 'react-redux'
 
 
-const UiScreenSearch = () => {
+const UiScreenSearch = (props) => {
     const [selectBtn, setSelectBtn] = useState("select_btn");
     const [more, setMore] = useState(5)
+    const Playlist = useSelector((state) => state.hideShow.Playlist)
     const [loader, setLoader] = useState(false)
     const xyz = () => {
         console.log("onMouse ebter fn")
@@ -81,153 +83,7 @@ const UiScreenSearch = () => {
     const [setSave, showSetSave] = useState(false);
     const [copy, setCopy] = useState(false);
 
-    const Playlist = [
-        {
-            img: Secreen1,
 
-        },
-
-        {
-            img: Secreen2,
-
-        },
-        {
-            img: Secreen3,
-            text: "Playing a song"
-        },
-        {
-            img: Secreen4,
-            text: "Searching for a song"
-        },
-        {
-            img: Secreen5,
-            text: "Sign Up"
-        },
-        {
-            img: Secreen111,
-
-        },
-        {
-            img: Secreen222,
-
-        },
-        {
-            img: Secreen333,
-
-        },
-        {
-            img: Secreen7,
-            text: "Exploring Library (W..."
-        },
-        {
-            img: Secreen8,
-            text: "Exploring Library"
-        },
-        {
-            img: Secreen9,
-            text: "Exploring an Artist "
-        },
-        {
-            img: Secreen10,
-            text: "Exploring an Artist "
-        },
-        {
-            img: Secreen111,
-
-        },
-        {
-            img: Secreen222,
-
-        },
-        {
-            img: Secreen333,
-
-        },
-        {
-            img: Secreen11,
-            text: "Exploring an Artist "
-        },
-        {
-            img: Secreen12,
-            text: "Exploring an Artist "
-        },
-        {
-            img: Secreen111,
-
-        },
-        {
-            img: Secreen222,
-
-        },
-        {
-            img: Secreen333,
-
-        },
-        ,
-        {
-            img: Secreen7,
-            text: "Exploring Library (W..."
-        },
-        {
-            img: Secreen8,
-            text: "Exploring Library"
-        },
-        {
-            img: Secreen9,
-            text: "Exploring an Artist "
-        },
-        {
-            img: Secreen10,
-            text: "Exploring an Artist "
-        },
-        ,
-        {
-            img: Secreen111,
-
-        },
-        {
-            img: Secreen222,
-
-        },
-        {
-            img: Secreen333,
-
-        },
-        {
-            img: Secreen7,
-            text: "Exploring Library (W..."
-        },
-        {
-            img: Secreen8,
-            text: "Exploring Library"
-        },
-        {
-            img: Secreen9,
-            text: "Exploring an Artist "
-        },
-        {
-            img: Secreen10,
-            text: "Exploring an Artist "
-        },
-        {
-            img: Secreen111,
-
-        },
-        {
-            img: Secreen222,
-
-        },
-        {
-            img: Secreen333,
-
-        },
-        {
-            img: Secreen11,
-            text: "Exploring an Artist "
-        },
-
-
-    ]
     const newScreenArray = Playlist.slice(0, more)
     const handelPopover = () => {
         setShowPopover(!showPopover);
@@ -274,10 +130,7 @@ const UiScreenSearch = () => {
     }
     return (
         <>
-            {/* <div className='mobile_View_Filter_section'>
-                <div><UiSecreenFilter /></div>
-                <div><SelectByFeature /></div>
-            </div> */}
+
             <div className='UI_Secreen_Streem'>
                 <div className='Ui_heading'>
                     <div>
@@ -372,8 +225,9 @@ const UiScreenSearch = () => {
 
                                                 </div>
                                             </div> */}
+                                            <Link to={`/soundcloudpage/${data.id}`} state={{ moreResult: false, vedioScreen: false }}>
 
-                                            <img src={data.img} className='img-fluid' />
+                                                <img src={data.img} className='img-fluid' /></Link>
                                         </div>
                                     </div>
                                 </>
