@@ -34,12 +34,12 @@ import checkalert from "../../assets/soundcloudimages/CheckAlert.png";
 import playiconsrightcard from "../../assets/soundcloudimages/Playiconcards.png";
 import navactionbar from "../../assets/soundcloudimages/navactionbar.png";
 import { IoIosArrowBack } from "react-icons/io";
-
 import { Link } from "react-router-dom";
 import { hot } from "react-hot-loader";
 import { findDOMNode } from "react-dom";
 import screenfull from "screenfull";
 import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom"
 import {
   handleShowModal,
   changeSideBarContent,
@@ -154,6 +154,11 @@ const format = (seconds) => {
 };
 
 const VideoPlayer = (props) => {
+  const { id } = useParams()
+  const Playlist = useSelector((state) => state.hideShow.Playlist)
+  const newPlaylist = Playlist.filter((value) => value.id == id)
+
+  console.log("playlistValue", newPlaylist)
   // const { color, setColor } = props
   const location = useLocation()
   console.log("kkkklll", location)
@@ -487,9 +492,7 @@ const VideoPlayer = (props) => {
 
   return (
     <>
-      {
-        console.log("aaaaaaaaaaaaaaaaa", location.state.vedioScreen)
-      }
+
       <Container className="videoplayer_container" fluid="true">
         {leftAsideShow ? (
           <div className="leftaside_wrapper">
@@ -952,24 +955,32 @@ const VideoPlayer = (props) => {
                         elapsedTime={elapsedTime}
                         totalDuration={totalDuration}
                       />
-                    </div> : <div className="jjj" >
-                      <div
-                        className="screen_player"
+                    </div> :
 
-                      >
-                        <img src={eimg11} className="screen_player_img" alt="" />
 
+                      <div className="jjj" >
+                        {
+                          newPlaylist.map((data) => {
+                            return (
+                              <>
+                                <div className="screen_player">
+                                  <img src={data.img} className="screen_player_img" alt="" />
+                                </div>
+                              </>
+                            )
+                          })
+                        }
+
+                        <div
+                          className="screen_player_full_screen"
+                          onClick={() => {
+                            goFullScreen();
+                            setFull(!full);
+                          }}
+                        >
+                          <img src={fullscreenimg} alt="" />
+                        </div>
                       </div>
-                      <div
-                        className="screen_player_full_screen"
-                        onClick={() => {
-                          goFullScreen();
-                          setFull(!full);
-                        }}
-                      >
-                        <img src={fullscreenimg} alt="" />
-                      </div>
-                    </div>
                   }
                 </div>
 

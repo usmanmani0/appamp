@@ -35,11 +35,13 @@ import { Link } from "react-router-dom"
 import { EditText, EditTextarea } from 'react-edit-text';
 import { Image } from "react-bootstrap";
 import Footer from '../../Footer/Footer'
+import { useSelector, } from 'react-redux'
 
 
 const UiScreenSearch = (props) => {
     const [selectBtn, setSelectBtn] = useState("select_btn");
     const [more, setMore] = useState(5)
+    const Playlist = useSelector((state) => state.hideShow.Playlist)
     const [loader, setLoader] = useState(false)
     const xyz = () => {
         console.log("onMouse ebter fn")
@@ -81,188 +83,7 @@ const UiScreenSearch = (props) => {
     const [setSave, showSetSave] = useState(false);
     const [copy, setCopy] = useState(false);
 
-    const Playlist = [
-        {
-            id: 1,
-            img: Secreen1,
 
-        },
-
-        {
-            id: 2,
-            img: Secreen2,
-
-        },
-        {
-            id: 3,
-            img: Secreen3,
-            text: "Playing a song"
-        },
-        {
-            id: 4,
-            img: Secreen4,
-            text: "Searching for a song"
-        },
-        {
-            id: 5,
-            img: Secreen5,
-            text: "Sign Up"
-        },
-        {
-            id: 6,
-            img: Secreen111,
-
-        },
-        {
-            id: 7,
-            img: Secreen222,
-
-        },
-        {
-            id: 8,
-            img: Secreen333,
-
-        },
-        {
-            id: 9,
-            img: Secreen7,
-            text: "Exploring Library (W..."
-        },
-        {
-            id: 10,
-            img: Secreen8,
-            text: "Exploring Library"
-        },
-        {
-            id: 11,
-            img: Secreen9,
-            text: "Exploring an Artist "
-        },
-        {
-            id: 12,
-            img: Secreen10,
-            text: "Exploring an Artist "
-        },
-        {
-            id: 13,
-            img: Secreen111,
-
-        },
-        {
-            id: 14,
-            img: Secreen222,
-
-        },
-        {
-            id: 15,
-            img: Secreen333,
-
-        },
-        {
-            id: 16,
-            img: Secreen11,
-            text: "Exploring an Artist "
-        },
-        {
-            id: 17,
-            img: Secreen12,
-            text: "Exploring an Artist "
-        },
-        {
-            id: 18,
-            img: Secreen111,
-
-        },
-        {
-            id: 19,
-            img: Secreen222,
-
-        },
-        {
-            id: 20,
-            img: Secreen333,
-
-        },
-        ,
-        {
-            id: 21,
-            img: Secreen7,
-            text: "Exploring Library (W..."
-        },
-        {
-            id: 22,
-            img: Secreen8,
-            text: "Exploring Library"
-        },
-        {
-            id: 23,
-            img: Secreen9,
-            text: "Exploring an Artist "
-        },
-        {
-            id: 24,
-            img: Secreen10,
-            text: "Exploring an Artist "
-        },
-        ,
-        {
-            id: 25,
-            img: Secreen111,
-
-        },
-        {
-            id: 26,
-            img: Secreen222,
-
-        },
-        {
-            id: 27,
-            img: Secreen333,
-
-        },
-        {
-            id: 28,
-            img: Secreen7,
-            text: "Exploring Library (W..."
-        },
-        {
-            id: 29,
-            img: Secreen8,
-            text: "Exploring Library"
-        },
-        {
-            id: 30,
-            img: Secreen9,
-            text: "Exploring an Artist "
-        },
-        {
-            id: 31,
-            img: Secreen10,
-            text: "Exploring an Artist "
-        },
-        {
-            id: 32,
-            img: Secreen111,
-
-        },
-        {
-            id: 33,
-            img: Secreen222,
-
-        },
-        {
-            id: 34,
-            img: Secreen333,
-
-        },
-        {
-            id: 35,
-            img: Secreen11,
-            text: "Exploring an Artist "
-        },
-
-
-    ]
     const newScreenArray = Playlist.slice(0, more)
     const handelPopover = () => {
         setShowPopover(!showPopover);

@@ -14,6 +14,7 @@ import SearchUiSecreenFilter from "../../UiSecreenFilter/searchPageFilter"
 import SelectByFeature from '../../SelectByFeature'
 import Footer from "../../Footer/Footer"
 import Down from "../../../assets/images/downicon.png"
+import MostRecent from "../../SelectByFeature/mostRecent"
 
 
 const SearchResultHeroSection = (props) => {
@@ -85,7 +86,7 @@ const SearchResultHeroSection = (props) => {
                     <SearchUiSecreenFilter />
                 </div>
                 <div>
-                    <SelectByFeature feature={true} />
+                    <MostRecent feature={true} />
                 </div>
             </div>
 
