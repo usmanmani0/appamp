@@ -311,17 +311,17 @@ const VideoPlayer = (props) => {
     setPlayOn({ ...playOn, playing: !playOn.playing });
   };
 
-  useEffect(async () => {
-    await asidedata?.map((data) => {
-      if (data?.id == color) {
-        playRef?.current?.seekTo(data.time);
-      }
-    });
-  }, [color]);
+  // useEffect(async () => {
+  //   await asidedata?.map((data) => {
+  //     if (data?.id == color) {
+  //       playRef?.current?.seekTo(data.time);
+  //     }
+  //   });
+  // }, [color]);
 
-  const handelTime = (time) => {
-    playRef?.current.seekTo(time);
-  };
+  // const handelTime = (time) => {
+  //   playRef?.current.seekTo(time);
+  // };
   // const handelRewind=()=>{
   //   playRef.current.seekTo(playRef.current.getCurrentTime() - 10)
   // }
@@ -411,7 +411,7 @@ const VideoPlayer = (props) => {
     } else setShowUmodal(index);
   };
   // console.log("duration");
-  const [uiVideoShow, setuiVideoShow] = useState(location.state.vedioScreen ? false : true);
+  const [uiVideoShow, setuiVideoShow] = useState(false);
 
   const handeluiVideo = () => {
     setuiVideoShow(!uiVideoShow);
@@ -564,7 +564,7 @@ const VideoPlayer = (props) => {
                 <div className="Ui_sccreen_main_scrool_wrapper">
                   <div className="mbl_cards_box">
                     {/* <span>1244 UI Screens</span> */}
-                    {newPlaylist.map((data) => {
+                    {cardsdata.map((data) => {
                       return (
                         <>
                           <div className="mbl_card">
@@ -577,7 +577,7 @@ const VideoPlayer = (props) => {
                               </span>
                             </div>
                             <img
-                              src={data.img}
+                              src={data.image}
                               alt="ERROR"
                               style={{
                                 outline: "1px solid #e9ecef",
@@ -595,99 +595,47 @@ const VideoPlayer = (props) => {
               : (
                 <div>
                   {
-                    location.state.vedioScreen ?
+                    location.state.vedioScreen ? asidedata.map((asidedata, index) => {
 
-                      asidedata.map((asidedata, index) => {
-
-                        return (
-                          <div className="sc_video_time_duration_details" key={index}>
-                            <div
-                              className={
-                                color === asidedata.id
-                                  ? "sc_left_aside_time_desc sc_la_td_bg"
-                                  : "sc_left_aside_time_desc"
-                              }
-                              onClick={() => {
-                                dispatch(changeSideBarContent(asidedata.id));
-                              }}
-                            >
-                              <button className="lft_aside_links">
-                                {" "}
-                                <div className="time_wrapper_lf_aside">
-                                  <span
-                                    className={
-                                      color === asidedata.id
-                                        ? "sc_la_time_txt sc_la_td_bg"
-                                        : "sc_la_time_txt"
-                                    }
-                                  >
-                                    {asidedata.videotimelft}
-                                  </span>
-                                </div>
+                      return (
+                        <div className="sc_video_time_duration_details" key={index}>
+                          <div
+                            className={
+                              color === asidedata.id
+                                ? "sc_left_aside_time_desc sc_la_td_bg"
+                                : "sc_left_aside_time_desc"
+                            }
+                            onClick={() => {
+                              dispatch(changeSideBarContent(asidedata.id));
+                            }}
+                          >
+                            <button className="lft_aside_links">
+                              {" "}
+                              <div className="time_wrapper_lf_aside">
                                 <span
                                   className={
                                     color === asidedata.id
-                                      ? "sc_la_desc_txt sc_la_td_bg"
-                                      : "sc_la_desc_txt"
+                                      ? "sc_la_time_txt sc_la_td_bg"
+                                      : "sc_la_time_txt"
                                   }
                                 >
-                                  {truncate(`${asidedata.videotitleontime}`, 20)}
+                                  {asidedata.videotimelft}
                                 </span>
-                              </button>
-                            </div>
-                          </div>
-                        );
-                      }) :
-
-
-                      <div>
-                        {
-                          location.state.vedioScreen ? <UxVideoSecreenPlaylist /> : asidedata.map((asidedata, index) => {
-
-                            return (
-                              <div className="sc_video_time_duration_details" key={index}>
-                                <div
-                                  className={
-                                    color === asidedata.id
-                                      ? "sc_left_aside_time_desc sc_la_td_bg"
-                                      : "sc_left_aside_time_desc"
-                                  }
-                                  onClick={() => {
-                                    dispatch(changeSideBarContent(asidedata.id));
-                                  }}
-                                >
-                                  <button className="lft_aside_links">
-                                    {" "}
-                                    <div className="time_wrapper_lf_aside">
-                                      <span
-                                        className={
-                                          color === asidedata.id
-                                            ? "sc_la_time_txt sc_la_td_bg"
-                                            : "sc_la_time_txt"
-                                        }
-                                      >
-                                        {asidedata.videotimelft}
-                                      </span>
-                                    </div>
-                                    <span
-                                      className={
-                                        color === asidedata.id
-                                          ? "sc_la_desc_txt sc_la_td_bg"
-                                          : "sc_la_desc_txt"
-                                      }
-                                    >
-                                      {truncate(`${asidedata.videotitleontime}`, 20)}
-                                    </span>
-                                  </button>
-                                </div>
                               </div>
-                            );
-                          })
-
-                        }
-
-                      </div>
-
+                              <span
+                                className={
+                                  color === asidedata.id
+                                    ? "sc_la_desc_txt sc_la_td_bg"
+                                    : "sc_la_desc_txt"
+                                }
+                              >
+                                {truncate(`${asidedata.videotitleontime}`, 20)}
+                              </span>
+                            </button>
+                          </div>
+                        </div>
+                      );
+                    }) : <UxVideoSecreenPlaylist />
                   }
 
                 </div>
@@ -945,7 +893,7 @@ const VideoPlayer = (props) => {
                   <PlayerControls
                     onPlayPause={handelPlayPause}
                     playing={playing}
-                    onTime={handelTime}
+                    // onTime={handelTime}
                     // onRewind={handelRewind}
                     // onFastForward={handelFastForward}
                     playbackRate={playbackRate}
@@ -988,7 +936,7 @@ const VideoPlayer = (props) => {
                       <PlayerControls
                         onPlayPause={handelPlayPause}
                         playing={playing}
-                        onTime={handelTime}
+                        // onTime={handelTime}
                         // onRewind={handelRewind}
                         // onFastForward={handelFastForward}
                         playbackRate={playbackRate}
@@ -1054,8 +1002,8 @@ const VideoPlayer = (props) => {
                 </div>
               </div>
               <div className="Ui_sccreen_main_scrool_wrapper">
-                <div className="total_scree_counter" >1244 UI Screens</div>
                 <div className="mbl_cards_box">
+                  <span>1244 UI Screens</span>
                   {cardsdata.map((data) => {
                     return (
                       <>
@@ -1222,9 +1170,9 @@ const VideoPlayer = (props) => {
                   >
                     <button
                       className="lft_aside_links"
-                      onClick={() => {
-                        handelTime(asidedata.time);
-                      }}
+                    // onClick={() => {
+                    //   handelTime(asidedata.time);
+                    // }}
                     >
                       {" "}
                       <span
