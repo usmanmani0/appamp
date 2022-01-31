@@ -359,6 +359,9 @@
   height: -webkit-fill-available;
   /* height: 50vh; */
 }
+.total_scree_counter {
+  margin: 12px 0px 0px 16px;
+}
 .screen_player_full_screen {
   display: flex;
   justify-content: end;
