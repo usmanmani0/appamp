@@ -61,7 +61,7 @@ const SignIn = () => {
 
             <Row>
               <Col className="cwa_outer_wrapper">
-                <button className="cwa_wrapper">
+                <button className="cwa_wrapper" style={{ marginBottom: "44px" }}>
                   <Image className="apple_img_logo" src={AppleLogo} rounded />
                   <span className="cwg_txt">Continue with Apple</span>
                 </button>
@@ -123,7 +123,7 @@ const SignIn = () => {
         </Container>
       )}
 
-      
+
     </>
   );
 };

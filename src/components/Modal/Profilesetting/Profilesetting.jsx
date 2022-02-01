@@ -13,17 +13,19 @@ import Unionlogo from "../../../assets/images/Union.png";
 import GoogleLogo from "../../../assets/images/GoogleLogo.png";
 import AppleLogo from "../../../assets/images/AppleLogo.png";
 import close from "../../../assets/images/Close.png";
+import "./profilesetting.css"
+// import "../../Header/header.css"
 
 const Profilesetting = () => {
     const [showModal1, SetShowModal1] = useState(false);
 
-    const handelModal = () => {
+    const handelModal1 = () => {
         SetShowModal1(!showModal1);
     };
     return (
         <>
             {showModal1 && (
-                <Container className="signup_container" fluid>
+                <Container className="profilesetting_container" fluid>
                     <div className="close_img_outer hide_close_img">
                         <Image
                             onClick={handelModal1}
@@ -32,7 +34,7 @@ const Profilesetting = () => {
                             rounded
                         />
                     </div>
-                    <div className="signup_wrapper">
+                    <div className="Profilesetting_wrapper">
                         <div className="close_img_outer">
                             <Image
                                 onClick={handelModal1}
