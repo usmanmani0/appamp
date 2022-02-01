@@ -28,12 +28,6 @@ import { useNavigate } from "react-router-dom";
 
 const Header = ({ showF }) => {
 
-  const [showModal1, SetShowModal1] = useState(false);
-
-  const handelProfileModal = () => {
-    SetShowModal1(!showModal1);
-  };
-
   const [showModal, SetShowModal] = useState(false);
 
   const handelSignInModal = () => {
@@ -48,6 +42,12 @@ const Header = ({ showF }) => {
   };
   const [FCard, setFCard] = useState(false)
   const gotoCreateCollection = useNavigate()
+
+  const [profilesetting, setprofilesetting] = useState(false);
+
+  const handleprofilesetting = () => {
+    setprofilesetting(!profilesetting)
+  }
 
 
   return (
@@ -87,7 +87,7 @@ const Header = ({ showF }) => {
 
           </div>
           <div className="f_card_sep"></div>
-          <div className="f_card_headingP">Profile Settings</div>
+          <div className="f_card_headingP" >Profile Settings</div>
           <div className="f_card_headingC" onClick={() => gotoCreateCollection("/createcollection")}>Collections</div>
           <div className="f_card_sep"></div>
           <div className="f_card_text1">Provide Feedback</div>
@@ -127,12 +127,13 @@ const Header = ({ showF }) => {
                   </div>
                   <div className="profile_setting">
                     <div className="profile_detail">
-                      <div>
-                        <img
+                      <div style={{ height: "40px", width: "40px", borderRadius: "50%", backgroundColor: "white" }}>
+                        {/* <img
                           className="profile_img"
                           src={Profile}
                           alt="profile_img"
-                        ></img>
+                        ></img> */}
+                        <div style={{ height: "40px", width: "40px", display: "flex", justifyContent: "center", alignItems: "center", textAlign: "center" }}><span>{("Qayyuma686@gmail.com".substring(0, 1)).toUpperCase()}</span></div>
                       </div>
                       <div className="Profile_desc">
                         <div className="profile_name">First Last</div>
@@ -140,7 +141,7 @@ const Header = ({ showF }) => {
                       </div>
                     </div>
                     <hr className="profile_bottom_line1"></hr>
-                    <div className="test_color test_btn">Profile Setting</div>
+                    <div className="test_color test_btn" onClick={handleprofilesetting}>Profile Setting</div>
                     <div className="test_color test_btn">Collections</div>
                     <hr className="profile_bottom_line2"></hr>
                     <div className="test_color">provide Feedback</div>
@@ -156,19 +157,109 @@ const Header = ({ showF }) => {
         </Navbar>
       </div>
 
-      {showModal && (
+      {
+        profilesetting && (
+          <Container className="signup_container" fluid style={{ backgroundColor: "white" }}>
+            <div className="close_img_outer hide_close_img">
+              <Image
+                onClick={handleprofilesetting}
+                className="close_img"
+                src={close}
+                rounded
+              />
+            </div>
+            <div className="signup_wrapper" style={{ paddingLeft: "4%", paddingRight: "4%" }}>
+              <div className="close_img_outer">
+                <Image
+                  onClick={handleprofilesetting}
+                  className="close_img"
+                  src={close}
+                  rounded
+                />
+              </div>
+              <Row>
+                <Col className="logo_txt_line">
+                  <Image className="union_img_logo" src={Unionlogo} rounded />
+                  <span className="appmap_txt">AppMapp</span>
+                </Col>
+              </Row>
+              <div>
+                <div className="profile_update">
+                  <div className="profile_control">
+                    <div>
+                      <h4>Profile Settings</h4>
+                    </div>
+                    <div>
+                      <i className="icon_play">
+                        <AiOutlineClose
+                          onClick={handleprofilesetting}
+                          className="icon"
+                          size="16px"
+                          color="black"
+                        />
+                      </i>
+                    </div>
+                  </div>
+                  <p style={{ marginBottom: "8px !important" }}>Use these setting to manage your profile</p>
+                  <hr className="profileupdate_line1"></hr>
+                  <h6 style={{ marginTop: "40px", marginBottom: "16px" }}>Profile Photo</h6>
+                  <div className="update_row">
+                    <div>
+                      <img
+                        className="profile_img"
+                        src={Profile}
+                        alt="profile_img"
+                      ></img>
+                    </div>
+                    <button
 
-        <Container className="signup_container" fluid>
-          <div className="close_img_outer hide_close_img">
-            <Image
-              onClick={handelSignInModal}
-              className="close_img"
-              src={close}
-              rounded
-            />
-          </div>
-          <div className="signup_wrapper">
-            <div className="close_img_outer">
+                      className="button_update"
+                      type="button"
+                    >
+                      Update
+                    </button>
+                  </div>
+                  <div className="form">
+                    <FloatingLabel
+                      controlId="floatingInput"
+                      label="Email address"
+                      className="mb-3"
+                    >
+                      <Form.Control
+                        type="email"
+                        placeholder="name@example.com"
+                      />
+                    </FloatingLabel>
+                    <FloatingLabel
+                      controlId="floatingPassword"
+                      label="Password"
+                    >
+                      <Form.Control type="password" placeholder="Password" />
+                    </FloatingLabel>
+                  </div>
+                  <hr className="profileupdate_line1"></hr>
+                  {/* <h4>Save Changes</h4> */}
+                </div>
+              </div>
+              <Row>
+                <Col>
+                  <p className="signup_footer_txt pt-4">
+                    {/* Don't have an account?{" "} */}
+                    <a className="signup_footer_txt1 signin_footer_txt" href="#">
+                      Save Changes
+                    </a>
+                  </p>
+                </Col>
+              </Row>
+            </div>
+          </Container>
+        )
+      }
+
+      {
+        showModal && (
+          <Container className="signup_container" fluid style={{ backgroundColor: "white" }}>
+            <div className="close_img_outer hide_close_img">
               <Image
                 onClick={handelSignInModal}
                 className="close_img"
@@ -176,190 +267,99 @@ const Header = ({ showF }) => {
                 rounded
               />
             </div>
-            <Row>
-              <Col className="logo_txt_line">
-                <Image className="union_img_logo" src={Unionlogo} rounded />
-                <span className="appmap_txt">AppMapp</span>
-              </Col>
-            </Row>
-            <div>
-              <div className="profile_update">
-                <div className="profile_control">
-                  <div>
-                    <h4>Profile Settings</h4>
-                  </div>
-                  <div>
-                    <i className="icon_play">
-                      <AiOutlineClose
-                        className="icon"
-                        size="16px"
-                        color="black"
-                      />
-                    </i>
-                  </div>
-                </div>
-                <p>Use these setting to manage your profile</p>
-                <hr className="profileupdate_line1"></hr>
-                <h6>Profile Photo</h6>
-                <div className="update_row">
-                  <div>
-                    <img
-                      className="profile_img"
-                      src={Profile}
-                      alt="profile_img"
-                    ></img>
-                  </div>
-                  <button
-
-                    className="button_update"
-                    type="button"
-                  >
-                    Update
-                  </button>
-                </div>
-                <div className="form">
-                  <FloatingLabel
-                    controlId="floatingInput"
-                    label="Email address"
-                    className="mb-3"
-                  >
-                    <Form.Control
-                      type="email"
-                      placeholder="name@example.com"
-                    />
-                  </FloatingLabel>
-                  <FloatingLabel
-                    controlId="floatingPassword"
-                    label="Password"
-                  >
-                    <Form.Control type="password" placeholder="Password" />
-                  </FloatingLabel>
-                </div>
-                <hr className="profileupdate_line1"></hr>
-                {/* <h4>Save Changes</h4> */}
+            <div className="signup_wrapper">
+              <div className="close_img_outer">
+                <Image
+                  onClick={handelSignInModal}
+                  className="close_img"
+                  src={close}
+                  rounded
+                />
               </div>
-            </div>
-            <Row>
-              <Col>
-                <p className="signup_footer_txt pt-4">
-                  {/* Don't have an account?{" "} */}
-                  <a className="signup_footer_txt1 signin_footer_txt" href="#">
-                    Save Changes
+              <Row>
+                <Col className="logo_txt_line">
+                  <Image className="union_img_logo" src={Unionlogo} rounded />
+                  <span className="appmap_txt">AppMapp</span>
+                </Col>
+              </Row>
+              <Row>
+                <Col className="cwg_outer_wrapper">
+                  <button className="cwg_wrapper">
+                    <Image className="google_img_logo" src={GoogleLogo} rounded />
+                    <span className="cwg_txt">Continue with Google</span>
+                  </button>
+                </Col>
+              </Row>
+
+              <Row>
+                <Col className="cwa_outer_wrapper">
+                  <button className="cwa_wrapper">
+                    <Image className="apple_img_logo" src={AppleLogo} rounded />
+                    <span className="cwg_txt">Continue with Apple</span>
+                  </button>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <div className="form_wrapper1">
+                    <FloatingLabel
+                      controlId="floatingInput"
+                      label="Email address"
+                      className="mb-3 form_inpt_wrapper"
+                    >
+                      <Form.Control type="email" placeholder="name@example.com" />
+                    </FloatingLabel>
+                  </div>
+                </Col>
+              </Row>
+
+              <Row>
+                <Col>
+                  <div className="form_wrapper2 signin_form2_wrapper">
+                    <FloatingLabel
+                      controlId="floatingPassword"
+                      label="Password"
+                      className="form_inpt_wrapper"
+                    >
+                      <Form.Control type="password" placeholder="Password" />
+                    </FloatingLabel>
+                  </div>
+                </Col>
+              </Row>
+
+              <Row className="signin_btn">
+                <Col className="signup_btn_wrapper">
+                  <Button className="signup_btn">Sign In</Button>
+                </Col>
+              </Row>
+
+              <Row>
+                <Col className="signin_fpass_txt_cnter">
+                  <a className="signup_footer_txt1" href="#">
+                    Forgot Password?
                   </a>
-                </p>
-              </Col>
-            </Row>
-          </div>
-        </Container>
-        // <Container className="signup_container" fluid>
-        //   <div className="close_img_outer hide_close_img">
-        //     <Image
-        //       onClick={handelSignInModal}
-        //       className="close_img"
-        //       src={close}
-        //       rounded
-        //     />
-        //   </div>
-        //   <div className="signup_wrapper">
-        //     <div className="close_img_outer">
-        //       <Image
-        //         onClick={handelSignInModal}
-        //         className="close_img"
-        //         src={close}
-        //         rounded
-        //       />
-        //     </div>
-        //     <Row>
-        //       <Col className="logo_txt_line">
-        //         <Image className="union_img_logo" src={Unionlogo} rounded />
-        //         <span className="appmap_txt">AppMapp</span>
-        //       </Col>
-        //     </Row>
-        //     <Row>
-        //       <Col className="cwg_outer_wrapper">
-        //         <button className="cwg_wrapper">
-        //           <Image className="google_img_logo" src={GoogleLogo} rounded />
-        //           <span className="cwg_txt">Continue with Google</span>
-        //         </button>
-        //       </Col>
-        //     </Row>
+                </Col>
+              </Row>
 
-        //     <Row>
-        //       <Col className="cwa_outer_wrapper">
-        //         <button className="cwa_wrapper">
-        //           <Image className="apple_img_logo" src={AppleLogo} rounded />
-        //           <span className="cwg_txt">Continue with Apple</span>
-        //         </button>
-        //       </Col>
-        //     </Row>
-        //     <Row>
-        //       <Col>
-        //         <div className="form_wrapper1">
-        //           <FloatingLabel
-        //             controlId="floatingInput"
-        //             label="Email address"
-        //             className="mb-3 form_inpt_wrapper"
-        //           >
-        //             <Form.Control type="email" placeholder="name@example.com" />
-        //           </FloatingLabel>
-        //         </div>
-        //       </Col>
-        //     </Row>
+              <Row>
+                <Col>
+                  <p className="signup_footer_txt pt-4">
+                    Don't have an account?{" "}
+                    <a className="signup_footer_txt1 signin_footer_txt" href="#">
+                      Sign Up
+                    </a>
+                  </p>
+                </Col>
+              </Row>
+            </div>
+          </Container>
+        )
+      }
 
-        //     <Row>
-        //       <Col>
-        //         <div className="form_wrapper2 signin_form2_wrapper">
-        //           <FloatingLabel
-        //             controlId="floatingPassword"
-        //             label="Password"
-        //             className="form_inpt_wrapper"
-        //           >
-        //             <Form.Control type="password" placeholder="Password" />
-        //           </FloatingLabel>
-        //         </div>
-        //       </Col>
-        //     </Row>
-
-        //     <Row className="signin_btn">
-        //       <Col className="signup_btn_wrapper">
-        //         <Button className="signup_btn">Sign In</Button>
-        //       </Col>
-        //     </Row>
-
-        //     <Row>
-        //       <Col className="signin_fpass_txt_cnter">
-        //         <a className="signup_footer_txt1" href="#">
-        //           Forgot Password?
-        //         </a>
-        //       </Col>
-        //     </Row>
-
-        //     <Row>
-        //       <Col>
-        //         <p className="signup_footer_txt pt-4">
-        //           Don't have an account?{" "}
-        //           <a className="signup_footer_txt1 signin_footer_txt" href="#">
-        //             Sign Up
-        //           </a>
-        //         </p>
-        //       </Col>
-        //     </Row>
-        //   </div>
-        // </Container>
-      )}
-
-      {showSignUpModal && (
-        <Container className="signup_container" fluid>
-          <div className="close_img_outer hide_close_img">
-            <Image
-              onClick={handelSignUpModal}
-              className="close_img"
-              src={close}
-              rounded
-            />
-          </div>
-          <div className="signup_wrapper">
-            <div className="close_img_outer">
+      {
+        showSignUpModal && (
+          <Container className="signup_container" fluid style={{ backgroundColor: "white" }}>
+            <div className="close_img_outer hide_close_img">
               <Image
                 onClick={handelSignUpModal}
                 className="close_img"
@@ -367,86 +367,96 @@ const Header = ({ showF }) => {
                 rounded
               />
             </div>
-            <Row>
-              <Col className="logo_txt_line">
-                <Image className="union_img_logo" src={Unionlogo} rounded />
-                <span className="appmap_txt">AppMapp</span>
-              </Col>
-            </Row>
-            <Row>
-              <Col className="cwg_outer_wrapper">
-                <button className="cwg_wrapper">
-                  <Image className="google_img_logo" src={GoogleLogo} rounded />
-                  <span className="cwg_txt">Continue with Google</span>
-                </button>
-              </Col>
-            </Row>
+            <div className="signup_wrapper">
+              <div className="close_img_outer">
+                <Image
+                  onClick={handelSignUpModal}
+                  className="close_img"
+                  src={close}
+                  rounded
+                />
+              </div>
+              <Row>
+                <Col className="logo_txt_line">
+                  <Image className="union_img_logo" src={Unionlogo} rounded />
+                  <span className="appmap_txt">AppMapp</span>
+                </Col>
+              </Row>
+              <Row>
+                <Col className="cwg_outer_wrapper">
+                  <button className="cwg_wrapper">
+                    <Image className="google_img_logo" src={GoogleLogo} rounded />
+                    <span className="cwg_txt">Continue with Google</span>
+                  </button>
+                </Col>
+              </Row>
 
-            <Row>
-              <Col className="cwa_outer_wrapper">
-                <button className="cwa_wrapper">
-                  <Image className="apple_img_logo" src={AppleLogo} rounded />
-                  <span className="cwg_txt">Continue with Apple</span>
-                </button>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <div className="form_wrapper1">
-                  <FloatingLabel
-                    controlId="floatingInput"
-                    label="Email address"
-                    className="mb-3 form_inpt_wrapper"
-                  >
-                    <Form.Control type="email" placeholder="name@example.com" />
-                  </FloatingLabel>
-                </div>
-              </Col>
-            </Row>
+              <Row>
+                <Col className="cwa_outer_wrapper">
+                  <button className="cwa_wrapper">
+                    <Image className="apple_img_logo" src={AppleLogo} rounded />
+                    <span className="cwg_txt">Continue with Apple</span>
+                  </button>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <div className="form_wrapper1">
+                    <FloatingLabel
+                      controlId="floatingInput"
+                      label="Email address"
+                      className="mb-3 form_inpt_wrapper"
+                    >
+                      <Form.Control type="email" placeholder="name@example.com" />
+                    </FloatingLabel>
+                  </div>
+                </Col>
+              </Row>
 
-            <Row>
-              <Col>
-                <div className="form_wrapper2">
-                  <FloatingLabel
-                    controlId="floatingPassword"
-                    label="Password"
-                    className="form_inpt_wrapper"
-                  >
-                    <Form.Control type="password" placeholder="Password" />
-                  </FloatingLabel>
-                </div>
-              </Col>
-            </Row>
+              <Row>
+                <Col>
+                  <div className="form_wrapper2">
+                    <FloatingLabel
+                      controlId="floatingPassword"
+                      label="Password"
+                      className="form_inpt_wrapper"
+                    >
+                      <Form.Control type="password" placeholder="Password" />
+                    </FloatingLabel>
+                  </div>
+                </Col>
+              </Row>
 
-            <Row>
-              <Col>
-                <p className="signup_bottom_txt">
-                  By clicking ‘Sign Up’, you agree to the
-                  <a className="tc_txt">Terms of Conditions</a> and
-                  <a className="tc_txt">Privacy Policy</a> of AppMapp.
-                </p>
-              </Col>
-            </Row>
+              <Row>
+                <Col>
+                  <p className="signup_bottom_txt">
+                    By clicking ‘Sign Up’, you agree to the
+                    <a className="tc_txt">Terms of Conditions</a> and
+                    <a className="tc_txt">Privacy Policy</a> of AppMapp.
+                  </p>
+                </Col>
+              </Row>
 
-            <Row>
-              <Col className="signup_btn_wrapper">
-                <Button className="signup_btn">Sign Up</Button>
-              </Col>
-            </Row>
+              <Row>
+                <Col className="signup_btn_wrapper">
+                  <Button className="signup_btn">Sign Up</Button>
+                </Col>
+              </Row>
 
-            <Row>
-              <Col>
-                <p className="signup_footer_txt pt-4">
-                  Already have an account?{" "}
-                  <a className="signup_footer_txt1" href="">
-                    Sign In
-                  </a>
-                </p>
-              </Col>
-            </Row>
-          </div>
-        </Container>
-      )}
+              <Row>
+                <Col>
+                  <p className="signup_footer_txt pt-4">
+                    Already have an account?{" "}
+                    <a className="signup_footer_txt1" href="">
+                      Sign In
+                    </a>
+                  </p>
+                </Col>
+              </Row>
+            </div>
+          </Container>
+        )
+      }
     </>
   );
 };

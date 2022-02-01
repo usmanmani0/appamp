@@ -17,7 +17,7 @@
   align-items: center;
 }
 .signin_form2_wrapper {
-  margin-bottom: 47px;
+  margin-bottom: 38px;
 }
 .signin_btn {
   margin-bottom: 37px;
@@ -28,6 +28,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 48px;
   }
 }

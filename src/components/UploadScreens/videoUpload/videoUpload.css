@@ -2,6 +2,8 @@
   width: 341px;
   height: 474px;
   background-color: #fafafa;
+  min-width: 341px;
+  overflow: auto;
 }
 .videoUploadRightMain {
   width: 100%;
@@ -14,4 +16,51 @@
   height: 40px;
   border-radius: 24px;
   background-color: #fff;
+}
+.videoUploadChapterHeading {
+  padding: 8px 0px;
+  padding-left: 16px;
+  color: black;
+}
+.headingline {
+  padding: 0px 8px;
+  height: 1px;
+  background: #c5c5c5;
+  width: 95%;
+  margin: 8px;
+}
+.firstIn {
+  width: 55px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #c5c5c5;
+  background-color: #fff;
+  text-align: center;
+  color: #8a8a8b;
+}
+.secondIn {
+  width: 222px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #c5c5c5;
+  background-color: #fff;
+  text-align: left;
+  color: #8a8a8b;
+  padding: 11px;
+  margin-left: 4px;
+}
+.plusButton {
+  width: 56px;
+  height: 40px;
+  border-radius: 24px;
+  border: 2px solid #f4f4f4;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+  cursor: pointer;
+}
+.mrBinput {
+  margin: 8px 0px;
 }

@@ -8,6 +8,7 @@ import Up from "../../assets/images/Vector2.png";
 import Videos from "../../assets/images/Videos.png";
 import secreen from "../../assets/images/Screens.png";
 import Upload from "../UploadScreens/Upload";
+import AffterUpload from "./AffterUpload";
 import VideoUpload from "./videoUpload/videoUpload";
 const UploadScreen = () => {
   const [arrow, setArrow] = useState(false);
@@ -121,21 +122,20 @@ const UploadScreen = () => {
             <div
               data-toggle="collapse"
               data-target="#demo"
-              className="toggle_btn"
               onClick={() => setArrow(!arrow)}
             >
-              <div>{arrow ? <img src={Up} /> : <img src={Down} />}</div>
+              <div className="toggle_btn">
+                {" "}
+                <div>{arrow ? <img src={Up} /> : <img src={Down} />}</div>
+              </div>
             </div>
           </div>
           <div className="colapse_content" id="demo" class="collapse">
-            {isActive == 1 ? (
-              <div>
-                <VideoUpload />
-              </div>
-            ) : null}
+            {isActive == 1 ? <VideoUpload /> : null}
             {isActive == 2 ? (
               <div>
                 <Upload />
+                <AffterUpload />
               </div>
             ) : null}
           </div>
