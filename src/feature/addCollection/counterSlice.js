@@ -33,6 +33,7 @@ const initialState = {
     searchView: "",
     show: false,
     show: false,
+    upload: false,
     vedioCard: [
         {
             id: 1,
@@ -311,6 +312,10 @@ export const counterSlice = createSlice({
             console.log("reduxF")
             state.show = !state.show
         },
+        handelUpload: (state, action) => {
+            console.log("upload state")
+            state.upload = true
+        },
         handelValue: (state, action) => {
             state.searchView = action.payload
         },
@@ -347,6 +352,6 @@ export const counterSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { handelShow, uploadPick, collectionHeadingChange, incrementByAmount, addNewCollection, handelempty, handelOffModal, handelValue } = counterSlice.actions
+export const { handelShow, uploadPick, collectionHeadingChange, handelUpload, incrementByAmount, addNewCollection, handelempty, handelOffModal, handelValue } = counterSlice.actions
 
 export default counterSlice.reducer

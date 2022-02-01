@@ -23,6 +23,38 @@
   margin-left: 24px;
   margin-top: 8px;
 }
+.upload_screen_name {
+  width: 222px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 474px;
+  background-color: #f4f4f4;
+}
+.screen_name_div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 206px;
+  height: 48px;
+  margin-top: 8px;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 0px 18px 0px 8px;
+  /* background-color: white; */
+}
+.screen_name_div:hover {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 206px;
+  height: 48px;
+  margin-top: 8px;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 0px 18px 0px 8px;
+  background-color: white;
+}
 .uploadS_m_A {
   width: 142px;
   height: 28px;
