@@ -310,17 +310,17 @@ const VideoPlayer = (props) => {
     setPlayOn({ ...playOn, playing: !playOn.playing });
   };
 
-  useEffect(async () => {
-    await asidedata?.map((data) => {
-      if (data?.id == color) {
-        playRef?.current?.seekTo(data.time);
-      }
-    });
-  }, [color]);
+  // useEffect(async () => {
+  //   await asidedata?.map((data) => {
+  //     if (data?.id == color) {
+  //       playRef?.current?.seekTo(data.time);
+  //     }
+  //   });
+  // }, [color]);
 
-  const handelTime = (time) => {
-    playRef?.current.seekTo(time);
-  };
+  // const handelTime = (time) => {
+  //   playRef?.current.seekTo(time);
+  // };
   // const handelRewind=()=>{
   //   playRef.current.seekTo(playRef.current.getCurrentTime() - 10)
   // }
@@ -944,7 +944,7 @@ const VideoPlayer = (props) => {
                   <PlayerControls
                     onPlayPause={handelPlayPause}
                     playing={playing}
-                    onTime={handelTime}
+                    // onTime={handelTime}
                     // onRewind={handelRewind}
                     // onFastForward={handelFastForward}
                     playbackRate={playbackRate}
@@ -987,7 +987,7 @@ const VideoPlayer = (props) => {
                       <PlayerControls
                         onPlayPause={handelPlayPause}
                         playing={playing}
-                        onTime={handelTime}
+                        // onTime={handelTime}
                         // onRewind={handelRewind}
                         // onFastForward={handelFastForward}
                         playbackRate={playbackRate}
@@ -1224,9 +1224,9 @@ const VideoPlayer = (props) => {
                   >
                     <button
                       className="lft_aside_links"
-                      onClick={() => {
-                        handelTime(asidedata.time);
-                      }}
+                    // onClick={() => {
+                    //   handelTime(asidedata.time);
+                    // }}
                     >
                       {" "}
                       <span
