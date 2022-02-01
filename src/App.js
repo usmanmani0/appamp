@@ -10,7 +10,7 @@ import MobileFilter from "./components/UiSecreenFilter/mobileFilter";
 import SearchResultHeroSection from "./components/SearchResultPage/HeroSection";
 import CollectionHeroSection from "./components/Collection/CollectionHeroSection";
 import CollectionPage from "./components/Collection/CollectionPage";
-import UploadScreen from "../../appamp/src/components/UploadScreens"
+import UploadScreen from "../../appamp/src/components/UploadScreens";
 
 function App() {
   return (
