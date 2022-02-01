@@ -94,7 +94,9 @@ const UploadScreen = () => {
                 </div>
                 <div className='colapse_content' id="demo" class="collapse">
                     {
-                        isActive == 1 ? <div>zeshan</div> : null
+                        isActive == 1 ? <div style={{ paddingTop: "100px" }} className='d-flex justify-content-center align-items-center'>
+                            <h1>Vedio Section Here</h1>
+                        </div> : null
                     }
                     {
                         isActive == 2 ?
