@@ -358,7 +358,7 @@ const UxVideoSecreen = () => {
 
                         <Link to={
                           `/soundcloudpage/${data.id}`
-                        } className="extra1" state={{ moreResult: true }}>
+                        } className="extra1" state={{ moreResult: true }} >
                           <div></div>
                         </Link>
                         <div className="extra2">

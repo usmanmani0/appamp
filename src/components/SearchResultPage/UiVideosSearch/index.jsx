@@ -366,7 +366,7 @@ const UxVideoSearch = () => {
                                                 <Link to={`/soundcloudpage/${data.id}`
 
                                                 }
-                                                    state={{ moreResult: false, vedioScreen: true }}
+                                                    state={{ moreResult: false, vedioScreen: true, vedio: true }}
                                                     className="extra1">
                                                     <div ></div>
                                                 </Link>

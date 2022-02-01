@@ -133,7 +133,7 @@ const Header = ({ showF }) => {
                           src={Profile}
                           alt="profile_img"
                         ></img> */}
-                        <div style={{ height: "30px", width: "30px", display: "flex", justifyContent: "center", alignItems: "center", textAlign: "center" }}><span>{("Qayyuma686@gmail.com".substring(0, 1)).toUpperCase()}</span></div>
+                        <div style={{ height: "40px", width: "40px", display: "flex", justifyContent: "center", alignItems: "center", textAlign: "center" }}><span>{("Qayyuma686@gmail.com".substring(0, 1)).toUpperCase()}</span></div>
                       </div>
                       <div className="Profile_desc">
                         <div className="profile_name">First Last</div>

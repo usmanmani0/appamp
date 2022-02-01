@@ -46,7 +46,7 @@ const AppPageHeroSection = () => {
                     <Button
                       variant="light"
                       {...triggerHandler}
-                      className="d-inline-flex align-items-center"
+                      className="d-inline-flex align-items-center copy_btn_c"
                     >
                       <Image
                         ref={ref}

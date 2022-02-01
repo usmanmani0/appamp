@@ -11,6 +11,13 @@
   height: 82vh;
   overflow-y: scroll;
 }
+.total_screen_counter {
+  margin: 12px 0px 0px 16px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+  color: #0b0b0c;
+}
 .leftaside_wrapper {
   width: 25%;
   height: 100%;
@@ -363,10 +370,12 @@
   display: flex;
   justify-content: end;
   align-items: flex-end;
-  position: absolute;
+  position: fixed;
+
   width: 100%;
 
-  right: 15px;
+  right: 310px;
+  bottom: 10px;
 }
 .screen_player_img {
   width: 20%;
@@ -417,6 +426,7 @@
   border: none;
   background: none;
   cursor: pointer;
+  outline: none !important;
 }
 .lft_aside_links {
   border: none;
@@ -757,6 +767,29 @@
   margin: 2rem auto;
   position: relative;
   margin-top: 0px;
+}
+.mbl_cards_box_left {
+  display: flex;
+  flex-direction: column;
+}
+.secreen_card_counter {
+  background-color: #284c7a;
+  /* width: 25px; */
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  padding: 1px 5px 1px 5px !important;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 400;
+  /* line-height: 18px; */
+  border-radius: 8px;
+  color: white;
+
+  margin: 9px 8px 0px 11px;
+}
+.left_side_screen_counter {
+  padding: 9px 0px 0px 14px;
 }
 .mbl_cards_box img {
   width: 100%;

@@ -19,13 +19,21 @@ import "./profilesetting.css"
 const Profilesetting = () => {
     const [showModal1, SetShowModal1] = useState(false);
 
+<<<<<<< HEAD
     const handelModal1 = () => {
+=======
+    const handelModal = () => {
+>>>>>>> 491f8811adc3e882f468f3d4e02394fefae65dfd
         SetShowModal1(!showModal1);
     };
     return (
         <>
             {showModal1 && (
+<<<<<<< HEAD
                 <Container className="profilesetting_container" fluid>
+=======
+                <Container className="signup_container" fluid>
+>>>>>>> 491f8811adc3e882f468f3d4e02394fefae65dfd
                     <div className="close_img_outer hide_close_img">
                         <Image
                             onClick={handelModal1}
