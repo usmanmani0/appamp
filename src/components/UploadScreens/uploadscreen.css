@@ -84,6 +84,21 @@
   border-radius: 24px;
   border: 1px solid #c5c5c5;
 }
+.colpas_delete_app {
+  width: 111px;
+  height: 40px;
+  background-color: #da1414;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  line-height: 18px;
+  border-radius: 24px;
+  border: 1px solid #c5c5c5;
+}
 .upload_hero_btn_wrapper {
   display: flex;
   flex-direction: column;
@@ -140,12 +155,12 @@
   height: 1px;
   width: 100%;
   margin-bottom: 37px;
-  margin-top: 34px;
+  margin-top: 33px;
 }
 .colapse_div {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #c5c5c5;
+
   padding-bottom: 12px;
 }
 .uploadS_feature_counter {
@@ -189,4 +204,38 @@
   border: 2px solid #f4f4f4;
   border-radius: 24px;
   cursor: pointer;
+}
+.colaps_open_feature_counter {
+  font-size: 20px;
+  line-height: 24px;
+  color: #000000;
+  position: absolute;
+  top: -25px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.colaps_input_wrapper {
+  width: 299px;
+  height: 48px;
+  border: 1px solid #c5c5c5;
+  border-radius: 8px;
+}
+.colaps_input {
+  outline: none !important;
+  border: none;
+  width: 80%;
+  margin-left: 3px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  color: #8a8a8b;
+  height: 100%;
+  padding-left: 16px;
+}
+.colaps_screen_change {
+  display: flex;
+  background-color: #f4f4f4;
+  width: 260px;
+  height: 48px;
+  border-radius: 8px;
 }

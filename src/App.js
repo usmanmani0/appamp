@@ -15,15 +15,15 @@ import UploadScreen from "../../appamp/src/components/UploadScreens"
 function App() {
   return (
     <>
-      <Routes>
+      {/* <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/apppage" element={<AppPage />} />
         <Route path="/soundcloudpage/:id" element={<SoundCloudPage />} />
         <Route path="/searchpage" element={<SearchResultHeroSection />} />
         <Route path="/createcollection" element={<CollectionHeroSection />} />
         <Route path="/collectionpage" element={<CollectionPage />} />
-      </Routes>
-      {/* <UploadScreen /> */}
+      </Routes> */}
+      <UploadScreen />
     </>
   );
 }
