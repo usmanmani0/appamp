@@ -13,29 +13,31 @@ import Unionlogo from "../../../assets/images/Union.png";
 import GoogleLogo from "../../../assets/images/GoogleLogo.png";
 import AppleLogo from "../../../assets/images/AppleLogo.png";
 import close from "../../../assets/images/Close.png";
+import "./profilesetting.css"
+// import "../../Header/header.css"
 
 const Profilesetting = () => {
-    const [showModal, SetShowModal] = useState(false);
+    const [showModal1, SetShowModal1] = useState(false);
 
-    const handelModal = () => {
-        SetShowModal(!showModal);
+    const handelModal1 = () => {
+        SetShowModal1(!showModal1);
     };
     return (
         <>
-            {showModal && (
-                <Container className="signup_container" fluid>
+            {showModal1 && (
+                <Container className="profilesetting_container" fluid>
                     <div className="close_img_outer hide_close_img">
                         <Image
-                            onClick={handelModal}
+                            onClick={handelModal1}
                             className="close_img"
                             src={close}
                             rounded
                         />
                     </div>
-                    <div className="signup_wrapper">
+                    <div className="Profilesetting_wrapper">
                         <div className="close_img_outer">
                             <Image
-                                onClick={handelModal}
+                                onClick={handelModal1}
                                 className="close_img"
                                 src={close}
                                 rounded
@@ -47,71 +49,69 @@ const Profilesetting = () => {
                                 <span className="appmap_txt">AppMapp</span>
                             </Col>
                         </Row>
-                        <Row>
-                            <Col className="cwg_outer_wrapper">
-                                <button className="cwg_wrapper">
-                                    <Image className="google_img_logo" src={GoogleLogo} rounded />
-                                    <span className="cwg_txt">Continue with Google</span>
-                                </button>
-                            </Col>
-                        </Row>
+                        <div>
+                            <div className="profile_update">
+                                <div className="profile_control">
+                                    <div>
+                                        <h4>Profile Settings</h4>
+                                    </div>
+                                    <div>
+                                        <i className="icon_play">
+                                            <AiOutlineClose
+                                                className="icon"
+                                                size="16px"
+                                                color="black"
+                                            />
+                                        </i>
+                                    </div>
+                                </div>
+                                <p>Use these setting to manage your profile</p>
+                                <hr className="profileupdate_line1"></hr>
+                                <h6>Profile Photo</h6>
+                                <div className="update_row">
+                                    <div>
+                                        <img
+                                            className="profile_img"
+                                            src={Profile}
+                                            alt="profile_img"
+                                        ></img>
+                                    </div>
+                                    <button
 
-                        <Row>
-                            <Col className="cwa_outer_wrapper">
-                                <button className="cwa_wrapper">
-                                    <Image className="apple_img_logo" src={AppleLogo} rounded />
-                                    <span className="cwg_txt">Continue with Apple</span>
-                                </button>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <div className="form_wrapper1">
+                                        className="button_update"
+                                        type="button"
+                                    >
+                                        Update
+                                    </button>
+                                </div>
+                                <div className="form">
                                     <FloatingLabel
                                         controlId="floatingInput"
                                         label="Email address"
-                                        className="mb-3 form_inpt_wrapper"
+                                        className="mb-3"
                                     >
-                                        <Form.Control type="email" placeholder="name@example.com" />
+                                        <Form.Control
+                                            type="email"
+                                            placeholder="name@example.com"
+                                        />
                                     </FloatingLabel>
-                                </div>
-                            </Col>
-                        </Row>
-
-                        <Row>
-                            <Col>
-                                <div className="form_wrapper2 signin_form2_wrapper">
                                     <FloatingLabel
                                         controlId="floatingPassword"
                                         label="Password"
-                                        className="form_inpt_wrapper"
                                     >
                                         <Form.Control type="password" placeholder="Password" />
                                     </FloatingLabel>
                                 </div>
-                            </Col>
-                        </Row>
-
-                        <Row className="signin_btn">
-                            <Col className="signup_btn_wrapper">
-                                <Button className="signup_btn">Sign In</Button>
-                            </Col>
-                        </Row>
-
-                        <Row>
-                            <Col className="signin_fpass_txt_cnter">
-                                <a className="signup_footer_txt1" href="#">
-                                    Forgot Password?
-                                </a>
-                            </Col>
-                        </Row>
-
+                                <hr className="profileupdate_line1"></hr>
+                                {/* <h4>Save Changes</h4> */}
+                            </div>
+                        </div>
                         <Row>
                             <Col>
                                 <p className="signup_footer_txt pt-4">
-                                    Don't have an account?{" "}
+                                    {/* Don't have an account?{" "} */}
                                     <a className="signup_footer_txt1 signin_footer_txt" href="#">
-                                        Sign Up
+                                        Save Changes
                                     </a>
                                 </p>
                             </Col>

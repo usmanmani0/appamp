@@ -95,15 +95,15 @@ const SignUp = () => {
               <Col>
                 <p className="signup_bottom_txt">
                   By clicking ‘Sign Up’, you agree to the
-                  <a className="tc_txt">Terms of Conditions</a> and
-                  <a className="tc_txt">Privacy Policy</a> of AppMapp.
+                  <a className="tc_txt" style={{ color: "#505052" }}>&nbsp;Terms of Conditions&nbsp;</a> and
+                  <a className="tc_txt" style={{ color: "#505052" }}>&nbsp;Privacy Policy&nbsp;</a> of AppMapp.
                 </p>
               </Col>
             </Row>
 
             <Row>
               <Col className="signup_btn_wrapper">
-                <Button className="signup_btn">Sign Up</Button>
+                <Button className="signup_btn" style={{ fontWeight: "bold" }}>Sign Up</Button>
               </Col>
             </Row>
 
