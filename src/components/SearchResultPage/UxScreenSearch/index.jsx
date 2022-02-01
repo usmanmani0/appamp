@@ -225,7 +225,7 @@ const UiScreenSearch = (props) => {
 
                                                 </div>
                                             </div> */}
-                                            <Link to={`/soundcloudpage/${data.id}`} state={{ moreResult: false, vedioScreen: false }}>
+                                            <Link to={`/soundcloudpage/${data.id}`} state={{ moreResult: false, vedioScreen: false, showVedio: true, screen: true }}>
 
                                                 <img src={data.img} className='img-fluid' /></Link>
                                         </div>
