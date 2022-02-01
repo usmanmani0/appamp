@@ -7,6 +7,7 @@ import Down from "../../assets/images/Vector7.png"
 import Up from "../../assets/images/Vector2.png"
 import Videos from "../../assets/images/Videos.png";
 import secreen from "../../assets/images/Screens.png";
+import Upload from "../UploadScreens/Upload"
 const UploadScreen = () => {
     const [arrow, setArrow] = useState(false)
     const [isActive, setIsActive] = useState(1)
@@ -83,8 +84,8 @@ const UploadScreen = () => {
                     {arrow && <div className='colpas_delete_app'>
                         <span><img src={Delete} className='delete_icon' /></span>
                         Delete</div>}
-                    <div className='toggle_btn' onClick={() => setArrow(!arrow)}>
-                        <div data-toggle="collapse" data-target="#demo">{
+                    <div data-toggle="collapse" data-target="#demo" className='toggle_btn' onClick={() => setArrow(!arrow)}>
+                        <div >{
                             arrow ? <img src={Up} /> : <img src={Down} />
                         }</div>
                     </div>
@@ -95,10 +96,14 @@ const UploadScreen = () => {
                         isActive == 1 ? <div>zeshan</div> : null
                     }
                     {
-                        isActive == 2 ? <div>afzal</div> : null
+                        isActive == 2 ?
+
+
+                            <div><Upload /></div> : null
                     }
 
                 </div>
+                <div className='colaps_add_feature'>Add Feature</div>
             </div>
         </div>
 
