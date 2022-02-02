@@ -25,6 +25,7 @@ const UploadScreenFilter = () => {
     const [pattern, setPattern] = useState()
     const [element, setElement] = useState()
     const [count, setCount] = useState([])
+
     const [selectedFilter, SetSelectedFilter] = useState([]);
     const [selectedFilter1, SetSelectedFilter1] = useState([]);
     const [list, setList] = useState([
