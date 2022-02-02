@@ -345,6 +345,20 @@
   font-size: 14px;
   line-height: 18px;
 }
+.upload_filter_counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 22px;
+  border-radius: 10px;
+  margin-left: 10px;
+  color: #fbfefd;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  height: 18px;
+  background-color: #5097f3;
+}
 .modal_delte_btn {
   color: #da1414;
   font-size: 14px;
