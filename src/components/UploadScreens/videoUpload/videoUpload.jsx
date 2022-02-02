@@ -23,7 +23,12 @@ const format = (seconds) => {
   return `${mm}:${ss}`;
 };
 const VideoUpload = () => {
-  const [inpu, setInpu] = React.useState(["1"]);
+  const [inpu, setInpu] = React.useState([{ time: "", name: "" }]);
+  const handleChangeTime = (e, index) => {
+    let items = [...inpu];
+    items[index][e.target.name] = e.target.value;
+    setInpu(items);
+  };
   const [source, setSource] = React.useState();
   const [playOn, setPlayOn] = React.useState({
     playing: true,
@@ -110,21 +115,33 @@ const VideoUpload = () => {
   const totalDuration = format(duration);
 
   return (
-    <div className="d-flex">
+    <div className="d-flex flex-wrap">
       <div className="videoUploadLeftMain">
         <div className="videoUploadChapterHeading">Chapters</div>
         <div className="headingline"></div>
-        {inpu.map(() => {
+
+        {inpu.map((data, key) => {
           return (
             <div className="d-flex justify-content-center mrBinput">
               <div>
-                <input type="text" placeholder="00:00" className=" firstIn" />
+                <input
+                  type="text"
+                  value={data.time}
+                  name="time"
+                  placeholder="00:00"
+                  className=" firstIn"
+                  maxLength={5}
+                  onChange={(e) => handleChangeTime(e, key)}
+                />
               </div>
               <div>
                 <input
                   type="text"
+                  value={data.name}
+                  name="name"
                   placeholder="Chapter Name"
                   className=" secondIn"
+                  onChange={(e) => handleChangeTime(e, key)}
                 />
               </div>
             </div>
@@ -134,7 +151,7 @@ const VideoUpload = () => {
         <div className="d-flex justify-content-center">
           <div
             className="plusButton"
-            onClick={() => setInpu((inpu) => [...inpu, "add"])}
+            onClick={() => setInpu((inpu) => [...inpu, { time: "", name: "" }])}
           >
             <AiOutlinePlus color="black" size={12} />
           </div>

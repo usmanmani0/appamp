@@ -44,6 +44,9 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+input[type="time"]::-webkit-calendar-picker-indicator {
+  background: none;
+}
 .secondIn {
   width: 222px;
   height: 40px;
@@ -69,4 +72,13 @@ input::-webkit-inner-spin-button {
 }
 .mrBinput {
   margin: 8px 0px;
+}
+@media (max-width: 600px) {
+  .videoUploadLeftMain {
+    width: 100%;
+  }
+  .videoUploadRightMain {
+    margin-top: 15px;
+    margin-bottom: 45px;
+  }
 }
