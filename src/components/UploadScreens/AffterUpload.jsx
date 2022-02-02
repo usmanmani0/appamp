@@ -16,7 +16,7 @@ const AffterUpload = () => {
         {
             upload &&
 
-            <div className='d-flex'>
+            <div className='screen_upload_colapse_wrapper'>
 
 
 
@@ -62,7 +62,7 @@ const AffterUpload = () => {
                     </div>
 
                     <div className='upload_filter_sec'>
-                        <img src={upload} />
+                        <img src={upload} className='upload_image_size' />
                     </div>
                 </div>
 

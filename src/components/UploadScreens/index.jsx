@@ -15,7 +15,7 @@ const UploadScreen = () => {
     const [isActive, setIsActive] = useState(1);
     return (
         <>
-            <Header />
+            <Header showF={true} />
             <div className="uploadScreen_Wrapper">
                 <div className="uploadS_heading">App Content Submission</div>
                 <div className="uploadS_content_box">
@@ -112,7 +112,7 @@ const UploadScreen = () => {
 
                         {/* ........Change Data on Colaps.... */}
                         {arrow && (
-                            <div className="colpas_delete_app">
+                            <div className="colpas_delete_app" data-toggle="modal" data-target="#exampleModalCenter">
                                 <span>
                                     <img src={Delete} className="delete_icon" />
                                 </span>
@@ -140,6 +140,34 @@ const UploadScreen = () => {
                         ) : null}
                     </div>
                     <div className="colaps_add_feature">Add Feature</div>
+                </div>
+            </div>
+            {/* ..........Modal....... */}
+            {/* <!-- Button trigger modal --> */}
+
+
+            {/* <!-- Modal --> */}
+            <div class="modal fade " id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog  modal-dialog-centered" role="document">
+                    <div class="modal-content" >
+                        <div class="">
+                            <h5 class="modal-title modal_heading" id="exampleModalLongTitle">Are you sure?</h5>
+                            {/* <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button> */}
+                            <div className="heading_seprator"></div>
+                        </div>
+                        <div class="modal-text">
+                            Once you delete , it cannot be undone and you will loose all the items in the feature.
+
+                        </div>
+                        <center><div className="heading_seprator1"></div></center>
+                        <div class="modal_footer_wrappper">
+
+                            <div className="modal_cancel" data-dismiss="modal">Cancel</div>
+                            <div className="modal_delte_btn" data-dismiss="modal" onClick={() => setIsActive(1)}>Delete</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>

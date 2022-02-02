@@ -539,9 +539,9 @@ const UploadScreenFilter = () => {
 
 
                 <div>
-                    <div className='mobile_filter_view'>
+                    {/* <div className='mobile_filter_view'>
                         <MobileFilter />
-                    </div>
+                    </div> */}
 
 
 
@@ -578,14 +578,14 @@ const UploadScreenFilter = () => {
                         </div>
 
 
-                        <hr className="bottom_line_uploads"></hr>
+                        <div className='seprator_up'></div>
                         {searchbox === "" ?
 
                             <div className='d-flex' onMouseLeave={() => { setOpt(null) }}>
 
-                                <div className='search_filter_opt_wrapper'>
+                                <div className='search_filter_opt_wrapper_upload'>
                                     {/* <div className='search_page_appCateg'>App Categories</div> */}
-                                    <div className='UiSecreen_app_categories_button' onClick={() => { setElement(0) }} >
+                                    <div className='UiSecreen_app_categories_button_upload' onClick={() => { setElement(0) }} >
 
                                         <div className="d-flex"
                                         >Elements </div>
@@ -610,7 +610,7 @@ const UploadScreenFilter = () => {
                                 </div>
 
 
-                                <div className='filter_elements_data' style={{ display: element == 0 ? "block" : "none" }} >
+                                <div className='filter_elements_data_upload' style={{ display: element == 0 ? "block" : "none" }} >
                                     <div className='option_data ' onMouseEnter={() => { setOpt(0) }}><div className='d-flex flter_data'>Bars {count.filter((item) => item.flag === "bars").length > 0 ? <div className='each_filter_count' style={{
                                         display:
                                             count.filter((item) => item.flag === "bars").length === 0 ? "none" : "block",
@@ -621,7 +621,7 @@ const UploadScreenFilter = () => {
                                     <div className='option_data ' onMouseEnter={() => { setOpt(4) }}><div className='d-flex flter_data'>Icons & Images {count.filter((item) => item.flag === "icon").length > 0 ? <div className='each_filter_count'>{selectedFilter.filter((data) => overlayArray.some(li => li.typeis == data)).length}</div> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
                                     <div className='option_data ' onMouseEnter={() => { setOpt(5) }}><div className='d-flex flter_data'>Overlay {count.filter((item) => item.flag === "over").length > 0 ? <div className='each_filter_count'>{selectedFilter.filter((data) => iconsArray.some(li => li.typeis == data)).length}</div> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div> </div>
 
-                                <div className='filter_elements_data' style={{ display: element == 1 ? "block" : "none" }} >
+                                <div className='filter_elements_data_upload' style={{ display: element == 1 ? "block" : "none" }} >
 
                                     <div className='option_data ' onMouseEnter={() => { setOpt(6) }}><div className='d-flex flter_data'>Pattern Category 1{count.filter((item) => item.flag === "control").length > 0 ? <div className='each_filter_count'>{selectedFilter.filter((data) => controlArray.some(li => li.typeis == data)).length}</div> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
                                     <div className='option_data ' onMouseEnter={() => { setOpt(7) }}><div className='d-flex flter_data'>Pattern Category 2{count.filter((item) => item.flag === "display").length > 0 ? <div className='each_filter_count'>{selectedFilter.filter((data) => displayArray.some(li => li.typeis == data)).length}</div> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
@@ -635,7 +635,7 @@ const UploadScreenFilter = () => {
                                     {list.map((data, index) => {
                                         return (
                                             <>
-                                                <div className="appPage_checkbox_div" style={{ display: opt == 0 ? "flex" : "none" }}>
+                                                <div className="appPage_checkbox_div_upload" style={{ display: opt == 0 ? "flex" : "none" }}>
 
                                                     <input
                                                         className='checkbox_input_icon'
@@ -654,7 +654,7 @@ const UploadScreenFilter = () => {
                                     {PG1.map((data, index) => {
                                         return (
                                             <>
-                                                <div className="appPage_checkbox_div" style={{ display: opt == 6 ? "block" : "none" }}>
+                                                <div className="appPage_checkbox_div_upload" style={{ display: opt == 6 ? "block" : "none" }}>
 
                                                     <input
                                                         className='checkbox_input_icon'
@@ -673,7 +673,7 @@ const UploadScreenFilter = () => {
                                     {PG2.map((data, index) => {
                                         return (
                                             <>
-                                                <div className="appPage_checkbox_div" style={{ display: opt == 7 ? "block" : "none" }}>
+                                                <div className="appPage_checkbox_div_upload" style={{ display: opt == 7 ? "block" : "none" }}>
 
                                                     <input
                                                         className='checkbox_input_icon'
@@ -692,7 +692,7 @@ const UploadScreenFilter = () => {
                                     {PG3.map((data, index) => {
                                         return (
                                             <>
-                                                <div className="appPage_checkbox_div" style={{ display: opt == 8 ? "block" : "none" }}>
+                                                <div className="appPage_checkbox_div_upload" style={{ display: opt == 8 ? "block" : "none" }}>
 
                                                     <input
                                                         className='checkbox_input_icon'
@@ -711,7 +711,7 @@ const UploadScreenFilter = () => {
                                     {PG4.map((data, index) => {
                                         return (
                                             <>
-                                                <div className="appPage_checkbox_div" style={{ display: opt == 9 ? "block" : "none" }}>
+                                                <div className="appPage_checkbox_div_upload" style={{ display: opt == 9 ? "block" : "none" }}>
 
                                                     <input
                                                         className='checkbox_input_icon'
@@ -730,7 +730,7 @@ const UploadScreenFilter = () => {
                                     {PG5.map((data, index) => {
                                         return (
                                             <>
-                                                <div className="appPage_checkbox_div" style={{ display: opt == 10 ? "block" : "none" }}>
+                                                <div className="appPage_checkbox_div_upload" style={{ display: opt == 10 ? "block" : "none" }}>
 
                                                     <input
                                                         className='checkbox_input_icon'
@@ -749,7 +749,7 @@ const UploadScreenFilter = () => {
                                     {controlArray.map((data, index) => {
                                         return (
                                             <>
-                                                <div className="appPage_checkbox_div" style={{ display: opt == 1 ? "block" : "none" }}>
+                                                <div className="appPage_checkbox_div_upload" style={{ display: opt == 1 ? "block" : "none" }}>
 
                                                     <input
                                                         className='checkbox_input_icon'
@@ -768,7 +768,7 @@ const UploadScreenFilter = () => {
                                     {displayArray.map((data, index) => {
                                         return (
                                             <>
-                                                <div className="appPage_checkbox_div" style={{ display: opt == 2 ? "block" : "none" }}>
+                                                <div className="appPage_checkbox_div_upload" style={{ display: opt == 2 ? "block" : "none" }}>
 
                                                     <input
                                                         className='checkbox_input_icon'
@@ -787,7 +787,7 @@ const UploadScreenFilter = () => {
                                     {feedbackArray.map((data, index) => {
                                         return (
                                             <>
-                                                <div className="appPage_checkbox_div" style={{ display: opt == 3 ? "block" : "none" }}>
+                                                <div className="appPage_checkbox_div_upload" style={{ display: opt == 3 ? "block" : "none" }}>
 
                                                     <input
                                                         className='checkbox_input_icon'
@@ -806,7 +806,7 @@ const UploadScreenFilter = () => {
                                     {iconsArray.map((data, index) => {
                                         return (
                                             <>
-                                                <div className="appPage_checkbox_div" style={{ display: opt == 4 ? "block" : "none" }}>
+                                                <div className="appPage_checkbox_div_upload" style={{ display: opt == 4 ? "block" : "none" }}>
 
                                                     <input
                                                         className='checkbox_input_icon'
@@ -825,7 +825,7 @@ const UploadScreenFilter = () => {
                                     {iconsArray.map((data, index) => {
                                         return (
                                             <>
-                                                <div className="appPage_checkbox_div" style={{ display: opt == 5 ? "block" : "none" }}>
+                                                <div className="appPage_checkbox_div_upload" style={{ display: opt == 5 ? "block" : "none" }}>
 
                                                     <input
                                                         className='checkbox_input_icon'
