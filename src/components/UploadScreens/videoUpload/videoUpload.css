@@ -39,6 +39,11 @@
   text-align: center;
   color: #8a8a8b;
 }
+.firstIn > input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 .secondIn {
   width: 222px;
   height: 40px;

@@ -7,7 +7,7 @@ import {
   Tooltip,
   Modal,
 } from "react-bootstrap";
-import { useLocation } from 'react-router-dom'
+import { useLocation } from "react-router-dom";
 import "./soundcloudvideoplayer.css";
 import fullscreenimg from "../../assets/soundcloudimages/fullscreen.png";
 import dil from "../../assets/soundcloudimages/Dil ko karrar aya (cover) - Annural Khalid.mp4";
@@ -39,7 +39,7 @@ import { hot } from "react-hot-loader";
 import { findDOMNode } from "react-dom";
 import screenfull from "screenfull";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom";
 import {
   handleShowModal,
   changeSideBarContent,
@@ -48,7 +48,7 @@ import MobileAddCollectionModal from "../MobileAddCollection";
 import UxVideoSecreenPlaylist from "../UxVideosPlaylist";
 import UxVideoSecreen from "../UxVideosSecreen";
 import SimilarPatterns from "../SimilarPatterns";
-import Similar from "../SimilarPatterns/similar"
+import Similar from "../SimilarPatterns/similar";
 
 // const asidedata = [
 //   {
@@ -100,7 +100,6 @@ import Similar from "../SimilarPatterns/similar"
 //     time: 70,
 //   },
 // ];
-
 
 const cardsdata = [
   {
@@ -154,13 +153,12 @@ const format = (seconds) => {
 };
 
 const VideoPlayer = (props) => {
-  const { id } = useParams()
-  const Playlist = useSelector((state) => state.hideShow.Playlist)
-  const newPlaylist = Playlist.filter((value) => value.id == id)
+  const { id } = useParams();
+  const Playlist = useSelector((state) => state.hideShow.Playlist);
+  const newPlaylist = Playlist.filter((value) => value.id == id);
 
   // const { color, setColor } = props
-  const location = useLocation()
-
+  const location = useLocation();
 
   const [asidedata, setAsideData] = useState([
     {
@@ -410,7 +408,9 @@ const VideoPlayer = (props) => {
     } else setShowUmodal(index);
   };
   // console.log("duration");
-  const [uiVideoShow, setuiVideoShow] = useState(location.state.showVedio ? true : false);
+  const [uiVideoShow, setuiVideoShow] = useState(
+    location.state.showVedio ? true : false
+  );
 
   const handeluiVideo = () => {
     setuiVideoShow(!uiVideoShow);
@@ -491,7 +491,6 @@ const VideoPlayer = (props) => {
 
   return (
     <>
-
       <Container className="videoplayer_container" fluid="true">
         {leftAsideShow ? (
           <div className="leftaside_wrapper">
@@ -515,10 +514,8 @@ const VideoPlayer = (props) => {
                 </div>
               </div>
             </div>
-            {uiVideoShow ?
-
-
-              location.state.moreResult ?
+            {uiVideoShow ? (
+              location.state.moreResult ? (
                 asidedata.map((asidedata, index) => {
                   return (
                     <div className="sc_video_time_duration_details" key={index}>
@@ -558,19 +555,20 @@ const VideoPlayer = (props) => {
                       </div>
                     </div>
                   );
-                }) :
-
+                })
+              ) : (
                 <div className="Ui_sccreen_main_scrool_wrapper">
                   <div className="mbl_cards_box_left">
                     {/* <span>1244 UI Screens</span> */}
                     {newPlaylist.map((data) => {
                       return (
                         <>
-                          <div className="left_side_screen_counter">1 Screen</div>
+                          <div className="left_side_screen_counter">
+                            1 Screen
+                          </div>
                           <div className="d-flex">
                             <div className="secreen_card_counter">1 .</div>
                             <div className="mbl_card">
-
                               {/* <div className="time_right_wrapper_cards">
   <span className="time_right_wrapper_cards_txt">
     12:34
@@ -581,10 +579,10 @@ const VideoPlayer = (props) => {
                                 alt="ERROR"
                                 style={{
                                   outline: "1px solid #e9ecef",
-                                  borderRadius: "10px", width: "178px",
-                                  height: "387px"
+                                  borderRadius: "10px",
+                                  width: "178px",
+                                  height: "387px",
                                 }}
-
                               />
 
                               {/* <div className="card_title">{data.title}</div> */}
@@ -595,14 +593,62 @@ const VideoPlayer = (props) => {
                     })}
                   </div>
                 </div>
-              : (
-                <div>
-                  {
-                    location.state.vedioScreen ?
+              )
+            ) : (
+              <div>
+                {location.state.vedioScreen ? (
+                  asidedata.map((asidedata, index) => {
+                    return (
+                      <div
+                        className="sc_video_time_duration_details"
+                        key={index}
+                      >
+                        <div
+                          className={
+                            color === asidedata.id
+                              ? "sc_left_aside_time_desc sc_la_td_bg"
+                              : "sc_left_aside_time_desc"
+                          }
+                          onClick={() => {
+                            dispatch(changeSideBarContent(asidedata.id));
+                          }}
+                        >
+                          <button className="lft_aside_links">
+                            {" "}
+                            <div className="time_wrapper_lf_aside">
+                              <span
+                                className={
+                                  color === asidedata.id
+                                    ? "sc_la_time_txt sc_la_td_bg"
+                                    : "sc_la_time_txt"
+                                }
+                              >
+                                {asidedata.videotimelft}
+                              </span>
+                            </div>
+                            <span
+                              className={
+                                color === asidedata.id
+                                  ? "sc_la_desc_txt sc_la_td_bg"
+                                  : "sc_la_desc_txt"
+                              }
+                            >
+                              {truncate(`${asidedata.videotitleontime}`, 20)}
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <div>
+                    {location.state.showVedio ? (
                       asidedata.map((asidedata, index) => {
-
                         return (
-                          <div className="sc_video_time_duration_details" key={index}>
+                          <div
+                            className="sc_video_time_duration_details"
+                            key={index}
+                          >
                             <div
                               className={
                                 color === asidedata.id
@@ -633,64 +679,23 @@ const VideoPlayer = (props) => {
                                       : "sc_la_desc_txt"
                                   }
                                 >
-                                  {truncate(`${asidedata.videotitleontime}`, 20)}
+                                  {truncate(
+                                    `${asidedata.videotitleontime}`,
+                                    20
+                                  )}
                                 </span>
                               </button>
                             </div>
                           </div>
                         );
-                      }) :
-                      <div>
-                        {
-                          location.state.showVedio ?
-
-                            asidedata.map((asidedata, index) => {
-                              return (
-                                <div className="sc_video_time_duration_details" key={index}>
-                                  <div
-                                    className={
-                                      color === asidedata.id
-                                        ? "sc_left_aside_time_desc sc_la_td_bg"
-                                        : "sc_left_aside_time_desc"
-                                    }
-                                    onClick={() => {
-                                      dispatch(changeSideBarContent(asidedata.id));
-                                    }}
-                                  >
-                                    <button className="lft_aside_links">
-                                      {" "}
-                                      <div className="time_wrapper_lf_aside">
-                                        <span
-                                          className={
-                                            color === asidedata.id
-                                              ? "sc_la_time_txt sc_la_td_bg"
-                                              : "sc_la_time_txt"
-                                          }
-                                        >
-                                          {asidedata.videotimelft}
-                                        </span>
-                                      </div>
-                                      <span
-                                        className={
-                                          color === asidedata.id
-                                            ? "sc_la_desc_txt sc_la_td_bg"
-                                            : "sc_la_desc_txt"
-                                        }
-                                      >
-                                        {truncate(`${asidedata.videotitleontime}`, 20)}
-                                      </span>
-                                    </button>
-                                  </div>
-                                </div>
-                              );
-                            }) : <UxVideoSecreenPlaylist />
-                        }
-                      </div>
-
-                  }
-
-                </div>
-              )}
+                      })
+                    ) : (
+                      <UxVideoSecreenPlaylist />
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
             {/* {uiVideoShow ? (
               asidedata.map((asidedata, index) => {
                 return (
@@ -920,129 +925,126 @@ const VideoPlayer = (props) => {
               </div>
             ) : null}
 
+            {location.state.moreResult ? (
+              <div
+                ref={videoPlayerContainerRef}
+                style={{ position: "relative", height: "100%" }}
+              >
+                <ReactPlayer
+                  playbackRate={playbackRate}
+                  ref={playRef}
+                  onProgress={handelProgress}
+                  url={dil}
+                  muted={muted}
+                  playing={playing}
+                  width={"100%"}
+                  height={"100%"}
+                  volume={volume}
+                  controls={""}
+                />
 
-            {
-              location.state.moreResult ?
+                <PlayerControls
+                  onPlayPause={handelPlayPause}
+                  playing={playing}
+                  // onTime={handelTime}
+                  // onRewind={handelRewind}
+                  // onFastForward={handelFastForward}
+                  playbackRate={playbackRate}
+                  onPlayBackRateChange={onPlayBackRateChange}
+                  played={played}
+                  onSeek={handelSeekChange}
+                  onSeekMouseDown={handelSeekMouseDown}
+                  onSeekMouseUp={handelSeekMouseUp}
+                  seeking={seeking}
+                  muted={muted}
+                  onMute={handelMute}
+                  onVolumeSeekUp={handelVolumeSeekUp}
+                  onVolumeChange={handelVolumeChange}
+                  volume={volume}
+                  goFullScreen={goFullScreen}
+                  elapsedTime={elapsedTime}
+                  totalDuration={totalDuration}
+                />
+              </div>
+            ) : (
+              <div>
+                {location.state.vedioScreen ? (
+                  <div
+                    ref={videoPlayerContainerRef}
+                    style={{ position: "relative", height: "100%" }}
+                  >
+                    <ReactPlayer
+                      playbackRate={playbackRate}
+                      ref={playRef}
+                      onProgress={handelProgress}
+                      url={dil}
+                      muted={muted}
+                      playing={playing}
+                      width={"100%"}
+                      height={"100%"}
+                      volume={volume}
+                      controls={""}
+                    />
 
-                <div
-                  ref={videoPlayerContainerRef}
-                  style={{ position: "relative", height: "100%" }}
-                >
-                  <ReactPlayer
-                    playbackRate={playbackRate}
-                    ref={playRef}
-                    onProgress={handelProgress}
-                    url={dil}
-                    muted={muted}
-                    playing={playing}
-                    width={"100%"}
-                    height={"100%"}
-                    volume={volume}
-                    controls={""}
-                  />
+                    <PlayerControls
+                      onPlayPause={handelPlayPause}
+                      playing={playing}
+                      // onTime={handelTime}
+                      // onRewind={handelRewind}
+                      // onFastForward={handelFastForward}
+                      playbackRate={playbackRate}
+                      onPlayBackRateChange={onPlayBackRateChange}
+                      played={played}
+                      onSeek={handelSeekChange}
+                      onSeekMouseDown={handelSeekMouseDown}
+                      onSeekMouseUp={handelSeekMouseUp}
+                      seeking={seeking}
+                      muted={muted}
+                      onMute={handelMute}
+                      onVolumeSeekUp={handelVolumeSeekUp}
+                      onVolumeChange={handelVolumeChange}
+                      volume={volume}
+                      goFullScreen={goFullScreen}
+                      elapsedTime={elapsedTime}
+                      totalDuration={totalDuration}
+                    />
+                  </div>
+                ) : (
+                  <div className="jjj">
+                    {newPlaylist.map((data) => {
+                      return (
+                        <>
+                          <div className="screen_player">
+                            <img
+                              src={data.img}
+                              className="screen_player_img"
+                              alt=""
+                            />
+                          </div>
+                        </>
+                      );
+                    })}
 
-                  <PlayerControls
-                    onPlayPause={handelPlayPause}
-                    playing={playing}
-                    // onTime={handelTime}
-                    // onRewind={handelRewind}
-                    // onFastForward={handelFastForward}
-                    playbackRate={playbackRate}
-                    onPlayBackRateChange={onPlayBackRateChange}
-                    played={played}
-                    onSeek={handelSeekChange}
-                    onSeekMouseDown={handelSeekMouseDown}
-                    onSeekMouseUp={handelSeekMouseUp}
-                    seeking={seeking}
-                    muted={muted}
-                    onMute={handelMute}
-                    onVolumeSeekUp={handelVolumeSeekUp}
-                    onVolumeChange={handelVolumeChange}
-                    volume={volume}
-                    goFullScreen={goFullScreen}
-                    elapsedTime={elapsedTime}
-                    totalDuration={totalDuration}
-                  />
-                </div> :
-                <div >
-
-                  {
-                    location.state.vedioScreen ? <div
-                      ref={videoPlayerContainerRef}
-                      style={{ position: "relative", height: "100%" }}
+                    <div
+                      className="screen_player_full_screen"
+                      onClick={() => {
+                        goFullScreen();
+                        setFull(!full);
+                      }}
                     >
-                      <ReactPlayer
-                        playbackRate={playbackRate}
-                        ref={playRef}
-                        onProgress={handelProgress}
-                        url={dil}
-                        muted={muted}
-                        playing={playing}
-                        width={"100%"}
-                        height={"100%"}
-                        volume={volume}
-                        controls={""}
-                      />
-
-                      <PlayerControls
-                        onPlayPause={handelPlayPause}
-                        playing={playing}
-                        // onTime={handelTime}
-                        // onRewind={handelRewind}
-                        // onFastForward={handelFastForward}
-                        playbackRate={playbackRate}
-                        onPlayBackRateChange={onPlayBackRateChange}
-                        played={played}
-                        onSeek={handelSeekChange}
-                        onSeekMouseDown={handelSeekMouseDown}
-                        onSeekMouseUp={handelSeekMouseUp}
-                        seeking={seeking}
-                        muted={muted}
-                        onMute={handelMute}
-                        onVolumeSeekUp={handelVolumeSeekUp}
-                        onVolumeChange={handelVolumeChange}
-                        volume={volume}
-                        goFullScreen={goFullScreen}
-                        elapsedTime={elapsedTime}
-                        totalDuration={totalDuration}
-                      />
-                    </div> :
-
-
-                      <div className="jjj" >
-                        {
-                          newPlaylist.map((data) => {
-                            return (
-                              <>
-                                <div className="screen_player">
-                                  <img src={data.img} className="screen_player_img" alt="" />
-                                </div>
-                              </>
-                            )
-                          })
-                        }
-
-                        <div
-                          className="screen_player_full_screen"
-                          onClick={() => {
-                            goFullScreen();
-                            setFull(!full);
-                          }}
-                        >
-                          <img src={fullscreenimg} alt="" />
-                        </div>
-                      </div>
-                  }
-                </div>
-
-
-
-            }
+                      <img src={fullscreenimg} alt="" />
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
         <div className="rightaside_wrapper">
-          {
-            location.state.moreResult ? <SimilarPatterns /> : <div>
+          {location.state.moreResult ? (
+            <SimilarPatterns />
+          ) : (
+            <div>
               <div className="d-flex justify-content-center">
                 <div className="sc_videoplayer_btn_wrapper">
                   <div className="sc_ui_videos_right_more">
@@ -1053,11 +1055,14 @@ const VideoPlayer = (props) => {
                 </div>
               </div>
               <div className="Ui_sccreen_main_scrool_wrapper">
-                <div className="total_screen_counter">{
-                  location.state.vedio ? "1244 UI Vedios" : location.state.screen ? "UI Screens" : ""
-                }</div>
+                <div className="total_screen_counter">
+                  {location.state.vedio
+                    ? "1244 UI Vedios"
+                    : location.state.screen
+                    ? "UI Screens"
+                    : ""}
+                </div>
                 <div className="mbl_cards_box">
-
                   {cardsdata.map((data) => {
                     return (
                       <>
@@ -1087,12 +1092,9 @@ const VideoPlayer = (props) => {
                 </div>
               </div>
             </div>
-          }
-
+          )}
 
           {/* More Resluts */}
-
-
         </div>
       </Container>
       {/* id="myHeader" */}
@@ -1224,9 +1226,9 @@ const VideoPlayer = (props) => {
                   >
                     <button
                       className="lft_aside_links"
-                    // onClick={() => {
-                    //   handelTime(asidedata.time);
-                    // }}
+                      // onClick={() => {
+                      //   handelTime(asidedata.time);
+                      // }}
                     >
                       {" "}
                       <span
