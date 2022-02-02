@@ -126,6 +126,16 @@
   overflow-y: scroll;
   z-index: 100000;
 }
+.App_Page_filter_expand_upload {
+  width: 714px;
+  /* top: 8px; */
+  height: 433px;
+  border-radius: 8px;
+
+  background-color: rgba(255, 255, 255, 1);
+
+  overflow-y: scroll;
+}
 
 .has-search {
   padding: 1rem;
@@ -173,6 +183,11 @@
   width: 95%;
   height: 2px;
   margin: 1rem;
+  background-color: #c5c5c5;
+}
+.bottom_line_upload {
+  width: 95%;
+  height: 2px;
   background-color: #c5c5c5;
 }
 .app_categories_button {
@@ -509,6 +524,27 @@
 
 .filter_input_element {
   width: 98%;
+  margin: auto;
+  border-radius: 8px;
+  border: 2px solid #c5c5c5;
+  background-color: white;
+  /* background-color: red; */
+  min-height: 56px;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+.filter_screen_name {
+  padding: 0px 16px 0px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+}
+.filter_input_element_upload {
+  width: 75%;
   margin: auto;
   border-radius: 8px;
   border: 2px solid #c5c5c5;

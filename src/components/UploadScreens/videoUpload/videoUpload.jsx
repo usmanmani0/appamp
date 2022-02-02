@@ -30,12 +30,12 @@ const VideoUpload = () => {
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     const url = URL.createObjectURL(file);
-    console.log("comsat lahore");
+
     setSource(url);
   };
 
   const handleChoose = (event) => {
-    console.log("comsat lahore333", inputRef.current);
+
     inputRef.current.click();
   };
 
