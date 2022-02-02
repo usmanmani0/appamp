@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Arrow from "../../assets/images/ArrowRight.png"
 import card1 from "../../assets/images/card5.png"
+import UploadScreenFilter from "../../components/UploadScreens/uploadScreenFilter"
 import "./uploadscreen.css"
 
 const AffterUpload = () => {
@@ -15,7 +16,7 @@ const AffterUpload = () => {
         {
             upload &&
 
-            <div className='d-flex justify-content-between'>
+            <div className='d-flex'>
 
 
 
@@ -53,13 +54,20 @@ const AffterUpload = () => {
                         <div><img src={Arrow} /></div>
                     </div>
                 </div>
-                <div className='d-flex justify-content-center align-items-center'>
-                    <h1>Filter Section</h1>
+                <div className='right_section_upload'>
+                    <div className='uploadS_filter_wrapper'>
+                        <div>
+                            <UploadScreenFilter />
+                        </div>
+                    </div>
+
+                    <div className='upload_filter_sec'>
+                        <img src={upload} />
+                    </div>
                 </div>
 
-                <div className='upload_filter_sec'>
-                    <img src={card1} />
-                </div>
+
+
 
             </div>
         }

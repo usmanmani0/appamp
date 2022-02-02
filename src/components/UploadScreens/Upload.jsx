@@ -6,17 +6,13 @@ import { handelUpload } from "../../feature/addCollection/counterSlice"
 const Upload = () => {
     const upload = useSelector((state) => state.hideShow.upload)
     const dispatch = useDispatch()
-    // const handleChnage = () => {
-    //     dispatch(handelUpload())
-    // }
+
 
     const handle = (e) => {
-        console.log("in", e?.target?.files[0]?.name)
-        if (e?.target?.files[0]?.name) {
-            console.log("innner")
-            dispatch(handelUpload())
-            console.log("innner2")
 
+        if (e?.target?.files[0]) {
+            let image = URL.createObjectURL(e?.target?.files[0])
+            dispatch(handelUpload(image))
         }
     }
 

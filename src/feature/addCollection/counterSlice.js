@@ -33,7 +33,7 @@ const initialState = {
     searchView: "",
     show: false,
     show: false,
-    upload: false,
+    upload: "",
     vedioCard: [
         {
             id: 1,
@@ -313,8 +313,8 @@ export const counterSlice = createSlice({
             state.show = !state.show
         },
         handelUpload: (state, action) => {
-            console.log("upload state")
-            state.upload = true
+            console.log("upload state", action.payload)
+            state.upload = action.payload
         },
         handelValue: (state, action) => {
             state.searchView = action.payload

@@ -16,6 +16,7 @@
   height: 40px;
   border-radius: 24px;
   background-color: #fff;
+  cursor: pointer;
 }
 .videoUploadChapterHeading {
   padding: 8px 0px;

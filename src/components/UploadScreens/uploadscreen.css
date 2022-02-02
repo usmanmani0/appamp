@@ -55,6 +55,20 @@
   padding: 0px 18px 0px 8px;
   background-color: white;
 }
+.upload_filter_sec {
+  margin-left: 56px;
+}
+.right_section_upload {
+  background-color: #f4f4f4;
+  display: flex;
+  margin-left: 15px;
+  padding: 21px 48px 21px 24px;
+}
+.uploadS_filter_wrapper {
+  background-color: white;
+  width: 714px;
+  height: 433px;
+}
 .uploadS_m_A {
   width: 142px;
   height: 28px;

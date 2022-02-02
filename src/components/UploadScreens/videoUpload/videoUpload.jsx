@@ -5,6 +5,7 @@ import ReactPlayer from "react-player";
 import dil from "../../../assets/soundcloudimages/Dil ko karrar aya (cover) - Annural Khalid.mp4";
 const VideoUpload = () => {
   const [inpu, setInpu] = React.useState(["1"]);
+  const [source, setSource] = React.useState();
   const [playOn, setPlayOn] = React.useState({
     playing: true,
     playbackRate: 1.0,
@@ -13,14 +14,35 @@ const VideoUpload = () => {
     muted: true,
     volume: 0.5,
   });
+
+  const [uploadVedio, setUploadVedio] = React.useState("");
+
   const { playing, playbackRate, played, muted, volume, seeking } = playOn;
   const playRef = useRef(null);
+  const inputRef = React.useRef();
   const handelProgress = (changeState) => {
     // console.log("CHANGE STATE", changeState);
     if (!playOn.seeking) {
       setPlayOn({ ...playOn, ...changeState });
     }
   };
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    const url = URL.createObjectURL(file);
+    console.log("comsat lahore");
+    setSource(url);
+  };
+
+  const handleChoose = (event) => {
+    console.log("comsat lahore333", inputRef.current);
+    inputRef.current.click();
+  };
+
+
+
+
+
   return (
     <div className="d-flex">
       <div className="videoUploadLeftMain">
@@ -53,21 +75,36 @@ const VideoUpload = () => {
         </div>
       </div>
       <div className="videoUploadRightMain d-flex justify-content-center align-items-center">
-        {/* <div className="videoUploadButton d-flex justify-content-center align-items-center">
-          Upload video
-        </div> */}
-        <ReactPlayer
-          playbackRate={playbackRate}
-          ref={playRef}
-          onProgress={handelProgress}
-          url={dil}
-          muted={muted}
-          playing={playing}
-          width={"100%"}
-          height={"100%"}
-          volume={volume}
-          controls={""}
+        <input
+          ref={inputRef}
+          style={{ display: "none" }}
+          type="file"
+          onChange={handleFileChange}
+          accept=".mov,.mp4"
         />
+        {
+          !source &&
+          <div className="videoUploadButton d-flex justify-content-center align-items-center">
+            <span onClick={handleChoose}>
+              Upload video
+            </span>
+          </div>
+        }
+        {source &&
+          <ReactPlayer
+            playbackRate={playbackRate}
+            ref={playRef}
+            onProgress={handelProgress}
+            url={source}
+            muted={muted}
+            playing={playing}
+            width={"100%"}
+            height={"100%"}
+            volume={volume}
+            controls={true}
+          />
+        }
+
       </div>
     </div>
   );
