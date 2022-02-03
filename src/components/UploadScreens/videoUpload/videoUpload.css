@@ -73,6 +73,11 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 .mrBinput {
   margin: 8px 0px;
 }
+@media (max-width: 1100px) {
+  .df {
+    flex-wrap: wrap;
+  }
+}
 @media (max-width: 600px) {
   .videoUploadLeftMain {
     width: 100%;

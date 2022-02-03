@@ -115,7 +115,7 @@ const VideoUpload = () => {
   const totalDuration = format(duration);
 
   return (
-    <div className="d-flex flex-wrap">
+    <div className="d-flex df">
       <div className="videoUploadLeftMain">
         <div className="videoUploadChapterHeading">Chapters</div>
         <div className="headingline"></div>
