@@ -178,6 +178,7 @@ const UxVideoSecreen = () => {
                     <img src={data.img} className="img-fluid" alt="err" />
                     <div className="UI_Secreen_add_collection">
                       {showPopover ? (
+
                         <div
                           className="UI_Secreen_popoover_wrapper"
                           style={{
@@ -239,7 +240,7 @@ const UxVideoSecreen = () => {
                             );
                           })}
 
-                          <div className="UI_Secreen_save_collection_btn_wrapper">
+                          <div className="UI_Secreen_save_collection_btn_wrapper" >
                             <div
                               className="add_collection_btn"
                               onClick={() => addCollection()}
@@ -267,6 +268,8 @@ const UxVideoSecreen = () => {
                             </div>
                           </div>
                         </div>
+
+
                       ) : null}
                     </div>
                     <div

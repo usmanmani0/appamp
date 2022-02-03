@@ -6,6 +6,7 @@ import AppleLogo from "../../assets/images/AppleLogo.png";
 import close from "../../assets/images/Close.png";
 import Profile from "../../assets/images/profile.png";
 import { AiOutlineClose } from "react-icons/ai";
+import { Link } from "react-router-dom";
 // import useNavigate from "react-router-dom";
 
 
@@ -55,7 +56,7 @@ const Header = ({ showF }) => {
       <div className="header-section dis2">
         <div className="logo_div">
           <div>
-            <img className="logo" src={Logo} alt="logo"></img>
+            <Link to="/" ><img className="logo" src={Logo} alt="logo"></img></Link>
           </div>
           {/* <div>
             <h4>AppMap</h4>
@@ -258,7 +259,7 @@ const Header = ({ showF }) => {
 
       {
         showModal && (
-          <Container className="signup_container" fluid style={{ backgroundColor: "white" }}>
+          <Container className="signup_container" fluid style={{ backgroundColor: "white", zIndex: "99999" }}>
             <div className="close_img_outer hide_close_img">
               <Image
                 onClick={handelSignInModal}
@@ -358,7 +359,7 @@ const Header = ({ showF }) => {
 
       {
         showSignUpModal && (
-          <Container className="signup_container" fluid style={{ backgroundColor: "white" }}>
+          <Container className="signup_container" fluid style={{ backgroundColor: "white", zIndex: "99999" }}>
             <div className="close_img_outer hide_close_img">
               <Image
                 onClick={handelSignUpModal}

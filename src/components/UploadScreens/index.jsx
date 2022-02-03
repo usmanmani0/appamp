@@ -130,7 +130,7 @@ const UploadScreen = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="colapse_content" id="demo" class="collapse">
+                    <div id="demo" class="collapse">
                         {isActive == 1 ? <VideoUpload /> : null}
                         {isActive == 2 ? (
                             <div>

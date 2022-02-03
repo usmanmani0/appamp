@@ -378,9 +378,9 @@ const SimilarPatterns = () => {
                     </div>
                     <div className="card_content_similar_patterns">
                       <div className="card_content_show">
-                        <Link to="/soundcloudpage" className="extra1">
+                        <div className="extra1">
                           <div></div>
-                        </Link>
+                        </div>
                         <div className="extra2">
                           <div className="d-flex">
                             <div>

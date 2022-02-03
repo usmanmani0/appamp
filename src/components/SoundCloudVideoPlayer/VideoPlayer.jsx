@@ -310,13 +310,13 @@ const VideoPlayer = (props) => {
     setPlayOn({ ...playOn, playing: !playOn.playing });
   };
 
-  // useEffect(async () => {
-  //   await asidedata?.map((data) => {
-  //     if (data?.id == color) {
-  //       playRef?.current?.seekTo(data.time);
-  //     }
-  //   });
-  // }, [color]);
+  useEffect(async () => {
+    await asidedata?.map((data) => {
+      if (data?.id == color) {
+        playRef?.current?.seekTo(data.time);
+      }
+    });
+  }, [color]);
 
   // const handelTime = (time) => {
   //   playRef?.current.seekTo(time);

@@ -48,9 +48,9 @@ const Hero = () => {
 
   return (
     <>
-      <div className="hero-section" style={{ padding: '0px', margin: "0px" }}>
-        <Row className="mob_col" style={{ paddingLeft: "0px", paddingRight: "0px", margin: "0px" }} >
-          <Col xxl={6} xl={6} lg={6} md={12} xs={11} className="hero_desc" style={{ padding: '0px' }}>
+      <div className="hero-section">
+        <Row className="mob_col" >
+          <Col xxl={6} xl={6} lg={6} md={12} xs={11} className="hero_desc" >
             <div className="headings_div">
               <div className="heading_width">
                 <h4 className="heading_1">
@@ -75,7 +75,7 @@ const Hero = () => {
                       placeholder="Search Features or Components"
                     ></input>
 
-                    {searchView !== "" && <div ><IoIosCloseCircle onClick={clearState} /></div>}
+                    <div style={{ width: "20px", cursor: "pointer" }}>{searchView !== "" && <IoIosCloseCircle onClick={clearState} />}</div>
 
                     <div className="vertical_line"></div>
                     <div class="dropdown disp_non" style={{ paddingTop: '8px', paddingLeft: '8px', paddingBottom: '8px', width: '148px' }}>
