@@ -60,11 +60,11 @@
   width: 280px;
   height: 222px;
   border-radius: 8px;
-  opacity: 0.65;
+  /* opacity: 0.65; */
   cursor: pointer;
   position: absolute;
   z-index: 5;
-  background-color: #161618;
+  background: rgba(22, 22, 24, 0.6);
 }
 .hover_card_content_box {
   padding: 20px 0px 0px 28px;
@@ -152,6 +152,18 @@ input[type="file"] {
   display: block;
 }
 @media screen and (max-width: 768px) {
+  .create_collection_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: center;
+
+    padding: 0px 20px 98px 20px;
+    gap: 48px;
+    margin-top: 56px;
+  }
+}
+@media screen and (max-width: 1440px) {
   .create_collection_wrapper {
     display: flex;
     flex-wrap: wrap;

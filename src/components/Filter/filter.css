@@ -663,3 +663,15 @@
     z-index: 100000;
   }
 }
+@media screen and (max-width: 768px) {
+  .App_Page_filter_expand_upload {
+    width: 100%;
+    /* top: 8px; */
+    height: 433px;
+    border-radius: 8px;
+
+    background-color: rgba(255, 255, 255, 1);
+    padding: 0px 5px;
+    overflow-y: scroll;
+  }
+}

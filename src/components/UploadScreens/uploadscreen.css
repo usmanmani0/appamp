@@ -57,10 +57,12 @@
 }
 .upload_filter_sec {
   margin-left: 56px;
+  object-fit: contain;
 }
 .upload_image_size {
   width: 193px;
   height: 423px;
+  object-fit: contain;
 }
 .right_section_upload {
   background-color: #f4f4f4;
@@ -214,8 +216,9 @@
 .colapse_div {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 
-  padding-bottom: 12px;
+  padding-bottom: 4px;
 }
 .uploadS_feature_counter {
   font-size: 20px;
@@ -373,7 +376,7 @@
 }
 .modal-text {
   margin-top: 48px;
-  padding: 0px 46px 0px 40px;
+  padding: 0px 46px 0px 24px;
   font-size: 14px;
   line-height: 20px;
   width: 90%;
@@ -611,5 +614,8 @@
     border: 2px solid #f4f4f4;
     border-radius: 24px;
     cursor: pointer;
+  }
+  .mar {
+    margin: 15px 0px;
   }
 }

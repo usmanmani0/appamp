@@ -5,9 +5,69 @@
 .collection_page_body {
   max-width: 1440px;
   margin: auto;
+  padding-bottom: 32px;
+}
+.divder_control {
+  margin-top: 8px;
+}
+.divder_control1 {
+  margin-top: 40px;
+}
+.collection_page_footer {
+  display: flex;
+  padding-top: 11px;
+  justify-content: space-between;
+  padding: 11px 40px 0px 40px;
+}
+.save_change_color {
+  color: #5097f3;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  /* color: #8a8a8b; */
+  cursor: pointer;
+}
+.col_page_save_change {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  color: #8a8a8b;
+  cursor: pointer;
+}
+.col_page_d_collection {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  color: #161618;
+  cursor: pointer;
+}
+.collection_page_input_wrapper {
+  width: 380px;
+  height: 48px;
+  border-radius: 8px;
+  margin: 30px 0px 0px 24px;
+}
+.modal_top {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 20px 0px 8px;
+}
+.collection_page_modal_divider {
+  border: 1px solid #f4f4f4;
+  width: 90%;
+}
+.close {
+  margin-top: 0px;
+}
+.collection_pagemodal_head {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 700;
+  color: #000000;
+  padding: 8px 8px 0px 8px;
 }
 .collection_page_seprator {
-  padding: 76px 75px 28px 75px;
+  padding: 76px 75px 0px 75px;
   display: flex;
   align-items: center;
   justify-content: space-between;

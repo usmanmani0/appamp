@@ -85,38 +85,48 @@ const UxVideos = () => {
 
     const vedioCard = [
         {
+            id: 1,
             img: Card1,
             text: "Log Out",
         },
         {
+            id: 2,
             img: Card2,
             text: "Onboarding",
         },
         {
+            id: 3,
             img: Card3,
             text: "Playing a song",
         },
         {
+            id: 4,
             img: Card4,
             text: "Searching for a song",
         },
         {
+            id: 5,
             img: Card5,
             text: "Sign Up",
         },
         {
+            id: 6,
             img: Card6,
             text: "Exploring Settings",
         },
         {
+            id: 7,
             img: Card7,
             text: "Exploring Library (W...",
         },
         {
+
+            id: 8,
             img: Card8,
             text: "Exploring Library",
         },
         {
+            id: 9,
             img: Card9,
             text: "Exploring an Artist ",
         },
@@ -166,7 +176,7 @@ const UxVideos = () => {
                             <>
                                 <div key={index}>
                                     {/* <Link to="/soundcloudpage"> */}
-                                    <div className="vedio_card" onClick={test}>
+                                    <div className="vedio_cardc" onClick={test}>
 
                                         {" "}
                                         <img src={data.img} className="img-fluid" alt="err" />
@@ -339,7 +349,9 @@ const UxVideos = () => {
 
                                         <div className="card_content">
                                             <div className="card_content_show">
-                                                <Link to="/soundcloudpage" className="extra1">
+                                                <Link to={`/soundcloudpage/${data.id}`}
+                                                    state={{ moreResult: true }}
+                                                    className="extra1">
                                                     <div ></div>
                                                 </Link>
                                                 <div className="extra2">

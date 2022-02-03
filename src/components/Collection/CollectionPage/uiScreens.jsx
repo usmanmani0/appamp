@@ -144,7 +144,7 @@ const UiSecreens = () => {
                             return (
                                 <>
                                     <div key={index}>
-                                        <div className='vedio_card'>
+                                        <div className='vedio_cardc'>
                                             <div className="UI_Secreen_add_collection">
                                                 {showPopover ? (
                                                     <div

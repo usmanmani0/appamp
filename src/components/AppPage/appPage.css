@@ -197,14 +197,32 @@
   margin-top: 40px;
   cursor: pointer;
 }
+.vedio_cardc {
+  width: 195px;
+  /* z-index: 20 !important; */
+  height: 423px;
+  border-radius: 8px;
+  position: relative;
+  margin-top: 28px;
+  cursor: pointer;
+}
 .vedio_card:hover > .card_content {
+  display: block;
+}
+.vedio_cardc:hover > .card_content {
   display: block;
 }
 .vedio_card:hover > .card_content_Secreen {
   display: block;
 }
+.vedio_cardc:hover > .card_content_Secreen {
+  display: block;
+}
 
 .vedio_card:hover > .vedio_time {
+  bottom: 10%;
+}
+.vedio_cardc:hover > .vedio_time {
   bottom: 10%;
 }
 .card_content {
@@ -438,7 +456,7 @@
   font-size: 14px;
   color: #161618;
   line-height: 18px;
-  padding: 8px 10px;
+  padding: 8px 0px 0px 10px;
 }
 .vedio_time_wrapper {
   height: 20px;
@@ -771,6 +789,14 @@
     margin-top: 40px;
     cursor: pointer;
   }
+  .vedio_cardc {
+    width: 161px;
+    height: 350px;
+    border-radius: 8px;
+    position: relative;
+    margin-top: 28px;
+    cursor: pointer;
+  }
   .vedio_time {
     position: absolute;
     bottom: 45px;
@@ -824,6 +850,9 @@
     font-size: 11px;
   }
   .vedio_card:hover > .vedio_time {
+    bottom: 13%;
+  }
+  .vedio_cardc:hover > .vedio_time {
     bottom: 13%;
   }
   .mobie_share_copy {

@@ -72,7 +72,7 @@ const UploadScreen = () => {
                             </div>
                         )}
                         {arrow ? (
-                            <div className="filter_content_wrapper">
+                            <div className="filter_content_wrapper mar">
                                 <div
                                     onClick={() => setIsActive(1)}
                                     className={
@@ -112,7 +112,11 @@ const UploadScreen = () => {
 
                         {/* ........Change Data on Colaps.... */}
                         {arrow && (
-                            <div className="colpas_delete_app" data-toggle="modal" data-target="#exampleModalCenter">
+                            <div
+                                className="colpas_delete_app"
+                                data-toggle="modal"
+                                data-target="#exampleModalCenter"
+                            >
                                 <span>
                                     <img src={Delete} className="delete_icon" />
                                 </span>
@@ -130,7 +134,7 @@ const UploadScreen = () => {
                             </div>
                         </div>
                     </div>
-                    <div id="demo" class="collapse">
+                    <div className="colapse_content" id="demo" class="collapse">
                         {isActive == 1 ? <VideoUpload /> : null}
                         {isActive == 2 ? (
                             <div>
@@ -145,27 +149,44 @@ const UploadScreen = () => {
             {/* ..........Modal....... */}
             {/* <!-- Button trigger modal --> */}
 
-
             {/* <!-- Modal --> */}
-            <div class="modal fade " id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div
+                class="modal fade "
+                id="exampleModalCenter"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="exampleModalCenterTitle"
+                aria-hidden="true"
+            >
                 <div class="modal-dialog  modal-dialog-centered" role="document">
-                    <div class="modal-content" >
+                    <div class="modal-content">
                         <div class="">
-                            <h5 class="modal-title modal_heading" id="exampleModalLongTitle">Are you sure?</h5>
+                            <h5 class="modal-title modal_heading" id="exampleModalLongTitle">
+                                Are you sure?
+                            </h5>
                             {/* <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button> */}
                             <div className="heading_seprator"></div>
                         </div>
                         <div class="modal-text">
-                            Once you delete , it cannot be undone and you will loose all the items in the feature.
-
+                            Once you delete , it cannot be undone and you will loose all the
+                            items in the feature.
                         </div>
-                        <center><div className="heading_seprator1"></div></center>
+                        <center>
+                            <div className="heading_seprator1"></div>
+                        </center>
                         <div class="modal_footer_wrappper">
-
-                            <div className="modal_cancel" data-dismiss="modal">Cancel</div>
-                            <div className="modal_delte_btn" data-dismiss="modal" onClick={() => setIsActive(1)}>Delete</div>
+                            <div className="modal_cancel" data-dismiss="modal">
+                                Cancel
+                            </div>
+                            <div
+                                className="modal_delte_btn"
+                                data-dismiss="modal"
+                                onClick={() => setIsActive(1)}
+                            >
+                                Delete
+                            </div>
                         </div>
                     </div>
                 </div>
