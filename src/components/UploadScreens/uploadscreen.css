@@ -619,3 +619,10 @@
     margin: 15px 0px;
   }
 }
+@media screen and (max-width: 730px) {
+  .uploadS_filter_wrapper {
+    background-color: white;
+    width: 100%;
+    height: 433px;
+  }
+}
