@@ -1,0 +1,181 @@
+.create_App_main_container {
+  max-width: 1440px;
+  margin: auto;
+  padding: 25px 81px 0px 87px;
+}
+.create_app_heading {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 40px;
+  color: #000000;
+}
+.create_app_content_box {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 62px;
+}
+.create_app_hero_text {
+  color: #161618;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+}
+.create_hero_sec_btn {
+  display: flex;
+  gap: 11px;
+}
+.create_app_img_link {
+  height: 144px;
+  width: 144px;
+  object-fit: contain;
+}
+.create_app_hero_cancel_btn {
+  border: 1px solid #c5c5c5;
+  width: 80px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 24px;
+  cursor: pointer;
+}
+.create_app_hero_create_btn {
+  border: 1px solid #c5c5c5;
+  width: 80px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 24px;
+  background-color: #5097f3;
+  color: white;
+  cursor: pointer;
+}
+.create_app_hero_sep {
+  width: 100%;
+  border: 1px solid #161618;
+  margin-top: 34px;
+}
+.create_app_body_sec {
+  margin-top: 49px;
+  display: flex;
+}
+.create_app_input_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.create_app_input1 {
+  width: 299px;
+  height: 48px;
+
+  border-radius: 8px;
+  /* border: 1px solid #c5c5c5; */
+}
+.create_app_select_wrapper {
+  width: 299px;
+  height: auto;
+  position: relative;
+  margin-top: 32px;
+  cursor: pointer;
+  padding: 0px 10px 0px 16px;
+  border-radius: 8px;
+  border: 1px solid #c5c5c5;
+}
+.create_app_select_content {
+  /* position: absolute; */
+  padding: 0px 0px 0px 43px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.create_app_input {
+  width: 299px;
+  height: 48px;
+  margin-top: 32px;
+  border-radius: 8px;
+  /* border: 1px solid #c5c5c5; */
+}
+.create_app_select_text {
+  font-weight: 400;
+  line-height: 18px;
+  color: #8a8a8b;
+  font-size: 14px;
+}
+.create_app_select_inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+}
+.form-floating > {
+  display: flex;
+}
+.input_create_app {
+  border: none !important;
+  outline: none !important;
+  height: 100%;
+  color: #8a8a8b;
+  font-weight: 400;
+  line-height: 18px;
+  font-size: 14px;
+  width: 100%;
+  border: 1px solid #c5c5c5;
+}
+.show_upload_content {
+  width: 902px;
+  height: 420px;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 80px;
+}
+.cretae_section_upload_logo {
+  height: 144px;
+  width: 144px;
+  border-radius: 8px;
+  background-color: white;
+}
+.create_app_upload_info {
+  margin-left: 24px;
+}
+.cretae_app_catogroy {
+  width: 141px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: #161618;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  margin-top: 8px;
+}
+.create_app_name {
+  font-size: 34px;
+  line-height: 40px;
+  color: #161618;
+  font-weight: 700;
+  margin-top: 8px;
+}
+.form-control {
+  height: 48px !important;
+  display: flex;
+  align-items: center;
+}
+.create_app_ui_ux {
+  margin-top: 12px;
+  font-size: 12px;
+  line-height: 14px;
+  color: #161618;
+  font-weight: 500;
+}
+.create_app_company_name {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #8a8a8b;
+  margin-top: 12px;
+}

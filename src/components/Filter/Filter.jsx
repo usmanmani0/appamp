@@ -11,11 +11,15 @@ import RightArrow from "../../assets/images/right-arrow.png";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import img1 from "../../assets/images/s.png";
 import HomeMobileFilter from "../UiSecreenFilter/HomemobileFilter"
-import { handelShow } from '../../feature/addCollection/counterSlice';
+import { handelShow, isFillter, getAllProducts } from '../../feature/addCollection/counterSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import RecentlyUpdate from "../../components/SelectByFeature/recentlyUpdate"
+// import { getCheckBoxValue } from "../../feature/addCollection/counterSlice"
 
 function Filter() {
+
+  const getCheckBoxValue = useSelector((state) => state.hideShow.landingPageFillterSearch)
+
   function myFunction() {
     var header = document.getElementById("myHeader");
     var sticky = header.offsetTop;
@@ -30,12 +34,9 @@ function Filter() {
     myFunction();
   };
 
-  // const [show, setShow] = useState(false);
   const show = useSelector((state) => state.hideShow.show)
   const dispatch = useDispatch()
-  // const handelShow = () => {
-  //   setShow(!show);
-  // };
+
 
   // ..................for select checkbox....
   const [isCheckAll, setIsCheckAll] = useState(false);
@@ -44,11 +45,15 @@ function Filter() {
   const [list, setList] = useState([
     {
       id: 2,
-      typeis: "Art & Design",
+      typeis: "Discord",
+    },
+    {
+      id: 2,
+      typeis: "Whats App",
     },
     {
       id: 3,
-      typeis: "Augmented Reality",
+      typeis: "Facebook",
     },
     {
       id: 4,
@@ -81,21 +86,27 @@ function Filter() {
   ]);
 
   useEffect(() => {
-    // setList(data);
   }, [list]);
+  useEffect(() => {
+  }, [getCheckBoxValue]);
 
   const handleSelectAll = (e) => {
-    // alert("ALL")
+    console.log("=========>e", e.target.value)
     setIsCheckAll(!isCheckAll);
     SetSelectedFilter(list.map((li) => `${li.typeis}`));
     if (isCheckAll) {
       SetSelectedFilter([]);
     }
+    dispatch(getAllProducts([]))
+
   };
 
   const handleClick = (e, name) => {
-    // alert("JJ")
     const { id, checked } = e.target;
+    console.log("nammee", name, e.target.checked);
+
+    dispatch(isFillter(name))
+
     let present = selectedFilter.find((data) => data == name);
     console.log("PRESENT", present);
     if (present) {
@@ -104,6 +115,7 @@ function Filter() {
       SetSelectedFilter([...selectedFilter, name]);
     }
   };
+
   const enteringAutoComplete = (value) => {
     console.log("AUTOVALUE", value);
     SetSelectedFilter((preValue) => {
@@ -115,7 +127,6 @@ function Filter() {
     <>
       <div className="header" id="myHeader">
         <div className="container">
-
           <div
             onClick={() => dispatch(handelShow())}
             className="filter_button"
@@ -132,23 +143,7 @@ function Filter() {
             </i>
             <div>Filter</div>
           </div>
-
-
-
           <div>
-            {/* <button className="recent_button" type="button">
-              <span>Recently Updated (All)</span>
-              <i className="icon_down">
-                <BsChevronDown className="icon" size="16px" color="black" />
-              </i>
-            </button> */}
-
-            {/* <DropdownButton id="dropdown-basic-button" title="Dropdown button">
-              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-            </DropdownButton> */}
-
             <RecentlyUpdate />
           </div>
         </div>
@@ -170,8 +165,6 @@ function Filter() {
                       id="tags-filled"
                       value={selectedFilter}
                       options={list.map((option) => option.typeis)}
-                      // defaultValue={[list[3].title]}
-                      // freeSolo
                       onChange={(e, v) => enteringAutoComplete(v)}
                       renderTags={(value, getTagProps) =>
                         value.map((option, index) => (
@@ -194,7 +187,6 @@ function Filter() {
                   </Stack>
                 </div>
               </div>
-
               <hr className="bottom_line"></hr>
               <div className="d-flex">
                 <div className="UiSecreen_app_categories_button">
@@ -209,13 +201,12 @@ function Filter() {
                   <div className="checkbox_div">
                     <input
                       type="checkbox"
-                      onClick={handleSelectAll}
+                      onClick={(e) => handleSelectAll(e)}
+                      value=""
                       isChecked={isCheckAll}
                     />
                     <label className="label">All</label>{" "}
-
                   </div>
-
                   {list.map((data, index) => {
                     return (
                       <>
@@ -229,17 +220,11 @@ function Filter() {
                           />
                           <label className="label">{data.typeis}</label>{" "}
                         </div>
-                        {/* <hr className="vertical_line"></hr> */}
                       </>
                     );
                   })}
                 </div>
-
               </div>
-
-
-
-
             </div>
           </div>
 

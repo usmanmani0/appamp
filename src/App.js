@@ -11,6 +11,9 @@ import SearchResultHeroSection from "./components/SearchResultPage/HeroSection";
 import CollectionHeroSection from "./components/Collection/CollectionHeroSection";
 import CollectionPage from "./components/Collection/CollectionPage";
 import UploadScreen from "../../appamp/src/components/UploadScreens";
+import CreateApps from "../src/components/UploadScreens/CreateApps"
+import Submitportal from "./components/UploadScreens/SubmitPortal";
+import UpdateFilter from "./components/UploadScreens/UpdateFilter";
 
 function App() {
   return (
@@ -23,7 +26,13 @@ function App() {
         <Route path="/createcollection" element={<CollectionHeroSection />} />
         <Route path="/collectionpage" element={<CollectionPage />} />
         <Route path="/upload" element={<UploadScreen />} />
+        <Route path="/createapp" element={<CreateApps />} />
+        <Route path="/adminportal" element={<Submitportal />} />
+        <Route path="/updatefilter" element={<UpdateFilter />} />
       </Routes>
+      {/* <CreateApps /> */}
+      {/* <Submitportal /> */}
+      {/* <UpdateFilter /> */}
 
     </>
   );

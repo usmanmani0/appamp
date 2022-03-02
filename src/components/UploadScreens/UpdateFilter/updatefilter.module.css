@@ -1,0 +1,235 @@
+.update_filter_main_div {
+  max-width: 720px;
+  margin: auto;
+  position: relative;
+  margin-top: 13vh;
+}
+.update_filter_snackbar {
+  position: absolute;
+  display: flex;
+  bottom: -35px;
+  width: 100%;
+  justify-content: center;
+}
+.u_f_snackbar {
+  width: 320px;
+  background-color: #da1414;
+  height: 68px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 0px 17px 0px 16px;
+}
+.u_f_snackbar_success {
+  width: 320px;
+  background-color: #4caf50;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 0px 17px 0px 16px;
+}
+.update_f_success {
+  color: white;
+}
+.update_f_snak_text {
+  max-width: 157px;
+  color: white;
+  margin-left: 13px;
+}
+.undo_f_snak {
+  cursor: pointer;
+  width: 69px;
+  height: 26px;
+}
+.update_filter_wrapper {
+}
+.update_heading_box {
+  display: flex;
+  gap: 24px;
+}
+.update_back_arrow {
+  width: 56px;
+  height: 40px;
+  cursor: pointer;
+}
+.update_heading {
+  font-weight: 700;
+  line-height: 40px;
+  font-size: 34px;
+  color: #000000;
+}
+.update_filter_outer_div {
+  border: 1px solid #bebebe;
+  height: 367px;
+  width: 714px;
+  display: flex;
+  margin-top: 74px;
+  border-radius: 8px;
+}
+.update_filter_cat_div {
+  padding: 8px 8px 0px 9px;
+  border-right: 1px solid #f4f4f4;
+  height: 100%;
+}
+.update_filter_cat_div_last {
+  padding: 8px 8px 0px 9px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 100%;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 60px;
+  border-radius: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: white;
+  border-radius: 8px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #f4f4f4;
+}
+
+.update_f_bg_wraaper {
+  padding: 0px 12px 0px 16px;
+  display: flex;
+  width: 216px;
+  cursor: pointer;
+  height: 36px;
+  border-radius: 8px;
+  justify-content: space-between;
+  align-items: center;
+}
+.update_f_bg_wraaper1 {
+  padding: 0px 12px 0px 16px;
+  display: flex;
+  width: 216px;
+  cursor: pointer;
+  height: 36px;
+  border-radius: 8px;
+  justify-content: space-between;
+  align-items: center;
+}
+.update_filter_curd_sec {
+  display: flex;
+  gap: 11px;
+}
+.update_f_app_cat {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #161618;
+}
+.update_f_app_cat1 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #161618;
+}
+.update_f_app_cat:hover {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #161618;
+}
+.update_f_bg_wraaper:hover {
+  background-color: #fafafa;
+  font-size: 16px;
+  font-weight: 500;
+}
+.arrow_dir {
+  display: none;
+}
+.update_f_bg_wraaper:hover .arrow_dir {
+  display: block;
+}
+.add_btn_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+.update_f_add_btn {
+  width: 56px;
+  cursor: pointer;
+  height: 30px;
+}
+.update_filter_edit_field {
+  width: 226px;
+  justify-content: space-between;
+  height: 36px;
+  align-items: center;
+  display: flex;
+}
+.edit_input_field {
+  border: none !important;
+  outline: none !important;
+  height: 100%;
+  padding-left: 7px;
+  color: black;
+  width: 80px;
+}
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: black;
+  /* background-color: #67b6ff4d; */
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: black;
+  /* background-color: #67b6ff4d; */
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: black;
+  /* background-color: #67b6ff4d;s */
+}
+.update_filter_edit_btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+.update_filter_del_modal {
+  padding: 24px 24px 8px 24px;
+  display: flex;
+  justify-content: space-between;
+}
+.update_del_modal_heading {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: #000000;
+}
+.del_modal_sep {
+  border: 1px solid #f4f4f4;
+  margin: 0px 24px;
+}
+.modal-body_content {
+  padding: 40px 24px 40px 24px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #000000;
+}
+.modal-footer_content {
+  padding: 11px 45px 0px 25px;
+  display: flex;
+  justify-content: end;
+  color: #da1414;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.update_f_del_modal_c {
+  cursor: pointer;
+}

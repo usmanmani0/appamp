@@ -42,6 +42,7 @@ const UiScreenSearch = (props) => {
     const [selectBtn, setSelectBtn] = useState("select_btn");
     const [more, setMore] = useState(5)
     const Playlist = useSelector((state) => state.hideShow.Playlist)
+    const searchView = useSelector((state) => state.hideShow.searchView)
     const [loader, setLoader] = useState(false)
     const xyz = () => {
         console.log("onMouse ebter fn")
@@ -128,6 +129,9 @@ const UiScreenSearch = (props) => {
 
 
     }
+    var newArray = newScreenArray.filter((data) => data.text.toLowerCase().includes(searchView.toLowerCase()));
+
+
     return (
         <>
 
@@ -141,7 +145,7 @@ const UiScreenSearch = (props) => {
                 </div>
                 <div className='UI_Secreen_vedio_card_wrapper'>
                     {
-                        newScreenArray.map((data, index) => {
+                        newArray.map((data, index) => {
                             return (
                                 <>
                                     <div key={index}>
@@ -400,6 +404,11 @@ setSelect({
                     </div>
                 </div>
             )} */}
+            {
+                newArray.length == 0 &&
+                <div className="d-flex justify-content-center result_not_found" >
+                    <div>No Results Found</div>
+                </div>}
             {loader == true ?
                 <div className="d-flex justify-content-center py-1 loader loader_set" >
                     <div class="spinner-border text-secondary" role="status">

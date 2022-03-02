@@ -1,0 +1,211 @@
+.submit_main_hero_section {
+  max-width: 1440px;
+  padding: 25px 81px 0px 87px;
+  margin: auto;
+}
+.submit_portal_heading {
+  font-size: 34px;
+  line-height: 40px;
+  font-weight: 700;
+  color: black;
+}
+.submit_portal_hero_content {
+  display: flex;
+  margin-top: 62px;
+  justify-content: space-between;
+}
+.submit_hero_text {
+  color: #161618;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+}
+.submit_hero_btn_wrapper {
+  display: flex;
+  gap: 16px;
+}
+.submit_hero_edit_btn {
+  width: 108px;
+  height: 40px;
+  border: 1px solid #c5c5c5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 24px;
+  cursor: pointer;
+}
+.submit_hero_new_btn {
+  width: 142px;
+  height: 40px;
+  border: 1px solid #c5c5c5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 24px;
+  background-color: #5097f3;
+  color: white;
+  cursor: pointer;
+}
+.submit_portal_sep {
+  border: 1px solid #161618;
+  width: 100%;
+  margin-top: 25px;
+}
+.create_app_submit_section {
+  background-color: #fafafa;
+  width: 96%;
+
+  height: auto;
+  margin: auto;
+}
+.create_apps_submit_heaing {
+  max-width: 1440px;
+  margin: auto;
+  padding: 46px 81px 0px 87px;
+  display: flex;
+  gap: 206px;
+  /* justify-content: space-between; */
+}
+.table_inner_2 {
+  display: flex;
+  align-items: center;
+  gap: 240px;
+}
+.create_apps_submit_heaing2 {
+  max-width: 1440px;
+  margin: auto;
+  padding: 46px 81px 0px 87px;
+  display: flex;
+  gap: 187px;
+  /* justify-content: space-between; */
+}
+.create_apps_submit_heaing_inner {
+  display: flex;
+  width: 599px;
+  gap: 38px;
+  /* justify-content: space-between; */
+}
+.submit_p_catogery {
+  display: flex;
+  cursor: pointer;
+  gap: 15px;
+}
+.table_iner {
+  display: flex;
+  align-items: center;
+  gap: 240px;
+}
+.submit_portal_create_app_tag {
+  font-weight: 500;
+  line-height: 24px;
+  width: 135px;
+  font-size: 20px;
+  color: black;
+}
+.submit_portal_create_app_tagp {
+  font-weight: 500;
+  line-height: 24px;
+  width: 154px;
+  font-size: 20px;
+  color: black;
+}
+.create_apps_submit_heaing_text {
+  font-size: 14px;
+  line-height: 20px;
+  color: #8a8a8b;
+  width: 100px;
+  font-weight: 400;
+}
+.submit_portal_info_section {
+  margin-top: 19px;
+}
+.create_app_submited_content {
+  max-width: 1440px;
+  margin: auto;
+  cursor: pointer;
+  padding: 8px 81px 8px 87px;
+}
+.create_app_submited_content_text {
+  display: flex;
+  /* gap: 48px; */
+  margin-left: 0px;
+  width: 576px;
+  justify-content: space-between;
+}
+.create_app_submited_content_text2 {
+  display: flex;
+
+  width: 576px;
+  justify-content: space-between;
+}
+.ap_c_content {
+  font-size: 14px;
+
+  line-height: 20px;
+  color: #161618;
+  display: flex;
+  font-weight: 400;
+}
+.ap_c_contentu {
+  font-size: 14px;
+  text-decoration: underline !important;
+  line-height: 20px;
+  color: #161618;
+  display: flex;
+  font-weight: 400;
+}
+.submit_inner_logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 117px;
+}
+.admin_portal_app_name {
+  font-weight: 400;
+  line-height: 20px;
+  font-size: 14px;
+  color: #161618;
+}
+.admint_portal_app_logo {
+  height: 32px;
+  width: 32px;
+}
+.submited_content_table_sep {
+  border: 1px solid #c5c5c5;
+  margin-top: 8px;
+  width: 100%;
+}
+.submited_app_delete_btn {
+  font-weight: 700;
+  color: #da1414;
+  line-height: 18px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.publish_app_btn_wrapper {
+  display: flex;
+  width: 145px;
+  gap: 16px;
+}
+.publish_app_btn {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 700;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #5097f3;
+}
+.publish_app_submit_btn {
+  width: 82px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 24px;
+  background-color: #5097f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}

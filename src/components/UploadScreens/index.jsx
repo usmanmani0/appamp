@@ -10,8 +10,10 @@ import secreen from "../../assets/images/Screens.png";
 import Upload from "../UploadScreens/Upload";
 import AffterUpload from "./AffterUpload";
 import VideoUpload from "./videoUpload/videoUpload";
+import { useNavigate } from "react-router-dom";
 const UploadScreen = () => {
     const [arrow, setArrow] = useState(false);
+    const redirect = useNavigate()
     const [isActive, setIsActive] = useState(1);
     return (
         <>
@@ -31,7 +33,7 @@ const UploadScreen = () => {
                         </div>
                     </div>
                     <div className="upload_hero_btn_wrapper">
-                        <div className="upload_edit_app">Edit App Details</div>
+                        <div className="upload_edit_app" onClick={() => redirect("/createapp")}>Edit App Details</div>
                         <div className="upload_delete_app">
                             <span>
                                 <img src={Delete} className="delete_icon" />

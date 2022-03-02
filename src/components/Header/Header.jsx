@@ -53,7 +53,7 @@ const Header = ({ showF }) => {
 
   return (
     <>
-      <div className="header-section dis2">
+      <div className={showF ? "header-section dis2 shadow_control" : "header-section dis2"}>
         <div className="logo_div">
           <div>
             <Link to="/" ><img className="logo" src={Logo} alt="logo"></img></Link>
@@ -160,7 +160,7 @@ const Header = ({ showF }) => {
 
       {
         profilesetting && (
-          <Container className="signup_container" fluid style={{ backgroundColor: "white" }}>
+          <Container className="signup_container" fluid >
             <div className="close_img_outer hide_close_img">
               <Image
                 onClick={handleprofilesetting}
@@ -259,7 +259,7 @@ const Header = ({ showF }) => {
 
       {
         showModal && (
-          <Container className="signup_container" fluid style={{ backgroundColor: "white", zIndex: "99999" }}>
+          <Container className="signup_container" fluid style={{ zIndex: "99999" }}>
             <div className="close_img_outer hide_close_img">
               <Image
                 onClick={handelSignInModal}
@@ -359,7 +359,7 @@ const Header = ({ showF }) => {
 
       {
         showSignUpModal && (
-          <Container className="signup_container" fluid style={{ backgroundColor: "white", zIndex: "99999" }}>
+          <Container className="signup_container" fluid style={{ zIndex: "99999" }}>
             <div className="close_img_outer hide_close_img">
               <Image
                 onClick={handelSignUpModal}

@@ -9,7 +9,7 @@ import { BiMobile } from "react-icons/bi";
 import { IoIosCloseCircle } from "react-icons/io";
 import dropDown from "../../assets/images/Vector.png"
 import { useSelector, useDispatch } from 'react-redux';
-import { handelValue, handelempty } from "../../feature/addCollection/counterSlice"
+import { handelValue, handelempty, chnageScreen } from "../../feature/addCollection/counterSlice"
 import { useNavigate } from "react-router-dom";
 import Down from "../../assets/images/downicon.png"
 
@@ -26,13 +26,13 @@ const Hero = () => {
 
   const [color, setColor] = useState("1");
   const searchView = useSelector((state) => state.hideShow.searchView)
+  const isActiveScreen = useSelector((state) => state.hideShow.isActiveScreen)
 
   const [DownArrow, SetDownArrow] = useState(false)
   const [UXSelect, setUXSelect] = useState("UX Videos")
   const dispatch = useDispatch()
 
   const sendValue = (e) => {
-    console.log("key value", e.target.value)
     dispatch(handelValue(e.target.value))
   }
   const history = useNavigate()
@@ -45,7 +45,10 @@ const Hero = () => {
   const clearState = () => {
     dispatch(handelempty())
   }
-
+  const handleScreenView = (value) => {
+    console.log("handle screen change clicked")
+    dispatch(chnageScreen(value))
+  }
   return (
     <>
       <div className="hero-section">
@@ -80,22 +83,7 @@ const Hero = () => {
                     <div className="vertical_line"></div>
                     <div class="dropdown disp_non" style={{ paddingTop: '8px', paddingLeft: '8px', paddingBottom: '8px', width: '148px' }}>
 
-                      {/* <button
-                        class="dropdown-toggle"
-                        type="button"
-                        id="dropdownMenuButton1"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                        className="recent_button"
-                        style={{ border: 'none', paddingLeft: '8px', width: '130px' }}
-                      >
-                        <span>UX Videos</span>
-                        <b>
-                          <i className="icon_down" style={{ marginLeft: '8px' }}>
-                            <img className="arrow_down" src={dropDown} alt="arrow_down" style={{ width: "12px", height: "7.41px" }}></img>
-                          </i>
-                        </b>
-                      </button> */}
+
                       <div className='search_hero_mDropdown' onClick={() => SetDownArrow(!DownArrow)}>{UXSelect}<div><img src={Down} /></div></div>
                       <div className='search_dropdown_content2' style={{ display: DownArrow == true ? "flex" : "none" }}>
                         <div className='search_dropdown_value' onClick={() => { setUXSelect(UXSelect === "UX Videos" ? "UI Screens" : "UX Videos", SetDownArrow(false)) }}>{UXSelect === "UX Videos" ? "UI Screens" : "UX Videos"}</div>
@@ -120,11 +108,12 @@ const Hero = () => {
                         type="button"
                         style={{
                           backgroundColor:
-                            color === "1" ? "rgba(22, 22, 24, 1)" : "white",
-                          color: color === "1" ? "white" : "rgba(22, 22, 24, 1)",
+                            isActiveScreen === "1" ? "rgba(22, 22, 24, 1)" : "white",
+                          color: isActiveScreen === "1" ? "white" : "rgba(22, 22, 24, 1)",
                         }}
                         onClick={() => {
-                          setColor("1");
+                          // setColor("1");
+                          handleScreenView("1")
                         }}
                       >
                         <i className="icon_play">
@@ -133,7 +122,7 @@ const Hero = () => {
                             size="24px"
                             style={{
                               color:
-                                color === "1" ? "white" : "rgba(22, 22, 24, 1)",
+                                isActiveScreen === "1" ? "white" : "rgba(22, 22, 24, 1)",
                             }}
                           />
                         </i>
@@ -145,11 +134,12 @@ const Hero = () => {
                         type="button"
                         style={{
                           backgroundColor:
-                            color === "2" ? "rgba(22, 22, 24, 1)" : "white",
-                          color: color === "2" ? "white" : "rgba(22, 22, 24, 1)",
+                            isActiveScreen === "2" ? "rgba(22, 22, 24, 1)" : "white",
+                          color: isActiveScreen === "2" ? "white" : "rgba(22, 22, 24, 1)",
                         }}
                         onClick={() => {
-                          setColor("2");
+                          // setColor("2");
+                          handleScreenView("2")
                         }}
                       >
                         <i className="icon_play">
@@ -158,7 +148,7 @@ const Hero = () => {
                             size="16px"
                             style={{
                               color:
-                                color === "2" ? "white" : "rgba(22, 22, 24, 1)",
+                                isActiveScreen === "2" ? "white" : "rgba(22, 22, 24, 1)",
                             }}
                           />
                         </i>

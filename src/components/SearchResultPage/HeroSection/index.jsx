@@ -9,7 +9,7 @@ import Header from "../../Header/Header"
 import UxVideoSearch from "../UiVideosSearch"
 import UiScreenSearch from '../UxScreenSearch'
 import { useSelector, useDispatch } from 'react-redux';
-import { handelValue, handelempty } from "../../../feature/addCollection/counterSlice"
+import { handelValue, handelempty, chnageScreen } from "../../../feature/addCollection/counterSlice"
 import SearchUiSecreenFilter from "../../UiSecreenFilter/searchPageFilter"
 import SelectByFeature from '../../SelectByFeature'
 import Footer from "../../Footer/Footer"
@@ -22,14 +22,20 @@ const SearchResultHeroSection = (props) => {
     // const [searchView, setSearchView] = useState()
     const dispatch = useDispatch()
     const searchView = useSelector((state) => state.hideShow.searchView)
+    const isActiveScreen = useSelector((state) => state.hideShow.isActiveScreen)
     const sendValue = (e) => {
         dispatch(handelValue(e.target.value))
     }
     const [DownArrow, SetDownArrow] = useState(false)
     const [UXSelect, setUXSelect] = useState("UX Videos")
+    const handleScreenView = (value) => {
+
+        dispatch(chnageScreen(value))
+    }
+
     return (
         <>
-            <Header showF={true} />
+            <Header />
             <div className='Searchresult_hero_section'>
                 <div className='Searchresult_content_wrapper'>
                     <div className='Searchresult_box'>
@@ -46,27 +52,27 @@ const SearchResultHeroSection = (props) => {
                                 </div>}
                             <div className='serach_vertical_line'></div>
                             <div className='search_btn_wrapper'>
-                                <div className={searchBtn == 1 ? 'search_ui_btn_bg' : 'search_ux_btn'} onClick={() => {
-                                    setSearchBtn(1)
+                                <div className={isActiveScreen == 1 ? 'search_ui_btn_bg' : 'search_ux_btn'} onClick={() => {
+                                    handleScreenView("1")
                                 }}><div>  <i className="icon_play">
                                     <BiPlayCircle
                                         className="icon"
                                         size="16px"
                                         style={{
                                             color:
-                                                searchBtn === 1 ? "white" : "rgba(22, 22, 24, 1)",
+                                                isActiveScreen === 1 ? "white" : "rgba(22, 22, 24, 1)",
                                         }}
                                     />
                                 </i></div> UX Videos</div>
-                                <div className={searchBtn == 2 ? 'search_ui_btn_bg' : 'search_ui_btn'} onClick={() => {
-                                    setSearchBtn(2)
+                                <div className={isActiveScreen == 2 ? 'search_ui_btn_bg' : 'search_ui_btn'} onClick={() => {
+                                    handleScreenView("2")
                                 }}><div>                      <i className="icon_play">
                                     <BiMobile
                                         className="icon"
                                         size="16px"
                                         style={{
                                             color:
-                                                searchBtn === 2 ? "white" : "rgba(22, 22, 24, 1)",
+                                                isActiveScreen === 2 ? "white" : "rgba(22, 22, 24, 1)",
                                         }}
                                     />
                                 </i></div>UI Screens</div>
@@ -93,13 +99,13 @@ const SearchResultHeroSection = (props) => {
 
             <div className='search_page_body_wrapper'>
                 {
-                    searchBtn == 1 ?
+                    isActiveScreen == 1 ?
                         <UxVideoSearch moreResult={true} /> : ""}
                 {
-                    searchBtn == 2 ?
+                    isActiveScreen == 2 ?
                         <UiScreenSearch moreResult={true} /> : ""}
                 {
-                    searchBtn === 0 ? <div>    <UxVideoSearch moreResult={true} />
+                    isActiveScreen === 0 ? <div>    <UxVideoSearch moreResult={true} />
                         <UiScreenSearch moreResult={true} /></div> : ""
 
                 }

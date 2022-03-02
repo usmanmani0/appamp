@@ -35,27 +35,29 @@ const UxVideoSecreen = () => {
   const [tick, setTick] = useState([]);
   const [setSave, showSetSave] = useState(false);
   const [copy, setCopy] = useState(false);
+  const [searchValue, setSearchValue] = useState("")
   const [select, setSelect] = useState({ open: false });
   const [checkdata, setCheckdata] = useState([
     {
       id: 1,
       checked: false,
       image: checkicon,
-      Name: "Collection # 1",
+      Name: "ACollection # 1",
     },
     {
       id: 2,
       checked: true,
       image: checkicon,
-      Name: "Collection # 2",
+      Name: "BCollection # 2",
     },
     {
       id: 3,
       checked: true,
       image: checkicon,
-      Name: "Collection # 3",
+      Name: "CCollection # 3",
     },
   ]);
+
   const vedioCard = useSelector((state) => state.hideShow.vedioCard)
   const checkTick = async (index) => {
     let findIndex = tick.find((data) => data === index);
@@ -85,53 +87,7 @@ const UxVideoSecreen = () => {
     }, 5000);
   };
 
-  // const vedioCard = [
-  //   {
-  //     id: 1,
-  //     img: Card1,
-  //     text: "Log Out",
-  //   },
-  //   {
-  //     id: 2,
-  //     img: Card2,
-  //     text: "Onboarding",
-  //   },
-  //   {
-  //     id: 3,
-  //     img: Card3,
-  //     text: "Playing a song",
-  //   },
-  //   {
-  //     id: 4,
-  //     img: Card4,
-  //     text: "Searching for a song",
-  //   },
-  //   {
-  //     id: 5,
-  //     img: Card5,
-  //     text: "Sign Up",
-  //   },
-  //   {
-  //     id: 6,
-  //     img: Card6,
-  //     text: "Exploring Settings",
-  //   },
-  //   {
-  //     id: 7,
-  //     img: Card7,
-  //     text: "Exploring Library (W...",
-  //   },
-  //   {
-  //     id: 8,
-  //     img: Card8,
-  //     text: "Exploring Library",
-  //   },
-  //   {
-  //     id: 9,
-  //     img: Card9,
-  //     text: "Exploring an Artist ",
-  //   },
-  // ];
+
   const addCollection = () => {
     let index = checkdata.length;
     console.log("klkkl", index);
@@ -163,9 +119,18 @@ const UxVideoSecreen = () => {
     console.log("onMouse ebter fn");
     setSelectBtn("cont2");
   };
+  const [isSearch, setIsSearch] = useState("")
+  const filterAddCollection = (e) => {
+    const result = e.target.value
+    setSearchValue(result)
+    const filtterArray = checkdata.filter((data) => data.Name.toLowerCase().includes(result.toLowerCase()))
+    setIsSearch(filtterArray)
+  }
+
 
   return (
     <>
+
       <div className="soud_cloud_vedio_section">
         <div className="vedio_card_wrapper">
           {vedioCard.map((data, index) => {
@@ -191,54 +156,110 @@ const UxVideoSecreen = () => {
                               type="text"
                               class="form-control"
                               id="form_control"
+                              value={searchValue}
                               placeholder="Search Collections"
-                            ></input>
+                              onChange={(e) => filterAddCollection(e)}
+                            />
                           </div>
-
-                          {checkdata.map((data, index) => {
-                            return (
-                              <div
-                                className="UI_Secreen_collection_checkbox_wrapper"
-                                key={index}
-                              >
-                                <div className="Ui_Secreen_collection_inner_wrapper">
+                          {isSearch === "" ?
+                            <>
+                              {checkdata.map((data, index) => {
+                                return (
                                   <div
-                                    className={
-                                      tick.includes(`${index}`)
-                                        ? "Ui_Secreen_checkbox_wrapper_enable"
-                                        : "Ui_Secreen_checkbox_wrapper"
-                                    }
-                                    onClick={() => checkTick(`${index}`)}
+                                    className="UI_Secreen_collection_checkbox_wrapper"
+                                    key={index}
                                   >
-                                    {tick.includes(`${index}`) ? (
-                                      <Image src={data.image} />
-                                    ) : (
-                                      ""
-                                    )}
-                                  </div>
-                                  <div>
-                                    <span className="collection_txt">
-                                      <EditText
-                                        type={"text"}
-                                        name={"Name"}
-                                        value={data.Name}
-                                        onChange={(e) =>
-                                          changeDynamicText(e, index)
+                                    <div className="Ui_Secreen_collection_inner_wrapper">
+                                      <div
+                                        className={
+                                          tick.includes(`${index}`)
+                                            ? "Ui_Secreen_checkbox_wrapper_enable"
+                                            : "Ui_Secreen_checkbox_wrapper"
                                         }
-                                      />
-                                    </span>
+                                        onClick={() => checkTick(`${index}`)}
+                                      >
+                                        {tick.includes(`${index}`) ? (
+                                          <Image src={data.image} />
+                                        ) : (
+                                          ""
+                                        )}
+                                      </div>
+                                      <div>
+                                        <span className="collection_txt">
+                                          <EditText
+                                            type={"text"}
+                                            name={"Name"}
+                                            value={data.Name}
+                                            onChange={(e) =>
+                                              changeDynamicText(e, index)
+                                            }
+                                          />
+                                        </span>
+                                      </div>
+
+                                    </div>
                                   </div>
-                                  {/* <div>
+                                );
+                              })}
+
+
+                            </> : <>
+
+                              {isSearch.map((data, index) => {
+                                return (
+                                  <div
+                                    className="UI_Secreen_collection_checkbox_wrapper"
+                                    key={index}
+                                  >
+                                    <div className="Ui_Secreen_collection_inner_wrapper">
+                                      <div
+                                        className={
+                                          tick.includes(`${index}`)
+                                            ? "Ui_Secreen_checkbox_wrapper_enable"
+                                            : "Ui_Secreen_checkbox_wrapper"
+                                        }
+                                        onClick={() => checkTick(`${index}`)}
+                                      >
+                                        {tick.includes(`${index}`) ? (
+                                          <Image src={data.image} />
+                                        ) : (
+                                          ""
+                                        )}
+                                      </div>
+                                      <div>
+                                        <span className="collection_txt">
+                                          <EditText
+                                            type={"text"}
+                                            name={"Name"}
+                                            value={data.Name}
+                                            onChange={(e) =>
+                                              changeDynamicText(e, index)
+                                            }
+                                          />
+                                        </span>
+                                      </div>
+                                      {/* <div>
                                     <img
                                       src={PlayVedio}
                                       className="play_vedio_add_collection"
                                       alt="err"
                                     />
                                   </div> */}
-                                </div>
-                              </div>
-                            );
-                          })}
+                                    </div>
+                                  </div>
+                                );
+                              })}
+
+
+                            </>
+
+
+                          }
+                          {/* {
+                            isSearch.length == 0 &&
+                            <div className="d-flex justify-content-center align-items-center mt-5" >
+                              <div>No Results Found</div>
+                            </div>} */}
 
                           <div className="UI_Secreen_save_collection_btn_wrapper" >
                             <div
@@ -439,41 +460,83 @@ const UxVideoSecreen = () => {
           <div className="m_search_container">
             <div className="m_search_wrapper">
               <div>
-                <img src={Search} className="m_search_icon" alt="err" />
+                <img src={Search} className="m_search_icon " alt="err" />
               </div>
               <input
                 className="search_input"
                 placeholder="Search Collections"
+                onChange={(e) => filterAddCollection(e)}
               />
             </div>
           </div>
-          {checkdata.map((data, index) => {
-            return (
+
+          {
+            isSearch === "" ?
               <>
-                <div className="m_checkbox_wrapper">
-                  <div
-                    className={
-                      tick.includes(`${index}`)
-                        ? "m_checkbox_enable"
-                        : "m_checkbox"
-                    }
-                    onClick={() => checkTick(`${index}`)}
-                  >
-                    {tick.includes(`${index}`) ? (
-                      <Image src={data.image} />
-                    ) : (
-                      ""
-                    )}
-                  </div>
-                  <div>
-                    <span className="collection_txt">
-                      {data.Name + " " + [index + 1]}
-                    </span>
-                  </div>
-                </div>
+                {checkdata.map((data, index) => {
+                  return (
+                    <>
+                      <div className="m_checkbox_wrapper">
+                        <div
+                          className={
+                            tick.includes(`${index}`)
+                              ? "m_checkbox_enable"
+                              : "m_checkbox"
+                          }
+                          onClick={() => checkTick(`${index}`)}
+                        >
+                          {tick.includes(`${index}`) ? (
+                            <Image src={data.image} />
+                          ) : (
+                            ""
+                          )}
+                        </div>
+                        <div>
+                          <span className="collection_txt">
+                            {data.Name + " " + [index + 1]}
+                          </span>
+                        </div>
+                      </div>
+                    </>
+                  );
+                })}
+              </> : <>
+
+                {isSearch.map((data, index) => {
+                  return (
+                    <>
+                      <div className="m_checkbox_wrapper">
+                        <div
+                          className={
+                            tick.includes(`${index}`)
+                              ? "m_checkbox_enable"
+                              : "m_checkbox"
+                          }
+                          onClick={() => checkTick(`${index}`)}
+                        >
+                          {tick.includes(`${index}`) ? (
+                            <Image src={data.image} />
+                          ) : (
+                            ""
+                          )}
+                        </div>
+                        <div>
+                          <span className="collection_txt">
+                            {data.Name + " " + [index + 1]}
+                          </span>
+                        </div>
+                      </div>
+                    </>
+                  );
+                })}
               </>
-            );
-          })}
+          }
+          {
+            isSearch.length == 0 &&
+            <div className="d-flex justify-content-center align-items-center mt-5" >
+              <div>No Results Found</div>
+            </div>}
+
 
           <div className="m_new_collectionAnd_save">
             <div className="add_collection_btn" onClick={() => addCollection()}>

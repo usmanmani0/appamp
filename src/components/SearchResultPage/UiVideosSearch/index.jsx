@@ -24,6 +24,7 @@ import 'react-edit-text/dist/index.css'
 import "../../MobileAddCollection/mobileaddcollection.css";
 import { createGlobalStyle } from "styled-components";
 import { useSelector, useDispatch } from 'react-redux';
+import vedioCard from "../../../feature/AllProductsArray/searchPageUxVideos";
 const UxVideoSearch = () => {
 
     const [showPopover, setShowPopover] = useState({ open: true });
@@ -52,6 +53,7 @@ const UxVideoSearch = () => {
             Name: "Collection # 3",
         },
     ]);
+    const searchPageUxVideos = useSelector((state) => state.hideShow.searchPageUxVideos)
     const checkTick = async (index) => {
         let findIndex = tick.find((data) => data === index);
         if (findIndex) {
@@ -80,69 +82,69 @@ const UxVideoSearch = () => {
         }, 5000);
     };
 
-    const vedioCard = [
+    // const vedioCard = [
 
-        {
-            id: 1,
-            img: Card1,
-            text: "Tab",
-        },
-        {
-            id: 2,
-            img: Card1,
-            text: "Button",
-        },
-        {
-            id: 3,
-            img: Card1,
-            text: "Button",
-        },
-        {
-            id: 4,
-            img: Card1,
-            text: "Button",
-        },
-        {
-            id: 5,
-            img: Card1,
-            text: "Button33333",
-        },
-        {
-            id: 6,
-            img: Card1,
-            text: "Button",
-        },
-        {
-            id: 7,
-            img: Card1,
-            text: "Button",
-        },
-        {
-            id: 8,
-            img: Card1,
-            text: "Button",
-        },
-        {
-            id: 9,
-            img: Card1,
-            text: "Button",
-        },
-        {
-            id: 10,
-            img: Card1,
-            text: "Tab",
-        },
-        {
-            id: 11,
-            img: Card1,
-            text: "Button",
-        },
-        {
-            id: 12,
-            img: Card1,
-            text: "Tab",
-        },
-    ];
+    //     {
+    //         id: 1,
+    //         img: Card1,
+    //         text: "Tab",
+    //     },
+    //     {
+    //         id: 2,
+    //         img: Card1,
+    //         text: "Button",
+    //     },
+    //     {
+    //         id: 3,
+    //         img: Card1,
+    //         text: "Button",
+    //     },
+    //     {
+    //         id: 4,
+    //         img: Card1,
+    //         text: "Button",
+    //     },
+    //     {
+    //         id: 5,
+    //         img: Card1,
+    //         text: "Button33333",
+    //     },
+    //     {
+    //         id: 6,
+    //         img: Card1,
+    //         text: "Button",
+    //     },
+    //     {
+    //         id: 7,
+    //         img: Card1,
+    //         text: "Button",
+    //     },
+    //     {
+    //         id: 8,
+    //         img: Card1,
+    //         text: "Button",
+    //     },
+    //     {
+    //         id: 9,
+    //         img: Card1,
+    //         text: "Button",
+    //     },
+    //     {
+    //         id: 10,
+    //         img: Card1,
+    //         text: "Tab",
+    //     },
+    //     {
+    //         id: 11,
+    //         img: Card1,
+    //         text: "Button",
+    //     },
+    //     {
+    //         id: 12,
+    //         img: Card1,
+    //         text: "Tab",
+    //     },
+    // ];
     const addCollection = () => {
         let index = checkdata.length
         console.log("klkkl", index)
@@ -178,8 +180,15 @@ const UxVideoSearch = () => {
         console.log("onMouse ebter fn")
         setSelectBtn("cont2");
     }
-    var newArray = vedioCard.filter((data) => data.text.toLowerCase().includes(searchView.toLowerCase()));
-
+    var newArray = searchPageUxVideos.filter((data) => data.text.toLowerCase().includes(searchView.toLowerCase()));
+    const [isSearch, setIsSearch] = useState("")
+    const [searchValue, setSearchValue] = useState("")
+    const filterAddCollection = (e) => {
+        const result = e.target.value
+        setSearchValue(result)
+        const filtterArray = checkdata.filter((data) => data.Name.toLowerCase().includes(result.toLowerCase()))
+        setIsSearch(filtterArray)
+    }
 
     return (
         <>
@@ -210,59 +219,115 @@ const UxVideoSearch = () => {
                                                             class="form-control"
                                                             id="form_control"
                                                             placeholder="Search Collections"
+                                                            onChange={(e) => filterAddCollection(e)}
                                                         ></input>
                                                     </div>
-
-                                                    {
-
-                                                        checkdata.map((data, index) => {
-                                                            return (
-                                                                <div
-                                                                    className="UI_Secreen_collection_checkbox_wrapper"
-                                                                    key={index}
-                                                                >
-                                                                    <div className="Ui_Secreen_collection_inner_wrapper">
-                                                                        <div
-                                                                            className={
-                                                                                tick.includes(`${index}`)
-                                                                                    ? "Ui_Secreen_checkbox_wrapper_enable"
-                                                                                    : "Ui_Secreen_checkbox_wrapper"
-                                                                            }
-                                                                            onClick={() => checkTick(`${index}`)}
-                                                                        >
-                                                                            {tick.includes(`${index}`) ? (
-                                                                                <Image src={data.image} />
-                                                                            ) : (
-                                                                                ""
-                                                                            )}
-                                                                        </div>
-                                                                        <div>
-                                                                            <span className="collection_txt">
-                                                                                <EditText
-                                                                                    type={"text"}
-                                                                                    name={"Name"}
-                                                                                    value={data.Name}
-                                                                                    onChange={(e) => changeDynamicText(e, index)}
-                                                                                />
-
-
-
-
-                                                                            </span>
-                                                                        </div>
-                                                                        {/* <div>
+                                                    {isSearch === "" ?
+                                                        <>
+                                                            {checkdata.map((data, index) => {
+                                                                return (
+                                                                    <div
+                                                                        className="UI_Secreen_collection_checkbox_wrapper"
+                                                                        key={index}
+                                                                    >
+                                                                        <div className="Ui_Secreen_collection_inner_wrapper">
+                                                                            <div
+                                                                                className={
+                                                                                    tick.includes(`${index}`)
+                                                                                        ? "Ui_Secreen_checkbox_wrapper_enable"
+                                                                                        : "Ui_Secreen_checkbox_wrapper"
+                                                                                }
+                                                                                onClick={() => checkTick(`${index}`)}
+                                                                            >
+                                                                                {tick.includes(`${index}`) ? (
+                                                                                    <Image src={data.image} />
+                                                                                ) : (
+                                                                                    ""
+                                                                                )}
+                                                                            </div>
+                                                                            <div>
+                                                                                <span className="collection_txt">
+                                                                                    <EditText
+                                                                                        type={"text"}
+                                                                                        name={"Name"}
+                                                                                        value={data.Name}
+                                                                                        onChange={(e) =>
+                                                                                            changeDynamicText(e, index)
+                                                                                        }
+                                                                                    />
+                                                                                </span>
+                                                                            </div>
+                                                                            {/* <div>
                                     <img
                                       src={PlayVedio}
                                       className="play_vedio_add_collection"
                                       alt="err"
                                     />
                                   </div> */}
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                            );
-                                                        })}
+                                                                );
+                                                            })}
 
-                                                    <div className="UI_Secreen_save_collection_btn_wrapper">
+
+                                                        </> : <>
+
+                                                            {isSearch.map((data, index) => {
+                                                                return (
+                                                                    <div
+                                                                        className="UI_Secreen_collection_checkbox_wrapper"
+                                                                        key={index}
+                                                                    >
+                                                                        <div className="Ui_Secreen_collection_inner_wrapper">
+                                                                            <div
+                                                                                className={
+                                                                                    tick.includes(`${index}`)
+                                                                                        ? "Ui_Secreen_checkbox_wrapper_enable"
+                                                                                        : "Ui_Secreen_checkbox_wrapper"
+                                                                                }
+                                                                                onClick={() => checkTick(`${index}`)}
+                                                                            >
+                                                                                {tick.includes(`${index}`) ? (
+                                                                                    <Image src={data.image} />
+                                                                                ) : (
+                                                                                    ""
+                                                                                )}
+                                                                            </div>
+                                                                            <div>
+                                                                                <span className="collection_txt">
+                                                                                    <EditText
+                                                                                        type={"text"}
+                                                                                        name={"Name"}
+                                                                                        value={data.Name}
+                                                                                        onChange={(e) =>
+                                                                                            changeDynamicText(e, index)
+                                                                                        }
+                                                                                    />
+                                                                                </span>
+                                                                            </div>
+                                                                            {/* <div>
+                                    <img
+                                      src={PlayVedio}
+                                      className="play_vedio_add_collection"
+                                      alt="err"
+                                    />
+                                  </div> */}
+                                                                        </div>
+                                                                    </div>
+                                                                );
+                                                            })}
+
+
+                                                        </>
+
+
+                                                    }
+                                                    {/* {
+                                                        isSearch.length == 0 &&
+                                                        <div className="d-flex justify-content-center align-items-center mt-5" >
+                                                            <div>No Results Found</div>
+                                                        </div>} */}
+                                                    <div className="UI_Secreen_save_collection_btn_wrapper" >
                                                         <div
                                                             className="add_collection_btn"
                                                             onClick={() => addCollection()}

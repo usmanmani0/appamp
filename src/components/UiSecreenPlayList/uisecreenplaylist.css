@@ -8,3 +8,11 @@
     display: none;
   }
 }
+/* const OpenAddcollectionModal = (Pindex, Cindex) => {
+  let array = [...FeatureArray]
+  let flagObj = { ...array[Pindex].values[Cindex] }
+  array[Pindex].values[Cindex] = { ...flagObj, flag: !flagObj.flag }
+  // array[Pindex].values[Cindex] = { ...array[Pindex].values[Cindex], flag: !array[Pindex].values[Cindex].flag }
+  console.log("index===22222", araay)
+  // setCollectBox()
+} */

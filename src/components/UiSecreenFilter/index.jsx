@@ -12,6 +12,7 @@ import RightArrow from "../../assets/images/right-arrow.png"
 import { useSelector, useDispatch } from 'react-redux';
 import counterSlice, { handelShow, handelOffModal } from '../../feature/addCollection/counterSlice';
 import MobileFilter from './mobileFilter';
+import { AppPageFillter } from "../../feature/HandleAppPagefillter/handleAppPageFillter"
 import './uisecreenfilter.css'
 
 const UiSecreenFilter = () => {
@@ -332,6 +333,7 @@ const UiSecreenFilter = () => {
 
     const handleClick = (e, name, data) => {
         const { id, checked } = e.target;
+        dispatch(AppPageFillter(name))
         let present = selectedFilter.find((data) => data == name);
         console.log("PRESENT", present);
         if (present) {
@@ -341,16 +343,6 @@ const UiSecreenFilter = () => {
             SetSelectedFilter([...selectedFilter, name]);
         }
     };
-    // document.addEventListener('mouseup', function (e) {
-    //     let container = document.getElementById('filterOpen');
-    //     if (container.contains(e.target)) {
-    //         dispatch(handelOffModal(show = true))
-    //     }
-    //     else {
-    //         dispatch(handelOffModal())
-
-    //     }
-    // });
 
     return (
         <>
@@ -411,150 +403,7 @@ const UiSecreenFilter = () => {
 
                             <hr className="bottom_line"></hr>
                             {searchbox === "" ?
-                                // color == 1 ? <div className='d-flex justify-content-around' onMouseLeave={() => { setOpt(null) }}>
 
-                                //     <div className='UiSecreen_app_categories_button'>
-
-                                //         <div className="d-flex"
-                                //         >Patterns {selectedFilter.length == 0 ? "" : <div className="filter_count">{selectedFilter.length}</div>}</div>
-                                //         <div>
-                                //             <img src={RightArrow} />
-                                //         </div>
-
-
-                                //     </div>
-
-                                //     <div  >
-                                //         <div className='option_data ' onMouseEnter={() => { setOpt(0) }}><div>Pattern Category 1 { }</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                //         <div className='option_data ' onMouseEnter={() => { setOpt(1) }}><div>Pattern Category 2</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                //         <div className='option_data ' onMouseEnter={() => { setOpt(2) }}><div>Pattern Category 3</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                //         <div className='option_data ' onMouseEnter={() => { setOpt(3) }}><div>Pattern Category 4</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                //         <div className='option_data ' onMouseEnter={() => { setOpt(4) }}><div>Pattern Category 5</div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                //         <div className='option_data ' onMouseEnter={() => { setOpt(5) }}><div>Pattern Category X</div><div><img src={RightArrow} className='option_right_arrow' /></div></div> </div>
-                                //     <div className='Ui_Secreen_filter_checkbox'>
-
-                                //         {Pattern.map((data, index) => {
-
-                                //             return (
-                                //                 <>
-                                //                     <div className="appPage_checkbox_div" style={{ display: opt == 0 ? "block" : "none" }}>
-
-                                //                         <input
-
-
-                                //                             key={data.id}
-                                //                             type="checkbox"
-                                //                             id={data.id}
-                                //                             onClick={(e) => handleClick(e, data.typeis)}
-                                //                             checked={selectedFilter.includes(`${data.typeis}`)} />
-
-                                //                         <label className="label">{data.typeis}</label>{" "}
-                                //                     </div>
-
-
-                                //                 </>
-                                //             );
-                                //         })}
-                                //         {Pattern.map((data, index) => {
-                                //             return (
-                                //                 <>
-                                //                     <div className="appPage_checkbox_div" style={{ display: opt == 1 ? "block" : "none" }}>
-
-                                //                         <input
-
-                                //                             key={data.id}
-                                //                             type="checkbox"
-                                //                             id={data.id}
-                                //                             onClick={(e) => handleClick(e, data.typeis)}
-                                //                             checked={selectedFilter.includes(`${data.typeis}`)} />
-                                //                         <label className="label">{data.typeis}</label>{" "}
-                                //                     </div>
-
-
-                                //                 </>
-                                //             );
-                                //         })}
-                                //         {Pattern.map((data, index) => {
-                                //             return (
-                                //                 <>
-                                //                     <div className="appPage_checkbox_div" style={{ display: opt == 2 ? "block" : "none" }}>
-
-                                //                         <input
-
-                                //                             key={data.id}
-                                //                             type="checkbox"
-                                //                             id={data.id}
-                                //                             onClick={(e) => handleClick(e, data.typeis)}
-                                //                             checked={selectedFilter.includes(`${data.typeis}`)} />
-                                //                         <label className="label">{data.typeis}</label>{" "}
-                                //                     </div>
-
-
-                                //                 </>
-                                //             );
-                                //         })}
-                                //         {Pattern.map((data, index) => {
-                                //             return (
-                                //                 <>
-                                //                     <div className="appPage_checkbox_div" style={{ display: opt == 3 ? "block" : "none" }}>
-
-                                //                         <input
-
-                                //                             key={data.id}
-                                //                             type="checkbox"
-                                //                             id={data.id}
-                                //                             onClick={(e) => handleClick(e, data.typeis)}
-                                //                             checked={selectedFilter.includes(`${data.typeis}`)} />
-                                //                         <label className="label">{data.typeis}</label>{" "}
-                                //                     </div>
-
-
-                                //                 </>
-                                //             );
-                                //         })}
-                                //         {Pattern.map((data, index) => {
-                                //             return (
-                                //                 <>
-                                //                     <div className="appPage_checkbox_div" style={{ display: opt == 4 ? "block" : "none" }}>
-
-                                //                         <input
-
-                                //                             key={data.id}
-                                //                             type="checkbox"
-                                //                             id={data.id}
-                                //                             onClick={(e) => handleClick(e, data.typeis)}
-                                //                             checked={selectedFilter.includes(`${data.typeis}`)} />
-                                //                         <label className="label">{data.typeis}</label>{" "}
-                                //                     </div>
-
-
-                                //                 </>
-                                //             );
-                                //         })}
-                                //         {Pattern.map((data, index) => {
-                                //             return (
-                                //                 <>
-                                //                     <div className="appPage_checkbox_div" style={{ display: opt == 6 ? "block" : "none" }}>
-
-                                //                         <input
-
-                                //                             key={data.id}
-                                //                             type="checkbox"
-                                //                             id={data.id}
-                                //                             onClick={(e) => handleClick(e, data.typeis)}
-                                //                             checked={selectedFilter.includes(`${data.typeis}`)} />
-                                //                         <label className="label">{data.typeis}</label>{" "}
-                                //                     </div>
-
-
-                                //                 </>
-                                //             );
-                                //         })}
-
-
-                                //     </div>
-
-                                // </div> :
                                 <div className='d-flex justify-content-around' onMouseLeave={() => { setOpt(null) }}>
 
                                     <div className='UiSecreen_app_categories_button'>
