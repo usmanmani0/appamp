@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { original } from 'immer'
 import Upload1 from "../../../src/assets/images/plus_upload.png"
 import Upload2 from "../../../src/assets/images/plus_upload.png"
 import Upload3 from "../../../src/assets/images/plus_upload.png"
@@ -54,82 +55,108 @@ import Secreen9 from "../../assets/images/s9.png"
 import Secreen10 from "../../assets/images/s10.png"
 import Secreen11 from "../../assets/images/s11.png"
 import FeatureArray from "../AllProductsArray/FeatureArray"
-
+import FeatureRondomArray from "../AllProductsArray/FeatureRondomArray"
 import Secreen12 from "../../assets/images/s12.png"
 import searchPageUxVideos from "../AllProductsArray/searchPageUxVideos"
 
 const initialState = {
     isActiveScreen: "1",
     searchView: "",
+    FeatureRondomArray,
     landingPageFillterSearch: [],
     show: false,
-    show: false,
+    // show: false,
     searchPageUxVideos,
-
+    isChanged: true,
     upload: "",
     Playlist: [
         {
+            id: 1,
             img: Secreen1,
-            text: "Playing a song",
+            text: "Navigation Bar",
             date: new Date(2022, 2, 1, 20, 33, 30, 0),
+            patern: "Pattern 1a"
 
         },
         {
+            id: 2,
             img: Secreen2,
-            text: "Playing a song"
+            text: "Search Bar"
             ,
             date: new Date(2022, 1, 12, 10, 33, 30, 0),
 
+            patern: "Pattern 1a"
+
         },
         {
+            id: 3,
             img: Secreen3,
-            text: "Playing a song",
+            text: "Tab Bar",
             date: new Date(2022, 3, 1, 10, 33, 30, 0),
+            patern: "Pattern 1a"
         },
         {
+            id: 4,
             img: Secreen4,
-            text: "Searching for a song",
+            text: "Tool Bar",
             date: new Date(2022, 3, 1, 1, 12, 30, 0),
+            patern: "Pattern 1e"
         },
         {
+            id: 5,
             img: Secreen5,
-            text: "Sign Up",
+            text: "Button",
             date: new Date(2022, 2, 21, 2, 33, 30, 0),
+            patern: "Pattern 1e"
         },
         {
+            id: 6,
             img: Secreen6,
-            text: "Exploring Settings",
+            text: "Carousal",
             date: new Date(2022, 3, 1, 10, 33, 30, 0),
+            patern: "Pattern 1e"
         },
         {
+            id: 7,
             img: Secreen7,
-            text: "Exploring Library (W...",
+            text: "Color Picker",
             date: new Date(2022, 2, 5, 10, 33, 30, 0),
+            patern: "Pattern 1e"
         },
         {
+            id: 8,
             img: Secreen8,
-            text: "Exploring Library",
+            text: "Floating Action Button",
             date: new Date(2022, 2, 1, 11, 33, 30, 0),
+            patern: "Pattern 1e"
         },
         {
+            id: 9,
             img: Secreen9,
-            text: "Exploring an Artist ",
+            text: "Collections / Gallery ",
             date: new Date(2022, 1, 12, 10, 33, 30, 0),
+            patern: "Pattern 1e"
         },
         {
+            id: 10,
             img: Secreen10,
-            text: "Exploring an Artist ",
+            text: "Loading Indicator ",
             date: new Date(2022, 1, 1, 10, 33, 30, 0),
+            patern: "Pattern 1e"
         },
         {
+            id: 11,
             img: Secreen11,
-            text: "Exploring an Artist ",
+            text: "Pin ",
             date: new Date(2022, 3, 1, 10, 33, 30, 0),
+            patern: "Pattern 1e"
         },
         {
+            id: 12,
             img: Secreen12,
-            text: "Exploring an Artist ",
+            text: "Sheets ",
             date: new Date(2022, 2, 1, 5, 33, 30, 0),
+            patern: "Pattern 1e"
         },
 
 
@@ -184,217 +211,249 @@ const initialState = {
     FeatureArray,
     appCard: [
         {
+            id: 1,
             date: new Date(2022, 1, 24, 10, 33, 30, 0),
             img: GoogleFit,
-            title: "Communication",
-            sub: "Whats App",
+            title: "Finance",
+            sub: "Mint",
         },
         {
             date: new Date(2022, 1, 22, 10, 33, 30, 0),
-
+            id: 2,
             img: Mint,
-            title: "Communication",
-            sub: "Discord",
+            title: "Finance",
+            sub: "Mint",
         },
         {
+            id: 3,
             date: new Date(2022, 2, 24, 10, 33, 30, 0),
 
             img: TickTick,
-            title: "Communication",
-            sub: "Facebook",
+            title: "Productivity",
+            sub: "TickTick",
         },
         {
+            id: 5,
             date: new Date(2022, 1, 2, 10, 33, 30, 0),
 
             img: GoogleHome,
-            title: "Communication",
-            sub: "Whats App",
+            title: "Lifstyle",
+            sub: "Google Home",
         },
         {
+            id: 6,
             date: new Date(2022, 1, 14, 10, 33, 30, 0),
 
             img: Tidal,
-            title: "Communication",
-            sub: "Discord",
+            title: "Music & Audio",
+            sub: "Tidal",
         },
         {
+            id: 7,
             date: new Date(2022, 2, 22, 10, 33, 30, 0),
 
             img: YouTubeMusic,
-            title: "Communication",
-            sub: "Facebook",
+            title: "Music & Audio",
+            sub: "Youtube Music",
         },
         {
+            id: 8,
             date: new Date(2022, 2, 5, 10, 33, 30, 0),
 
             img: Deezer,
-            title: "Communication",
-            sub: "Whats App",
+            title: "Music & Audiocation",
+            sub: "Deezer",
         },
         {
+            id: 9,
             date: new Date(2022, 2, 6, 10, 33, 30, 0),
 
             img: Spotify,
-            title: "Communication",
-            sub: "Discord",
+            title: "Music & Audio",
+            sub: "Spotify",
         },
         {
+            id: 10,
             date: new Date(2022, 2, 10, 10, 33, 30, 0),
 
             img: Strava,
-            title: "Communication",
-            sub: "Facebook",
+            title: "Health & Fitness",
+            sub: "Strava",
         },
         {
+            id: 11,
             date: new Date(2022, 2, 10, 10, 33, 30, 0),
 
             img: SoundCloud,
-            title: "Communication",
-            sub: "Whats App",
+            title: "Music & Audio",
+            sub: "SoundCloud",
         },
         {
+            id: 12,
             date: new Date(2022, 2, 21, 10, 33, 30, 0),
 
             img: MarketPlace,
-            title: "Communication",
-            sub: "Discord",
+            title: "Lifestyle",
+            sub: "Marketplace - Buy and Sell",
         },
         {
+            id: 13,
             date: new Date(2022, 2, 26, 10, 33, 30, 0),
 
             img: Pinterest,
-            title: "Communication",
-            sub: "Facebook",
+            title: "Lifestyle",
+            sub: "Pinterest",
         },
         {
+            id: 14,
             date: new Date(2022, 2, 25, 10, 33, 30, 0),
 
             img: Nextdoor,
-            title: "Communication",
-            sub: "Whats App",
+            title: "Lifestyle",
+            sub: "Nextdoor",
         },
         {
+            id: 15,
             date: new Date(2022, 2, 27, 10, 33, 30, 0),
 
             img: WhatsApp,
             title: "Communication",
-            sub: "Discord",
+            sub: "Whatsapp",
         },
         {
+            id: 16,
             date: new Date(2022, 2, 28, 10, 33, 30, 0),
 
             img: Discord,
             title: "Communication",
-            sub: "Facebook",
+            sub: "Discord",
         },
         {
+            id: 17,
             date: new Date(2022, 3, 1, 10, 33, 30, 0),
 
             img: Facebook,
-            title: "Communication",
-            sub: "Whats App",
+            title: "Social",
+            sub: "Facebook",
         },
         {
+            id: 18,
             date: new Date(2022, 3, 1, 10, 33, 30, 0),
 
             img: WeChat,
             title: "Communication",
-            sub: "Discord",
+            sub: "WeChat",
         },
         {
+            id: 19,
             date: new Date(2022, 2, 8, 10, 33, 30, 0),
 
             img: Slack,
             title: "Communication",
-            sub: "Facebook",
+            sub: "Slack",
         },
         {
+            id: 20,
             date: new Date(2022, 3, 1, 10, 33, 30, 0),
 
             img: SpikeEmail,
-            title: "Communication",
-            sub: "Whats App",
+            title: "Productivity",
+            sub: "Spike Email",
         },
         {
+            id: 21,
             date: new Date(2022, 3, 1, 10, 33, 30, 0),
 
             img: Walmart,
-            title: "Communication",
-            sub: "Discord",
+            title: "Shopping",
+            sub: "Walmart",
         },
         {
+            id: 22,
             date: new Date(2022, 2, 18, 10, 33, 30, 0),
 
             img: Flo,
-            title: "Communication",
-            sub: "Facebook",
+            title: "Health & Fitness",
+            sub: "Flo",
         },
         {
+            id: 23,
             date: new Date(2022, 1, 24, 10, 33, 30, 0),
 
             img: CreditKarma,
-            title: "Communication",
-            sub: "Whats App",
+            title: "Finance",
+            sub: "Credit Karma",
         },
         {
+            id: 24,
             date: new Date(2022, 3, 1, 10, 33, 30, 0),
 
             img: LinkedIn,
-            title: "Communication",
-            sub: "Discord",
+            title: "Business",
+            sub: "LinkedIn",
         },
         {
+            id: 25,
             date: new Date(2022, 3, 1, 10, 33, 30, 0),
 
             img: Quickbooks,
-            title: "Communication",
-            sub: "Facebook",
+            title: "Business",
+            sub: "Quickbooks",
         },
         {
+            id: 26,
             date: new Date(2022, 2, 22, 10, 33, 30, 0),
 
             img: Email,
-            title: "Communication",
-            sub: "Whats App",
+            title: "Productivity",
+            sub: "E Mail",
         },
         {
+            id: 27,
             date: new Date(2022, 2, 12, 10, 33, 30, 0),
 
             img: HomeWorkout,
-            title: "Communication",
-            sub: "Discord",
+            title: "Health & Fitness",
+            sub: "Home Workout",
         },
         {
+            id: 28,
             date: new Date(2022, 1, 24, 10, 33, 30, 0),
 
             img: Docusign,
-            title: "Communication",
-            sub: "Facebook",
+            title: "Productivity",
+            sub: "Docusign",
         },
         {
+            id: 29,
             date: new Date(2022, 3, 24, 10, 33, 30, 0),
 
             img: Amazon,
-            title: "Communication",
-            sub: "Whats App",
+            title: "Social",
+            sub: "Amazon",
         },
         {
+            id: 30,
             date: new Date(2022, 3, 1, 10, 33, 30, 0),
 
             img: CVS,
-            title: "Communication",
-            sub: "Discord",
+            title: "Medical",
+            sub: "CVS",
         },
         {
+            id: 31,
             date: new Date(2022, 3, 1, 10, 33, 30, 0),
 
             img: Weedmaps,
-            title: "Communication",
-            sub: "Facebook",
+            title: "Medical",
+            sub: "Weedmaps",
         },
 
-    ],
 
+
+
+    ],
+    controlFeature: "feature",
     createCollection: [
         {
             id: 1,
@@ -489,22 +548,17 @@ export const counterSlice = createSlice({
 
 
         },
-
+        // <=====this function is used to sort data  on appPage =========>
         SortRandomly: (state, action) => {
-
+            state.controlFeature = action.payload
             let sortedAray = state.FeatureArray.sort(() => Math.random() - 0.5)
             state.FeatureArray = sortedAray
-
-
         },
         chnageScreen: (state, action) => {
-
             state.isActiveScreen = action.payload
-
         },
+
         isFillter: (state, action) => {
-
-
             let temaray = [...state.landingPageFillterSearch]
             let array;
             if (temaray.filter((data) => data === action.payload).length > 0) {
@@ -515,23 +569,11 @@ export const counterSlice = createSlice({
             }
             state.landingPageFillterSearch = temaray
         },
-        getAllProducts: (state, action) => {
-
-            state.landingPageFillterSearch = action.payload
+        setOrignal: (state, action) => {
+            state.isChanged = !state.isChanged
         },
-        SortAlphabeticlay: (state, action) => {
-
-            const arrangeData = state.appCard.sort(function (a, b) {
-                if (a.sub.toLowerCase() < b.sub.toLowerCase())
-                    return -1;
-                if (a.sub.toLowerCase() > b.sub.toLowerCase())
-                    return 1;
-                return 0
-
-            })
-
-            state.appCard = arrangeData
-
+        getAllProducts: (state, action) => {
+            state.landingPageFillterSearch = action.payload
         },
         SortRecentlyUpdate: (state, action) => {
             const sortByDate = state.appCard.sort(function (a, b) {
@@ -593,6 +635,8 @@ export const counterSlice = createSlice({
 
         },
         SortAlphabeticlayFeature: (state, action) => {
+            state.controlFeature = action.payload
+            console.log("controlFeature", state.controlFeature)
 
             const arrangeData = state.FeatureArray.sort(function (a, b) {
                 if (a.featureName.toLowerCase() < b.featureName.toLowerCase())
@@ -606,14 +650,28 @@ export const counterSlice = createSlice({
             state.FeatureArray = arrangeData
 
         },
-        handelShow: (state, action) => {
+        SortAl: (state, action) => {
 
+            const arrangeDataAray = state.appCard.sort(function (a, b) {
+
+                if (a.sub.toLowerCase() < b.sub.toLowerCase())
+                    return -1;
+                if (a.sub.toLowerCase() > b.sub.toLowerCase())
+                    return 1;
+                return 0
+
+            })
+            // // state.appCard = arrangeDataAray
+            // console.log("state.appCard", state)
+
+
+
+        },
+        handelShow: (state, action) => {
             state.show = !state.show
         },
         handleCreateNewApp: (state, action) => {
-
             state.TotalCreateApps = state.TotalCreateApps.push(action.payload)
-
         },
         handelUpload: (state, action) => {
             state.upload = action.payload
@@ -658,7 +716,7 @@ export const counterSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { getAllProducts, SortMostrelevent, SortMostRecent, SortRecentlyUpdate, isFillter, SortAlphabeticlayFeature,
+export const { setOrignal, SortAl, getAllProducts, SortMostrelevent, SortMostRecent, SortRecentlyUpdate, isFillter, SortAlphabeticlayFeature,
     chnageScreen, SortRandomly, SortAlphabeticlay, handleCreateNewApp,
     handelCreateAppValues, handelShow, uploadPick, collectionHeadingChange,
     handelUpload, incrementByAmount, addNewCollection, handelempty,

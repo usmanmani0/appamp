@@ -30,9 +30,6 @@ function App() {
         <Route path="/adminportal" element={<Submitportal />} />
         <Route path="/updatefilter" element={<UpdateFilter />} />
       </Routes>
-      {/* <CreateApps /> */}
-      {/* <Submitportal /> */}
-      {/* <UpdateFilter /> */}
 
     </>
   );

@@ -249,6 +249,7 @@
   padding: 0px 10px 0px 10px;
   display: none;
 }
+
 .onHoverImage {
   height: 24px;
   width: 24px;
@@ -260,6 +261,35 @@
   z-index: 99;
   padding: 5px 0px 0px 5px;
   font-weight: 500;
+}
+.chapterName {
+  position: absolute;
+  top: 8px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.chap_text {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ffffff;
+}
+.chap_time_name {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.chpter_name_box {
+  width: 179px;
+  height: 53px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 8px;
+  border-radius: 10px;
+  color: white;
+  background: rgba(22, 22, 24, 0.8);
 }
 .card_content_show {
   display: flex;
@@ -855,6 +885,7 @@
   .vedio_cardc:hover > .vedio_time {
     bottom: 13%;
   }
+
   .mobie_share_copy {
     width: 161px;
     height: 120px;

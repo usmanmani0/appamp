@@ -1,12 +1,17 @@
-import React, { useState } from "react";
-import Card1 from "../../../assets/images/card1.png";
+import React, { useState, useEffect } from "react";
+import 'react-edit-text/dist/index.css';
+import { Image } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { EditText, EditTextarea } from 'react-edit-text';
+import { createGlobalStyle } from "styled-components";
+import { useSelector, useDispatch } from 'react-redux';
+import 'react-edit-text/dist/index.css'
 import Plus from "../../../assets/images/plus.png";
 import Copy from "../../../assets/images/copy.png";
 import Down from "../../../assets/images/Download.png";
 import Cloud from "../../../assets/images/cloud.png";
 import option from "../../../assets/images/select.png";
-
-import 'react-edit-text/dist/index.css';
 import MPlus from "../../../assets/images/mplus.png"
 import checkalert from "../../../assets/soundcloudimages/CheckAlert.png";
 import Close from "../../../assets/images/Close.png";
@@ -14,25 +19,23 @@ import Search from "../../../assets/images/s.png";
 import MCopy from "../../../assets/images/mcopy.png"
 import MDownload from "../../../assets/images/mdownload.png"
 import checkicon from "../../../assets/soundcloudimages/Check.png";
-import { Image } from "react-bootstrap";
 import plusiconsave from "../../../assets/soundcloudimages/plusiconsave.png";
-
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { EditText, EditTextarea } from 'react-edit-text';
-import 'react-edit-text/dist/index.css'
 import "../../MobileAddCollection/mobileaddcollection.css";
-import { createGlobalStyle } from "styled-components";
-import { useSelector, useDispatch } from 'react-redux';
-import vedioCard from "../../../feature/AllProductsArray/searchPageUxVideos";
 const UxVideoSearch = () => {
-
+    const searchPageUxVideos = useSelector((state) => state.hideShow.searchPageUxVideos)
+    const searchView = useSelector((state) => state.hideShow.searchView)
+    const searchPageResultFilter = useSelector((state) => state.AppPageFillter.searchPageResultFilter)
+    const patternFilterValue = useSelector((state) => state.AppPageFillter.patternFilterValue)
+    const [mainArray, setMainArray] = useState([])
+    const [selectBtn, setSelectBtn] = useState("select_btn");
     const [showPopover, setShowPopover] = useState({ open: true });
     const [tick, setTick] = useState([]);
-    const searchView = useSelector((state) => state.hideShow.searchView)
     const [setSave, showSetSave] = useState(false);
     const [copy, setCopy] = useState(false);
     const [select, setSelect] = useState({ open: false });
+    const [isSearch, setIsSearch] = useState("")
+    const his = useNavigate()
+    const [searchValue, setSearchValue] = useState("")
     const [checkdata, setCheckdata] = useState([
         {
             id: 1,
@@ -53,7 +56,13 @@ const UxVideoSearch = () => {
             Name: "Collection # 3",
         },
     ]);
-    const searchPageUxVideos = useSelector((state) => state.hideShow.searchPageUxVideos)
+
+
+
+
+
+
+    // <======used for tick the check box in add collection modal======>
     const checkTick = async (index) => {
         let findIndex = tick.find((data) => data === index);
         if (findIndex) {
@@ -63,10 +72,11 @@ const UxVideoSearch = () => {
             setTick([...tick, index]);
         }
     };
+    // <======used for showing add collection modal by click on add collection text========>
     const handelPopover = () => {
         setShowPopover(!showPopover);
     };
-
+    // <====used for show snakBar for save collection functionality========>
     const saveCollection = () => {
         showSetSave(!setSave);
 
@@ -74,6 +84,8 @@ const UxVideoSearch = () => {
             showSetSave(null);
         }, 5000);
     };
+
+    // <====used for show snakBar for copy & share functionality========>
     const copyShare = () => {
         setCopy(!setSave);
 
@@ -162,33 +174,88 @@ const UxVideoSearch = () => {
 
         setCheckdata([...checkdata]);
     };
-    const his = useNavigate()
+
+    // <======used for edit the add to collection modal content text=======> 
     const changeDynamicText = (e, index) => {
-        console.log("kkkk", e, index)
         let data = [...checkdata];
         data[index].Name = e
         setCheckdata(data)
     }
-    const test = () => {
 
-        // his('/soundcloudpage')
-        console.log("skadjbvvvvvvvvvvvvvvvv")
-    }
-
-    const [selectBtn, setSelectBtn] = useState("select_btn");
-    const xyz = () => {
-        console.log("onMouse ebter fn")
+    const IsMouseEnter = () => {
         setSelectBtn("cont2");
     }
-    var newArray = searchPageUxVideos.filter((data) => data.text.toLowerCase().includes(searchView.toLowerCase()));
-    const [isSearch, setIsSearch] = useState("")
-    const [searchValue, setSearchValue] = useState("")
+
+    // <========used for searching app name and chpter name from landing page and filter on this page========>
+    var newArray = mainArray.filter((data) => data.text.toLowerCase().includes(searchView.toLowerCase()) || data.chap.toLowerCase().includes(searchView.toLowerCase()))
+
+
+    // <======used for searching in create Collection modal content==========>
     const filterAddCollection = (e) => {
         const result = e.target.value
         setSearchValue(result)
         const filtterArray = checkdata.filter((data) => data.Name.toLowerCase().includes(result.toLowerCase()))
         setIsSearch(filtterArray)
     }
+    // <==========used for checking the search is chapterWise or not===========>
+    const chaptername = newArray.map((data) => data.chap.toLowerCase() === searchView.toLowerCase())
+
+
+
+    // <==========this useEffect hook is used to filter data through element from filter element checkbox========>
+    useEffect(() => {
+        if (searchPageResultFilter.length === 0) {
+            setMainArray(searchPageUxVideos)
+        } else {
+            let temp = [];
+            searchPageResultFilter.map((item) =>
+                searchPageUxVideos.map((data) => {
+                    if (data.text.toLowerCase() == item.toLowerCase()) {
+                        temp.push(data);
+                    }
+                })
+            );
+
+            setMainArray(temp);
+            temp = [];
+
+        }
+
+    }, [searchPageResultFilter]);
+    // <==========this useEffect hook is used to set the redux state into local state========>
+    useEffect(() => {
+        setMainArray(searchPageUxVideos)
+    }, [searchPageUxVideos])
+
+    // <==========this useEffect hook is used to handle filter functionality through patern========>
+    useEffect(() => {
+        if (patternFilterValue.length === 0) {
+            setMainArray(searchPageUxVideos)
+        } else {
+            var temp = [];
+
+
+            patternFilterValue.map((item) =>
+                newArray.map((data) => {
+                    if (data.patern.toLowerCase() != item.toLowerCase()) {
+                        temp = []
+                        return
+                    }
+                    else {
+                        temp.push(data);
+
+                    }
+                })
+            );
+            setMainArray(temp);
+            temp = [];
+
+        }
+        if (patternFilterValue.length > 1) {
+            setMainArray([]);
+        }
+    }, [patternFilterValue])
+
 
     return (
         <>
@@ -198,11 +265,17 @@ const UxVideoSearch = () => {
                         return (
                             <>
                                 <div key={index}>
-                                    {/* <Link to="/soundcloudpage"> */}
-                                    <div className="vedio_card" onClick={test}>
+
+                                    <div className="vedio_card">
 
                                         {" "}
                                         <img src={data.img} className="img-fluid" alt="err" />
+                                        {chaptername.find(element => element === true) ? <div className="chapterName">
+                                            <div className="chpter_name_box">
+                                                <div className="chap_text">Starts at</div>
+                                                <div className="chap_time_name"><div className="chap_text">00:23</div>  <div className="chap_text">{data.chap}</div></div>
+                                            </div>
+                                        </div> : ""}
 
                                         <div className="UI_Secreen_add_collection">
                                             {showPopover ? (
@@ -257,13 +330,7 @@ const UxVideoSearch = () => {
                                                                                     />
                                                                                 </span>
                                                                             </div>
-                                                                            {/* <div>
-                                    <img
-                                      src={PlayVedio}
-                                      className="play_vedio_add_collection"
-                                      alt="err"
-                                    />
-                                  </div> */}
+
                                                                         </div>
                                                                     </div>
                                                                 );
@@ -305,13 +372,7 @@ const UxVideoSearch = () => {
                                                                                     />
                                                                                 </span>
                                                                             </div>
-                                                                            {/* <div>
-                                    <img
-                                      src={PlayVedio}
-                                      className="play_vedio_add_collection"
-                                      alt="err"
-                                    />
-                                  </div> */}
+
                                                                         </div>
                                                                     </div>
                                                                 );
@@ -322,11 +383,7 @@ const UxVideoSearch = () => {
 
 
                                                     }
-                                                    {/* {
-                                                        isSearch.length == 0 &&
-                                                        <div className="d-flex justify-content-center align-items-center mt-5" >
-                                                            <div>No Results Found</div>
-                                                        </div>} */}
+
                                                     <div className="UI_Secreen_save_collection_btn_wrapper" >
                                                         <div
                                                             className="add_collection_btn"
@@ -445,7 +502,7 @@ const UxVideoSearch = () => {
                                                     </div>
                                                     <div
                                                         className={selectBtn}
-                                                        onMouseEnter={xyz}
+                                                        onMouseEnter={IsMouseEnter}
                                                         onClick={() => {
                                                             setSelect({
                                                                 open: select.open === index ? false : index,
@@ -459,7 +516,7 @@ const UxVideoSearch = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    {/* </Link> */}
+
                                     <div className="card_botom_text">{data.text}</div>
                                 </div>
                                 {

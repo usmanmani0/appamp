@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import "./uisecreenfilter.css"
 import "../Filter/filter.css";
 import { BsFilter } from "react-icons/bs";
@@ -55,15 +55,7 @@ const UiSecreenFilter = () => {
         },
 
     ]);
-    const enteringAutoComplete = (value) => {
 
-        SetSelectedFilter((preValue) => {
-            return (
-                value
-            );
-
-        });
-    };
     const Pattern = [
         {
             id: 1,
@@ -140,44 +132,63 @@ const UiSecreenFilter = () => {
     ]
     const displayArray = [
         {
-            id: 111,
-            typeis: "Accordian"
+            id: 21,
+            typeis: "Accordian",
+            flag: "display"
         },
         {
-            id: 222,
+            id: 31,
             typeis: "Badge"
+            ,
+            flag: "display"
         },
         {
-            id: 333,
+            id: 41,
             typeis: "Banner"
+            ,
+            flag: "display"
         },
         {
-            id: 444,
+            id: 51,
             typeis: "Card"
+            ,
+            flag: "display"
         },
         {
-            id: 555,
+            id: 61,
             typeis: "Collections / Gallery"
+            ,
+            flag: "display"
         },
         {
-            id: 666,
+            id: 71,
             typeis: "Divider"
+            ,
+            flag: "display"
         },
         {
-            id: 777,
+            id: 81,
             typeis: "List"
+            ,
+            flag: "display"
         },
         {
-            id: 888,
+            id: 91,
             typeis: "Pin"
+            ,
+            flag: "display"
         },
         {
-            id: 999,
+            id: 92,
             typeis: "Sheets"
+            ,
+            flag: "display"
         },
         {
-            id: 1000,
+            id: 93,
             typeis: "Skeleton"
+            ,
+            flag: "display"
         },
     ]
     const feedbackArray = [
@@ -328,28 +339,67 @@ const UiSecreenFilter = () => {
 
     ]
     let a = controlArray.concat(displayArray, displayArray, feedbackArray, overlayArray, iconsArray)
-
     var newArray = a.filter((data) => data.typeis.toLowerCase().includes(searchbox.toLowerCase()));
-
     const handleClick = (e, name, data) => {
         const { id, checked } = e.target;
         dispatch(AppPageFillter(name))
         let present = selectedFilter.find((data) => data == name);
-        console.log("PRESENT", present);
         if (present) {
-            SetSelectedFilter(selectedFilter.filter(item => item !== name));
+            SetSelectedFilter(selectedFilter.filter(item => item != name));
+            setCount(count.filter(item => item.typeis != name))
         } else {
             setCount([...count, data])
             SetSelectedFilter([...selectedFilter, name]);
         }
     };
+    const enteringAutoComplete = (e, value, r, d) => {
+        // console.log("data.optio@@@@@@@@@@@@", d.option)
+
+        if (r === "clear") {
+            SetSelectedFilter([])
+            setCount([])
+        }
+        dispatch(AppPageFillter(d.option))
+        let present = selectedFilter.find((data) => data == d.option);
+        if (present) {
+            SetSelectedFilter(selectedFilter.filter(item => item != d.option));
+            setCount(count.filter(item => item.typeis != d.option))
+        }
+        SetSelectedFilter((preValue) => {
+            return (
+                value
+            );
+
+        });
+    };
+    // .....................handle filter open & close====
+    const ref = useRef()
+
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+    useEffect(() => {
+        const checkIfClickedOutside = e => {
+            // If the menu is open and the clicked target is not within the menu,
+            // then close the menu
+            if (isMenuOpen && ref.current && !ref.current.contains(e.target)) {
+                setIsMenuOpen(false)
+            }
+        }
+
+        document.addEventListener("mousedown", checkIfClickedOutside)
+
+        return () => {
+            // Cleanup the event listener
+            document.removeEventListener("mousedown", checkIfClickedOutside)
+        }
+    }, [isMenuOpen])
 
     return (
         <>
-            <div className='UiSecreen_filter'>
+            <div className='UiSecreen_filter' ref={ref}>
                 <div className="filter_btn " >
                     <div
-                        onClick={() => dispatch(handelShow())}
+                        onClick={() => setIsMenuOpen(oldState => !oldState)}
                         className="filter_button d-flex align-items-center"
                         type="button"
                     >
@@ -360,17 +410,13 @@ const UiSecreenFilter = () => {
                         <div>Filter</div>
                     </div>
                 </div>
-                {show ? (
+                {isMenuOpen ? (
 
                     <div>
                         <div className='mobile_filter_view'>
                             <MobileFilter />
                         </div>
-
-
-
                         <div className="App_Page_filter_expand" id="filterOpen">
-
                             <div className='fillter_box'>
                                 <div className="filter_input_element">
                                     <div className='search_icon_wrapper'>  <img src={img1} className="search" /></div>
@@ -382,7 +428,7 @@ const UiSecreenFilter = () => {
                                             value={selectedFilter}
                                             options={list.map((option) => option.typeis)}
 
-                                            onChange={(e, v) => enteringAutoComplete(v)}
+                                            onChange={(e, v, r, d) => enteringAutoComplete(e, v, r, d)}
                                             renderTags={(value, getTagProps) => value.map((option, index) => (
                                                 <Chip variant="outlined" label={option} {...getTagProps({ index })} />
                                             ))}
@@ -399,8 +445,6 @@ const UiSecreenFilter = () => {
                                     </Stack>
                                 </div>
                             </div>
-
-
                             <hr className="bottom_line"></hr>
                             {searchbox === "" ?
 
@@ -413,8 +457,6 @@ const UiSecreenFilter = () => {
                                         <div>
                                             <img src={RightArrow} />
                                         </div>
-
-
                                     </div>
 
 
@@ -426,8 +468,8 @@ const UiSecreenFilter = () => {
                                         <div className='option_data ' onMouseEnter={() => { setOpt(1) }}><div className='d-flex flter_data'>Control{count.filter((item) => item.flag === "control").length > 0 ? <div className='each_filter_count'>{selectedFilter.filter((data) => controlArray.some(li => li.typeis == data)).length}</div> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
                                         <div className='option_data ' onMouseEnter={() => { setOpt(2) }}><div className='d-flex flter_data'>Display {count.filter((item) => item.flag === "display").length > 0 ? <div className='each_filter_count'>{selectedFilter.filter((data) => displayArray.some(li => li.typeis == data)).length}</div> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
                                         <div className='option_data ' onMouseEnter={() => { setOpt(3) }}><div className='d-flex flter_data'>Feedback {count.filter((item) => item.flag === "feed").length > 0 ? <div className='each_filter_count'>{selectedFilter.filter((data) => feedbackArray.some(li => li.typeis == data)).length}</div> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                        <div className='option_data ' onMouseEnter={() => { setOpt(4) }}><div className='d-flex flter_data'>Icons & Images {count.filter((item) => item.flag === "icon").length > 0 ? <div className='each_filter_count'>{selectedFilter.filter((data) => overlayArray.some(li => li.typeis == data)).length}</div> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
-                                        <div className='option_data ' onMouseEnter={() => { setOpt(5) }}><div className='d-flex flter_data'>Overlay {count.filter((item) => item.flag === "over").length > 0 ? <div className='each_filter_count'>{selectedFilter.filter((data) => iconsArray.some(li => li.typeis == data)).length}</div> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div> </div>
+                                        <div className='option_data ' onMouseEnter={() => { setOpt(4) }}><div className='d-flex flter_data'>Icons & Images {count.filter((item) => item.flag === "icon").length > 0 ? <div className='each_filter_count'>{selectedFilter.filter((data) => iconsArray.some(li => li.typeis == data)).length}</div> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div>
+                                        <div className='option_data ' onMouseEnter={() => { setOpt(5) }}><div className='d-flex flter_data'>Overlay {count.filter((item) => item.flag === "over").length > 0 ? <div className='each_filter_count'>{selectedFilter.filter((data) => overlayArray.some(li => li.typeis == data)).length}</div> : null} <span></span></div><div><img src={RightArrow} className='option_right_arrow' /></div></div> </div>
                                     <div className='Ui_Secreen_filter_checkbox'>
 
                                         {list.map((data, index) => {

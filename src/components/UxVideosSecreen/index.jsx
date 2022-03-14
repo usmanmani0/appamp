@@ -139,8 +139,10 @@ const UxVideoSecreen = () => {
                 <div key={index}>
                   {/* <Link to="/soundcloudpage"> */}
                   <div className="vedio_card" onClick={test}>
+
                     {" "}
                     <img src={data.img} className="img-fluid" alt="err" />
+
                     <div className="UI_Secreen_add_collection">
                       {showPopover ? (
 

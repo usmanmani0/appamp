@@ -6,7 +6,8 @@
 .footer_div {
   height: auto;
   width: 100%;
-
+  position: relative;
+  bottom: 0;
   margin-top: 17px;
   background-color: rgba(244, 244, 244, 1);
   padding: 0px 20px;

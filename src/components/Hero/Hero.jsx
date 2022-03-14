@@ -37,7 +37,7 @@ const Hero = () => {
   }
   const history = useNavigate()
   const reDirectFunction = (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' && searchView != "") {
       history("/searchpage")
     }
   }
@@ -75,6 +75,7 @@ const Hero = () => {
                       type="text"
                       id="searchInput"
                       value={searchView}
+                      required
                       placeholder="Search Features or Components"
                     ></input>
 

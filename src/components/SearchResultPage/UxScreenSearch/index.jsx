@@ -1,8 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import "../../UiSecreenPlayList/uisecreenplaylist.css"
-import Secreen1 from "../../../assets/images/s1.png"
-import Secreen2 from "../../../assets/images/s2.png"
-import Secreen3 from "../../../assets/images/s3.png"
 import MPlus from "../../../assets/images/mplus.png"
 import Secreen4 from "../../../assets/images/s4.png"
 import Secreen66 from "../../../assets/images/moreresult.png"
@@ -28,8 +25,6 @@ import plusiconsave from "../../../assets/soundcloudimages/plusiconsave.png";
 import Cloud from "../../../assets/images/cloud.png"
 import Plus from "../../../assets/images/plus.png"
 import option from "../../../assets/images/select.png"
-// import UiSecreenFilter from "../UiSecreenFilter"
-// import SelectByFeature from '../SelectByFeature'
 import Close from "../../../assets/images/Close.png";
 import { Link } from "react-router-dom"
 import { EditText, EditTextarea } from 'react-edit-text';
@@ -39,11 +34,16 @@ import { useSelector, } from 'react-redux'
 
 
 const UiScreenSearch = (props) => {
+
+    const Playlist = useSelector((state) => state.hideShow.Playlist)
+    const isChanged = useSelector((state) => state.hideShow.isChanged)
+    const searchView = useSelector((state) => state.hideShow.searchView)
+    const searchPageResultFilter = useSelector((state) => state.AppPageFillter.searchPageResultFilter)
+    const patternFilterValue = useSelector((state) => state.AppPageFillter.patternFilterValue)
+    const [loader, setLoader] = useState(false)
     const [selectBtn, setSelectBtn] = useState("select_btn");
     const [more, setMore] = useState(5)
-    const Playlist = useSelector((state) => state.hideShow.Playlist)
-    const searchView = useSelector((state) => state.hideShow.searchView)
-    const [loader, setLoader] = useState(false)
+    const [mainArray, setMainArray] = useState([])
     const xyz = () => {
         console.log("onMouse ebter fn")
         setSelectBtn("cont2");
@@ -84,8 +84,8 @@ const UiScreenSearch = (props) => {
     const [setSave, showSetSave] = useState(false);
     const [copy, setCopy] = useState(false);
 
-
-    const newScreenArray = Playlist.slice(0, more)
+    // <=======slice the aray from 0 to 6 and then dynamicly==========>
+    const newScreenArray = mainArray.slice(0, more)
     const handelPopover = () => {
         setShowPopover(!showPopover);
     };
@@ -118,19 +118,123 @@ const UiScreenSearch = (props) => {
         setCheckdata([...checkdata]);
     };
     const MoreResult = () => {
-
         setLoader(true)
         setTimeout(() => { setLoader(false); setMore(Playlist.length) }, 1000);
-
-
-
-
-
-
-
     }
     var newArray = newScreenArray.filter((data) => data.text.toLowerCase().includes(searchView.toLowerCase()));
+    // ......................below code for filter functionalitly=============
 
+    useEffect(() => {
+        if (searchPageResultFilter.length === 0) {
+            setMainArray(Playlist)
+        } else {
+            let temp = [];
+
+
+            // for (let i = 0; i < searchPageResultFilter.length; i++) {
+            //     for (let j = 0; j < Playlist.length; j++) {
+            //         console.log("aaaaaaaaaaaaaaaaaaa=>", Playlist[j].text.toLowerCase() === searchPageResultFilter[i].toLowerCase())
+            //         if (Playlist[j].text.toLowerCase() === searchPageResultFilter[i].toLowerCase()) {
+            //             temp.push(Playlist[j]);
+            //             return;
+            //         } else {
+            //             temp = [];
+            //         }
+            //         console.log("j", j)
+            //     }
+            //     console.log("i", i)
+            // }
+
+            // ...................NEWT SCRIPT,,,,,,,,,,,
+
+
+            // Declare two array
+            const array2 = ['a', 'b', 'c', 'd'];
+            const array1 = ['a', 'x', 'c'];
+
+            // Function definition with passing two arrays
+            function findCommonElement(searchPageResultFilter, Playlist) { }
+
+            // Loop for array1
+            let chec = []
+            for (let i = 0; i < searchPageResultFilter.length; i++) {
+                let sb = false
+                // Loop for array2
+                for (let j = 0; j < Playlist.length; j++) {
+
+                    // Compare the element of each and
+                    // every element from both of the
+                    // arrays
+
+                    if (searchPageResultFilter[i].toLowerCase() === Playlist[j].text.toLowerCase()) {
+
+                        // Return if common element found
+                        chec[i] = true
+                        sb = true
+                    }
+                }
+                if (sb == false) {
+                    chec[i] = false
+                }
+            }
+            console.log("chec", chec)
+
+
+
+
+
+            searchPageResultFilter.map((item, index) =>
+                Playlist.map((data, pk) => {
+                    if (data.text.toLowerCase() === item.toLowerCase()) {
+                        temp.push(data)
+                    }
+                })
+            );
+
+
+            let somthing = false
+            for (let i = 0; i < chec.length; i++) {
+                if (chec[i] === false) {
+                    somthing = true
+                }
+            }
+            if (somthing) {
+                setMainArray([]);
+                temp = [];
+            }
+            else {
+                setMainArray(temp);
+                temp = [];
+            }
+
+        }
+    }, [searchPageResultFilter]);
+    useEffect(() => {
+        setMainArray(Playlist)
+    }, [Playlist, isChanged])
+    useEffect(() => {
+        if (patternFilterValue.length === 0) {
+            setMainArray(Playlist)
+        } else {
+            var temp = [];
+            patternFilterValue.map((item) =>
+                newArray.map((data) => {
+                    if (data.patern.toLowerCase() != item.toLowerCase()) {
+                        temp = []
+                        return
+                    }
+                    else {
+                        temp.push(data);
+                    }
+                })
+            );
+            setMainArray(temp);
+            temp = [];
+        }
+        if (patternFilterValue.length > 1) {
+            setMainArray([]);
+        }
+    }, [patternFilterValue])
 
     return (
         <>
@@ -139,9 +243,7 @@ const UiScreenSearch = (props) => {
                 <div className='Ui_heading'>
                     <div>
                         <div className='more_result_screen_search'>More Results in UI Screens</div>
-                        {/* <div className='screens14'>14 screens</div> */}
                     </div>
-                    {/* <div className='line'></div> */}
                 </div>
                 <div className='UI_Secreen_vedio_card_wrapper'>
                     {
@@ -409,6 +511,12 @@ setSelect({
                 <div className="d-flex justify-content-center result_not_found" >
                     <div>No Results Found</div>
                 </div>}
+            {/* {
+                patternFilterValue.length > 1 &&
+
+                <div className="d-flex justify-content-center result_not_found" >
+                    <div>No Results Found</div>
+                </div>} */}
             {loader == true ?
                 <div className="d-flex justify-content-center py-1 loader loader_set" >
                     <div class="spinner-border text-secondary" role="status">
